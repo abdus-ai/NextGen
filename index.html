@@ -8,8 +8,8 @@
 <style>
 :root{color-scheme:dark;box-sizing:border-box;--bg:#010d26;--ink:#fff;--bd:#7c90d9;padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font-family:Inter,"Segoe UI",Roboto,system-ui,sans-serif}
-.app{max-width:430px;height:100dvh;margin:0 auto;padding-bottom:calc(150px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;overflow:hidden}
+html{height:100%;overflow-y:auto;overscroll-behavior-y:auto;background:var(--bg)}body{height:calc(100dvh + 2px);min-height:calc(100dvh + 2px);overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:auto;background:var(--bg);color:var(--ink);font-family:Inter,"Segoe UI",Roboto,system-ui,sans-serif}
+.app{position:sticky;top:0;max-width:430px;height:100dvh;margin:0 auto;padding-bottom:calc(150px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;overflow:hidden}
 svg{display:block}
 header{height:41px;display:flex;align-items:center;padding:0 10px 0 16px}
 .burger{width:16px;display:grid;gap:4px;margin-right:12px;transform:translateY(3px)}
