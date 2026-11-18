@@ -1,4 +1,4 @@
-const CACHE_NAME = "nextgen-shell-v90-facebook-share-detect";
+const CACHE_NAME = "nextgen-shell-v91-create-hub-home";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -24,6 +24,7 @@ const APP_SHELL = [
   "./manifest.webmanifest",
   "./icon.svg",
   "./ng-symbol.jpg",
+  "./assets/nextgen-login-logo.webp",
   "./header-reference.webp",
   "./profile-icon.jpg"
 ];
