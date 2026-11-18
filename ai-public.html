@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#071126">
+  <meta name="description" content="NextGen AI — one creative workspace for AI image, video, voice and intelligent assistance.">
+  <title>NextGen AI — Create Beyond Limits</title>
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <style>
+    :root{color-scheme:dark;--bg:#061022;--panel:#0b1930;--line:rgba(127,176,255,.16);--cyan:#25e5f2;--blue:#4388ff;--purple:#bb63ff;--muted:#a8b6ce;--white:#f5f8ff}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 78% 12%,rgba(55,91,190,.22),transparent 34%),radial-gradient(ellipse at 12% 48%,rgba(0,210,230,.09),transparent 32%),var(--bg);color:var(--white);font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+    header{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:rgba(5,14,30,.76);backdrop-filter:blur(14px);position:sticky;top:0;z-index:10}
+    .brand{display:flex;align-items:center;gap:11px;font-size:21px;font-weight:850;letter-spacing:-.6px}.brand img{width:43px;height:43px}.brand span{background:linear-gradient(90deg,var(--cyan),#7f8cff,var(--purple));background-clip:text;color:transparent}
+    nav{display:flex;gap:28px;align-items:center;color:#c2cde0;font-size:14px}nav a:hover{color:var(--cyan)}.nav-cta,.primary{border:1px solid rgba(37,229,242,.45);background:linear-gradient(110deg,rgba(21,173,211,.2),rgba(103,87,225,.22));padding:10px 17px;border-radius:999px;font-weight:700}
+    .hero{padding:92px 0 70px;display:grid;grid-template-columns:1.08fr .92fr;gap:50px;align-items:center;min-height:590px}.eyebrow{display:inline-flex;align-items:center;gap:9px;color:#8feef5;border:1px solid rgba(37,229,242,.25);background:rgba(37,229,242,.07);padding:7px 13px;border-radius:99px;font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase}.dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 13px var(--cyan)}
+    h1{font-size:clamp(42px,6vw,72px);line-height:1.04;letter-spacing:-3.5px;margin:24px 0 20px;font-weight:900}h1 em{font-style:normal;background:linear-gradient(95deg,var(--cyan),#7e9bff 55%,var(--purple));background-clip:text;color:transparent}
+    .lead{font-size:18px;color:var(--muted);max-width:590px;margin:0 0 30px}.actions{display:flex;gap:13px;flex-wrap:wrap}.primary{display:inline-flex;padding:13px 21px;color:#f8ffff}.secondary{padding:13px 21px;border:1px solid var(--line);border-radius:999px;color:#d6e0f2}.primary:hover,.nav-cta:hover{filter:brightness(1.2);transform:translateY(-1px)}.subnote{color:#7f91ad;font-size:12px;margin-top:18px}
+    .visual{position:relative;min-height:390px;display:grid;place-items:center}.orb{width:min(350px,80vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 45%,rgba(27,201,235,.18),rgba(70,87,196,.12) 42%,transparent 70%);border:1px solid rgba(88,170,255,.28);box-shadow:0 0 90px rgba(24,137,255,.16),inset 0 0 65px rgba(22,210,230,.08);display:grid;place-items:center;position:relative}.orb:before,.orb:after{content:"";position:absolute;inset:20px;border:1px solid rgba(72,178,255,.22);border-radius:50%;transform:rotateX(68deg) rotate(-25deg)}.orb:after{inset:43px;transform:rotateX(68deg) rotate(40deg);border-color:rgba(192,92,255,.25)}.orb img{width:180px;filter:drop-shadow(0 0 30px rgba(37,229,242,.3));z-index:1}.float{position:absolute;padding:12px 16px;border:1px solid var(--line);background:rgba(9,25,48,.9);border-radius:14px;box-shadow:0 12px 35px #0005;font-size:13px;color:#dce9ff}.float b{display:block;color:var(--cyan);font-size:12px}.f1{top:48px;left:0}.f2{right:-5px;top:115px}.f3{bottom:45px;left:18px}.f4{right:8px;bottom:25px}
+    section{padding:70px 0}.section-head{text-align:center;max-width:680px;margin:0 auto 36px}.kicker{color:var(--cyan);font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}.section-head h2{font-size:clamp(30px,4vw,44px);line-height:1.12;letter-spacing:-1.5px;margin:10px 0}.section-head p{color:var(--muted);margin:0}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.feature{padding:24px 21px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(15,34,62,.9),rgba(7,18,36,.88));border-radius:18px;min-height:205px;transition:.2s}.feature:hover{transform:translateY(-4px);border-color:rgba(37,229,242,.42)}.ico{width:43px;height:43px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(37,229,242,.16),rgba(156,91,255,.18));font-size:21px}.feature h3{margin:16px 0 7px;font-size:18px}.feature p{margin:0;color:var(--muted);font-size:14px}
+    .band{border:1px solid var(--line);border-radius:24px;padding:34px;background:linear-gradient(110deg,rgba(14,54,82,.65),rgba(34,25,73,.6));display:flex;justify-content:space-between;align-items:center;gap:25px}.band h2{margin:0 0 8px;font-size:28px;letter-spacing:-.8px}.band p{margin:0;color:var(--muted)}
+    footer{border-top:1px solid var(--line);padding:26px 0 18px;color:#8fa0bb;font-size:12px}.foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}.credit{text-align:center;margin-top:12px;color:#7185a5}
+    @media(max-width:800px){nav{gap:14px}nav a:not(.nav-cta){display:none}.hero{grid-template-columns:1fr;padding:66px 0 35px;gap:15px;min-height:auto}.visual{min-height:330px}.grid{grid-template-columns:repeat(2,1fr)}.band{align-items:flex-start;flex-direction:column}}
+    @media(max-width:480px){.wrap{width:min(100% - 28px,1120px)}header{height:66px}.brand{font-size:18px}.brand img{width:37px;height:37px}h1{letter-spacing:-2.2px}.lead{font-size:16px}.visual{min-height:290px}.orb{width:260px}.orb img{width:145px}.float{font-size:11px;padding:9px 11px}.f1{top:18px}.f2{right:-2px;top:78px}.f3{bottom:18px}.f4{right:0;bottom:8px}.grid{gap:10px}.feature{padding:18px 15px;min-height:190px}.band{padding:24px}.foot{flex-direction:column}}
+  </style>
+</head>
+<body>
+<header><div class="wrap" style="display:flex;align-items:center;justify-content:space-between"><a class="brand" href="./ai-public.html"><img src="./icon.svg" alt="NextGen logo"><span>NextGen AI</span></a><nav aria-label="Main navigation"><a href="#features">Features</a><a href="#vision">Our vision</a><a class="nav-cta" href="#features">Explore NextGen</a></nav></div></header>
+<main>
+  <div class="wrap hero">
+    <div><div class="eyebrow"><i class="dot"></i> AI creation workspace</div><h1>Create more.<br><em>Imagine further.</em></h1><p class="lead">A unified creative destination for AI-powered images, videos, voice and intelligent assistance — designed to bring your ideas to life.</p><div class="actions"><a class="primary" href="#features">Explore capabilities <span aria-hidden="true">&nbsp;→</span></a><a class="secondary" href="#vision">Discover our vision</a></div><p class="subnote">NextGen AI is being built step by step. Some capabilities are currently in development.</p></div>
+    <div class="visual" aria-label="NextGen AI creative platform illustration"><div class="orb"><img src="./icon.svg" alt=""></div><div class="float f1"><b>CREATE</b>AI Images</div><div class="float f2"><b>GENERATE</b>AI Video</div><div class="float f3"><b>EXPRESS</b>AI Voice</div><div class="float f4"><b>ASSIST</b>AI Assistant</div></div>
+  </div>
+  <section id="features"><div class="wrap"><div class="section-head"><div class="kicker">One creative ecosystem</div><h2>Everything starts with an idea</h2><p>Explore the core experiences planned for the NextGen AI platform.</p></div>
+    <div class="grid">
+      <article class="feature"><div class="ico">✦</div><h3>AI Image Studio</h3><p>Turn creative prompts and visual concepts into images.</p></article>
+      <article class="feature"><div class="ico">▶</div><h3>AI Video Studio</h3><p>Build a video creation workflow with evolving AI models.</p></article>
+      <article class="feature"><div class="ico">♫</div><h3>AI Voice Studio</h3><p>Explore voice generation and audio experiences.</p></article>
+      <article class="feature"><div class="ico">✧</div><h3>AI Assistant</h3><p>Get help with ideas, writing, planning and creative tasks.</p></article>
+    </div>
+  </div></section>
+  <section id="vision"><div class="wrap"><div class="band"><div><div class="kicker">The NextGen vision</div><h2>Smart Automation. Smarter Growth.</h2><p>Building a connected AI experience for creators, teams and growing businesses.</p></div><a class="primary" href="#features">Explore the platform →</a></div></div></section>
+</main>
+<footer><div class="wrap"><div class="foot"><span>©2026 NextGen. All Rights Reserved.</span><span>AI • TOOLS • TUTORIALS • GROWTH</span></div><div class="credit">Powered by ABDUS SATTAR</div></div></footer>
+</body>
+</html>
