@@ -57,6 +57,34 @@ header{height:41px;display:flex;align-items:center;padding:0 10px 0 16px}
 .p2{flex:1;justify-content:space-between;padding:0 12px 0 10px;min-width:0}
 .p3{width:90px;flex:none;gap:6px;font-size:13px}
 .snd{width:32px;height:32px;flex:none;border-radius:50%;background:linear-gradient(135deg,#d03cf0 10%,#8a5cf0 50%,#22c0e8);display:grid;place-items:center}
+
+/* NextGen floating Assistant + Create Project actions */
+.ng-fab-stack{position:fixed;right:max(14px,calc((100vw - 430px)/2 + 14px));bottom:calc(154px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;flex-direction:column;align-items:center;gap:10px}
+.ng-fab{width:48px;height:48px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.22);box-shadow:0 4px 14px rgba(0,0,0,.28);cursor:pointer;text-decoration:none;color:#fff}
+.ng-fab-assistant{border-radius:50%;background:linear-gradient(145deg,#8b5cf6 0%,#654de4 48%,#18b9d6 100%);box-shadow:0 3px 12px rgba(99,78,220,.22)}
+.ng-fab-assistant .ng-mark{font-size:17px;font-weight:900;letter-spacing:-1.5px;text-shadow:0 1px 4px #1a155b}
+.ng-fab-project{border-radius:15px;background:#159f65;border-color:rgba(255,255,255,.16)}
+.ng-fab:active{transform:scale(.96)}
+.ng-project-overlay{position:fixed;inset:0;z-index:60;background:rgba(2,8,22,.72);backdrop-filter:blur(5px);display:grid;place-items:center;padding:18px}
+.ng-project-overlay[hidden]{display:none!important}
+.ng-project-dialog{width:min(100%,430px);max-height:min(88dvh,720px);overflow:auto;border:1px solid rgba(126,163,199,.38);border-radius:20px;background:#0d2039;color:#f4f8ff;box-shadow:0 18px 60px rgba(0,0,0,.45);padding:20px}
+.ng-project-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.ng-project-head h2{font-size:20px;line-height:1.2;color:#f4f8ff}
+.ng-project-close{width:34px;height:34px;border:1px solid rgba(143,171,202,.25);border-radius:50%;background:#172c49;color:#fff;font-size:21px}
+.ng-project-field{display:grid;gap:6px;margin:12px 0}
+.ng-project-field label{font-size:12px;color:#b8cbe0;font-weight:600}
+.ng-project-field input,.ng-project-field select,.ng-project-field textarea{width:100%;min-height:43px;border:1px solid rgba(143,171,202,.34);border-radius:11px;background:#091a30;color:#fff;padding:10px 12px;font:14px Inter,system-ui,sans-serif;outline:none}
+.ng-project-field textarea{min-height:78px;resize:vertical}
+.ng-project-field input:focus,.ng-project-field select:focus,.ng-project-field textarea:focus{border-color:#55b8d8;box-shadow:0 0 0 2px rgba(85,184,216,.12)}
+.ng-project-save{width:100%;min-height:45px;margin-top:8px;border:0;border-radius:12px;background:linear-gradient(100deg,#19b9c8,#3978df 58%,#9658d7);color:white;font-weight:750}
+.ng-project-note{margin-top:10px;color:#92a9c1;font-size:10px;line-height:1.45}
+.ng-project-status{min-height:18px;margin-top:8px;color:#72e2b3;font-size:12px}
+.ng-project-recent{margin-top:17px;border-top:1px solid rgba(143,171,202,.17);padding-top:12px}
+.ng-project-recent h3{font-size:12px;color:#dce8f6;margin-bottom:8px}
+.ng-project-item{padding:8px 10px;margin-top:6px;border-radius:9px;background:#102844;font-size:12px}
+.ng-project-item small{display:block;color:#91a9c2;font-size:10px;margin-top:2px}
+@media(min-width:700px){.ng-fab-stack{right:max(22px,calc((100vw - 430px)/2 + 18px));bottom:calc(35px + env(safe-area-inset-bottom,0px))}}
+
 </style>
 </head>
 <body>
@@ -111,6 +139,61 @@ header{height:41px;display:flex;align-items:center;padding:0 10px 0 16px}
     <div class="snd"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5M5 11l7-7 7 7"/></svg></div>
   </div>
 </div>
+
+<div class="ng-fab-stack" aria-label="Quick actions">
+  <a class="ng-fab ng-fab-assistant" href="ai-design/assistant.html" aria-label="Open NextGen AI Assistant" title="AI Assistant"><span class="ng-mark">NG✦</span></a>
+  <button class="ng-fab ng-fab-project" id="ngOpenProject" type="button" aria-label="Create Project" title="Create Project">
+    <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H10l2 2h6.5A2.5 2.5 0 0 1 21 9.5v8a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5z"/><path d="M12 10.5v6M9 13.5h6"/></svg>
+  </button>
+</div>
+<div class="ng-project-overlay" id="ngProjectModal" hidden>
+  <section class="ng-project-dialog" role="dialog" aria-modal="true" aria-labelledby="ngProjectTitle">
+    <div class="ng-project-head"><h2 id="ngProjectTitle">Create New Project</h2><button class="ng-project-close" id="ngCloseProject" type="button" aria-label="Close">×</button></div>
+    <form id="ngProjectForm">
+      <div class="ng-project-field"><label for="ngProjectName">Project Name</label><input id="ngProjectName" name="name" maxlength="80" placeholder="Enter project name" required></div>
+      <div class="ng-project-field"><label for="ngProjectType">Project Type</label><select id="ngProjectType" name="type" required><option value="">Select project type</option><option>AI Video</option><option>AI Image</option><option>AI Song</option><option>AI Music</option><option>AI Dance</option><option>Business / Other</option></select></div>
+      <div class="ng-project-field"><label for="ngProjectDescription">Description (optional)</label><textarea id="ngProjectDescription" name="description" maxlength="500" placeholder="What would you like to create?"></textarea></div>
+      <button class="ng-project-save" type="submit">＋ Create Project</button>
+      <div class="ng-project-status" id="ngProjectStatus" role="status" aria-live="polite"></div>
+    </form>
+    <p class="ng-project-note">Projects are saved as drafts on this device for now. Cloud sync will be available after the project database is connected.</p>
+    <div class="ng-project-recent"><h3>Recently Created Projects</h3><div id="ngProjectList"></div></div>
+  </section>
+</div>
 <script>const composer=document.querySelector('.comp');const composerToggle=document.getElementById('composerToggle');composerToggle.addEventListener('click',()=>{const expanded=composer.classList.toggle('expanded');composerToggle.setAttribute('aria-expanded',String(expanded));composerToggle.setAttribute('aria-label',expanded?'Collapse composer':'Expand composer');});</script>
+
+<script>
+(function(){
+  const modal=document.getElementById('ngProjectModal');
+  const open=document.getElementById('ngOpenProject');
+  const close=document.getElementById('ngCloseProject');
+  const form=document.getElementById('ngProjectForm');
+  const status=document.getElementById('ngProjectStatus');
+  const list=document.getElementById('ngProjectList');
+  const key='nextgen-project-drafts-v1';
+  if(!modal||!open||!close||!form||!list)return;
+  function readProjects(){try{const data=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(data)?data:[]}catch(e){return[]}}
+  function renderProjects(){
+    const projects=readProjects().slice(0,5);
+    list.textContent='';
+    if(!projects.length){const empty=document.createElement('div');empty.className='ng-project-note';empty.textContent='No projects created yet.';list.appendChild(empty);return}
+    projects.forEach(p=>{const item=document.createElement('div');item.className='ng-project-item';const name=document.createElement('strong');name.textContent=p.name;const meta=document.createElement('small');meta.textContent=p.type+' · '+new Date(p.createdAt).toLocaleString();item.append(name,meta);list.appendChild(item)});
+  }
+  function show(){modal.hidden=false;status.textContent='';renderProjects();document.getElementById('ngProjectName').focus()}
+  function hide(){modal.hidden=true;open.focus()}
+  open.addEventListener('click',show);close.addEventListener('click',hide);
+  modal.addEventListener('click',e=>{if(e.target===modal)hide()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)hide()});
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    const data=new FormData(form);
+    const project={id:(window.crypto&&crypto.randomUUID)?crypto.randomUUID():String(Date.now()),name:String(data.get('name')||'').trim(),type:String(data.get('type')||''),description:String(data.get('description')||'').trim(),createdAt:new Date().toISOString()};
+    if(!project.name||!project.type){status.textContent='Please enter a project name and choose a type.';return}
+    try{const projects=readProjects();projects.unshift(project);localStorage.setItem(key,JSON.stringify(projects));form.reset();status.textContent='Project draft created on this device.';renderProjects()}
+    catch(err){status.textContent='Could not save on this device. Please check browser storage.'}
+  });
+  renderProjects();
+})();
+</script>
 </body>
 </html>
