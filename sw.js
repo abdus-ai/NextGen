@@ -1,4 +1,4 @@
-const CACHE_NAME = "nextgen-shell-v97-user-approved-assistant-icon";
+const CACHE_NAME = "nextgen-shell-v98-assistant-shortcut-fix";
 const APP_SHELL = [
   "./",
   "./index.html",
