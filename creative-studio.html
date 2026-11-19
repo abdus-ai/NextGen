@@ -236,5 +236,47 @@ body{padding-bottom:env(safe-area-inset-bottom,0px)}
  }));
 })();
 </script>
+
+<script id="creative-studio-compare-history-script-v3">
+(function(){
+ const modeSelect=[...document.querySelectorAll('select')].find(el=>[...el.options].some(o=>o.text.includes('Compare Mode')));
+ const comparePanel=document.getElementById('compare-panel');
+ const compareBoxes=[...document.querySelectorAll('#compare-models input[type=checkbox]')];
+ const compareSummary=document.getElementById('compare-summary');
+ const modelSelect=document.getElementById('model-select');
+ if(modeSelect&&comparePanel){const update=()=>comparePanel.hidden=!modeSelect.value.includes('Compare Mode');modeSelect.addEventListener('change',update);update();}
+ function updateCompare(){const selected=compareBoxes.filter(x=>x.checked).map(x=>x.value);if(compareSummary)compareSummary.textContent=selected.length<2?'Select at least two models to prepare a comparison. No generation will run.':selected.length+' models selected: '+selected.join(' · ')+'. Comparison setup is ready; provider execution is not connected.';}
+ compareBoxes.forEach(x=>x.addEventListener('change',updateCompare));
+ const KEY='nextgen_creative_studio_prepared_history_v1';
+ function readHistory(){try{return JSON.parse(localStorage.getItem(KEY)||'[]').filter(x=>x&&typeof x.prompt==='string').slice(0,30);}catch(e){return [];}}
+ function saveHistory(items){try{localStorage.setItem(KEY,JSON.stringify(items.slice(0,30)));}catch(e){}}
+ function renderHistory(){
+  const host=document.getElementById('history-list');if(!host)return;
+  const items=readHistory();host.innerHTML='';
+  if(!items.length){host.innerHTML='<div class="notice">No prepared generations yet. Prepare a prompt in Discover to see it here.</div>';return;}
+  items.forEach(item=>{
+   const card=document.createElement('article');card.className='history-item';
+   const meta=document.createElement('div');meta.className='history-meta';
+   [item.mode,item.model,item.when].forEach(v=>{const span=document.createElement('span');span.textContent=v||'';meta.append(span);});
+   const p=document.createElement('p');p.textContent=item.prompt;
+   const b=document.createElement('button');b.type='button';b.className='secondary';b.textContent='Load prompt';
+   b.addEventListener('click',()=>{const field=document.getElementById('main-prompt');if(field)field.value=item.prompt;document.querySelector('[data-view=discover]')?.click();});
+   card.append(meta,p,b);host.append(card);
+  });
+ }
+ const generate=document.getElementById('generate-btn');
+ if(generate)generate.addEventListener('click',()=>{
+  const field=document.getElementById('main-prompt');const prompt=field?field.value.trim():'';
+  if(!prompt)return;
+  const selected=compareBoxes.filter(x=>x.checked).map(x=>x.value);
+  const mode=modeSelect?modeSelect.value:'Auto Model Selection';
+  const model=mode.includes('Compare')?selected.join(', '):(modelSelect?modelSelect.value:'Auto Select');
+  const items=readHistory();items.unshift({prompt,mode,model,when:new Date().toLocaleString()});saveHistory(items);renderHistory();
+ });
+ const clear=document.getElementById('clear-history');if(clear)clear.addEventListener('click',()=>{try{localStorage.removeItem(KEY);}catch(e){}renderHistory();});
+ const historyNav=document.querySelector('[data-view=history]');if(historyNav)historyNav.addEventListener('click',renderHistory);
+ renderHistory();
+})();
+</script>
 </body>
 </html>
