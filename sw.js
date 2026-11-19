@@ -1,7 +1,12 @@
-const CACHE_NAME = "nextgen-shell-v94-createhub-theme-sync";
+const CACHE_NAME = "nextgen-shell-v95-assistant-project-actions";
 const APP_SHELL = [
   "./",
   "./index.html",
+  "./ai-design/assistant.html",
+  "./ai-design/assistant-mobile.html",
+  "./ai-design/assistant-desktop.html",
+  "./ai-design/assistant-mobile.css",
+  "./ai-design/assistant-desktop.css",
   "./dashboard.html",
   "./channels-archive.html",
   "./nextgen-shared.css",
