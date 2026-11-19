@@ -1021,6 +1021,56 @@ html body.ng-unified-subpage .ng-package-details .subscription-status{margin-top
  }
 }
 </style>
+
+<style id="ng-motion16-inspired-plans-v1">
+/* Pricing content refresh only — NextGen master header, logo, footer and navigation remain untouched. */
+.ng-reference-tabs{display:flex;gap:7px;width:calc(100% - 24px);margin:12px auto 14px;padding:5px;border-radius:999px;background:#17171c;border:1px solid #292932}
+.ng-reference-tabs button{flex:1;min-height:42px;border:0;border-radius:999px;background:transparent;color:#c7c7d1;font:700 14px inherit;cursor:pointer}
+.ng-reference-tabs button[aria-selected="true"]{background:#f4f3f7;color:#17171c;box-shadow:0 1px 5px #0005}
+body.ng-subscription-page .subscription-billing{margin:0 12px 12px;padding:5px;gap:5px;border-radius:999px;background:#17171c}
+body.ng-subscription-page .billing-option{border:0;border-radius:999px;background:transparent;color:#c7c7d1;min-height:40px}
+body.ng-subscription-page .billing-option.is-active{background:#f4f3f7;color:#17171c}
+body.ng-subscription-page .billing-option[data-period="yearly"]{opacity:1;cursor:pointer}
+body.ng-subscription-page .subscription-tax-note{margin:0 14px 12px;color:#a8a8b4;font-size:12px}
+body.ng-subscription-page .subscription-plan{background:#1a1a20!important;border:1px solid #34343e!important;border-radius:24px!important;box-shadow:none!important;padding:20px 18px!important;color:#f4f4f7}
+body.ng-subscription-page .subscription-plan-featured{border:1.5px solid #8065f2!important;box-shadow:0 0 0 1px #8065f255!important}
+body.ng-subscription-page .subscription-plan h2{color:#f5f4fb!important;font-size:23px!important;margin:3px 0 18px!important}
+body.ng-subscription-page .subscription-plan-free h2{color:#f5f4fb!important}
+body.ng-subscription-page .ng-trial-inner-card,
+body.ng-subscription-page .ng-starter-price-card,
+body.ng-subscription-page .ng-plan-price-card{background:#202027!important;border:1px solid #393944!important;border-radius:16px!important;box-shadow:none!important;padding:15px!important}
+body.ng-subscription-page .offer{background:#292632!important;border:1px solid #594a8d!important;border-radius:13px!important}
+body.ng-subscription-page .pill{background:#7358e8!important;color:#fff!important}
+body.ng-subscription-page .total strong{color:#a18cff!important}
+body.ng-subscription-page .subscription-plan ul{color:#dedee7!important;font-size:14px!important;line-height:1.65!important;padding-left:22px!important}
+body.ng-subscription-page .subscription-limit{color:#c8c5d7!important;font-size:14px!important;margin:8px 0 14px!important}
+body.ng-subscription-page .ng-package-details{margin-top:14px!important;border:1px solid #393944!important;border-radius:14px!important;background:#17171c!important;overflow:hidden}
+body.ng-subscription-page .ng-package-details summary{padding:13px 14px!important;color:#f2f0fb!important;font-weight:700!important;cursor:pointer}
+body.ng-subscription-page .ng-package-details-content,
+body.ng-subscription-page .ng-trial-features{padding:0 14px 14px!important}
+body.ng-subscription-page .subscription-status{background:#202027!important;border-color:#393944!important;color:#aaa9b6!important}
+body.ng-subscription-page .wallet-panel,
+body.ng-subscription-page .addon-panel,
+body.ng-subscription-page .subscription-policy-panel{background:#1a1a20!important;border:1px solid #393944!important;border-radius:20px!important;box-shadow:none!important}
+body.ng-subscription-page .wallet-panel h2,
+body.ng-subscription-page .addon-panel h2,
+body.ng-subscription-page .subscription-policy-panel h2{color:#a18cff!important}
+body.ng-subscription-page .wallet-grid>div,
+body.ng-subscription-page .addon-list>div{background:#222229!important;border-color:#393944!important;border-radius:12px!important}
+body.ng-subscription-page .wallet-grid strong,
+body.ng-subscription-page .addon-list strong{color:#f4f3f8!important}
+body.ng-subscription-page .wallet-grid span,
+body.ng-subscription-page .addon-list span{color:#aaa9b6!important}
+body.ng-subscription-page .ng-custom-plans-heading h2{color:#a18cff!important}
+body.ng-subscription-page .ng-custom-plan{border-color:#55468a!important}
+body.ng-subscription-page .ng-reference-star-note{margin:12px 14px;padding:14px;border:1px solid #55468a;border-radius:14px;background:#201d2b;color:#c9c3dc;font-size:13px;line-height:1.55}
+body.ng-subscription-page [hidden]{display:none!important}
+@media(max-width:480px){
+ body.ng-subscription-page .subscription-plan{padding:17px 14px!important;border-radius:20px!important}
+ body.ng-subscription-page .subscription-plan h2{font-size:21px!important}
+ body.ng-subscription-page .subscription-plans{gap:13px!important}
+}
+</style>
 </head>
 <body class="ng-unified-subpage"><header class="subpage-header"><a class="ng-subpage-back" href="#" aria-label="Back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></a><strong class="ng-subpage-title">Subscription Package</strong></header>
 <div class="app">
@@ -1111,6 +1161,10 @@ html body.ng-unified-subpage .ng-package-details .subscription-status{margin-top
 
 <main>
 
+<div class="ng-reference-tabs" role="tablist" aria-label="Subscription sections">
+  <button type="button" role="tab" data-ng-plan-tab="plans" aria-selected="true">♕ Plans</button>
+  <button type="button" role="tab" data-ng-plan-tab="stars" aria-selected="false">★ Credit Packs</button>
+</div>
 <section class="subscription-plans" aria-label="Subscription plans">
   <div class="subscription-billing" role="group" aria-label="Billing period">
     <button type="button" class="billing-option is-active" data-period="monthly" aria-pressed="true">Monthly</button>
@@ -2622,6 +2676,26 @@ html body.ng-unified-subpage .ng-plan-price-copy .billing{
 </script>
 
 <script src="./nextgen-navigation.js?v=20261110-global-back-v1" defer></script>
+
+<script id="ng-motion16-plan-tabs-v1">
+(function(){
+ const tabs=[...document.querySelectorAll('[data-ng-plan-tab]')];
+ if(!tabs.length||window.__ngMotion16PlanTabs)return;
+ window.__ngMotion16PlanTabs=true;
+ const plans=[...document.querySelectorAll('main .subscription-plans, main .ng-custom-plans, main .subscription-tax-note, main .subscription-billing')];
+ const wallet=document.querySelector('main .wallet-panel');
+ const addons=document.querySelector('main .addon-panel');
+ const policy=document.querySelector('main .subscription-policy-panel');
+ const note=document.querySelector('[data-ng-stars-note]');
+ function show(which){
+  tabs.forEach(t=>t.setAttribute('aria-selected',String(t.dataset.ngPlanTab===which)));
+  plans.forEach(el=>el.hidden=which!=='plans');
+  [wallet,addons,policy,note].forEach(el=>{if(el)el.hidden=which!=='stars';});
+ }
+ tabs.forEach(t=>t.addEventListener('click',()=>show(t.dataset.ngPlanTab)));
+ show('plans');
+})();
+</script>
 </body>
 </html>
 
