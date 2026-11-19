@@ -1,8 +1,8 @@
-const CACHE_NAME = "nextgen-shell-v96-approved-assistant-icon";
+const CACHE_NAME = "nextgen-shell-v97-user-approved-assistant-icon";
 const APP_SHELL = [
   "./",
   "./index.html",
-  "./ai-assistant-gradient.webp",
+  "./ai-assistant-approved.webp",
   "./ai-design/assistant.html",
   "./ai-design/assistant-mobile.html",
   "./ai-design/assistant-desktop.html",
