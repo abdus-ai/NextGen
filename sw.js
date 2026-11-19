@@ -1,4 +1,4 @@
-const CACHE_NAME = "nextgen-shell-v104-hq-feature-demo";
+const CACHE_NAME = "nextgen-shell-v105-matching-feature-preview";
 // Hero image is served from assets/hero-video-studio.jpg
 const APP_SHELL = [
   "./",
