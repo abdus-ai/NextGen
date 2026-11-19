@@ -61,7 +61,7 @@ header{height:41px;display:flex;align-items:center;padding:0 10px 0 16px}
 .ng-fab-stack{position:fixed;right:max(14px,calc((100vw - 430px)/2 + 14px));bottom:calc(154px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;flex-direction:column;align-items:center;gap:10px}
 .ng-fab{width:48px;height:48px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.22);box-shadow:0 4px 14px rgba(0,0,0,.28);cursor:pointer;text-decoration:none;color:#fff}
 .ng-fab-assistant{border-radius:50%;background:linear-gradient(145deg,#8b5cf6 0%,#654de4 48%,#18b9d6 100%);box-shadow:0 3px 12px rgba(99,78,220,.22)}
-.ng-fab-assistant .ng-mark{width:31px;height:31px;object-fit:contain;border-radius:50%;background:#fff}
+.ng-fab-assistant .ng-mark{width:39px;height:39px;object-fit:contain;border-radius:50%;background:transparent}
 .ng-fab-project{border-radius:15px;background:#159f65;border-color:rgba(255,255,255,.16)}
 .ng-fab:active{transform:scale(.96)}
 .ng-project-overlay{position:fixed;inset:0;z-index:60;background:rgba(2,8,22,.72);backdrop-filter:blur(5px);display:grid;place-items:center;padding:18px}
@@ -139,7 +139,7 @@ header{height:41px;display:flex;align-items:center;padding:0 10px 0 16px}
 </div>
 
 <div class="ng-fab-stack" aria-label="Quick actions">
-  <a class="ng-fab ng-fab-assistant" href="ai-design/assistant.html" aria-label="Open NextGen AI Assistant" title="AI Assistant"><img class="ng-mark" src="ng-symbol.jpg" alt="NextGen"></a>
+  <a class="ng-fab ng-fab-assistant" href="ai-design/assistant.html" aria-label="Open NextGen AI Assistant" title="AI Assistant"><img class="ng-mark" src="ai-assistant-icon.svg" alt="NextGen AI Assistant"></a>
   <button class="ng-fab ng-fab-project" id="ngOpenProject" type="button" aria-label="Create Project" title="Create Project">
     <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H10l2 2h6.5A2.5 2.5 0 0 1 21 9.5v8a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5z"/><path d="M12 10.5v6M9 13.5h6"/></svg>
   </button>
