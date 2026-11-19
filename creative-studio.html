@@ -69,6 +69,17 @@ body{padding-bottom:env(safe-area-inset-bottom,0px)}
 .studio-nav button:focus-visible,.secondary:focus-visible{outline:2px solid var(--studio-cyan);outline-offset:2px}
 @media(max-width:420px){.tool-grid{grid-template-columns:1fr 1fr}.two{gap:7px}.panel{padding:13px}}
 </style>
+
+<style id="creative-studio-compare-history-v3">
+#compare-models .tool{display:flex;align-items:flex-start;gap:8px;cursor:pointer}
+#compare-models .tool input{accent-color:#927cff;flex:none;margin:2px 0 0}
+#compare-models .tool b{display:inline;color:#f3f5ff}
+#compare-models .tool span{margin-left:23px}
+.history-item{padding:13px;border:1px solid #303951;border-radius:14px;background:#101626}
+.history-item p{margin:7px 0;color:#dce4f5;font-size:13px;line-height:1.5;overflow-wrap:anywhere}
+.history-meta{color:#94a2bd;font-size:11px;display:flex;flex-wrap:wrap;gap:8px}
+.history-item button{margin-top:10px}
+</style>
 </head>
 <body>
 <div class="studio">
@@ -80,6 +91,7 @@ body{padding-bottom:env(safe-area-inset-bottom,0px)}
   <button class="active" data-view="discover">Discover</button>
   <button data-view="imagine">Imagine</button>
   <button data-view="gallery">Gallery</button>
+  <button data-view="history">History</button>
   <button data-view="tools">Video Tools</button>
   <button data-view="plans">Plans</button>
   <button data-view="status">Status</button>
@@ -105,6 +117,18 @@ body{padding-bottom:env(safe-area-inset-bottom,0px)}
     <div class="field"><label>GENERATION MODE</label><select><option>Auto Model Selection</option><option>Manual Model Selection</option><option>Compare Mode</option></select></div>
    </div>
    <details class="field" style="border:1px solid #303951;border-radius:13px;padding:11px"><summary style="color:#dce4f5;font-size:13px;font-weight:700;cursor:pointer">Advanced generation settings</summary><div class="field"><label>NEGATIVE PROMPT</label><textarea id="negative-prompt" placeholder="Things to avoid (optional)"></textarea></div><div class="two"><div class="field"><label>OUTPUT COUNT</label><select id="output-count"><option>1</option><option>2</option><option>3</option><option>4</option></select></div><div class="field"><label>REFERENCE STRENGTH</label><select><option>Balanced</option><option>Low</option><option>High</option><option>Maximum</option></select></div></div><div class="two"><div class="field"><label>CHARACTER IDENTITY</label><select><option>Preserve when supported</option><option>Standard</option><option>Not applicable</option></select></div><div class="field"><label>AUDIO</label><select><option>Auto if supported</option><option>Generate sound</option><option>Mute</option></select></div></div></details>
+   <div class="field" id="compare-panel" hidden>
+    <label>COMPARE MODE · SELECT MODELS</label>
+    <div class="tool-grid" id="compare-models">
+      <label class="tool"><input type="checkbox" value="WAN 2.2"> <b>WAN 2.2</b><span>Video generation · planned</span></label>
+      <label class="tool"><input type="checkbox" value="LTX Video"> <b>LTX Video</b><span>Video generation · planned</span></label>
+      <label class="tool"><input type="checkbox" value="HunyuanVideo"> <b>HunyuanVideo</b><span>Video generation · planned</span></label>
+      <label class="tool"><input type="checkbox" value="Veo family"> <b>Veo family</b><span>Provider integration · planned</span></label>
+      <label class="tool"><input type="checkbox" value="Omni Flash"> <b>Omni Flash</b><span>Reference provider · not connected</span></label>
+      <label class="tool"><input type="checkbox" value="Meta Video"> <b>Meta Video</b><span>Reference provider · not connected</span></label>
+    </div>
+    <div id="compare-summary" class="notice">Select at least two models to prepare a comparison. This will not run generation.</div>
+   </div>
    <div class="field"><label>GENERATION QUEUE</label><div id="generation-summary" class="status-line"><span>Ready to configure</span><strong>Not submitted</strong></div></div>
    <button class="primary" id="generate-btn">✦ Prepare Generation</button>
    <div class="notice" id="studio-notice">Prototype only: this screen does not send files to an AI provider or spend credits. Provider APIs, account permissions, pricing and generation jobs must be connected and tested before activation.</div>
@@ -159,6 +183,13 @@ body{padding-bottom:env(safe-area-inset-bottom,0px)}
 <section id="view-plans" class="view hidden">
  <div class="panel"><h2>Plans & Credits</h2><p style="color:#aeb8d0;font-size:13px">Pricing is intentionally not finalized in this Creative Studio prototype. Review the separate reference page for the Motion16-style plan design.</p><p style="margin-top:12px"><a href="./subscription-package.html">Open Plans reference page →</a></p></div>
 </section>
+<section id="view-history" class="view hidden">
+ <div class="panel">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap"><h2>Generation History</h2><button type="button" class="secondary" id="clear-history">Clear prepared history</button></div>
+  <p style="color:#9da9c4;font-size:13px;margin:0 0 14px">This prototype records only locally prepared prompt settings in this browser. No generated media or provider jobs are stored.</p>
+  <div id="history-list" class="model-list"><div class="notice">No prepared generations yet.</div></div>
+ </div>
+</section>
 <section id="view-status" class="view hidden">
  <div class="panel"><h2>System & Provider Status</h2><div class="status-line"><span>Creative Studio UI</span><strong>Prototype available</strong></div><div class="status-line"><span>AI Router</span><strong>Integration pending</strong></div><div class="status-line"><span>Image providers</span><strong>Not connected</strong></div><div class="status-line"><span>Video providers</span><strong>Not connected</strong></div><div class="status-line"><span>Gallery storage</span><strong>Not connected</strong></div><div class="status-line"><span>Credit billing</span><strong>Not activated</strong></div></div>
 </section>
@@ -167,8 +198,8 @@ body{padding-bottom:env(safe-area-inset-bottom,0px)}
 <script>
 (function(){
  const nav=[...document.querySelectorAll('[data-view]')];
- const views=['discover','imagine','gallery','tools','plans','status'];
- const titles={discover:['Create with NextGen AI','Explore image and video creation in one workspace.'],imagine:['Imagine','Create and edit images with a dedicated workspace.'],gallery:['My Gallery','Your generated media library and project history.'],tools:['Video Tools','Extend, join, upscale and export your clips.'],plans:['Plans & Credits','Review the reference plan layout; NextGen pricing remains separate.'],status:['System Status','See which creative services are ready and which integrations remain pending.']};
+ const views=['discover','imagine','gallery','history','tools','plans','status'];
+ const titles={discover:['Create with NextGen AI','Explore image and video creation in one workspace.'],imagine:['Imagine','Create and edit images with a dedicated workspace.'],gallery:['My Gallery','Your generated media library and project history.'],history:['Generation History','Review prompt setups prepared in this browser.'],tools:['Video Tools','Extend, join, upscale and export your clips.'],plans:['Plans & Credits','Review the reference plan layout; NextGen pricing remains separate.'],status:['System Status','See which creative services are ready and which integrations remain pending.']};
  function show(key){views.forEach(v=>document.getElementById('view-'+v).classList.toggle('hidden',v!==key));nav.forEach(b=>b.classList.toggle('active',b.dataset.view===key));document.getElementById('view-title').textContent=titles[key][0];document.getElementById('view-subtitle').textContent=titles[key][1];}
  nav.forEach(b=>b.addEventListener('click',()=>show(b.dataset.view)));
  document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('active',x===b));}));
