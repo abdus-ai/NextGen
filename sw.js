@@ -1,4 +1,4 @@
-const CACHE_NAME = "nextgen-shell-v105-matching-feature-preview";
+const CACHE_NAME = "nextgen-shell-v106-motion16-thumbnails-cached";
 // Hero image is served from assets/hero-video-studio.jpg
 const APP_SHELL = [
   "./",
@@ -31,6 +31,14 @@ const APP_SHELL = [
   "./manifest.webmanifest",
   "./icon.svg",
   "./ng-symbol.jpg",
+  "./assets/ai-video-editor.webp",
+  "./assets/upscale-4k-8k.webp",
+  "./assets/image-to-video.webp",
+  "./assets/text-to-video.jpg",
+  "./assets/video-extender.jpg",
+  "./assets/text-to-song.webp",
+  "./assets/text-to-music-video.webp",
+  "./assets/text-to-dance-video.webp",
   "./assets/nextgen-login-logo.webp",
   "./header-reference.webp",
   "./profile-icon.jpg"
