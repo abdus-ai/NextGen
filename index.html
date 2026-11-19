@@ -127,10 +127,8 @@ header{height:41px;display:flex;align-items:center;padding:0 10px 0 16px}
   </div>
 </header>
 <section class="hero" id="motion16Hero" style="background-image:none">
-  <img class="ph" id="motion16HeroImage" alt="AI video creation preview" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1200&q=85">
-  <video class="ph motion16-demo-video" id="motion16HeroVideo" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="assets/ai-video-editor.webp" aria-label="Motion-style sample video preview">
-    <source src="https://videos.pexels.com/video-files/8630303/8630303-uhd_3840_2160_25fps.mp4" type="video/mp4">
-  </video>
+  <img class="ph" id="motion16HeroImage" alt="Selected AI feature preview" src="assets/ai-video-editor.webp">
+  <video class="ph motion16-demo-video" id="motion16HeroVideo" hidden muted playsinline webkit-playsinline preload="none" aria-hidden="true"></video>
   <div class="ov" id="motion16Overlay">
     <div class="l"><span class="mini-play">▶</span><span id="motion16Model">AI Video Editor</span></div>
     <div class="r" id="motion16Mode">Picture to video</div>
@@ -202,14 +200,14 @@ header{height:41px;display:flex;align-items:center;padding:0 10px 0 16px}
 <script>
 (()=>{'use strict';
 const data=[
- {title:'AI Video Editor',model:'AI Video Editor',mode:'Picture to video',caption:'Video with sound, from a few words. Free, Plus and Pro · 4K on...',video:'https://videos.pexels.com/video-files/853765/853765-hd_1920_1080_25fps.mp4',quality:'Full HD · 1080p',thumb:'assets/ai-video-editor.webp',prompt:'Make her walk through the forest with fireflies',overlay:true},
- {title:'Upscale 4K/8K',model:'Upscale 4K/8K',mode:'Video upscale',caption:'Upscale any video to sharp 4K or 8K.',video:'https://videos.pexels.com/video-files/852435/852435-hd_1920_1080_25fps.mp4',quality:'Full HD · 1080p',thumb:'assets/upscale-4k-8k.webp',prompt:'Enhance this video to crisp 4K quality',overlay:false},
- {title:'Image to Video',model:'Image to Video',mode:'Photo to video',caption:'Real people, real moments. From your photos.',video:'https://videos.pexels.com/video-files/853771/853771-hd_1920_1080_25fps.mp4',quality:'Full HD · 1080p',thumb:'assets/image-to-video.webp',prompt:'She lowers the camera',overlay:true},
- {title:'Text to Video',model:'Text to Video',mode:'Text to video',caption:'Cinematic scenes from a few words.',video:'https://videos.pexels.com/video-files/852433/852433-hd_1920_1080_25fps.mp4',quality:'Full HD · 1080p',thumb:'assets/text-to-video.jpg',prompt:'A cinematic scene with dramatic camera movement',overlay:false},
- {title:'Video Extender',model:'Video Extender',mode:'Video editing',caption:'Keep the moment going.',video:'https://videos.pexels.com/video-files/8630303/8630303-uhd_3840_2160_25fps.mp4',quality:'4K · 2160p',thumb:'assets/video-extender.jpg',prompt:'Continue the scene smoothly',overlay:false},
- {title:'Text to Song',model:'Text to Song',mode:'Text to song',caption:'Turn your words into an original song.',video:'https://videos.pexels.com/video-files/852394/852394-hd_1920_1080_25fps.mp4',quality:'Full HD · 1080p',thumb:'assets/text-to-song.webp',prompt:'Create an uplifting song with a memorable chorus',overlay:false},
- {title:'Text to Music',model:'Text to Music',mode:'Music creation',caption:'Create original music from a simple text prompt.',video:'https://videos.pexels.com/video-files/853753/853753-hd_1920_1080_25fps.mp4',quality:'Full HD · 1080p',thumb:'assets/text-to-music-video.webp',prompt:'Create cinematic background music',overlay:false},
- {title:'Text to Dance',model:'Text to Dance',mode:'Dance video',caption:'Turn an idea into a dance performance.',video:'https://videos.pexels.com/video-files/6944566/6944566-hd_1920_1080_25fps.mp4',quality:'Full HD · 1080p',thumb:'assets/text-to-dance-video.webp',prompt:'Create a smooth energetic dance performance',overlay:false}
+ {title:'AI Video Editor',model:'AI Video Editor',mode:'Picture to video',caption:'Video with sound, from a few words. Free, Plus and Pro · 4K on...',thumb:'assets/ai-video-editor.webp',prompt:'Make her walk through the forest with fireflies',overlay:true},
+ {title:'Upscale 4K/8K',model:'Upscale 4K/8K',mode:'Video upscale',caption:'Upscale any video to sharp 4K or 8K.',thumb:'assets/upscale-4k-8k.webp',prompt:'Enhance this video to crisp 4K quality',overlay:false},
+ {title:'Image to Video',model:'Image to Video',mode:'Photo to video',caption:'Real people, real moments. From your photos.',thumb:'assets/image-to-video.webp',prompt:'She lowers the camera',overlay:true},
+ {title:'Text to Video',model:'Text to Video',mode:'Text to video',caption:'Cinematic scenes from a few words.',thumb:'assets/text-to-video.jpg',prompt:'A cinematic scene with dramatic camera movement',overlay:false},
+ {title:'Video Extender',model:'Video Extender',mode:'Video editing',caption:'Keep the moment going.',thumb:'assets/video-extender.jpg',prompt:'Continue the scene smoothly',overlay:false},
+ {title:'Text to Song',model:'Text to Song',mode:'Text to song',caption:'Turn your words into an original song.',thumb:'assets/text-to-song.webp',prompt:'Create an uplifting song with a memorable chorus',overlay:false},
+ {title:'Text to Music',model:'Text to Music',mode:'Music creation',caption:'Create original music from a simple text prompt.',thumb:'assets/text-to-music-video.webp',prompt:'Create cinematic background music',overlay:false},
+ {title:'Text to Dance',model:'Text to Dance',mode:'Dance video',caption:'Turn an idea into a dance performance.',thumb:'assets/text-to-dance-video.webp',prompt:'Create a smooth energetic dance performance',overlay:false}
 ];
 const $=id=>document.getElementById(id),hero=$('motion16HeroImage'),overlay=$('motion16Overlay'),list=$('motion16FeatureList'),caption=$('motion16Caption'),promptDemo=$('motion16PromptDemo'),composer=$('motion16Composer'),prompt=$('motion16Prompt'),notice=$('motion16Notice');
 let active=0,timer=null,noticeTimer=null,attachedFile=null;
@@ -218,13 +216,13 @@ function selectFeature(index,manual=false){
  const item=data[index];if(!item)return;active=index;
  const demoVideo=$('motion16HeroVideo');
  demoVideo.pause();
- demoVideo.preload='auto';
- demoVideo.playsInline=true;
- demoVideo.poster=item.thumb;
- demoVideo.dataset.requestedSrc=item.video;
- demoVideo.oncanplay=()=>{if(demoVideo.dataset.requestedSrc===item.video){demoVideo.play().catch(()=>inform('Tap the preview to play this demo video.'));}};
- demoVideo.src=item.video;
+ demoVideo.removeAttribute('src');
  demoVideo.load();
+ demoVideo.hidden=true;
+ const heroImage=$('motion16HeroImage');
+ heroImage.src=item.thumb;
+ heroImage.alt=item.title+' matching thumbnail preview';
+ heroImage.style.display='block';
  $('motion16Model').textContent=item.model;$('motion16Mode').textContent=item.mode;$('motion16Thumb').src=item.thumb;
  $('motion16Thumb').loading='eager';$('motion16Thumb').decoding='async';
  caption.textContent=item.caption;
@@ -232,7 +230,7 @@ function selectFeature(index,manual=false){
  list.querySelectorAll('[data-feature]').forEach(btn=>{const on=Number(btn.dataset.feature)===index;btn.classList.toggle('is-active',on);btn.setAttribute('aria-pressed',String(on))});
  if(manual)resetAutoplay();
 }
-function resetAutoplay(){clearInterval(timer);timer=setInterval(()=>{if(document.hidden||document.activeElement===prompt)return;selectFeature((active+1)%data.length,false)},8500)}
+function resetAutoplay(){clearInterval(timer)}
 list.addEventListener('click',e=>{const btn=e.target.closest('[data-feature]');if(btn)selectFeature(Number(btn.dataset.feature),true)});
 $('motion16Try').addEventListener('click',()=>{composer.classList.add('expanded');$('composerToggle').setAttribute('aria-expanded','true');prompt.focus();});
 const demoVideo=$('motion16HeroVideo');
