@@ -86,6 +86,33 @@ header{height:41px;display:flex;align-items:center;padding:0 10px 0 16px}
 .ng-project-item small{display:block;color:#91a9c2;font-size:10px;margin-top:2px}
 @media(min-width:700px){.ng-fab-stack{right:max(22px,calc((100vw - 430px)/2 + 18px));bottom:calc(35px + env(safe-area-inset-bottom,0px))}}
 
+
+/* Motion 16 reference interaction system — NextGen navy / cyan / blue / purple skin */
+.hero{height:204px;background:#081b33;transition:background .3s ease}
+.hero>img.ph{width:100%;height:100%;object-fit:cover;object-position:center 42%;transition:opacity .35s ease;}
+.ov{z-index:2;top:auto;bottom:6px;height:86px;border:1px solid rgba(107,177,255,.48);border-top:1px solid rgba(34,218,250,.7);background:rgba(5,15,38,.82);}
+.ov[hidden]{display:none!important}
+.ov .l{font-size:10px;gap:6px}.mini-play{width:13px;height:13px;border:1px solid #38d8ff;border-radius:50%;font-size:7px;display:grid;place-items:center;color:#fff}
+.ov .r{font-size:9px;color:#9c91ff}.ov .th{width:48px;height:48px;border-color:#46cfff}.ov .tx{right:48px;font-size:12px;line-height:16px;top:31px;max-height:38px;overflow:hidden}.typing-caret{display:inline-block;width:2px;height:13px;background:#33d9f7;margin-left:2px;vertical-align:-2px;animation:motion16Blink .8s steps(2,start) infinite}
+@keyframes motion16Blink{to{visibility:hidden}}
+.ov .go{background:linear-gradient(135deg,#00cfee,#246fff 55%,#a23cff);}
+.sub .try{border:0;cursor:pointer;background:linear-gradient(110deg,#00d9f5 0%,#087bff 34%,#633bff 68%,#d52bff 100%);box-shadow:0 2px 10px rgba(0,190,255,.18);}
+.sub .mute{background:rgba(9,23,48,.65);cursor:pointer}
+.it{width:100%;border:1px solid transparent;border-radius:10px;background:transparent;color:inherit;text-align:left;cursor:pointer;transition:background .2s,border-color .2s,transform .2s;padding-right:8px}
+.it.is-active{background:linear-gradient(90deg,rgba(16,61,94,.78),rgba(22,31,72,.5));border-color:rgba(47,192,245,.36);box-shadow:inset 3px 0 0 #1ecdf3}
+.it:active{transform:scale(.99)}.it .feature-model{display:block;font-size:9px;line-height:12px;color:#7edcf5;margin-top:1px;letter-spacing:.1px}.it:not(.is-active) .feature-model{color:#91a8c6;opacity:.72}
+.comp{border-color:rgba(143,171,202,.26);box-shadow:0 0 0 1px rgba(57,123,190,.04);}
+.comp .ph{width:calc(100% - 68px);height:48px;resize:none;overflow:auto;border:0;outline:0;background:transparent;font:14px/21px Inter,system-ui,sans-serif;padding:0;color:#f4f8ff;z-index:2}
+.comp .ph::placeholder{color:#aab4d0;opacity:1}
+.comp.expanded{height:190px}.comp.expanded .ph{height:92px}.comp.expanded .tb{top:137px}.comp.expanded .up{top:112px}.comp.expanded .rf{top:119px}
+.comp .rf{position:absolute;right:118px;top:52px;width:22px;height:22px;border:0;background:transparent;display:grid;place-items:center;cursor:pointer}
+.comp .up{cursor:pointer;color:#fff;background:rgba(13,32,57,.75)}
+.comp .tb{z-index:3}.comp .pl{color:#fff;min-width:0}.comp button,.comp select{cursor:pointer}.comp .p2{font:700 12px Inter,system-ui,sans-serif;color:#fff;appearance:none;-webkit-appearance:none;padding:0 9px;background:#10223c url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5'%3E%3Cpath d='m5 9 7 7 7-7'/%3E%3C/svg%3E") no-repeat right 9px center;padding-right:27px}.comp .p2 option,.comp .p3 option{background:#0d2039;color:#fff}
+.comp .p3{appearance:none;-webkit-appearance:none;padding:0 7px;background:#10223c;color:#fff;font:700 12px Inter,system-ui,sans-serif;text-align:center}
+.motion16-mic{width:25px;height:32px;flex:none;border:0;background:transparent;display:grid;place-items:center}.motion16-attachment{position:absolute;left:18px;top:40px;max-width:210px;z-index:4;padding:4px 8px;border:1px solid rgba(74,196,239,.4);border-radius:8px;background:#102a46;color:#dff7ff;font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.comp.expanded .motion16-attachment{top:92px}
+.motion16-notice{position:absolute;left:12px;right:12px;bottom:calc(100% + 8px);padding:8px 11px;border-radius:10px;background:#102a46;border:1px solid rgba(68,190,237,.4);color:#e8f8ff;font-size:11px;display:none;box-shadow:0 8px 22px rgba(0,0,0,.25)}.motion16-notice.show{display:block}
+.snd{border:0;cursor:pointer}.snd:active,.motion16-mic:active,.pl:active{transform:scale(.96)}
+@media(prefers-reduced-motion:reduce){.typing-caret{animation:none}.hero>img.ph,.it{transition:none}}
 </style>
 </head>
 <body>
@@ -98,45 +125,47 @@ header{height:41px;display:flex;align-items:center;padding:0 10px 0 16px}
     <div class="ci pf"><div><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="8" r="4.5"/><path d="M3 22c0-5 4-8 9-8s9 3 9 8z"/></svg></div></div>
   </div>
 </header>
-<section class="hero" style="background-image:url(assets/hero-video-studio.jpg)">
-  <img class="ph" alt="" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1200&q=85">
-  <svg class="cur" width="11" height="17" viewBox="0 0 11 17"><path d="M0 0v14l3.5-3.2 2.3 5.5 2-.9-2.3-5.4H10.5z" fill="#fff" stroke="#000" stroke-width=".8"/></svg>
-  <div class="ov">
-    <div class="l"><svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="5.2" fill="none" stroke="#8e7bff" stroke-width="1.3"/><path d="M4.8 3.7v4.6L8.4 6z" fill="#fff"/></svg>AI Video Editor</div>
-    <div class="r">Image to Video</div>
-    <img class="th" alt="" src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=360&q=85">
-    <div class="tx">Make her wall<u></u></div>
+<section class="hero" id="motion16Hero" style="background-image:none">
+  <img class="ph" id="motion16HeroImage" alt="AI video creation preview" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1200&q=85">
+  <div class="ov" id="motion16Overlay">
+    <div class="l"><span class="mini-play">▶</span><span id="motion16Model">Omni Flash</span></div>
+    <div class="r" id="motion16Mode">Picture to video</div>
+    <img class="th" id="motion16Thumb" alt="" src="assets/ai-video-editor.webp">
+    <div class="tx" id="motion16PromptDemo">Make her walk through the forest with fireflies<span class="typing-caret"></span></div>
     <div class="go"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 1l2.6 8.4L23 12l-8.4 2.6L12 23l-2.6-8.4L1 12l8.4-2.6z"/></svg></div>
   </div>
 </section>
 <div class="sub">
-  <p>Video with sound, from a few words. Free, Plus and Pro · 4K on...</p>
-  <div class="try">Try it <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M13 5l7 7-7 7"/></svg></div>
-  <div class="mute"><svg width="20" height="18" viewBox="0 0 28 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9h5l7-6v18l-7-6H2zM19 9l7 7M26 9l-7 7"/></svg></div>
+  <p id="motion16Caption">Video with sound, from a few words. Free, Plus and Pro · 4K on...</p>
+  <button class="try" id="motion16Try" type="button">Try it <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M13 5l7 7-7 7"/></svg></button>
+  <button class="mute" id="motion16Mute" type="button" aria-label="Mute preview" aria-pressed="false"><svg width="20" height="18" viewBox="0 0 28 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9h5l7-6v18l-7-6H2zM19 9l7 7M26 9l-7 7"/></svg></button>
 </div>
-<div class="list">
-  <div class="it"><img alt="AI video editing timeline" src="assets/ai-video-editor.webp"><div><b>AI Video Editor</b><span>Edit videos with AI tools and effects</span></div></div>
-  <div class="it"><img alt="4K and 8K video enhancement" src="assets/upscale-4k-8k.webp"><div><b>Upscale 4K/8K</b><span>Enhance video resolution up to 4K or 8K</span></div></div>
-  <div class="it"><img alt="Image to video creation" src="assets/image-to-video.webp"><div><b>Image to Video</b><span>Turn still images into animated videos</span></div></div>
-  <div class="it"><img alt="Text to Video" src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=640&amp;q=85"><div><b>Text to Video</b><span>Generate Video from a Text Prompt</span></div></div>
-  <div class="it"><img alt="Video Extender" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=640&amp;q=85"><div><b>Video Extender</b><span>Make Your Video Longer with AI</span></div></div>
-  <div class="it"><img alt="Song generation studio" src="assets/text-to-song.webp"><div><b>Text to Song</b><span>Generate original songs from text prompts</span></div></div>
-  <div class="it"><img alt="Singer performing into a microphone" src="assets/text-to-music-video.webp"><div><b>Text to Music Video</b><span>Create professional music videos with AI</span></div></div>
-  <div class="it"><img alt="Dancers performing on stage" src="assets/text-to-dance-video.webp"><div><b>Text to Dance Video</b><span>Generate dance videos from text prompts</span></div></div>
+<div class="list" id="motion16FeatureList">
+  <button class="it is-active" type="button" data-feature="0" aria-pressed="true"><img alt="" src="assets/ai-video-editor.webp"><div><b>AI Video Editor</b><span>Edit videos with AI tools and effects</span><small class="feature-model">Omni Flash · Video editor</small></div></button>
+  <button class="it" type="button" data-feature="1" aria-pressed="false"><img alt="" src="assets/upscale-4k-8k.webp"><div><b>Upscale 4K/8K</b><span>Enhance video resolution up to 4K or 8K</span><small class="feature-model">Upscale 4K · Video upscale</small></div></button>
+  <button class="it" type="button" data-feature="2" aria-pressed="false"><img alt="" src="assets/image-to-video.webp"><div><b>Image to Video</b><span>Turn still images into animated videos</span><small class="feature-model">Grok Imagine · Photo to video</small></div></button>
+  <button class="it" type="button" data-feature="3" aria-pressed="false"><img alt="" src="assets/text-to-video.jpg"><div><b>Text to Video</b><span>Generate Video from a Text Prompt</span><small class="feature-model">Meta Video · Text to video</small></div></button>
+  <button class="it" type="button" data-feature="4" aria-pressed="false"><img alt="" src="assets/video-extender.jpg"><div><b>Video Extender</b><span>Make Your Video Longer with AI</span><small class="feature-model">Extend your video · Video editing</small></div></button>
+  <button class="it extra-feature" type="button" data-feature="5" aria-pressed="false"><img alt="" src="assets/text-to-song.webp"><div><b>Text to Song</b><span>Generate original songs from text prompts</span></div></button>
+  <button class="it extra-feature" type="button" data-feature="6" aria-pressed="false"><img alt="" src="assets/text-to-music-video.webp"><div><b>Text to Music</b><span>Create original music from text prompts</span></div></button>
+  <button class="it extra-feature" type="button" data-feature="7" aria-pressed="false"><img alt="" src="assets/text-to-dance-video.webp"><div><b>Text to Dance</b><span>Generate dance videos from text prompts</span></div></button>
 </div>
 </div>
-<div class="comp">
-  <div class="ph">Describe it or add an image</div>
+<div class="comp" id="motion16Composer">
+  <textarea class="ph" id="motion16Prompt" rows="2" maxlength="1500" placeholder="Describe it or add an image" aria-label="Describe your video"></textarea>
+  <div class="motion16-attachment" id="motion16Attachment" hidden></div>
   <button class="expand" id="composerToggle" type="button" aria-label="Expand composer" aria-expanded="false"><svg width="16" height="20" viewBox="0 0 16 20" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3.5L8 8.5l5-5M3 16.5l5-5 5 5"/></svg></button>
-  <svg class="rf" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9aa6c4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 3-6.2M4 3v5h5"/></svg>
-  <div class="up"><svg width="12" height="12" viewBox="0 0 16 16" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M8 2v12M2 8h12"/></svg>Upgrade</div>
+  <button class="rf" id="motion16Clear" type="button" aria-label="Clear prompt"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9aa6c4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 3-6.2M4 3v5h5"/></svg></button>
+  <button class="up" id="motion16Upgrade" type="button">＋ Upgrade</button>
+  <input type="file" id="motion16File" accept="image/*,video/*" hidden>
   <div class="tb">
-    <div class="pl p1"><svg width="16" height="16" viewBox="0 0 16 16" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M8 2v12M2 8h12"/></svg></div>
-    <div class="pl p2">Quality<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9l7 7 7-7"/></svg></div>
-    <div class="pl p3">×1 Auto<svg width="16" height="14" viewBox="0 0 24 20" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M2 5h8M16 5h6M2 15h4M12 15h10"/><circle cx="13" cy="5" r="2.6"/><circle cx="9" cy="15" r="2.6"/></svg></div>
-    <svg style="margin:0 2px" width="14" height="20" viewBox="0 0 14 20" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><rect x="3.5" y="1" width="7" height="11" rx="3.5" fill="#fff"/><path d="M1 9a6 6 0 0 0 12 0M7 15v4"/></svg>
-    <div class="snd"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5M5 11l7-7 7 7"/></svg></div>
+    <button class="pl p1" id="motion16Add" type="button" aria-label="Add image or video">＋</button>
+    <select class="pl p2" id="motion16ModelSelect" aria-label="AI model"><option value="auto">NextGen Auto</option><option value="openai">OpenAI / GPT · connection required</option><option value="gemini">Gemini · connection required</option><option value="claude">Claude · connection required</option><option value="qwen">Qwen · connection required</option><option value="sarvam">Sarvam · connection required</option></select>
+    <select class="pl p3" id="motion16Settings" aria-label="Generation settings"><option value="1">×1 Auto</option><option value="2">×2</option><option value="4">×4</option></select>
+    <button class="motion16-mic" id="motion16Mic" type="button" aria-label="Voice input"><svg width="14" height="20" viewBox="0 0 14 20" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><rect x="3.5" y="1" width="7" height="11" rx="3.5" fill="#fff"/><path d="M1 9a6 6 0 0 0 12 0M7 15v4"/></svg></button>
+    <button class="snd" id="motion16Generate" type="button" aria-label="Generate"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5M5 11l7-7 7 7"/></svg></button>
   </div>
+  <div class="motion16-notice" id="motion16Notice" role="status" aria-live="polite"></div>
 </div>
 
 <div class="ng-fab-stack" aria-label="Quick actions" style="z-index:70">
@@ -167,13 +196,43 @@ header{height:41px;display:flex;align-items:center;padding:0 10px 0 16px}
   </section>
 </div>
 <script>
-  const composer=document.querySelector('.comp');
-  const composerToggle=document.getElementById('composerToggle');
-  composerToggle.addEventListener('click',()=>{
-    const expanded=composer.classList.toggle('expanded');
-    composerToggle.setAttribute('aria-expanded',String(expanded));
-    composerToggle.setAttribute('aria-label',expanded?'Collapse composer':'Expand composer');
-  });
+(()=>{'use strict';
+const data=[
+ {title:'AI Video Editor',model:'Omni Flash',mode:'Picture to video',caption:'Video with sound, from a few words. Free, Plus and Pro · 4K on...',image:'https://images.unsplash.com/photo-1448375240586-882707db888b?w=1200&q=85',thumb:'assets/ai-video-editor.webp',prompt:'Make her walk through the forest with fireflies',overlay:true},
+ {title:'Upscale 4K/8K',model:'Upscale 4K',mode:'Video upscale',caption:'Upscale any video to sharp 4K with Omni 1.2.',image:'assets/upscale-4k-8k.webp',thumb:'assets/upscale-4k-8k.webp',prompt:'Enhance this video to crisp 4K quality',overlay:false},
+ {title:'Image to Video',model:'Grok Imagine',mode:'Photo to video',caption:'Real people, real moments. From your photos.',image:'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1200&q=85',thumb:'assets/image-to-video.webp',prompt:'She lowers the camera',overlay:true},
+ {title:'Text to Video',model:'Meta Video',mode:'Text to video',caption:'Cinematic scenes from a few words.',image:'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&q=85',thumb:'assets/text-to-video.jpg',prompt:'A cinematic scene with dramatic camera movement',overlay:false},
+ {title:'Video Extender',model:'Extend your video',mode:'Video editing',caption:'Keep the moment going.',image:'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=85',thumb:'assets/video-extender.jpg',prompt:'Continue the scene smoothly',overlay:false},
+ {title:'Text to Song',model:'NextGen Music',mode:'Text to song',caption:'Turn your words into an original song.',image:'assets/text-to-song.webp',thumb:'assets/text-to-song.webp',prompt:'Create an uplifting song with a memorable chorus',overlay:false},
+ {title:'Text to Music',model:'NextGen Music',mode:'Music creation',caption:'Create original music from a simple text prompt.',image:'assets/text-to-music-video.webp',thumb:'assets/text-to-music-video.webp',prompt:'Create cinematic background music',overlay:false},
+ {title:'Text to Dance',model:'NextGen Motion',mode:'Dance video',caption:'Turn an idea into a dance performance.',image:'assets/text-to-dance-video.webp',thumb:'assets/text-to-dance-video.webp',prompt:'Create a smooth energetic dance performance',overlay:false}
+];
+const $=id=>document.getElementById(id),hero=$('motion16HeroImage'),overlay=$('motion16Overlay'),list=$('motion16FeatureList'),caption=$('motion16Caption'),promptDemo=$('motion16PromptDemo'),composer=$('motion16Composer'),prompt=$('motion16Prompt'),notice=$('motion16Notice');
+let active=0,timer=null,noticeTimer=null,attachedFile=null;
+function inform(msg){notice.textContent=msg;notice.classList.add('show');clearTimeout(noticeTimer);noticeTimer=setTimeout(()=>notice.classList.remove('show'),3200)}
+function selectFeature(index,manual=false){
+ const item=data[index];if(!item)return;active=index;
+ hero.style.opacity='0.25';
+ const img=new Image();img.onload=()=>{hero.src=item.image;requestAnimationFrame(()=>hero.style.opacity='1')};img.onerror=()=>{hero.src=item.image;hero.style.opacity='1'};img.src=item.image;
+ $('motion16Model').textContent=item.model;$('motion16Mode').textContent=item.mode;$('motion16Thumb').src=item.thumb;caption.textContent=item.caption;
+ overlay.hidden=!item.overlay;promptDemo.innerHTML=item.prompt+'<span class="typing-caret"></span>';
+ list.querySelectorAll('[data-feature]').forEach(btn=>{const on=Number(btn.dataset.feature)===index;btn.classList.toggle('is-active',on);btn.setAttribute('aria-pressed',String(on))});
+ if(manual)resetAutoplay();
+}
+function resetAutoplay(){clearInterval(timer);timer=setInterval(()=>{if(document.hidden||document.activeElement===prompt)return;selectFeature((active+1)%5,false)},5200)}
+list.addEventListener('click',e=>{const btn=e.target.closest('[data-feature]');if(btn)selectFeature(Number(btn.dataset.feature),true)});
+$('motion16Try').addEventListener('click',()=>{composer.classList.add('expanded');$('composerToggle').setAttribute('aria-expanded','true');prompt.focus();});
+$('motion16Mute').addEventListener('click',e=>{const b=e.currentTarget,muted=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(muted));b.setAttribute('aria-label',muted?'Unmute preview':'Mute preview');b.style.color=muted?'#8ba0bd':'#fff';inform(muted?'Preview sound muted.':'Preview sound enabled.');});
+$('composerToggle').addEventListener('click',()=>{const expanded=composer.classList.toggle('expanded');$('composerToggle').setAttribute('aria-expanded',String(expanded));$('composerToggle').setAttribute('aria-label',expanded?'Collapse composer':'Expand composer');});
+$('motion16Add').addEventListener('click',()=>$('motion16File').click());
+$('motion16File').addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];if(!f)return;attachedFile=f;$('motion16Attachment').hidden=false;$('motion16Attachment').textContent='＋ '+f.name;inform('Reference attached: '+f.name);});
+$('motion16Clear').addEventListener('click',()=>{prompt.value='';$('motion16File').value='';attachedFile=null;$('motion16Attachment').hidden=true;$('motion16Attachment').textContent='';prompt.focus()});
+$('motion16Upgrade').addEventListener('click',()=>inform('Subscription plans are available from the NextGen account menu.'));
+$('motion16Mic').addEventListener('click',()=>{const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){inform('Voice input is not supported in this browser.');return}const rec=new SR();rec.lang='en-IN';rec.interimResults=false;rec.onresult=e=>{prompt.value=(prompt.value+' '+e.results[0][0].transcript).trim()};rec.onerror=()=>inform('Voice input could not start.');rec.start();inform('Listening… speak your prompt.');});
+$('motion16Generate').addEventListener('click',()=>{if(!prompt.value.trim()&&!attachedFile){inform('Write a prompt or add an image/video first.');prompt.focus();return}inform('Your prompt is ready. Connect an approved AI video provider to enable real generation.');});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)clearInterval(timer);else resetAutoplay()});
+selectFeature(0,false);resetAutoplay();
+})();
 </script>
 
 <script>
