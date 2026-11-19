@@ -1,4 +1,4 @@
-const CACHE_NAME = "nextgen-shell-v98-assistant-shortcut-fix";
+const CACHE_NAME = "nextgen-shell-v99-assistant-visible";
 const APP_SHELL = [
   "./",
   "./index.html",
