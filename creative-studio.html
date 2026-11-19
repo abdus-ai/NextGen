@@ -174,7 +174,7 @@ body{padding-bottom:env(safe-area-inset-bottom,0px)}
  document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('active',x===b));}));
  function attach(inputId,previewId){const input=document.getElementById(inputId),preview=document.getElementById(previewId);if(!input||!preview)return;input.addEventListener('change',()=>{preview.innerHTML='';const f=input.files&&input.files[0];if(!f)return;const u=URL.createObjectURL(f);const el=document.createElement(f.type.startsWith('video/')?'video':f.type.startsWith('image/')?'img':'div');if(el.tagName==='VIDEO'){el.src=u;el.controls=true;}else if(el.tagName==='IMG'){el.src=u;}else{el.textContent='Audio file selected';}preview.append(el);const label=document.createElement('span');label.textContent=f.name+' · '+Math.round(f.size/1024)+' KB';preview.append(label);});}
  attach('reference-file','file-preview');attach('edit-video','edit-preview');
- document.getElementById('generate-btn').addEventListener('click',()=>alert('Prototype only: AI provider integration is not connected yet. No credits were used.'));
+ // Generation is handled by the validation and preparation flow below.
 })();
 </script>
 
