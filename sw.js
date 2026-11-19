@@ -1,4 +1,4 @@
-const CACHE_NAME = "nextgen-shell-v93-feature-name-correction";
+const CACHE_NAME = "nextgen-shell-v94-createhub-theme-sync";
 const APP_SHELL = [
   "./",
   "./index.html",
