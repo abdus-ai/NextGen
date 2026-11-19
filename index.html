@@ -22,6 +22,7 @@ header{height:41px;display:flex;align-items:center;padding:0 10px 0 16px}
 .pf div{width:100%;height:100%;border-radius:50%;background:#0b1531;display:grid;place-items:center}
 .hero{position:relative;margin:0 13px;height:204px;border-radius:17px;overflow:hidden;border:1px solid #3a4a7a;background-size:100% 100%;background-position:center}
 .hero>img.ph{position:absolute;left:0;top:0;width:100%;height:113px;object-fit:cover}
+.hero>video.motion16-demo-video{position:absolute;left:0;top:0;width:100%;height:113px;object-fit:cover;z-index:1;background:#08152b;cursor:pointer}.hero>.ov{z-index:2}.hero>img.ph{z-index:0}
 .cur{position:absolute;left:202px;top:178px}
 .ov{position:absolute;left:16px;right:16px;top:113px;bottom:6px;border-radius:17px;border-top:1px solid #7a5cf0;background:rgba(12,14,36,.74);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .ov .l{position:absolute;left:8px;top:6px;display:flex;align-items:center;gap:3px;font-size:9px;font-weight:500;color:#e8ecf8}
@@ -127,6 +128,9 @@ header{height:41px;display:flex;align-items:center;padding:0 10px 0 16px}
 </header>
 <section class="hero" id="motion16Hero" style="background-image:none">
   <img class="ph" id="motion16HeroImage" alt="AI video creation preview" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1200&q=85">
+  <video class="ph motion16-demo-video" id="motion16HeroVideo" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="assets/hero-video-studio.jpg" aria-label="Motion-style sample video preview">
+    <source src="https://videos.pexels.com/video-files/8630303/8630303-uhd_3840_2160_25fps.mp4" type="video/mp4">
+  </video>
   <div class="ov" id="motion16Overlay">
     <div class="l"><span class="mini-play">▶</span><span id="motion16Model">AI Video Editor</span></div>
     <div class="r" id="motion16Mode">Picture to video</div>
@@ -222,7 +226,13 @@ function selectFeature(index,manual=false){
 function resetAutoplay(){clearInterval(timer);timer=setInterval(()=>{if(document.hidden||document.activeElement===prompt)return;selectFeature((active+1)%data.length,false)},5200)}
 list.addEventListener('click',e=>{const btn=e.target.closest('[data-feature]');if(btn)selectFeature(Number(btn.dataset.feature),true)});
 $('motion16Try').addEventListener('click',()=>{composer.classList.add('expanded');$('composerToggle').setAttribute('aria-expanded','true');prompt.focus();});
-$('motion16Mute').addEventListener('click',e=>{const b=e.currentTarget,muted=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',String(muted));b.setAttribute('aria-label',muted?'Unmute preview':'Mute preview');b.style.color=muted?'#8ba0bd':'#fff';inform(muted?'Preview sound muted.':'Preview sound enabled.');});
+const demoVideo=$('motion16HeroVideo');
+function syncDemoSoundButton(){const muted=demoVideo.muted;$('motion16Mute').setAttribute('aria-pressed',String(muted));$('motion16Mute').setAttribute('aria-label',muted?'Unmute preview':'Mute preview');$('motion16Mute').innerHTML=muted?'<svg width="20" height="18" viewBox="0 0 28 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9h5l7-6v18l-7-6H2zM19 9l7 7M26 9l-7 7"/></svg>':'<svg width="20" height="18" viewBox="0 0 28 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9h5l7-6v18l-7-6H2zM18 8a6 6 0 0 1 0 8M20 4a11 11 0 0 1 0 16"/></svg>'}
+$('motion16Mute').addEventListener('click',async()=>{demoVideo.muted=!demoVideo.muted;try{await demoVideo.play()}catch(e){}syncDemoSoundButton();inform(demoVideo.muted?'Preview sound muted.':'Preview sound enabled.');});
+demoVideo.addEventListener('click',async()=>{if(demoVideo.paused){try{await demoVideo.play()}catch(e){inform('Preview could not play. Check your connection.')}}else demoVideo.pause()});
+demoVideo.addEventListener('error',()=>inform('Demo video could not load. Check your internet connection.'));
+demoVideo.play().catch(()=>{});
+syncDemoSoundButton();
 $('composerToggle').addEventListener('click',()=>{const expanded=composer.classList.toggle('expanded');$('composerToggle').setAttribute('aria-expanded',String(expanded));$('composerToggle').setAttribute('aria-label',expanded?'Collapse composer':'Expand composer');});
 $('motion16Add').addEventListener('click',()=>$('motion16File').click());
 $('motion16File').addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];if(!f)return;attachedFile=f;$('motion16Attachment').hidden=false;$('motion16Attachment').textContent='＋ '+f.name;inform('Reference attached: '+f.name);});
