@@ -1,4 +1,4 @@
-const CACHE_NAME = "nextgen-shell-v92-create-hub-song-thumbs";
+const CACHE_NAME = "nextgen-shell-v93-feature-name-correction";
 const APP_SHELL = [
   "./",
   "./index.html",
