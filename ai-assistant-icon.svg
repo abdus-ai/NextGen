@@ -1,9 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title">
-<title id="title">NextGen AI Assistant</title>
+<title id="title">NextGen AI Assistant sparkle</title>
 <defs>
- <linearGradient id="ngg" x1="18%" y1="12%" x2="88%" y2="90%"><stop offset="0" stop-color="#09c8e8"/><stop offset=".38" stop-color="#1479f4"/><stop offset=".7" stop-color="#7830ee"/><stop offset="1" stop-color="#e000d6"/></linearGradient>
+ <linearGradient id="spark" x1="0%" y1="10%" x2="100%" y2="85%">
+  <stop offset="0%" stop-color="#08c8e8"/>
+  <stop offset="38%" stop-color="#147cf4"/>
+  <stop offset="70%" stop-color="#812bea"/>
+  <stop offset="100%" stop-color="#e000d8"/>
+ </linearGradient>
 </defs>
-<path d="M171 39A105 105 0 1 0 218 112" fill="none" stroke="url(#ngg)" stroke-width="13" stroke-linecap="round"/>
-<path d="M119 77c5 0 7 5 9 16 5 24 14 34 38 39 12 2 17 4 17 10s-5 8-17 10c-24 5-33 14-38 38-2 12-4 17-10 17s-8-5-10-17c-5-24-14-33-38-38-12-2-17-4-17-10s5-8 17-10c24-5 33-15 38-39 2-11 4-16 11-16z" fill="url(#ngg)"/>
-<path d="M199 29c4 0 6 3 8 13 3 13 8 18 21 21 10 2 13 4 13 8s-3 6-13 8c-13 3-18 8-21 21-2 10-4 13-8 13s-6-3-8-13c-3-13-8-18-21-21-10-2-13-4-13-8s3-6 13-8c13-3 18-8 21-21 2-10 4-13 8-13z" fill="url(#ngg)"/>
+<!-- Open circular sweep: cyan at the upper-left, purple and magenta at the lower-right -->
+<path d="M168 39 A105 105 0 1 0 218 112" fill="none" stroke="url(#spark)" stroke-width="13" stroke-linecap="round"/>
+<!-- Main four-point sparkle, with broad rounded tips and deep curved sides -->
+<path d="M128 72
+ C137 72 139 82 142 98
+ C148 126 161 139 190 145
+ C206 148 216 150 216 160
+ C216 170 206 172 190 175
+ C161 181 148 194 142 222
+ C139 238 137 248 128 248
+ C119 248 117 238 114 222
+ C108 194 95 181 66 175
+ C50 172 40 170 40 160
+ C40 150 50 148 66 145
+ C95 139 108 126 114 98
+ C117 82 119 72 128 72Z" fill="url(#spark)" transform="translate(0 -10)"/>
+<!-- Smaller upper-right sparkle -->
+<path d="M205 25
+ C212 25 214 33 216 44
+ C219 58 226 65 240 68
+ C251 70 256 72 256 79
+ C256 86 251 88 240 90
+ C226 93 219 100 216 114
+ C214 125 212 133 205 133
+ C198 133 196 125 194 114
+ C191 100 184 93 170 90
+ C159 88 154 86 154 79
+ C154 72 159 70 170 68
+ C184 65 191 58 194 44
+ C196 33 198 25 205 25Z" fill="url(#spark)" transform="translate(-4 0) scale(.94 1)"/>
 </svg>
