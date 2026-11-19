@@ -204,7 +204,7 @@ const data=[
  {title:'Upscale 4K/8K',model:'Upscale 4K/8K',mode:'Video upscale',caption:'Upscale any video to sharp 4K or 8K.',video:'https://videos.pexels.com/video-files/36119336/15317954_3840_2160_30fps.mp4',thumb:'assets/upscale-4k-8k.webp',prompt:'Enhance this video to crisp 4K quality',overlay:false},
  {title:'Image to Video',model:'Image to Video',mode:'Photo to video',caption:'Real people, real moments. From your photos.',video:'https://videos.pexels.com/video-files/5977843/5977843-uhd_3840_2160_25fps.mp4',thumb:'assets/image-to-video.webp',prompt:'She lowers the camera',overlay:true},
  {title:'Text to Video',model:'Text to Video',mode:'Text to video',caption:'Cinematic scenes from a few words.',video:'https://videos.pexels.com/video-files/8552826/8552826-hd_1920_1080_30fps.mp4',thumb:'assets/text-to-video.jpg',prompt:'A cinematic scene with dramatic camera movement',overlay:false},
- {title:'Video Extender',model:'Video Extender',mode:'Video editing',caption:'Keep the moment going.',video:'https://videos.pexels.com/video-files/40202306/17175717_3840_2160_25fps.mp4',thumb:'assets/video-extender.jpg',prompt:'Continue the scene smoothly',overlay:false},
+ {title:'Video Extender',model:'Video Extender',mode:'Video editing',caption:'Extend your clip with a continuous moving-car road scene.',video:'https://videos.pexels.com/video-files/7018470/7018470-uhd_3840_2160_30fps.mp4',thumb:'https://images.pexels.com/videos/7018470/pexels-photo-7018470.jpeg?auto=compress&dpr=1&h=750&w=1260',prompt:'Continue the scene smoothly',overlay:false},
  {title:'Text to Song',model:'Text to Song',mode:'Text to song',caption:'Turn your words into an original song.',video:'https://videos.pexels.com/video-files/8135086/8135086-hd_1920_1080_25fps.mp4',thumb:'assets/text-to-song.webp',prompt:'Create an uplifting song with a memorable chorus',overlay:false},
  {title:'Text to Music',model:'Text to Music',mode:'Music creation',caption:'Create original music from a simple text prompt.',video:'https://videos.pexels.com/video-files/4962190/4962190-uhd_3840_2160_24fps.mp4',thumb:'assets/text-to-music-video.webp',prompt:'Create cinematic background music',overlay:false},
  {title:'Text to Dance',model:'Text to Dance',mode:'Dance video',caption:'Turn an idea into a dance performance.',video:'https://videos.pexels.com/video-files/6939803/6939803-hd_1920_1080_30fps.mp4',thumb:'assets/text-to-dance-video.webp',prompt:'Create a smooth energetic dance performance',overlay:false}
@@ -246,7 +246,7 @@ function selectFeature(index,manual=false){
  $('motion16Thumb').loading='eager';$('motion16Thumb').decoding='async';
  caption.textContent=item.caption;
  overlay.hidden=!item.overlay;promptDemo.innerHTML=item.prompt+'<span class="typing-caret"></span>';
- list.querySelectorAll('[data-feature]').forEach(btn=>{const on=Number(btn.dataset.feature)===index;btn.classList.toggle('is-active',on);btn.setAttribute('aria-pressed',String(on))});
+ list.querySelectorAll('[data-feature]').forEach(btn=>{const on=Number(btn.dataset.feature)===index;btn.classList.toggle('is-active',on);btn.setAttribute('aria-pressed',String(on));const image=btn.querySelector('img');if(image)image.src=data[Number(btn.dataset.feature)].thumb});
  if(manual)resetAutoplay();
 }
 function resetAutoplay(){clearInterval(timer)}
