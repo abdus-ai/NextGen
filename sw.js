@@ -1,4 +1,4 @@
-const CACHE_NAME = "nextgen-shell-v110-assistant-link-fix";
+const CACHE_NAME = "nextgen-shell-v111-hamburger-cache-bust";
 // Hero image is served from assets/hero-video-studio.jpg
 const APP_SHELL = [
   "./",
