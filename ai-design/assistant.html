@@ -1,2 +1,21 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#061020"><title>NextGen AI — assistant</title><script>const mobile=window.matchMedia("(max-width: 700px)").matches;const page="assistant";window.location.replace(page+"-"+(mobile?"mobile":"desktop")+".html");</script></head><body><p>Opening NextGen AI…</p><noscript><a href="assistant-mobile.html">Open mobile view</a> · <a href="assistant-desktop.html">Open desktop view</a></noscript></body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#061020">
+<title>NextGen AI — Assistant</title>
+<script>
+(function(){
+  var view=window.matchMedia("(max-width: 700px)").matches?"mobile":"desktop";
+  var target=new URL("./assistant-"+view+".html",window.location.href);
+  window.location.replace(target.href);
+})();
+</script>
+</head>
+<body>
+<p>Opening NextGen AI Assistant…</p>
+<p>If you are not redirected, choose your view:</p>
+<p><a href="./assistant-mobile.html">Open mobile Assistant</a> · <a href="./assistant-desktop.html">Open desktop Assistant</a></p>
+</body>
+</html>
