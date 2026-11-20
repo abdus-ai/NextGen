@@ -22,7 +22,7 @@ function bindContents(){
   drawer.querySelectorAll("a[href]").forEach(function(link){
     link.addEventListener("click",function(){if(link.getAttribute("href")!=="#")setOpen(false);});
   });
-  drawer.querySelectorAll(".ng-menu-accordion-trigger").forEach(function(button){
+  drawer.querySelectorAll(".ng-menu-accordion-trigger,.ng-ai-menu-group-trigger").forEach(function(button){
     button.addEventListener("click",function(){
       var panel=button.nextElementSibling;if(!panel)return;
       var expanded=button.getAttribute("aria-expanded")==="true";
@@ -30,6 +30,8 @@ function bindContents(){
       var icon=button.querySelector("i");if(icon)icon.textContent=expanded?"⌄":"⌃";
     });
   });
+  var profileButton=get("ng-menu-profile-dropdown"),profilePopup=get("ng-ai-profile-popup");
+  if(profileButton&&profilePopup)profileButton.addEventListener("click",function(){var open=profileButton.getAttribute("aria-expanded")==="true";profileButton.setAttribute("aria-expanded",String(!open));profilePopup.hidden=open;});
   var seeLess=get("ng-menu-see-less"),main=drawer.querySelector(".ng-menu-main-links");
   if(seeLess&&main)seeLess.addEventListener("click",function(){
     var collapsed=main.classList.toggle("is-collapsed");
@@ -42,7 +44,7 @@ function bindContents(){
 function loadMenu(){
   if(get("ng-menu-drawer")){bindContents();return Promise.resolve();}
   if(loading)return loading;
-  var url=new URL("./hamburger-menu.html?v=20261120-v5",document.baseURI).href;
+  var url=new URL("./hamburger-menu.html?v=20261120-ai1",document.baseURI).href;
   loading=fetch(url,{cache:"no-store",credentials:"same-origin"})
     .then(function(response){if(!response.ok)throw new Error("Navigation menu HTTP "+response.status);return response.text();})
     .then(function(markup){
