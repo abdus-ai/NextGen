@@ -1,4 +1,4 @@
-const CACHE_NAME = "nextgen-shell-v119-exact-create-project-sizing";
+const CACHE_NAME = "nextgen-shell-v120-home-create-project-link";
 // Hero image is served from assets/hero-video-studio.jpg
 const APP_SHELL = [
   "./",
