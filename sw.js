@@ -1,4 +1,4 @@
-const CACHE_NAME = "nextgen-shell-v107-remove-upscale";
+const CACHE_NAME = "nextgen-shell-v108-video-studio-menu";
 // Hero image is served from assets/hero-video-studio.jpg
 const APP_SHELL = [
   "./",
@@ -14,6 +14,8 @@ const APP_SHELL = [
   "./nextgen-shared.css",
   "./hamburger-menu.html",
   "./hamburger-menu.js",
+  "./hamburger-home.css",
+  "./video-studio.html",
   "./channels.html",
   "./analytics.html",
   "./approvals.html",
