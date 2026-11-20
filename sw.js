@@ -21,6 +21,7 @@ const APP_SHELL = [
   "./approvals.html",
   "./content.html",
   "./schedule.html",
+  "./creative-studio.html",
   
   "./login.html",
   "./signin.html",
