@@ -150,6 +150,39 @@ body{background:#020d20}
 }
 @media(max-width:360px){.studio-card{min-height:135px;font-size:14px;border-radius:21px}.studio-gallery-grid .studio-card{min-height:132px}}
 </style>
+<style id="create-project-reference-exact-sizing-v3">
+/* Match the supplied 1024px reference proportions at every viewport width. */
+.studio-head-reference{height:10.9vw!important;min-height:0!important;padding:0 3.2vw!important;gap:2.5vw!important;border-bottom-width:.5vw!important}
+.studio-head-reference h1{font-size:6.25vw!important;letter-spacing:-.14vw!important}
+.studio-back{font-size:6.3vw!important;width:5.5vw!important}
+.studio-search-button{width:8vw!important;height:8vw!important;border-width:.38vw!important}
+.studio-search-button svg{width:4.5vw!important;height:4.5vw!important}
+.studio-search{top:11.5vw!important;right:3vw!important;height:5vw!important}
+.studio-home{padding:3.5vw 3.3vw 0!important;gap:2.25vw 2.35vw!important}
+.studio-card{height:21vw!important;min-height:0!important;padding:1.4vw .9vw!important;border-width:.58vw!important;border-radius:4.5vw!important;gap:1vw!important;font-size:3.95vw!important;line-height:1.12!important}
+.studio-card .studio-icon{width:8.8vw!important;height:8.8vw!important;flex:none}
+.studio-card svg{stroke-width:4.8!important}
+.card-audio svg{stroke:url(#audio-gradient)!important;stroke-width:7!important}
+.studio-gallery{padding:4.2vw 3.8vw 4.8vw!important}
+.studio-gallery h2{font-size:5.6vw!important;line-height:1.1!important;margin:0 0 3.6vw!important;padding:0 .4vw 1.2vw!important;border-bottom-width:.5vw!important}
+.studio-gallery-grid{gap:2.25vw 2.35vw!important}
+.studio-gallery-grid .studio-card{height:21vw!important;min-height:0!important}
+@media(max-width:700px){
+ .studio-head-reference{height:10.9vw!important;padding:0 3.2vw!important;gap:2.5vw!important;border-bottom-width:.5vw!important}
+ .studio-head-reference h1{font-size:6.25vw!important;letter-spacing:-.14vw!important}
+ .studio-back{font-size:6.3vw!important;width:5.5vw!important}
+ .studio-search-button{width:8vw!important;height:8vw!important;border-width:.38vw!important}
+ .studio-search-button svg{width:4.5vw!important;height:4.5vw!important}
+ .studio-search{top:11.5vw!important;right:3vw!important;height:5vw!important}
+ .studio-home{padding:3.5vw 3.3vw 0!important;gap:2.25vw 2.35vw!important}
+ .studio-card{height:21vw!important;min-height:0!important;padding:1.4vw .9vw!important;border-width:.58vw!important;border-radius:4.5vw!important;gap:1vw!important;font-size:3.95vw!important;line-height:1.12!important}
+ .studio-card .studio-icon{width:8.8vw!important;height:8.8vw!important}
+ .studio-gallery{padding:4.2vw 3.8vw 4.8vw!important}
+ .studio-gallery h2{font-size:5.6vw!important;margin:0 0 3.6vw!important;padding:0 .4vw 1.2vw!important;border-bottom-width:.5vw!important}
+ .studio-gallery-grid{gap:2.25vw 2.35vw!important}
+ .studio-gallery-grid .studio-card{height:21vw!important;min-height:0!important}
+}
+</style>
 </head>
 <body>
 <div class="studio">
@@ -164,7 +197,7 @@ body{background:#020d20}
   <button class="studio-card card-video" data-studio-view="discover"><span class="studio-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="7" y="8" width="50" height="48" rx="10"/><path d="m27 21 17 11-17 11z"/></svg></span><span>Video Generate</span></button>
   <button class="studio-card card-image-video" data-studio-view="discover" data-mode-choice="video"><span class="studio-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="5" y="17" width="43" height="37" rx="8"/><path d="M18 17V11a6 6 0 0 1 6-6h29a6 6 0 0 1 6 6v28a6 6 0 0 1-6 6h-5"/><path d="m23 27 15 9-15 9z"/></svg></span><span>Image to Video</span></button>
   <button class="studio-card card-text-video" data-studio-view="discover"><span class="studio-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M18 8H9v12M46 8h9v12M18 56H9V44M46 56h9V44M23 20h18M32 20v25"/></svg></span><span>Text to Video</span></button>
-  <button class="studio-card card-audio" data-studio-view="tools"><span class="studio-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 30v5M17 22v21M26 14v37M35 23v20M44 10v43M53 25v16"/></svg></span><span>Audio / Music Generate</span></button>
+  <button class="studio-card card-audio" data-studio-view="tools"><span class="studio-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="audio-gradient" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#00eaff"/><stop offset=".48" stop-color="#287bff"/><stop offset="1" stop-color="#d42cff"/></linearGradient></defs><path d="M8 30v5M17 22v21M26 14v37M35 23v20M44 10v43M53 25v16"/></svg></span><span>Audio / Music Generate</span></button>
   <button class="studio-card card-more" data-studio-view="tools"><span class="studio-icon"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="8" width="18" height="18" rx="3"/><rect x="38" y="8" width="18" height="18" rx="3"/><rect x="8" y="38" width="18" height="18" rx="3"/><rect x="38" y="38" width="18" height="18" rx="3"/></svg></span><span>More Features</span></button>
 </section>
 <section class="studio-gallery" id="studio-gallery" aria-label="Gallery">
