@@ -16,6 +16,28 @@ function bindContents(){
   var drawer=get("ng-menu-drawer"),backdrop=get("ng-menu-backdrop");
   if(!drawer||!backdrop||drawer.dataset.bound==="1")return;
   drawer.dataset.bound="1";
+  var menuNav=drawer.querySelector(".ng-ai-menu-nav");
+  if(menuNav&&menuNav.dataset.pullRefreshBound!=="1"){
+    menuNav.dataset.pullRefreshBound="1";
+    var pullStartY=0,pullDistance=0,pullEligible=false;
+    menuNav.addEventListener("touchstart",function(event){
+      if(event.touches.length!==1)return;
+      pullEligible=menuNav.scrollTop<=0;
+      pullStartY=event.touches[0].clientY;
+      pullDistance=0;
+    },{passive:true});
+    menuNav.addEventListener("touchmove",function(event){
+      if(!pullEligible||event.touches.length!==1||menuNav.scrollTop>0)return;
+      var distance=event.touches[0].clientY-pullStartY;
+      pullDistance=distance>0?distance:0;
+    },{passive:true});
+    function finishMenuPull(){
+      if(pullEligible&&pullDistance>=90){pullEligible=false;window.location.reload();return;}
+      pullEligible=false;pullDistance=0;
+    }
+    menuNav.addEventListener("touchend",finishMenuPull,{passive:true});
+    menuNav.addEventListener("touchcancel",finishMenuPull,{passive:true});
+  }
   var close=get("ng-menu-close");
   if(close)close.addEventListener("click",function(){setOpen(false);});
   backdrop.addEventListener("click",function(){setOpen(false);});
