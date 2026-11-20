@@ -1024,9 +1024,10 @@ html body.ng-unified-subpage .ng-package-details .subscription-status{margin-top
 
 <style id="ng-motion16-inspired-plans-v1">
 /* Pricing content refresh only — NextGen master header, logo, footer and navigation remain untouched. */
-.ng-reference-tabs{display:flex;gap:7px;width:calc(100% - 24px);margin:12px auto 14px;padding:5px;border-radius:999px;background:#17171c;border:1px solid #292932}
-.ng-reference-tabs button{flex:1;min-height:42px;border:0;border-radius:999px;background:transparent;color:#c7c7d1;font:700 14px inherit;cursor:pointer}
-.ng-reference-tabs button[aria-selected="true"]{background:#f4f3f7;color:#17171c;box-shadow:0 1px 5px #0005}
+/* NextGen-native subscription tabs — remove Motion16 black/white pill styling. */
+.ng-reference-tabs{display:flex;gap:8px;width:calc(100% - 24px);margin:12px auto 14px;padding:5px;border-radius:16px;background:linear-gradient(135deg,#071735,#0b1d43);border:1px solid #2456a8;box-shadow:0 0 12px #087bff22}
+.ng-reference-tabs button{flex:1;min-height:44px;border:1px solid transparent;border-radius:12px;background:transparent;color:#b9c9e8;font:700 14px inherit;cursor:pointer}
+.ng-reference-tabs button[aria-selected="true"]{background:linear-gradient(110deg,#087fe8,#3655f5 65%,#7b35e8);border-color:#36baff;color:#fff;box-shadow:0 0 12px #168bff55}
 body.ng-subscription-page .subscription-billing{margin:0 12px 12px;padding:5px;gap:5px;border-radius:999px;background:#17171c}
 body.ng-subscription-page .billing-option{border:0;border-radius:999px;background:transparent;color:#c7c7d1;min-height:40px}
 body.ng-subscription-page .billing-option.is-active{background:#f4f3f7;color:#17171c}
