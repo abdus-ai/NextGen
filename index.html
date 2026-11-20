@@ -115,6 +115,13 @@ header{height:45px;min-height:45px;display:flex;align-items:center;padding:0 10p
 .motion16-notice{position:absolute;left:12px;right:12px;bottom:calc(100% + 8px);padding:8px 11px;border-radius:10px;background:#102a46;border:1px solid rgba(68,190,237,.4);color:#e8f8ff;font-size:11px;display:none;box-shadow:0 8px 22px rgba(0,0,0,.25)}.motion16-notice.show{display:block}
 .snd{border:0;cursor:pointer}.snd:active,.motion16-mic:active,.pl:active{transform:scale(.96)}
 @media(prefers-reduced-motion:reduce){.typing-caret{animation:none}.hero>img.ph,.it{transition:none}}
+/* Composer compact-bottom mode: collapse downward, expand from prompt tap. */
+.comp:not(.expanded){height:68px!important;bottom:calc(21px + env(safe-area-inset-bottom,0px));}
+.comp:not(.expanded) .ph{top:11px!important;left:18px!important;width:calc(100% - 70px)!important;height:44px!important;min-height:44px!important;overflow:hidden!important;white-space:nowrap!important;resize:none!important;}
+.comp:not(.expanded) .expand{top:15px!important;right:8px!important;}
+.comp:not(.expanded) .tb,.comp:not(.expanded) .up,.comp:not(.expanded) .rf,.comp:not(.expanded) .motion16-attachment{display:none!important;}
+.comp.expanded{height:190px!important;bottom:calc(21px + env(safe-area-inset-bottom,0px));}
+.comp{transition:height .26s cubic-bezier(.2,.75,.25,1),bottom .26s cubic-bezier(.2,.75,.25,1)!important;}
 </style>
 </head>
 <body>
@@ -252,7 +259,8 @@ function selectFeature(index,manual=false){
 }
 function resetAutoplay(){clearInterval(timer)}
 list.addEventListener('click',e=>{const btn=e.target.closest('[data-feature]');if(btn)selectFeature(Number(btn.dataset.feature),true)});
-$('motion16Try').addEventListener('click',()=>{composer.classList.add('expanded');$('composerToggle').setAttribute('aria-expanded','true');prompt.focus();});
+function setComposerExpanded(expanded){composer.classList.toggle('expanded',expanded);const toggle=$('composerToggle');toggle.setAttribute('aria-expanded',String(expanded));toggle.setAttribute('aria-label',expanded?'Collapse composer':'Expand composer');toggle.innerHTML=expanded?'<svg width="16" height="20" viewBox="0 0 16 20" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16.5L8 11.5l5 5M3 3.5l5 5 5-5"/></svg>':'<svg width="16" height="20" viewBox="0 0 16 20" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3.5L8 8.5l5-5M3 16.5l5-5 5 5"/></svg>';}
+$('motion16Try').addEventListener('click',()=>{setComposerExpanded(true);prompt.focus();});
 const demoVideo=$('motion16HeroVideo');
 function syncDemoSoundButton(){const muted=demoVideo.muted;$('motion16Mute').setAttribute('aria-pressed',String(muted));$('motion16Mute').setAttribute('aria-label',muted?'Unmute preview':'Mute preview');$('motion16Mute').innerHTML=muted?'<svg width="20" height="18" viewBox="0 0 28 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9h5l7-6v18l-7-6H2zM19 9l7 7M26 9l-7 7"/></svg>':'<svg width="20" height="18" viewBox="0 0 28 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9h5l7-6v18l-7-6H2zM18 8a6 6 0 0 1 0 8M20 4a11 11 0 0 1 0 16"/></svg>'}
 $('motion16Mute').addEventListener('click',async()=>{demoVideo.muted=!demoVideo.muted;try{await demoVideo.play()}catch(e){}syncDemoSoundButton();inform(demoVideo.muted?'Preview sound muted.':'Preview sound enabled.');});
@@ -260,7 +268,8 @@ demoVideo.addEventListener('click',async()=>{if(demoVideo.paused){try{await demo
 demoVideo.addEventListener('error',()=>inform('Demo video could not load. Check your internet connection.'));
 demoVideo.play().catch(()=>{});
 syncDemoSoundButton();
-$('composerToggle').addEventListener('click',()=>{const expanded=composer.classList.toggle('expanded');$('composerToggle').setAttribute('aria-expanded',String(expanded));$('composerToggle').setAttribute('aria-label',expanded?'Collapse composer':'Expand composer');$('composerToggle').innerHTML=expanded?'<svg width="16" height="20" viewBox="0 0 16 20" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16.5L8 11.5l5 5M3 3.5l5 5 5-5"/></svg>':'<svg width="16" height="20" viewBox="0 0 16 20" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3.5L8 8.5l5-5M3 16.5l5-5 5 5"/></svg>';});
+$('composerToggle').addEventListener('click',()=>setComposerExpanded(!composer.classList.contains('expanded')));
+prompt.addEventListener('click',()=>{if(!composer.classList.contains('expanded')){setComposerExpanded(true);prompt.focus();}});
 $('motion16Add').addEventListener('click',()=>$('motion16File').click());
 $('motion16File').addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];if(!f)return;attachedFile=f;$('motion16Attachment').hidden=false;$('motion16Attachment').textContent='＋ '+f.name;inform('Reference attached: '+f.name);});
 $('motion16Clear').addEventListener('click',()=>{prompt.value='';$('motion16File').value='';attachedFile=null;$('motion16Attachment').hidden=true;$('motion16Attachment').textContent='';prompt.focus()});
