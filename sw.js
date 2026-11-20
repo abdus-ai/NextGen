@@ -1,4 +1,4 @@
-const CACHE_NAME = "nextgen-shell-v106-motion16-thumbnails-cached";
+const CACHE_NAME = "nextgen-shell-v107-remove-upscale";
 // Hero image is served from assets/hero-video-studio.jpg
 const APP_SHELL = [
   "./",
@@ -32,7 +32,6 @@ const APP_SHELL = [
   "./icon.svg",
   "./ng-symbol.jpg",
   "./assets/ai-video-editor.webp",
-  "./assets/upscale-4k-8k.webp",
   "./assets/image-to-video.webp",
   "./assets/text-to-video.jpg",
   "./assets/video-extender.jpg",
