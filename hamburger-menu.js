@@ -19,24 +19,34 @@ function bindContents(){
   var menuNav=drawer.querySelector(".ng-ai-menu-nav");
   if(menuNav&&menuNav.dataset.pullRefreshBound!=="1"){
     menuNav.dataset.pullRefreshBound="1";
-    var pullStartY=0,pullDistance=0,pullEligible=false;
+    var pullStartY=0,pullDistance=0,pullEligible=false,pullActive=false;
     menuNav.addEventListener("touchstart",function(event){
       if(event.touches.length!==1)return;
-      pullEligible=menuNav.scrollTop<=0;
+      pullEligible=menuNav.scrollTop<=2;
+      pullActive=false;
       pullStartY=event.touches[0].clientY;
       pullDistance=0;
     },{passive:true});
     menuNav.addEventListener("touchmove",function(event){
-      if(!pullEligible||event.touches.length!==1||menuNav.scrollTop>0)return;
+      if(!pullEligible||event.touches.length!==1)return;
       var distance=event.touches[0].clientY-pullStartY;
-      pullDistance=distance>0?distance:0;
-    },{passive:true});
+      if(distance<=0){pullDistance=0;return;}
+      if(menuNav.scrollTop>2){pullEligible=false;return;}
+      pullDistance=distance;
+      if(distance>8){
+        pullActive=true;
+        if(event.cancelable)event.preventDefault();
+      }
+    },{passive:false});
     function finishMenuPull(){
-      if(pullEligible&&pullDistance>=90){pullEligible=false;window.location.reload();return;}
-      pullEligible=false;pullDistance=0;
+      var shouldRefresh=pullEligible&&pullActive&&pullDistance>=65;
+      pullEligible=false;pullActive=false;pullDistance=0;
+      if(shouldRefresh){
+        window.location.href=window.location.pathname+"?menu-refresh="+Date.now();
+      }
     }
     menuNav.addEventListener("touchend",finishMenuPull,{passive:true});
-    menuNav.addEventListener("touchcancel",finishMenuPull,{passive:true});
+    menuNav.addEventListener("touchcancel",function(){pullEligible=false;pullActive=false;pullDistance=0;},{passive:true});
   }
   var close=get("ng-menu-close");
   if(close)close.addEventListener("click",function(){setOpen(false);});
