@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create a New Project</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;background:#030a1c;overflow:hidden;font-family:"Inter","Segoe UI",Roboto,Arial,sans-serif}
+/* Fixed design canvas 1496 x 1024 (same as the original image), scaled to fit screen */
+#stage{position:absolute;left:50%;top:50%;width:1496px;height:1024px;background:#040b1e;transform-origin:center;transform:translate(-50%,-50%) scale(1)}
+header{position:absolute;left:0;top:0;width:1496px;height:117px}
+header::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:4px;background:linear-gradient(90deg,#10c8ff,#3d8bff 45%,#9a5cff 80%,#c04dff)}
+.back{position:absolute;left:44px;top:28px;width:40px;height:56px;cursor:pointer}
+h1{position:absolute;left:134px;top:18px;font-size:62px;line-height:76px;font-weight:700;letter-spacing:-.5px;background:linear-gradient(90deg,#11d4ff 0%,#2f9bff 45%,#a25cff 100%);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+.card{position:absolute;width:670px;height:233px;border-radius:50px;cursor:pointer;text-decoration:none;transition:transform .2s,filter .2s}
+.card:hover{transform:scale(1.02);filter:brightness(1.15)}
+.card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:5px;background:var(--b);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.card{background:var(--bg);box-shadow:0 0 28px var(--g),inset 0 0 40px var(--g)}
+.card svg{position:absolute;left:50%;top:30px;transform:translateX(-50%);height:104px;width:auto;overflow:visible}
+.card span{position:absolute;left:0;right:0;top:140px;text-align:center;color:#fff;font-size:44px;line-height:56px;font-weight:700;letter-spacing:-.3px;text-shadow:0 2px 6px rgba(0,0,0,.5)}
+.c1{left:65px;top:170px;--bg:linear-gradient(135deg,#06323b,#051c2e 70%);--b:linear-gradient(135deg,#1ff0f5,#22d3ee 50%,#3be8ff);--g:rgba(30,230,245,.25)}
+.c2{left:763px;top:170px;--bg:linear-gradient(135deg,#0b3f78,#0a2150 75%);--b:linear-gradient(180deg,#3d8bff,#2cc8ff);--g:rgba(60,150,255,.28)}
+.c3{left:65px;top:428px;--bg:linear-gradient(135deg,#2c1356,#150b33 70%);--b:linear-gradient(180deg,#8a5cff,#e04cf5);--g:rgba(170,80,255,.28)}
+.c4{left:763px;top:428px;--bg:linear-gradient(135deg,#06323b,#051c2e 70%);--b:linear-gradient(135deg,#1ff0f5,#22d3ee);--g:rgba(30,230,245,.25)}
+.c5{left:65px;top:685px;--bg:linear-gradient(135deg,#0b3a78,#0a1b52 75%);--b:linear-gradient(90deg,#1ff0f5,#3d7bff 60%,#e8f6ff);--g:rgba(60,140,255,.28)}
+.c6{left:763px;top:685px;--bg:linear-gradient(135deg,#2e1050,#170a33 70%);--b:linear-gradient(90deg,#f04dff,#a05cff);--g:rgba(220,70,255,.25)}
+</style>
+</head>
+<body>
+<div id="stage">
+  <header>
+    <a class="back" href="create-hub.html" aria-label="Back to Creative Studio"><svg viewBox="0 0 40 56" fill="none"><path d="M30 6 8 28l22 22" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <h1>Create a New Project</h1>
+  </header>
+
+  <a class="card c1" aria-label="Image Generate">
+    <svg viewBox="0 0 140 100"><defs><linearGradient id="gi" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#9fd4ff"/></linearGradient><linearGradient id="gm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2fc8ff"/><stop offset="1" stop-color="#6a7dff"/></linearGradient></defs>
+      <rect x="4" y="4" width="132" height="92" rx="20" fill="#0b1a3a" stroke="url(#gi)" stroke-width="8"/>
+      <circle cx="95" cy="30" r="13" fill="#ffc21a"/>
+      <path d="M14 88 52 42l30 46z" fill="url(#gm)"/><path d="M66 88l26-30 36 30z" fill="#8a7cff" opacity=".9"/></svg>
+    <span>Image Generate</span></a>
+
+  <a class="card c2" aria-label="Video Generate">
+    <svg viewBox="0 0 140 100"><defs><linearGradient id="gp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e9d5ff"/><stop offset="1" stop-color="#a66cff"/></linearGradient></defs>
+      <rect x="4" y="4" width="132" height="92" rx="24" fill="#1a1250" stroke="url(#gp)" stroke-width="8"/>
+      <path d="M56 30v40l34-20z" fill="none" stroke="url(#gp)" stroke-width="7" stroke-linejoin="round"/></svg>
+    <span>Video Generate</span></a>
+
+  <a class="card c3" aria-label="Image to Video">
+    <svg viewBox="0 0 140 100"><defs><linearGradient id="gs" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3d9ff"/><stop offset="1" stop-color="#a96cff"/></linearGradient></defs>
+      <path d="M32 14h96q8 0 8 8v50" fill="none" stroke="#e7a8ff" stroke-width="22" stroke-linecap="round" opacity=".75"/>
+      <rect x="4" y="22" width="112" height="74" rx="18" fill="#1b1050" stroke="url(#gs)" stroke-width="8"/>
+      <path d="M46 42v34l28-17z" fill="none" stroke="url(#gs)" stroke-width="6" stroke-linejoin="round"/></svg>
+    <span>Image to Video</span></a>
+
+  <a class="card c4" aria-label="Text to Video">
+    <svg viewBox="0 0 140 100"><defs><linearGradient id="gt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#a8dcff"/></linearGradient></defs>
+      <g fill="none" stroke="url(#gt)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><path d="M36 28V12h-6q-18 0-18 18v8" transform="translate(14 -6)"/><path d="M104 12h6q18 0 18 18v8" transform="translate(-8 -6) translate(0 0)"/><path d="M26 66v6q0 18 18 18h4" transform="translate(0 0)"/><path d="M112 66v6q0 18-18 18h-4"/></g>
+      <path d="M50 28h40M70 28v44" stroke="#fff" stroke-width="12" stroke-linecap="round" fill="none"/></svg>
+    <span>Text to Video</span></a>
+
+  <a class="card c5" aria-label="Audio / Music Generate">
+    <svg viewBox="0 0 160 110" style="height:108px;top:26px"><defs><linearGradient id="ga" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#14e0ff"/><stop offset=".5" stop-color="#3b6bff"/><stop offset="1" stop-color="#b05cff"/></linearGradient></defs>
+      <g fill="url(#ga)"><rect x="0" y="42" width="14" height="30" rx="7"/><rect x="20" y="30" width="22" height="54" rx="11"/><rect x="48" y="16" width="26" height="86" rx="12" opacity=".9"/><rect x="78" y="0" width="26" height="110" rx="13"/><rect x="110" y="26" width="22" height="58" rx="11"/><rect x="136" y="42" width="24" height="30" rx="12"/></g></svg>
+    <span>Audio / Music Generate</span></a>
+
+  <a class="card c6" aria-label="More Features">
+    <svg viewBox="0 0 120 104" style="height:100px;top:28px"><defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#b8dcff"/></linearGradient></defs>
+      <g fill="#150a33" stroke="url(#gg)" stroke-width="8"><rect x="4" y="4" width="48" height="40" rx="12"/><rect x="68" y="4" width="48" height="40" rx="12"/><rect x="4" y="60" width="48" height="40" rx="12"/><rect x="68" y="60" width="48" height="40" rx="12"/></g></svg>
+    <span style="top:144px">More Features</span></a>
+</div>
+<script>
+function fit(){var s=Math.min(innerWidth/1496,innerHeight/1024);document.getElementById('stage').style.transform='translate(-50%,-50%) scale('+s+')'}
+addEventListener('resize',fit);fit();
+</script>
+</body>
+</html>
