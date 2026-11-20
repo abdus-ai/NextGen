@@ -31,7 +31,7 @@ function bindContents(){
     });
   });
   var profileButton=get("ng-menu-profile-dropdown"),profilePopup=get("ng-ai-profile-popup");
-  if(profileButton&&profilePopup)profileButton.addEventListener("click",function(){var open=profileButton.getAttribute("aria-expanded")==="true";profileButton.setAttribute("aria-expanded",String(!open));profilePopup.hidden=open;});
+  if(profileButton&&profilePopup){var profileChevron=profileButton.querySelector(".ng-ai-profile-chevron");function setProfileChevron(expanded){if(!profileChevron)return;profileChevron.innerHTML=expanded?'<svg width="16" height="20" viewBox="0 0 18 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2l5 5 5-5M4 19.9875l5-5 5 5"/></svg>':'<svg width="16" height="20" viewBox="0 0 18 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l5-5 5 5M4 9l5 5 5-5"/></svg>';}setProfileChevron(false);profileButton.addEventListener("click",function(){var open=profileButton.getAttribute("aria-expanded")==="true";profileButton.setAttribute("aria-expanded",String(!open));profilePopup.hidden=open;setProfileChevron(!open);});}
   var seeLess=get("ng-menu-see-less"),main=drawer.querySelector(".ng-menu-main-links");
   if(seeLess&&main)seeLess.addEventListener("click",function(){
     var collapsed=main.classList.toggle("is-collapsed");
