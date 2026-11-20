@@ -44,7 +44,7 @@ function bindContents(){
 function loadMenu(){
   if(get("ng-menu-drawer")){bindContents();return Promise.resolve();}
   if(loading)return loading;
-  var url=new URL("./hamburger-menu.html?v=20261120-ai1",document.baseURI).href;
+  var url=new URL("./hamburger-menu.html?v=20261120-ai2",document.baseURI).href;
   loading=fetch(url,{cache:"no-store",credentials:"same-origin"})
     .then(function(response){if(!response.ok)throw new Error("Navigation menu HTTP "+response.status);return response.text();})
     .then(function(markup){
