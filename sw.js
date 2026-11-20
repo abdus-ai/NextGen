@@ -1,9 +1,8 @@
-const CACHE_NAME = "nextgen-shell-v114-create-project-page";
+const CACHE_NAME = "nextgen-shell-v115-remove-create-project-page";
 // Hero image is served from assets/hero-video-studio.jpg
 const APP_SHELL = [
   "./",
   "./index.html",
-  "./create-project.html",
   "./ai-assistant-approved.webp",
   "./ai-design/assistant.html",
   "./ai-design/assistant-mobile.html",
