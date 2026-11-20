@@ -166,6 +166,9 @@ header{height:45px;min-height:45px;display:flex;align-items:center;padding:0 10p
 
 /* When composer collapses to the bottom bar, let the feature list fill the space down to it. */
 .app:has(+ .comp:not(.expanded)){padding-bottom:calc(67px + env(safe-area-inset-bottom,0px))!important;}
+/* Dock the two floating actions immediately above the composer in both states. */
+body:has(.comp.expanded) .ng-fab-stack{bottom:calc(161px + env(safe-area-inset-bottom,0px))!important;transition:bottom .26s cubic-bezier(.2,.75,.25,1)!important;}
+body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-inset-bottom,0px))!important;transition:bottom .26s cubic-bezier(.2,.75,.25,1)!important;}
 /* Keep composer typography consistent in compact and expanded modes. */
 .comp .ph{font-size:15px!important;line-height:18px!important;}
 .comp .p2,.comp .p3{font-size:13px!important;}
