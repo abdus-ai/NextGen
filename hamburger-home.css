@@ -1,7 +1,7 @@
 /* Homepage shared drawer styling; keeps the locked homepage header artwork unchanged. */
 .ng-home-hamburger{appearance:none;-webkit-appearance:none;cursor:pointer;flex:none;width:76px;height:76px;padding:0;margin-right:8px;border:2px solid #168cff!important;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;background:linear-gradient(145deg,#0b2348,#07162d);color:#fff;box-shadow:0 0 0 2px rgba(0,213,255,.12),0 0 14px rgba(0,132,255,.32)}
-.ng-home-hamburger i{display:block;width:35px;height:3px;background:#fff;border-radius:3px;box-shadow:0 0 6px rgba(67,211,255,.55)}
-.ng-home-hamburger i:nth-child(2){width:21px;align-self:center}
+.ng-home-hamburger i{display:block!important;width:35px!important;height:3px!important;min-width:0!important;max-width:none!important;background:#fff!important;border-radius:3px!important;box-shadow:0 0 6px rgba(67,211,255,.55)}
+.ng-home-hamburger i:nth-child(2){width:21px!important;align-self:center!important}
 .ng-menu-backdrop[hidden]{display:none!important}.ng-menu-backdrop{position:fixed;inset:0;z-index:90;background:rgba(2,7,20,.72)}
 .ng-menu-drawer{position:fixed;z-index:91;left:0;top:0;bottom:0;width:min(360px,88vw);padding:calc(14px + env(safe-area-inset-top,0px)) 12px calc(16px + env(safe-area-inset-bottom,0px));background:linear-gradient(180deg,#071a3e,#030b24);border-right:1px solid #1d70a8;box-shadow:12px 0 32px #0008;transform:translateX(-105%);visibility:hidden;transition:transform .2s ease,visibility .2s ease;display:flex;flex-direction:column;gap:8px;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;color:#edf7ff}
 .ng-menu-drawer.is-open{transform:translateX(0);visibility:visible}body.ng-menu-open{overflow:hidden}
