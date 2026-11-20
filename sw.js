@@ -1,4 +1,4 @@
-const CACHE_NAME = "nextgen-shell-v115-remove-create-project-page";
+const CACHE_NAME = "nextgen-shell-v116-creative-studio-redesign";
 // Hero image is served from assets/hero-video-studio.jpg
 const APP_SHELL = [
   "./",
