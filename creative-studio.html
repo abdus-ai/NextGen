@@ -216,7 +216,10 @@ body{background:#020d20}
 <style id="creative-studio-main-workspace-reference-v1">
 /* Compact NextGen dark-navy / cyan-glow landing theme. Scoped to this page's landing area. */
 html,body{background:#020d20!important;color:#f5f7ff!important}
-.studio{max-width:1180px!important;margin:5px auto!important;padding:0 12px 12px!important;border:1px solid rgba(0,210,255,.22)!important;border-radius:22px!important;background:#020d20!important;box-shadow:0 0 18px rgba(0,190,255,.08)!important}
+.studio{max-width:1180px!important;margin:5px auto!important;padding:0 12px 12px!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
+.reference-project-card,.reference-gallery-section{padding:12px;border:1px solid rgba(0,210,255,.32);border-radius:18px;background:linear-gradient(145deg,rgba(0,218,236,.08),rgba(0,57,100,.16) 60%,rgba(0,10,30,.72));box-shadow:0 0 12px rgba(0,190,255,.09),inset 0 0 18px rgba(0,216,255,.035)}
+.reference-project-card{margin-bottom:0}
+.reference-gallery-section{margin-top:16px!important}
 .studio-reference-hidden{display:none!important}
 .studio-home-reference{display:block!important;padding:10px 0 12px!important}
 .reference-intro{margin:0 0 10px!important}
@@ -237,7 +240,8 @@ html,body{background:#020d20!important;color:#f5f7ff!important}
  .reference-eyebrow{padding:6px 10px;font-size:15px}
  .reference-intro p{margin-top:5px!important;font-size:11px!important}
  .reference-studio-grid{column-gap:7px;row-gap:8px}
- .reference-gallery-section{margin-top:11px}
+ .reference-project-card,.reference-gallery-section{padding:9px;border-radius:14px}
+ .reference-gallery-section{margin-top:13px!important}
  .reference-gallery-title{font-size:21px;margin-bottom:7px}
  .reference-studio-card{padding:0;border:0!important;border-radius:0;background:transparent!important;box-shadow:none!important}
  .reference-studio-card img{height:clamp(88px,calc((100vw - 33px)*.28125),220px);border-radius:11px;aspect-ratio:16/9}
@@ -262,6 +266,7 @@ html,body{background:#020d20!important;color:#f5f7ff!important}
   <input id="studio-search" class="studio-search" type="search" placeholder="Search features or gallery" aria-label="Search features or gallery" hidden>
 </header>
 <section id="studio-home" class="studio-home studio-home-reference" aria-label="Creative Studio workspace">
+  <div class="reference-project-card">
   <div class="reference-intro">
     <span class="reference-eyebrow">Create a New Project</span>
     <p>AI CREATION • GENERATION • EDITING</p>
@@ -297,6 +302,7 @@ html,body{background:#020d20!important;color:#f5f7ff!important}
       <span class="reference-card-title">More Features</span>
       <span class="reference-card-description">Explore AI Tools</span>
     </button>
+  </div>
   </div>
   <div class="reference-gallery-section">
     <h2 class="reference-gallery-title">Gallery</h2>
