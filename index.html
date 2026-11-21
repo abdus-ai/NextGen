@@ -174,6 +174,34 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
 .comp .p2,.comp .p3{font-size:13px!important;}
 .comp .up{font-size:15px!important;}
 </style>
+<style id="ng-image-settings-style">
+.image-settings-trigger{white-space:nowrap;cursor:pointer;font:inherit}
+.ng-image-settings-overlay[hidden]{display:none!important}
+.ng-image-settings-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.64);display:flex;align-items:flex-end;justify-content:center;padding:12px}
+.ng-image-settings-sheet{width:min(100%,560px);max-height:min(82dvh,760px);overflow:auto;background:#101114;color:#f5f5f7;border:1px solid #292b31;border-radius:22px;padding:17px 16px calc(18px + env(safe-area-inset-bottom));box-shadow:0 18px 60px #0009;font-family:inherit}
+.ng-image-settings-head{display:flex;align-items:center;justify-content:space-between;padding-bottom:13px;border-bottom:1px solid #303137;margin-bottom:15px}
+.ng-image-settings-head h2{font-size:17px;margin:0;font-weight:650}
+.ng-image-settings-head button{border:0;background:transparent;color:#bfc3cc;font-size:27px;line-height:1;padding:2px 7px}
+.ng-image-setting-label{display:flex;align-items:center;justify-content:space-between;color:#f0f0f3;font-size:13px;margin:14px 1px 9px}
+.ng-image-setting-label span+span{color:#8e929d;font-size:11px}
+.ng-image-shapes,.ng-image-sizes,.ng-image-counts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.ng-image-shapes button,.ng-image-sizes button,.ng-image-counts button{min-height:43px;border:1px solid #292b32;border-radius:9px;background:#17191e;color:#c9cbd2;font-size:12px;font-weight:600;padding:7px 5px}
+.ng-image-shapes button[aria-pressed=true],.ng-image-sizes button[aria-pressed=true],.ng-image-counts button[aria-pressed=true]{border-color:#8064ff;background:#5c45d9;color:#fff;box-shadow:0 0 0 1px #8064ff inset}
+.ng-image-shapes small{display:block;color:#c7c1ff;font-size:9px;margin-top:2px}
+.ng-image-extra-shape{display:none!important}
+.ng-image-shapes.show-all .ng-image-extra-shape{display:block!important}
+.ng-image-fewer{display:block;margin:9px auto 14px;border:1px solid #30323a;border-radius:18px;background:#17191e;color:#c8c9d0;padding:7px 15px;font-size:11px}
+.ng-image-sizes{grid-template-columns:repeat(4,minmax(0,1fr))}
+.ng-image-counts{grid-template-columns:repeat(4,minmax(0,1fr))}
+.ng-image-credit-summary{margin-top:14px;background:#17191e;border:1px solid #292b32;border-radius:12px;padding:12px}
+.ng-image-credit-summary>div{display:flex;justify-content:space-between;gap:10px;font-size:12px;margin-bottom:8px}
+.ng-image-credit-summary>div span{color:#aeb2bd}.ng-image-credit-summary strong{font-weight:650}
+.ng-image-credit-summary small{display:block;color:#9297a4;font-size:10px;line-height:1.45;margin-top:6px}
+.ng-image-settings-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
+.ng-image-settings-actions button{min-height:43px;border-radius:11px;border:1px solid #343640;background:#20222a;color:#eee;font-weight:650}
+.ng-image-settings-actions button:last-child{background:linear-gradient(110deg,#087fbe,#6945e8);border:0;color:#fff}
+@media(min-width:600px){.ng-image-settings-overlay{align-items:center}.ng-image-settings-sheet{max-height:85vh}}
+</style>
 </head>
 <body>
 <div class="app">
@@ -205,6 +233,7 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
   <button class="it is-active" type="button" data-feature="0" aria-pressed="true"><img alt="" src="assets/ai-video-editor.webp"><div><b>AI Video Editor</b><span>Edit videos with AI tools and effects</span><small class="feature-model">Video editing</small></div></button>
   <button class="it" type="button" data-feature="1" aria-pressed="false"><img alt="" src="assets/image-to-video.webp"><div><b>Image to Video</b><span>Turn still images into animated videos</span><small class="feature-model">Photo animation</small></div></button>
   <button class="it" type="button" data-feature="2" aria-pressed="false"><img alt="" src="assets/text-to-video.jpg"><div><b>Text to Video</b><span>Generate Video from a Text Prompt</span><small class="feature-model">Text-based video creation</small></div></button>
+  <button class="it" type="button" data-feature="8" aria-pressed="false"><img alt="" src="assets/image-to-video.webp"><div><b>Image Generate</b><span>Create images from text prompts</span><small class="feature-model">AI image creation</small></div></button>
   <button class="it" type="button" data-feature="3" aria-pressed="false"><img alt="" src="assets/video-extender.jpg"><div><b>Video Extender</b><span>Make Your Video Longer with AI</span><small class="feature-model">Video extension</small></div></button>
   <button class="it extra-feature" type="button" data-feature="4" aria-pressed="false"><img alt="" src="assets/text-to-song.webp"><div><b>Text to Music</b><span>Create original music from text prompts</span></div></button>
   <button class="it extra-feature" type="button" data-feature="5" aria-pressed="false"><img alt="" src="assets/text-to-music-video.webp"><div><b>Music to Video</b><span>Create videos that match your music</span></div></button>
@@ -222,11 +251,34 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
   <div class="tb">
     <button class="pl p1" id="motion16Add" type="button" aria-label="Add image or video">＋</button>
     <select class="pl p2" id="motion16ModelSelect" aria-label="AI model"><option value="auto">NextGen Auto</option><option value="openai">OpenAI / GPT · connection required</option><option value="gemini">Gemini · connection required</option><option value="claude">Claude · connection required</option><option value="qwen">Qwen · connection required</option><option value="sarvam">Sarvam · connection required</option></select>
-    <select class="pl p3" id="motion16Settings" aria-label="Generation settings"><option value="1">×1 Auto</option><option value="2">×2</option><option value="4">×4</option></select>
+    <select class="pl p3" id="motion16Settings" aria-label="Video generation settings"><option value="1">×1 Auto</option><option value="2">×2</option><option value="4">×4</option></select>
+    <button class="pl p3 image-settings-trigger" id="motion16ImageSettings" type="button" aria-haspopup="dialog" aria-controls="ng-image-settings-overlay" hidden>×1 · 1K · Auto</button>
     <button class="motion16-mic" id="motion16Mic" type="button" aria-label="Voice input"><svg width="14" height="20" viewBox="0 0 14 20" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><rect x="3.5" y="1" width="7" height="11" rx="3.5" fill="#fff"/><path d="M1 9a6 6 0 0 0 12 0M7 15v4"/></svg></button>
     <button class="snd" id="motion16Generate" type="button" aria-label="Generate"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5M5 11l7-7 7 7"/></svg></button>
   </div>
   <div class="motion16-notice" id="motion16Notice" role="status" aria-live="polite"></div>
+</div>
+<div class="ng-image-settings-overlay" id="ng-image-settings-overlay" hidden>
+ <section class="ng-image-settings-sheet" role="dialog" aria-modal="true" aria-labelledby="ng-image-settings-title">
+  <div class="ng-image-settings-head"><h2 id="ng-image-settings-title">Image Settings</h2><button type="button" id="ng-image-settings-close" aria-label="Close image settings">×</button></div>
+  <div class="ng-image-setting-label"><span>Shape</span><span id="ng-image-shape-current">Auto · 1:1</span></div>
+  <div class="ng-image-shapes" id="ng-image-shape-options">
+   <button type="button" data-shape="Auto" aria-pressed="true">Auto<small>1:1 default</small></button>
+   <button type="button" data-shape="1:1" aria-pressed="false">1:1</button><button type="button" data-shape="16:9" aria-pressed="false">16:9</button>
+   <button type="button" data-shape="9:16" aria-pressed="false">9:16</button><button type="button" data-shape="4:3" aria-pressed="false">4:3</button><button type="button" data-shape="3:4" aria-pressed="false">3:4</button>
+   <button type="button" data-shape="3:2" aria-pressed="false">3:2</button><button type="button" data-shape="2:3" aria-pressed="false">2:3</button><button type="button" data-shape="5:4" aria-pressed="false">5:4</button>
+   <button type="button" data-shape="4:5" aria-pressed="false">4:5</button>
+   <button class="ng-image-extra-shape" type="button" data-shape="21:9" aria-pressed="false">21:9</button><button class="ng-image-extra-shape" type="button" data-shape="1:4" aria-pressed="false">1:4</button>
+   <button class="ng-image-extra-shape" type="button" data-shape="4:1" aria-pressed="false">4:1</button><button class="ng-image-extra-shape" type="button" data-shape="1:8" aria-pressed="false">1:8</button><button class="ng-image-extra-shape" type="button" data-shape="8:1" aria-pressed="false">8:1</button>
+  </div>
+  <button type="button" class="ng-image-fewer" id="ng-image-shapes-toggle" aria-expanded="false">More shapes⌄</button>
+  <div class="ng-image-setting-label"><span>Size</span><span>Output resolution</span></div>
+  <div class="ng-image-sizes" id="ng-image-size-options"><button type="button" data-size="1K" aria-pressed="true">1K</button><button type="button" data-size="2K" aria-pressed="false">2K</button><button type="button" data-size="4K" aria-pressed="false">4K</button><button type="button" data-size="8K" aria-pressed="false">8K</button></div>
+  <div class="ng-image-setting-label"><span>Number of images</span><span>Up to ×8</span></div>
+  <div class="ng-image-counts" id="ng-image-count-options"><button type="button" data-count="1" aria-pressed="true">×1</button><button type="button" data-count="2" aria-pressed="false">×2</button><button type="button" data-count="3" aria-pressed="false">×3</button><button type="button" data-count="4" aria-pressed="false">×4</button><button type="button" data-count="5" aria-pressed="false">×5</button><button type="button" data-count="6" aria-pressed="false">×6</button><button type="button" data-count="7" aria-pressed="false">×7</button><button type="button" data-count="8" aria-pressed="false">×8</button></div>
+  <div class="ng-image-credit-summary"><div><span>Image total</span><strong id="ng-image-total">×1 image</strong></div><div><span>Credit estimate</span><strong id="ng-image-credit">Awaiting provider rates</strong></div><small>Exact credits depend on the selected resolution and connected provider. No credits will be deducted until a verified quote and your confirmation are available.</small></div>
+  <div class="ng-image-settings-actions"><button type="button" id="ng-image-settings-cancel">Cancel</button><button type="button" id="ng-image-settings-apply">Apply Settings</button></div>
+ </section>
 </div>
 
 <div class="ng-fab-stack" aria-label="Quick actions" style="z-index:70">
@@ -266,7 +318,8 @@ const data=[
  {title:'Text to Music',model:'Text to Music',mode:'Music creation',caption:'Create original music from a simple text prompt.',video:'https://videos.pexels.com/video-files/8135086/8135086-hd_1920_1080_25fps.mp4',thumb:'assets/text-to-song.webp',prompt:'Create an uplifting original music track',overlay:false},
  {title:'Music to Video',model:'Music to Video',mode:'Music to video',caption:'Create a video experience from your music.',video:'https://videos.pexels.com/video-files/4962190/4962190-uhd_3840_2160_24fps.mp4',thumb:'assets/text-to-music-video.webp',prompt:'Create a cinematic video that matches this music',overlay:false},
  {title:'Text to Dance',model:'Text to Dance',mode:'Dance video',caption:'Turn an idea into a dance performance.',video:'https://videos.pexels.com/video-files/6939803/6939803-hd_1920_1080_30fps.mp4',thumb:'assets/text-to-dance-video.webp',prompt:'Create a smooth energetic dance performance',overlay:false},
- {title:'Upscale 4K / 8K',model:'Upscale 4K / 8K',mode:'Video enhancement',caption:'Enhance video resolution up to 4K or 8K where supported.',video:'https://videos.pexels.com/video-files/28838714/12491987_3840_2160_25fps.mp4',thumb:'assets/upscale-4k-8k.webp',prompt:'Upscale and enhance this video to 4K or 8K quality',overlay:false}
+ {title:'Upscale 4K / 8K',model:'Upscale 4K / 8K',mode:'Video enhancement',caption:'Enhance video resolution up to 4K or 8K where supported.',video:'https://videos.pexels.com/video-files/28838714/12491987_3840_2160_25fps.mp4',thumb:'assets/upscale-4k-8k.webp',prompt:'Upscale and enhance this video to 4K or 8K quality',overlay:false},
+ {title:'Image Generate',model:'Image Generate',mode:'Text to image',caption:'Create images from text prompts in your selected shape and resolution.',video:null,thumb:'assets/image-to-video.webp',prompt:'Describe the image you want to create',overlay:false,imageMode:true}
 ];
 const $=id=>document.getElementById(id),hero=$('motion16HeroImage'),overlay=$('motion16Overlay'),list=$('motion16FeatureList'),caption=$('motion16Caption'),promptDemo=$('motion16PromptDemo'),composer=$('motion16Composer'),prompt=$('motion16Prompt'),notice=$('motion16Notice');
 let active=0,timer=null,noticeTimer=null,attachedFile=null;
@@ -282,25 +335,31 @@ function selectFeature(index,manual=false){
  demoVideo.load();
  demoVideo.hidden=true;
  heroImage.src=item.thumb;
- heroImage.alt=item.title+' matching thumbnail preview';
+ heroImage.alt=item.title+' preview';
  heroImage.style.display='block';
- demoVideo.poster=item.thumb;
- demoVideo.muted=true;
- demoVideo.loop=true;
- demoVideo.playsInline=true;
- demoVideo.preload='auto';
- demoVideo.oncanplay=()=>{
-   demoVideo.hidden=false;
-   heroImage.style.display='none';
-   demoVideo.play().catch(()=>{demoVideo.hidden=true;heroImage.style.display='block';});
- };
- demoVideo.onerror=()=>{
-   demoVideo.hidden=true;
-   heroImage.style.display='block';
-   inform('Demo video could not load. Showing matching thumbnail instead.');
- };
- demoVideo.src=item.video;
- demoVideo.load();
+ if(item.imageMode){
+   demoVideo.removeAttribute('poster');
+ }else{
+   demoVideo.poster=item.thumb;
+   demoVideo.muted=true;
+   demoVideo.loop=true;
+   demoVideo.playsInline=true;
+   demoVideo.preload='auto';
+   demoVideo.oncanplay=()=>{
+     demoVideo.hidden=false;
+     heroImage.style.display='none';
+     demoVideo.play().catch(()=>{demoVideo.hidden=true;heroImage.style.display='block';});
+   };
+   demoVideo.onerror=()=>{
+     demoVideo.hidden=true;
+     heroImage.style.display='block';
+     inform('Demo video could not load. Showing matching thumbnail instead.');
+   };
+   demoVideo.src=item.video;
+   demoVideo.load();
+ }
+ $('motion16Settings').hidden=!!item.imageMode;
+ $('motion16ImageSettings').hidden=!item.imageMode;
  $('motion16Model').textContent=item.model;$('motion16Mode').textContent=item.mode;$('motion16Thumb').src=item.thumb;
  $('motion16Thumb').loading='eager';$('motion16Thumb').decoding='async';
  caption.textContent=item.caption;
@@ -326,7 +385,7 @@ $('motion16File').addEventListener('change',e=>{const f=e.target.files&&e.target
 $('motion16Clear').addEventListener('click',()=>{prompt.value='';$('motion16File').value='';attachedFile=null;$('motion16Attachment').hidden=true;$('motion16Attachment').textContent='';prompt.focus()});
 $('motion16Upgrade').addEventListener('click',()=>inform('Subscription plans are available from the NextGen account menu.'));
 $('motion16Mic').addEventListener('click',()=>{const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){inform('Voice input is not supported in this browser.');return}const rec=new SR();rec.lang='en-IN';rec.interimResults=false;rec.onresult=e=>{prompt.value=(prompt.value+' '+e.results[0][0].transcript).trim()};rec.onerror=()=>inform('Voice input could not start.');rec.start();inform('Listening… speak your prompt.');});
-$('motion16Generate').addEventListener('click',()=>{if(!prompt.value.trim()&&!attachedFile){inform('Write a prompt or add an image/video first.');prompt.focus();return}inform('Your prompt is ready. Connect an approved AI video provider to enable real generation.');});
+$('motion16Generate').addEventListener('click',()=>{if(!prompt.value.trim()&&!attachedFile){inform('Write a prompt or add an image/video first.');prompt.focus();return}inform(active===8?'Image settings are prepared. Connect an approved image provider and verified credit rates to enable generation. No credits were used.':'Your prompt is ready. Connect an approved AI video provider to enable real generation.');});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)clearInterval(timer);else resetAutoplay()});
 selectFeature(0,false);resetAutoplay();
 })();
@@ -366,5 +425,41 @@ selectFeature(0,false);resetAutoplay();
 })();
 </script>
 <link rel="stylesheet" href="./hamburger-home.css?v=20261120-chevron-textmatch1"><script src="./hamburger-menu.js?v=20261120-chevron-even-gap1" defer></script>
+<script id="ng-image-settings-controller">
+(function(){
+ const overlay=document.getElementById('ng-image-settings-overlay');
+ const open=document.getElementById('motion16ImageSettings');
+ const close=document.getElementById('ng-image-settings-close');
+ const cancel=document.getElementById('ng-image-settings-cancel');
+ const apply=document.getElementById('ng-image-settings-apply');
+ const toggle=document.getElementById('ng-image-shapes-toggle');
+ const shapeLabel=document.getElementById('ng-image-shape-current');
+ const total=document.getElementById('ng-image-total');
+ const credit=document.getElementById('ng-image-credit');
+ if(!overlay||!open)return;
+ let selected={shape:'Auto',size:'1K',count:1},draft={...selected};
+ const groups=[['#ng-image-shape-options','data-shape','shape'],['#ng-image-size-options','data-size','size'],['#ng-image-count-options','data-count','count']];
+ function mark(selector,attr,value){document.querySelectorAll(selector+' ['+attr+']').forEach(b=>b.setAttribute('aria-pressed',String(b.getAttribute(attr)===String(value))))}
+ function paint(){
+  groups.forEach(([selector,attr,key])=>mark(selector,attr,draft[key]));
+  shapeLabel.textContent=draft.shape+(draft.shape==='Auto'?' · 1:1':'');
+  total.textContent='×'+draft.count+' image'+(draft.count===1?'':'s');
+  credit.textContent='Awaiting provider rates';
+ }
+ function show(){if(window.motion16ActiveFeature!==8 && !document.querySelector('[data-feature="8"].is-active'))return;draft={...selected};paint();overlay.hidden=false;document.body.style.overflow='hidden';close.focus()}
+ function hide(){overlay.hidden=true;document.body.style.overflow='';open.focus()}
+ open.addEventListener('click',show);close.addEventListener('click',hide);cancel.addEventListener('click',hide);
+ overlay.addEventListener('click',e=>{if(e.target===overlay)hide()});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!overlay.hidden)hide()});
+ groups.forEach(([selector,attr,key])=>document.querySelectorAll(selector+' ['+attr+']').forEach(button=>button.addEventListener('click',()=>{draft[key]=key==='count'?Number(button.getAttribute(attr)):button.getAttribute(attr);paint()})));
+ toggle.addEventListener('click',()=>{const grid=document.getElementById('ng-image-shape-options');const expanded=grid.classList.toggle('show-all');toggle.setAttribute('aria-expanded',String(expanded));toggle.textContent=expanded?'Fewer shapes⌃':'More shapes⌄'});
+ apply.addEventListener('click',()=>{
+  selected={...draft};
+  open.textContent='×'+selected.count+' · '+selected.size+' · '+selected.shape;
+  paint();hide();
+ });
+ paint();
+})();
+</script>
 </body>
 </html>
