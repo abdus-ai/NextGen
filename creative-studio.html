@@ -255,7 +255,8 @@ body{background:#020d20}
  <div class="studio-grid">
   <div class="panel">
    <div class="mode-tabs"><button class="active" data-mode="video">▣ Video</button><button data-mode="image">▧ Image</button></div>
-   <div class="field"><label>MODEL</label><select id="model-select"><option>Auto Select (Recommended)</option><option>WAN 2.2</option><option>LTX Video</option><option>HunyuanVideo</option><option>Qwen3-VL · Understanding</option><option>Veo family · Provider integration</option><option>Omni Flash · Reference</option><option>Meta Video · Reference</option><option>Grok Video · Reference</option></select></div>
+   <div class="field"><label>AI ENGINE</label><select id="ng-engine-mode"><option value="auto" selected>NextGen AI Auto (Recommended)</option><option value="manual">Manual Tool Selection</option></select></div>
+   <div class="field" id="ng-manual-tool-wrap" hidden><label id="ng-manual-tool-label">SELECT CREATION TOOL</label><select id="ng-manual-tool"></select><small style="color:#9ba8c3">Only user-facing creation tools are shown. Provider and model details stay in the background.</small></div>
    <div class="field"><label>REFERENCE IMAGE / VIDEO / AUDIO</label><label class="upload" for="reference-file"><span>＋</span><span><strong>Choose a file</strong><br>Photo, video or audio reference</span></label><input id="reference-file" type="file" accept="image/*,video/*,audio/*"><div id="file-preview" class="file-preview"></div></div>
    <div class="field"><label>DESCRIBE YOUR CREATION</label><textarea id="main-prompt" maxlength="3000" placeholder="Describe the scene, movement, camera, lighting, style and sound..."></textarea><div style="display:flex;justify-content:space-between;color:#8491ae;font-size:11px"><span>Be specific about subject, motion and camera.</span><span id="prompt-count">0 / 3000</span></div></div>
    <div class="field"><label>QUICK PROMPT STARTERS</label><div class="tool-grid" id="prompt-starters"><button type="button" class="secondary" data-prompt="cinematic portrait, natural skin texture, soft cinematic lighting, subtle camera movement">Cinematic portrait</button><button type="button" class="secondary" data-prompt="dynamic dance performance, full body visible, smooth coordinated motion, energetic camera">AI Dance</button><button type="button" class="secondary" data-prompt="product showcase, elegant studio lighting, slow orbit camera, premium commercial look">Product showcase</button><button type="button" class="secondary" data-prompt="beautiful landscape, atmospheric light, gentle camera push-in, realistic details">Landscape</button></div></div>
@@ -271,12 +272,10 @@ body{background:#020d20}
    <div class="field" id="compare-panel" hidden>
     <label>COMPARE MODE · SELECT MODELS</label>
     <div class="tool-grid" id="compare-models">
-      <label class="tool"><input type="checkbox" value="WAN 2.2"> <b>WAN 2.2</b><span>Video generation · planned</span></label>
-      <label class="tool"><input type="checkbox" value="LTX Video"> <b>LTX Video</b><span>Video generation · planned</span></label>
-      <label class="tool"><input type="checkbox" value="HunyuanVideo"> <b>HunyuanVideo</b><span>Video generation · planned</span></label>
-      <label class="tool"><input type="checkbox" value="Veo family"> <b>Veo family</b><span>Provider integration · planned</span></label>
-      <label class="tool"><input type="checkbox" value="Omni Flash"> <b>Omni Flash</b><span>Reference provider · not connected</span></label>
-      <label class="tool"><input type="checkbox" value="Meta Video"> <b>Meta Video</b><span>Reference provider · not connected</span></label>
+      <label class="tool"><input type="checkbox" value="Cinematic Video"> <b>Cinematic Video</b><span>Compare visual style and motion</span></label>
+      <label class="tool"><input type="checkbox" value="Character Animation"> <b>Character Animation</b><span>Compare character movement</span></label>
+      <label class="tool"><input type="checkbox" value="Image to Video"> <b>Image to Video</b><span>Compare image animation results</span></label>
+      <label class="tool"><input type="checkbox" value="Text to Video"> <b>Text to Video</b><span>Compare prompt-based results</span></label>
     </div>
     <div id="compare-summary" class="notice">Select at least two models to prepare a comparison. This will not run generation.</div>
    </div>
@@ -285,13 +284,13 @@ body{background:#020d20}
    <div class="notice" id="studio-notice">Prototype only: this screen does not send files to an AI provider or spend credits. Provider APIs, account permissions, pricing and generation jobs must be connected and tested before activation.</div>
   </div>
   <aside class="panel">
-   <h2>Explore AI Models</h2>
+   <h2>Available Creative Tools</h2>
    <div class="model-list">
-    <div class="model"><div><b>WAN 2.2</b><small>Video generation · planned integration</small></div><em>Research</em></div>
-    <div class="model"><div><b>LTX Video</b><small>Video generation · planned integration</small></div><em>Research</em></div>
-    <div class="model"><div><b>HunyuanVideo</b><small>Video generation · planned integration</small></div><em>Research</em></div>
-    <div class="model"><div><b>Qwen3-VL</b><small>Image / video understanding</small></div><em>Planned</em></div>
-    <div class="model"><div><b>Image models</b><small>Prompt-to-image and image editing</small></div><em>Planned</em></div>
+    <div class="model"><div><b>Text to Video</b><small>Create a video from a written prompt</small></div><em>Tool</em></div>
+    <div class="model"><div><b>Image to Video</b><small>Animate a reference image</small></div><em>Tool</em></div>
+    <div class="model"><div><b>Character Animation</b><small>Animate a subject while preserving its appearance</small></div><em>Tool</em></div>
+    <div class="model"><div><b>Video Editing</b><small>Extend, transform and enhance clips</small></div><em>Tool</em></div>
+    <div class="model"><div><b>Audio & Music</b><small>Create and work with audio</small></div><em>Tool</em></div>
    </div>
    <div class="section"><h2>Creation Modes</h2><div class="tool-grid">
     <div class="tool"><b>Text to Video</b><span>Generate a clip from a prompt</span></div>
@@ -447,6 +446,46 @@ body{background:#020d20}
   });
  }
  search.addEventListener('input',()=>filter(search.value));
+})();
+</script>
+<script id="nextgen-feature-auto-tool-routing-v1">
+(function(){
+ const featureTools={
+  'Image Generate':['Text to Image','Image Editing','Image Enhancement','Background Removal','Image Upscaling'],
+  'Video Generate':['Text to Video','Cinematic Video','Short Video / Reels','Long-form Video','AI Dance Video'],
+  'Image to Video':['Image Animation','Character Motion','Camera Motion','Cinematic Image to Video'],
+  'Text to Video':['Prompt to Video','Story to Video','Scene-by-Scene Video','Cinematic Text to Video'],
+  'Audio / Music Generate':['Text to Music','Song Generation','Instrumental Music','Voice Generation','Sound Effects'],
+  'More Features':['Video Editing','Video Extension','Video Upscaling','Clip Joining','Subtitle & Caption Tools']
+ };
+ let activeFeature='Video Generate';
+ function setFeature(feature){
+  activeFeature=featureTools[feature]?feature:'Video Generate';
+  document.querySelectorAll('[data-ng-feature-title]').forEach(el=>el.textContent=activeFeature);
+  const select=document.getElementById('ng-manual-tool');
+  if(select){select.innerHTML='';featureTools[activeFeature].forEach(tool=>{const option=document.createElement('option');option.value=tool;option.textContent=tool;select.append(option);});}
+  document.querySelectorAll('[data-ng-feature-context]').forEach(el=>el.textContent='Feature selected: '+activeFeature);
+ }
+ function addPanel(viewId){
+  const view=document.getElementById(viewId);if(!view||view.querySelector('.ng-feature-routing'))return;
+  const panel=document.createElement('div');panel.className='panel ng-feature-routing';panel.style.marginBottom='14px';
+  panel.innerHTML='<h2>Creation Setup</h2><div class="field"><label>SELECTED FEATURE</label><strong data-ng-feature-title style="font-size:15px;color:#fff">Video Generate</strong></div><div class="field"><label>AI ENGINE</label><select class="ng-engine-mode"><option value="auto" selected>NextGen AI Auto (Recommended)</option><option value="manual">Manual Tool Selection</option></select></div><div class="field ng-manual-wrap" hidden><label>CHOOSE TOOL</label><select class="ng-manual-tool"></select></div><small data-ng-feature-context style="color:#9ba8c3">Feature selected: Video Generate. Provider and model details are managed privately by NextGen AI.</small>';
+  view.insertBefore(panel,view.firstChild);
+  const engine=panel.querySelector('.ng-engine-mode'),wrap=panel.querySelector('.ng-manual-wrap'),toolSelect=panel.querySelector('.ng-manual-tool');
+  engine.addEventListener('change',()=>{wrap.hidden=engine.value!=='manual';});
+  panel._setFeature=function(feature){panel.querySelector('[data-ng-feature-title]').textContent=feature;panel.querySelector('[data-ng-feature-context]').textContent='Feature selected: '+feature+'. Provider and model details are managed privately by NextGen AI.';toolSelect.innerHTML='';(featureTools[feature]||featureTools['More Features']).forEach(tool=>{const o=document.createElement('option');o.value=tool;o.textContent=tool;toolSelect.append(o);});};
+  panel._setFeature(activeFeature);
+ }
+ addPanel('view-discover');addPanel('view-imagine');addPanel('view-tools');
+ document.querySelectorAll('[data-studio-view]').forEach(card=>card.addEventListener('click',()=>{
+  const label=card.innerText.trim().replace(/\s+/g,' ');
+  const feature=label==='Photos'?'Image Generate':label==='Videos'?'Video Generate':label==='Audio / Music'?'Audio / Music Generate':label==='Text History'?'More Features':label;
+  setFeature(feature);
+  document.querySelectorAll('.ng-feature-routing').forEach(panel=>panel._setFeature&&panel._setFeature(activeFeature));
+ }));
+ const modelSelect=document.getElementById('model-select');if(modelSelect){modelSelect.closest('.field').hidden=true;}
+ document.querySelectorAll('#compare-models input').forEach(x=>x.addEventListener('change',()=>{}));
+ setFeature(activeFeature);
 })();
 </script>
 </body>
