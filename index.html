@@ -360,10 +360,13 @@ function selectFeature(index,manual=false){
  }
  const videoSettings=$('motion16Settings');
  const imageSettings=$('motion16ImageSettings');
+ // Keep exactly one settings control visible for the active generation mode.
  videoSettings.hidden=!!item.imageMode;
- videoSettings.style.display=item.imageMode?'none':'flex';
+ videoSettings.style.setProperty('display',item.imageMode?'none':'flex','important');
  imageSettings.hidden=!item.imageMode;
- imageSettings.style.display=item.imageMode?'flex':'none';
+ imageSettings.style.setProperty('display',item.imageMode?'flex':'none','important');
+ imageSettings.setAttribute('aria-hidden',String(!item.imageMode));
+ videoSettings.setAttribute('aria-hidden',String(!!item.imageMode));
  $('motion16Model').textContent=item.model;$('motion16Mode').textContent=item.mode;$('motion16Thumb').src=item.thumb;
  $('motion16Thumb').loading='eager';$('motion16Thumb').decoding='async';
  caption.textContent=item.caption;
