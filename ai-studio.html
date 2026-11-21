@@ -700,7 +700,7 @@ render();
  const featureParam=new URLSearchParams(window.location.search).get('feature');
  if(featureParam!==null){
   const homeFeatureNames=['AI Video Editor','Image to Video','Text to Video','Video Extender','Text to Music','Music to Video','Text to Dance','Upscale 4K / 8K'];
-  const homeFeatureIndex=/^\\d+$/.test(featureParam)?Number(featureParam):-1;
+  const homeFeatureIndex=/^\d+$/.test(featureParam)?Number(featureParam):-1;
   const selectedFeature=homeFeatureIndex>=0&&homeFeatureIndex<homeFeatureNames.length?homeFeatureNames[homeFeatureIndex]:featureParam;
   if(featureTools[selectedFeature]){
    setFeature(selectedFeature);
