@@ -175,6 +175,22 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
 .comp .ph{font-size:15px!important;line-height:18px!important;}
 .comp .p2,.comp .p3{font-size:13px!important;}
 .comp .up{font-size:15px!important;}
+
+.ng-model-trigger{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:8px!important;text-align:left!important;cursor:pointer!important;color:#eef8ff!important;background:linear-gradient(135deg,#0d2744,#102c4a)!important;border:1px solid rgba(79,181,235,.38)!important;border-radius:22px!important;padding:0 12px!important}
+.ng-model-trigger svg{flex:0 0 auto;color:#b8dff8}
+.ng-model-menu-backdrop[hidden],.ng-model-menu[hidden]{display:none!important}
+.ng-model-menu-backdrop{position:fixed;inset:0;z-index:10020;background:rgba(1,7,19,.62)}
+.ng-model-menu{position:fixed;z-index:10021;left:max(14px,env(safe-area-inset-left));right:max(14px,env(safe-area-inset-right));bottom:calc(82px + env(safe-area-inset-bottom));max-width:620px;margin:0 auto;padding:9px;background:linear-gradient(160deg,#0b1c34,#071326);border:1px solid rgba(57,184,238,.42);border-radius:22px;box-shadow:0 18px 48px #000b,0 0 22px rgba(0,174,255,.1);color:#eff8ff}
+.ng-model-option{display:flex;align-items:center;gap:13px;width:100%;min-height:62px;padding:10px 13px;border:0;border-radius:14px;background:transparent;color:#eaf5ff;text-align:left;font:inherit}
+.ng-model-option+.ng-model-option{margin-top:3px}
+.ng-model-option.is-selected{background:linear-gradient(110deg,rgba(0,190,226,.17),rgba(85,73,222,.18));box-shadow:inset 3px 0 #28d5f3}
+.ng-model-option-icon{width:32px;height:32px;flex:0 0 32px;display:grid;place-items:center;border-radius:10px;background:linear-gradient(135deg,#087fbe,#7046e8);color:#fff;font-size:19px}
+.ng-model-option>span:nth-child(2){display:grid;gap:3px;min-width:0}
+.ng-model-option strong{font-size:14px;font-weight:650}
+.ng-model-option small{font-size:11px;color:#9db6d0}
+.ng-model-check{margin-left:auto;color:#32d8f4;font-size:18px}
+@media(min-width:600px){.ng-model-menu{bottom:100px;left:50%;right:auto;transform:translateX(-50%);width:min(420px,calc(100vw - 32px))}}
+
 </style>
 <style id="ng-image-settings-style">
 .image-settings-trigger{white-space:nowrap;cursor:pointer;font:inherit;display:flex;align-items:center;justify-content:center;gap:3px;width:auto!important;min-width:132px;padding:0 14px;flex:0 0 auto;color:#fff!important}.image-settings-trigger svg{display:block!important;visibility:visible!important;flex:none;width:18px;height:18px;opacity:1;stroke:#fff!important}
@@ -256,11 +272,20 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
   <input type="file" id="motion16File" accept="image/*,video/*" hidden>
   <div class="tb">
     <button class="pl p1" id="motion16Add" type="button" aria-label="Add image or video">＋</button>
-    <select class="pl p2" id="motion16ModelSelect" aria-label="AI model"><option value="auto">NextGen Auto</option><option value="openai">OpenAI / GPT · connection required</option><option value="gemini">Gemini · connection required</option><option value="claude">Claude · connection required</option><option value="qwen">Qwen · connection required</option><option value="sarvam">Sarvam · connection required</option></select>
+    <button class="pl p2 ng-model-trigger" id="motion16ModelSelect" type="button" aria-label="Choose AI model" aria-haspopup="dialog" aria-expanded="false"><span id="ng-model-selected-label">NextGen Auto</span><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></button>
     <button class="pl p3 image-settings-trigger" id="motion16ImageSettings" type="button" aria-label="Image settings: ×1 Auto" aria-haspopup="dialog" aria-controls="ng-image-settings-overlay"><span id="ng-image-settings-button-label">×1 Auto</span><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg></button>
     
     <button class="snd" id="motion16Generate" type="button" aria-label="Generate"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5M5 11l7-7 7 7"/></svg></button>
   </div>
+  <div class="ng-model-menu-backdrop" id="ng-model-menu-backdrop" hidden></div>
+  <section class="ng-model-menu" id="ng-model-menu" role="dialog" aria-label="Choose AI model" hidden>
+   <button type="button" class="ng-model-option is-selected" data-model="auto"><span class="ng-model-option-icon">✦</span><span><strong>NextGen Auto</strong><small>Recommended · Automatic model selection</small></span><span class="ng-model-check">✓</span></button>
+   <button type="button" class="ng-model-option" data-model="openai"><span class="ng-model-option-icon">◎</span><span><strong>OpenAI / GPT</strong><small>Connection required</small></span></button>
+   <button type="button" class="ng-model-option" data-model="gemini"><span class="ng-model-option-icon">✧</span><span><strong>Gemini</strong><small>Connection required</small></span></button>
+   <button type="button" class="ng-model-option" data-model="claude"><span class="ng-model-option-icon">◈</span><span><strong>Claude</strong><small>Connection required</small></span></button>
+   <button type="button" class="ng-model-option" data-model="qwen"><span class="ng-model-option-icon">❖</span><span><strong>Qwen</strong><small>Connection required</small></span></button>
+   <button type="button" class="ng-model-option" data-model="sarvam"><span class="ng-model-option-icon">✺</span><span><strong>Sarvam</strong><small>Connection required</small></span></button>
+  </section>
   <div class="motion16-notice" id="motion16Notice" role="status" aria-live="polite"></div>
 </div>
 <div class="ng-image-settings-overlay" id="ng-image-settings-overlay" hidden>
@@ -393,6 +418,21 @@ prompt.addEventListener('click',()=>{if(!composer.classList.contains('expanded')
 $('motion16Add').addEventListener('click',()=>$('motion16File').click());
 $('motion16File').addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];if(!f)return;attachedFile=f;$('motion16Attachment').hidden=false;$('motion16Attachment').textContent='＋ '+f.name;inform('Reference attached: '+f.name);});
 $('motion16Clear').addEventListener('click',()=>{prompt.value='';$('motion16File').value='';attachedFile=null;$('motion16Attachment').hidden=true;$('motion16Attachment').textContent='';prompt.focus()});
+const modelTrigger=$('motion16ModelSelect'),modelMenu=$('ng-model-menu'),modelBackdrop=$('ng-model-menu-backdrop'),modelLabel=$('ng-model-selected-label');
+const modelNames={auto:'NextGen Auto',openai:'OpenAI / GPT',gemini:'Gemini',claude:'Claude',qwen:'Qwen',sarvam:'Sarvam'};
+function closeModelMenu(){modelMenu.hidden=true;modelBackdrop.hidden=true;modelTrigger.setAttribute('aria-expanded','false')}
+function openModelMenu(){modelMenu.hidden=false;modelBackdrop.hidden=false;modelTrigger.setAttribute('aria-expanded','true')}
+modelTrigger.addEventListener('click',()=>modelMenu.hidden?openModelMenu():closeModelMenu());
+modelBackdrop.addEventListener('click',closeModelMenu);
+modelMenu.querySelectorAll('[data-model]').forEach(option=>option.addEventListener('click',()=>{
+ const key=option.dataset.model;
+ if(key!=='auto'){closeModelMenu();inform(modelNames[key]+' connection is not configured yet. NextGen Auto remains available.');return}
+ modelLabel.textContent=modelNames.auto;
+ modelMenu.querySelectorAll('[data-model]').forEach(item=>{const selected=item.dataset.model===key;item.classList.toggle('is-selected',selected);const check=item.querySelector('.ng-model-check');if(check)check.remove();if(selected){const mark=document.createElement('span');mark.className='ng-model-check';mark.textContent='✓';item.appendChild(mark)}});
+ closeModelMenu();
+}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModelMenu()});
+
 $('motion16Upgrade').addEventListener('click',()=>inform('Subscription plans are available from the NextGen account menu.'));
 
 $('motion16Generate').addEventListener('click',()=>{if(!prompt.value.trim()&&!attachedFile){inform('Write a prompt or add an image/video first.');prompt.focus();return}inform(active===8?'Image settings are prepared. Connect an approved image provider and verified credit rates to enable generation. No credits were used.':'Your prompt is ready. Connect an approved AI video provider to enable real generation.');});
