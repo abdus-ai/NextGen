@@ -185,6 +185,15 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
 .ng-model-option+.ng-model-option{margin-top:3px}
 .ng-model-option.is-selected{background:linear-gradient(110deg,rgba(0,190,226,.17),rgba(85,73,222,.18));box-shadow:inset 3px 0 #28d5f3}
 .ng-model-option-icon{width:32px;height:32px;flex:0 0 32px;display:grid;place-items:center;border-radius:10px;background:linear-gradient(135deg,#087fbe,#7046e8);color:#fff;font-size:19px}
+.ng-model-option-icon img{display:block;width:21px;height:21px;object-fit:contain}
+.ng-model-option-icon.ng-logo-openai{background:#111820;border:1px solid rgba(255,255,255,.18)}
+.ng-model-option-icon.ng-logo-gemini{background:linear-gradient(135deg,#174ea6,#673ab7)}
+.ng-model-option-icon.ng-logo-claude{background:#d97757}
+.ng-model-option-icon.ng-logo-qwen{background:linear-gradient(135deg,#1677ff,#6c49e8)}
+.ng-model-option-icon.ng-logo-sarvam{background:linear-gradient(135deg,#ff8a3d,#e64d6e);font-family:serif;font-size:23px;font-weight:700}
+.ng-model-option-icon.ng-logo-nextgen{background:#0d2947}
+.ng-model-option-icon.ng-logo-nextgen svg{width:26px;height:26px;display:block}
+
 .ng-model-option>span:nth-child(2){display:grid;gap:3px;min-width:0}
 .ng-model-option strong{font-size:14px;font-weight:650}
 .ng-model-option small{font-size:11px;color:#9db6d0}
@@ -279,12 +288,12 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
   </div>
   <div class="ng-model-menu-backdrop" id="ng-model-menu-backdrop" hidden></div>
   <section class="ng-model-menu" id="ng-model-menu" role="dialog" aria-label="Choose AI model" hidden>
-   <button type="button" class="ng-model-option is-selected" data-model="auto"><span class="ng-model-option-icon">✦</span><span><strong>NextGen Auto</strong><small>Recommended · Automatic model selection</small></span><span class="ng-model-check">✓</span></button>
-   <button type="button" class="ng-model-option" data-model="openai"><span class="ng-model-option-icon">◎</span><span><strong>OpenAI / GPT</strong><small>Connection required</small></span></button>
-   <button type="button" class="ng-model-option" data-model="gemini"><span class="ng-model-option-icon">✧</span><span><strong>Gemini</strong><small>Connection required</small></span></button>
-   <button type="button" class="ng-model-option" data-model="claude"><span class="ng-model-option-icon">◈</span><span><strong>Claude</strong><small>Connection required</small></span></button>
-   <button type="button" class="ng-model-option" data-model="qwen"><span class="ng-model-option-icon">❖</span><span><strong>Qwen</strong><small>Connection required</small></span></button>
-   <button type="button" class="ng-model-option" data-model="sarvam"><span class="ng-model-option-icon">✺</span><span><strong>Sarvam</strong><small>Connection required</small></span></button>
+   <button type="button" class="ng-model-option is-selected" data-model="auto"><span class="ng-model-option-icon ng-logo-nextgen"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 24.5 14.5 37 20l-12.5 5.5L20 37l-5.5-11.5L3 20l11.5-5.5L20 3Z" fill="url(#ngAutoGrad)"/><defs><linearGradient id="ngAutoGrad" x1="3" y1="3" x2="37" y2="37"><stop stop-color="#23E5FF"/><stop offset=".55" stop-color="#3287FF"/><stop offset="1" stop-color="#C34DFF"/></linearGradient></defs></svg></span><span><strong>NextGen Auto</strong><small>Recommended · Automatic model selection</small></span><span class="ng-model-check">✓</span></button>
+   <button type="button" class="ng-model-option" data-model="openai"><span class="ng-model-option-icon ng-logo-openai"><img src="https://cdn.simpleicons.org/openai/FFFFFF" alt="OpenAI logo"></span><span><strong>OpenAI / GPT</strong><small>Connection required</small></span></button>
+   <button type="button" class="ng-model-option" data-model="gemini"><span class="ng-model-option-icon ng-logo-gemini"><img src="https://cdn.simpleicons.org/googlegemini/FFFFFF" alt="Google Gemini logo"></span><span><strong>Gemini</strong><small>Connection required</small></span></button>
+   <button type="button" class="ng-model-option" data-model="claude"><span class="ng-model-option-icon ng-logo-claude"><img src="https://cdn.simpleicons.org/anthropic/FFFFFF" alt="Anthropic Claude logo"></span><span><strong>Claude</strong><small>Connection required</small></span></button>
+   <button type="button" class="ng-model-option" data-model="qwen"><span class="ng-model-option-icon ng-logo-qwen"><img src="https://cdn.simpleicons.org/qwen/FFFFFF" alt="Qwen logo"></span><span><strong>Qwen</strong><small>Connection required</small></span></button>
+   <button type="button" class="ng-model-option" data-model="sarvam"><span class="ng-model-option-icon ng-logo-sarvam"><span aria-hidden="true">स</span></span><span><strong>Sarvam</strong><small>Connection required</small></span></button>
   </section>
   <div class="motion16-notice" id="motion16Notice" role="status" aria-live="polite"></div>
 </div>
