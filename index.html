@@ -358,8 +358,12 @@ function selectFeature(index,manual=false){
    demoVideo.src=item.video;
    demoVideo.load();
  }
- $('motion16Settings').hidden=!!item.imageMode;
- $('motion16ImageSettings').hidden=!item.imageMode;
+ const videoSettings=$('motion16Settings');
+ const imageSettings=$('motion16ImageSettings');
+ videoSettings.hidden=!!item.imageMode;
+ videoSettings.style.display=item.imageMode?'none':'flex';
+ imageSettings.hidden=!item.imageMode;
+ imageSettings.style.display=item.imageMode?'flex':'none';
  $('motion16Model').textContent=item.model;$('motion16Mode').textContent=item.mode;$('motion16Thumb').src=item.thumb;
  $('motion16Thumb').loading='eager';$('motion16Thumb').decoding='async';
  caption.textContent=item.caption;
