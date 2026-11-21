@@ -56,6 +56,11 @@ body{padding-bottom:env(safe-area-inset-bottom,0px)}
 .status-line strong{color:#f1f3ff}
 .bottom-note{margin:22px 0 0;text-align:center;color:#7885a3;font-size:11px;line-height:1.6}
 @media(max-width:760px){.studio-grid{grid-template-columns:1fr}.studio{padding:0 11px 24px}.studio-head{height:48px}.studio-hero{padding-top:17px}.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Keep the original Create Hub image geometry after the shared wrapper is added. */
+.hero .ng-shared-media-frame.hub-hero>img{position:absolute;inset:0;left:0!important;top:0!important;width:100%!important;height:100%!important}
+.hero .ng-shared-media-frame.hub-thumb>img{position:absolute;inset:0;left:0!important;top:0!important;width:100%!important;height:100%!important;margin:0!important;border:0!important;border-radius:7px!important}
+.list .it .ng-shared-media-frame>img{width:100%!important;height:100%!important;margin:0!important;border-radius:8px!important}
 </style>
 
 <style id="creative-studio-enhancements-v2">
