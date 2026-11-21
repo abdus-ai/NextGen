@@ -198,7 +198,7 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
 .ng-image-shapes.show-all .ng-image-extra-shape{display:block!important}
 .ng-image-fewer{display:block;margin:9px auto 14px;border:1px solid #30323a;border-radius:18px;background:#17191e;color:#c8c9d0;padding:7px 15px;font-size:11px}
 .ng-image-sizes{grid-template-columns:repeat(4,minmax(0,1fr))}
-.ng-image-counts{grid-template-columns:repeat(4,minmax(0,1fr))}
+.ng-image-counts{grid-template-columns:repeat(4,minmax(0,1fr))}.ng-image-counts button{min-height:48px}.ng-image-crown{color:#e6bb35;font-size:13px;margin-left:3px}.ng-image-credit-summary>div{align-items:center}
 .ng-image-credit-summary{margin-top:14px;background:#17191e;border:1px solid #292b32;border-radius:12px;padding:12px}
 .ng-image-credit-summary>div{display:flex;justify-content:space-between;gap:10px;font-size:12px;margin-bottom:8px}
 .ng-image-credit-summary>div span{color:#aeb2bd}.ng-image-credit-summary strong{font-weight:650}
@@ -245,6 +245,7 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
   <button class="it extra-feature" type="button" data-feature="5" aria-pressed="false"><img alt="" src="assets/text-to-music-video.webp"><div><b>Music to Video</b><span>Create videos that match your music</span></div></button>
   <button class="it extra-feature" type="button" data-feature="6" aria-pressed="false"><img alt="" src="assets/text-to-dance-video.webp"><div><b>Text to Dance</b><span>Generate dance videos from text prompts</span></div></button>
   <button class="it extra-feature" type="button" data-feature="7" aria-pressed="false"><img alt="" src="assets/upscale-4k-8k.webp"><div><b>Upscale 4K / 8K</b><span>Enhance video quality up to 4K and 8K</span></div></button>
+  <button class="it extra-feature" type="button" data-feature="8" aria-pressed="false"><img alt="" src="assets/image-to-video.webp"><div><b>Image Generate</b><span>Create images with shape and resolution settings</span></div></button>
 </div>
 </div>
 <div class="comp expanded" id="motion16Composer">
@@ -268,20 +269,21 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
   <div class="ng-image-settings-head"><h2 id="ng-image-settings-title">Image Settings</h2><button type="button" id="ng-image-settings-close" aria-label="Close image settings">×</button></div>
   <div class="ng-image-setting-label"><span>Shape</span><span id="ng-image-shape-current">Auto · 1:1</span></div>
   <div class="ng-image-shapes" id="ng-image-shape-options">
-   <button type="button" data-shape="Auto" aria-pressed="true">Auto<small>1:1 default</small></button>
-   <button type="button" data-shape="1:1" aria-pressed="false">1:1</button><button type="button" data-shape="16:9" aria-pressed="false">16:9</button>
-   <button type="button" data-shape="9:16" aria-pressed="false">9:16</button><button type="button" data-shape="4:3" aria-pressed="false">4:3</button><button type="button" data-shape="3:4" aria-pressed="false">3:4</button>
-   <button type="button" data-shape="3:2" aria-pressed="false">3:2</button><button type="button" data-shape="2:3" aria-pressed="false">2:3</button><button type="button" data-shape="5:4" aria-pressed="false">5:4</button>
-   <button type="button" data-shape="4:5" aria-pressed="false">4:5</button>
-   <button class="ng-image-extra-shape" type="button" data-shape="21:9" aria-pressed="false">21:9</button><button class="ng-image-extra-shape" type="button" data-shape="1:4" aria-pressed="false">1:4</button>
-   <button class="ng-image-extra-shape" type="button" data-shape="4:1" aria-pressed="false">4:1</button><button class="ng-image-extra-shape" type="button" data-shape="1:8" aria-pressed="false">1:8</button><button class="ng-image-extra-shape" type="button" data-shape="8:1" aria-pressed="false">8:1</button>
+   <button type="button" data-shape="Auto" aria-pressed="true">Auto</button>
+   <button type="button" data-shape="1:1" aria-pressed="false">1:1</button><button type="button" data-shape="9:16" aria-pressed="false">9:16</button>
+   <button type="button" data-shape="16:9" aria-pressed="false">16:9</button><button type="button" data-shape="4:3" aria-pressed="false">4:3</button><button type="button" data-shape="3:4" aria-pressed="false">3:4</button>
+   <button class="ng-image-extra-shape" type="button" data-shape="2:3" aria-pressed="false">2:3</button><button class="ng-image-extra-shape" type="button" data-shape="3:2" aria-pressed="false">3:2</button><button class="ng-image-extra-shape" type="button" data-shape="4:5" aria-pressed="false">4:5</button>
+   <button class="ng-image-extra-shape" type="button" data-shape="21:9" aria-pressed="false">21:9</button><button class="ng-image-extra-shape" type="button" data-shape="5:4" aria-pressed="false">5:4</button><button class="ng-image-extra-shape" type="button" data-shape="9:21" aria-pressed="false">9:21</button>
+   <button class="ng-image-extra-shape" type="button" data-shape="1:2" aria-pressed="false">1:2</button><button class="ng-image-extra-shape" type="button" data-shape="2:1" aria-pressed="false">2:1</button><button class="ng-image-extra-shape" type="button" data-shape="5:2" aria-pressed="false">5:2</button>
+   <button class="ng-image-extra-shape" type="button" data-shape="2:5" aria-pressed="false">2:5</button><button class="ng-image-extra-shape" type="button" data-shape="3:1" aria-pressed="false">3:1</button><button class="ng-image-extra-shape" type="button" data-shape="1:3" aria-pressed="false">1:3</button>
+   <button class="ng-image-extra-shape" type="button" data-shape="19.5:9" aria-pressed="false">19.5:9</button><button class="ng-image-extra-shape" type="button" data-shape="9:19.5" aria-pressed="false">9:19.5</button>
   </div>
   <button type="button" class="ng-image-fewer" id="ng-image-shapes-toggle" aria-expanded="false">More shapes⌄</button>
   <div class="ng-image-setting-label"><span>Size</span><span>Output resolution</span></div>
   <div class="ng-image-sizes" id="ng-image-size-options"><button type="button" data-size="1K" aria-pressed="true">1K</button><button type="button" data-size="2K" aria-pressed="false">2K</button><button type="button" data-size="4K" aria-pressed="false">4K</button><button type="button" data-size="8K" aria-pressed="false">8K</button></div>
-  <div class="ng-image-setting-label"><span>Number of images</span><span>Up to ×8</span></div>
-  <div class="ng-image-counts" id="ng-image-count-options"><button type="button" data-count="1" aria-pressed="true">×1</button><button type="button" data-count="2" aria-pressed="false">×2</button><button type="button" data-count="3" aria-pressed="false">×3</button><button type="button" data-count="4" aria-pressed="false">×4</button><button type="button" data-count="5" aria-pressed="false">×5</button><button type="button" data-count="6" aria-pressed="false">×6</button><button type="button" data-count="7" aria-pressed="false">×7</button><button type="button" data-count="8" aria-pressed="false">×8</button></div>
-  <div class="ng-image-credit-summary"><div><span>Image total</span><strong id="ng-image-total">×1 image</strong></div><div><span>Credit estimate</span><strong id="ng-image-credit">Awaiting provider rates</strong></div><small>Exact credits depend on the selected resolution and connected provider. No credits will be deducted until a verified quote and your confirmation are available.</small></div>
+  <div class="ng-image-setting-label"><span>Number of images</span><span>Up to ×4</span></div>
+  <div class="ng-image-counts" id="ng-image-count-options"><button type="button" data-count="1" aria-pressed="true">×1</button><button type="button" data-count="2" aria-pressed="false">×2 <span class="ng-image-crown">♛</span></button><button type="button" data-count="3" aria-pressed="false">×3 <span class="ng-image-crown">♛</span></button><button type="button" data-count="4" aria-pressed="false">×4 <span class="ng-image-crown">♛</span></button></div>
+  <div class="ng-image-credit-summary"><div><span id="ng-image-total">1 image total</span><span>0 Stars left</span></div><div><strong>You’ll be charged</strong><strong id="ng-image-credit">0.5 Star (estimate)</strong></div><small>Estimate only. Provider pricing and wallet deduction are not connected yet; no Stars are deducted.</small></div>
   <div class="ng-image-settings-actions"><button type="button" id="ng-image-settings-cancel">Cancel</button><button type="button" id="ng-image-settings-apply">Apply Settings</button></div>
  </section>
 </div>
@@ -453,8 +455,8 @@ selectFeature(0,false);resetAutoplay();
  function paint(){
   groups.forEach(([selector,attr,key])=>mark(selector,attr,draft[key]));
   shapeLabel.textContent=draft.shape+(draft.shape==='Auto'?' · 1:1':'');
-  total.textContent='×'+draft.count+' image'+(draft.count===1?'':'s');
-  credit.textContent='Awaiting provider rates';
+  total.textContent=draft.count+' image'+(draft.count===1?'':'s')+' total';
+  credit.textContent=(0.5*draft.count).toFixed(1)+' Star'+(draft.count===1?'':'s')+' (estimate)';
  }
  function show(){draft={...selected};paint();overlay.hidden=false;overlay.removeAttribute('hidden');document.body.style.overflow='hidden';close.focus()}
  function hide(){overlay.hidden=true;document.body.style.overflow='';open.focus()}
