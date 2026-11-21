@@ -776,5 +776,15 @@ render();
  }
 })();
 </script>
+<script id="nextgen-create-project-to-ai-studio-v1">
+(function(){
+ document.querySelectorAll('.reference-studio-card').forEach(card=>{
+  card.addEventListener('click',()=>{
+   const title=card.querySelector('.reference-card-title')?.textContent?.trim();
+   if(title) window.location.href='./ai-studio.html?feature='+encodeURIComponent(title);
+  });
+ });
+})();
+</script>
 </body>
 </html>
