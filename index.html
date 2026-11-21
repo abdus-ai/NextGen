@@ -453,7 +453,7 @@ selectFeature(0,false);resetAutoplay();
   total.textContent='×'+draft.count+' image'+(draft.count===1?'':'s');
   credit.textContent='Awaiting provider rates';
  }
- function show(){if(window.motion16ActiveFeature!==8 && !document.querySelector('[data-feature="8"].is-active'))return;draft={...selected};paint();overlay.hidden=false;document.body.style.overflow='hidden';close.focus()}
+ function show(){draft={...selected};paint();overlay.hidden=false;overlay.removeAttribute('hidden');document.body.style.overflow='hidden';close.focus()}
  function hide(){overlay.hidden=true;document.body.style.overflow='';open.focus()}
  open.addEventListener('click',show);close.addEventListener('click',hide);cancel.addEventListener('click',hide);
  overlay.addEventListener('click',e=>{if(e.target===overlay)hide()});
