@@ -706,7 +706,7 @@ render();
    setFeature(selectedFeature);
    document.querySelectorAll('.ng-feature-routing').forEach(panel=>panel._setFeature&&panel._setFeature(activeFeature));
    const targetView=selectedFeature==='Image Generate'?'imagine':(['Text to Music','Upscale 4K / 8K'].includes(selectedFeature)?'tools':'discover');
-   show(targetView);
+   document.querySelector('[data-view="'+targetView+'"]')?.click();
   }
  }
 })();
