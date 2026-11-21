@@ -288,12 +288,11 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
   </div>
   <div class="ng-model-menu-backdrop" id="ng-model-menu-backdrop" hidden></div>
   <section class="ng-model-menu" id="ng-model-menu" role="dialog" aria-label="Choose AI model" hidden>
-   <button type="button" class="ng-model-option is-selected" data-model="auto"><span class="ng-model-option-icon ng-logo-nextgen"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 24.5 14.5 37 20l-12.5 5.5L20 37l-5.5-11.5L3 20l11.5-5.5L20 3Z" fill="url(#ngAutoGrad)"/><defs><linearGradient id="ngAutoGrad" x1="3" y1="3" x2="37" y2="37"><stop stop-color="#23E5FF"/><stop offset=".55" stop-color="#3287FF"/><stop offset="1" stop-color="#C34DFF"/></linearGradient></defs></svg></span><span><strong>NextGen Auto</strong><small>Recommended · Automatic model selection</small></span><span class="ng-model-check">✓</span></button>
-   <button type="button" class="ng-model-option" data-model="openai"><span class="ng-model-option-icon ng-logo-openai"><img src="https://cdn.simpleicons.org/openai/FFFFFF" alt="OpenAI logo"></span><span><strong>OpenAI / GPT</strong><small>Connection required</small></span></button>
+   <button type="button" class="ng-model-option is-selected" data-model="auto"><span class="ng-model-option-icon ng-logo-nextgen"><svg viewBox="0 0 100 100" role="img" aria-label="NextGen logo"><defs><linearGradient id="ngUserBrandGradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#00E7F4"/><stop offset=".48" stop-color="#086BFF"/><stop offset="1" stop-color="#E000F5"/></linearGradient></defs><circle cx="50" cy="50" r="49" fill="url(#ngUserBrandGradient)"/><path d="M50 12 C54 35 65 46 91 50 C65 54 54 65 50 88 C46 65 35 54 9 50 C35 46 46 35 50 12Z" fill="#fff"/><path d="M75 16 C77 27 83 33 95 35 C83 37 77 43 75 54 C73 43 67 37 55 35 C67 33 73 27 75 16Z" fill="#fff"/></svg></span><span><strong>NextGen Auto</strong><small>Recommended · Automatic model selection</small></span><span class="ng-model-check">✓</span></button>
+   <button type="button" class="ng-model-option" data-model="openai"><span class="ng-model-option-icon ng-logo-openai"><img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT logo"></span><span><strong>ChatGPT</strong><small>Connection required</small></span></button>
    <button type="button" class="ng-model-option" data-model="gemini"><span class="ng-model-option-icon ng-logo-gemini"><img src="https://cdn.simpleicons.org/googlegemini/FFFFFF" alt="Google Gemini logo"></span><span><strong>Gemini</strong><small>Connection required</small></span></button>
    <button type="button" class="ng-model-option" data-model="claude"><span class="ng-model-option-icon ng-logo-claude"><img src="https://cdn.simpleicons.org/anthropic/FFFFFF" alt="Anthropic Claude logo"></span><span><strong>Claude</strong><small>Connection required</small></span></button>
-   <button type="button" class="ng-model-option" data-model="qwen"><span class="ng-model-option-icon ng-logo-qwen"><img src="https://cdn.simpleicons.org/qwen/FFFFFF" alt="Qwen logo"></span><span><strong>Qwen</strong><small>Connection required</small></span></button>
-   <button type="button" class="ng-model-option" data-model="sarvam"><span class="ng-model-option-icon ng-logo-sarvam"><span aria-hidden="true">स</span></span><span><strong>Sarvam</strong><small>Connection required</small></span></button>
+   
   </section>
   <div class="motion16-notice" id="motion16Notice" role="status" aria-live="polite"></div>
 </div>
@@ -428,7 +427,7 @@ $('motion16Add').addEventListener('click',()=>$('motion16File').click());
 $('motion16File').addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];if(!f)return;attachedFile=f;$('motion16Attachment').hidden=false;$('motion16Attachment').textContent='＋ '+f.name;inform('Reference attached: '+f.name);});
 $('motion16Clear').addEventListener('click',()=>{prompt.value='';$('motion16File').value='';attachedFile=null;$('motion16Attachment').hidden=true;$('motion16Attachment').textContent='';prompt.focus()});
 const modelTrigger=$('motion16ModelSelect'),modelMenu=$('ng-model-menu'),modelBackdrop=$('ng-model-menu-backdrop'),modelLabel=$('ng-model-selected-label');
-const modelNames={auto:'NextGen Auto',openai:'OpenAI / GPT',gemini:'Gemini',claude:'Claude',qwen:'Qwen',sarvam:'Sarvam'};
+const modelNames={auto:'NextGen Auto',openai:'ChatGPT',gemini:'Gemini',claude:'Claude'};
 function closeModelMenu(){modelMenu.hidden=true;modelBackdrop.hidden=true;modelTrigger.setAttribute('aria-expanded','false')}
 function openModelMenu(){modelMenu.hidden=false;modelBackdrop.hidden=false;modelTrigger.setAttribute('aria-expanded','true')}
 modelTrigger.addEventListener('click',()=>modelMenu.hidden?openModelMenu():closeModelMenu());
