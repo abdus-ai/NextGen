@@ -706,7 +706,10 @@ render();
    setFeature(selectedFeature);
    document.querySelectorAll('.ng-feature-routing').forEach(panel=>panel._setFeature&&panel._setFeature(activeFeature));
    const targetView=selectedFeature==='Image Generate'?'imagine':(['Text to Music','Upscale 4K / 8K'].includes(selectedFeature)?'tools':'discover');
-   document.querySelector('[data-view="'+targetView+'"]')?.click();
+   document.getElementById('studio-workspace')?.classList.remove('hidden');
+   document.querySelectorAll('.view').forEach(view=>view.classList.toggle('hidden',view.id!=='view-'+targetView));
+   document.querySelectorAll('[data-view]').forEach(button=>button.classList.toggle('active',button.dataset.view===targetView));
+   const pageTitle=document.getElementById('view-title');if(pageTitle)pageTitle.textContent='AI Studio';
   }
  }
 })();
