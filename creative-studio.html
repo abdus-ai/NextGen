@@ -315,6 +315,19 @@ body{background:#020d20}
   <aside class="panel"><h2>Image Workspace</h2><div class="tool-grid"><div class="tool"><b>Text to Image</b><span>Create from a written prompt</span></div><div class="tool"><b>Image Edit</b><span>Change selected parts by prompt</span></div><div class="tool"><b>Upscale</b><span>Increase resolution when supported</span></div><div class="tool"><b>Compare</b><span>Compare provider outputs side by side</span></div></div></aside>
  </div>
 </section>
+<div class="ng-image-settings-overlay hidden" id="ng-image-settings-overlay" role="dialog" aria-modal="true" aria-labelledby="ng-image-settings-title"><div class="ng-image-settings-sheet">
+<div class="ng-image-settings-head"><h3 id="ng-image-settings-title">Image Settings</h3><button type="button" class="ng-image-settings-close" id="ng-image-settings-close" aria-label="Close settings">×</button></div>
+<div class="ng-image-setting-label"><span>Shape</span><span id="ng-image-shape-current">Auto · 1:1</span></div>
+<div class="ng-image-shapes" id="ng-image-shape-options">
+<button class="ng-image-choice" data-shape="Auto" aria-pressed="true">Auto<small>1:1 default</small></button><button class="ng-image-choice" data-shape="16:9" aria-pressed="false">16:9</button><button class="ng-image-choice" data-shape="4:3" aria-pressed="false">4:3</button>
+<button class="ng-image-choice" data-shape="1:1" aria-pressed="false">1:1</button><button class="ng-image-choice" data-shape="3:4" aria-pressed="false">3:4</button><button class="ng-image-choice" data-shape="9:16" aria-pressed="false">9:16</button>
+<button class="ng-image-choice" data-shape="3:2" aria-pressed="false">3:2</button><button class="ng-image-choice" data-shape="2:3" aria-pressed="false">2:3</button><button class="ng-image-choice" data-shape="5:4" aria-pressed="false">5:4</button>
+<button class="ng-image-choice" data-shape="4:5" aria-pressed="false">4:5</button><button class="ng-image-choice" data-shape="21:9" aria-pressed="false">21:9</button><button class="ng-image-choice" data-shape="1:4" aria-pressed="false">1:4</button>
+<button class="ng-image-choice" data-shape="4:1" aria-pressed="false">4:1</button><button class="ng-image-choice" data-shape="1:8" aria-pressed="false">1:8</button><button class="ng-image-choice" data-shape="8:1" aria-pressed="false">8:1</button></div>
+<div class="ng-image-setting-label"><span>Size</span><span>Output resolution</span></div><div class="ng-image-sizes" id="ng-image-size-options"><button class="ng-image-choice" data-size="1K" aria-pressed="true">1K</button><button class="ng-image-choice" data-size="2K" aria-pressed="false">2K</button><button class="ng-image-choice" data-size="4K" aria-pressed="false">4K</button></div>
+<div class="ng-image-setting-label"><span>Number of images</span><span>Choose output count</span></div><div class="ng-image-counts" id="ng-image-count-options"><button class="ng-image-choice" data-count="1" aria-pressed="true">×1</button><button class="ng-image-choice" data-count="2" aria-pressed="false">×2</button><button class="ng-image-choice" data-count="3" aria-pressed="false">×3</button><button class="ng-image-choice" data-count="4" aria-pressed="false">×4</button><button class="ng-image-choice" data-count="5" aria-pressed="false">×5</button><button class="ng-image-choice" data-count="6" aria-pressed="false">×6</button><button class="ng-image-choice" data-count="8" aria-pressed="false">×8</button></div>
+<div class="ng-image-credit-note">Availability and credit usage depend on the connected image provider and selected output settings. No free quota or generation credits are assumed in this prototype.</div>
+<div class="ng-image-settings-actions"><button type="button" class="secondary" id="ng-image-settings-cancel">Cancel</button><button type="button" class="primary" id="ng-image-settings-apply">Apply Settings</button></div></div></div>
 <section id="view-gallery" class="view hidden">
  <div class="panel"><h2>My Gallery</h2><p style="color:#9da9c4;font-size:13px;margin:-5px 0 14px">Generated images and videos will appear here after storage and account integration.</p><div class="gallery-grid"><div class="gallery-tile">Your creations<br>will appear here</div><div class="gallery-tile">Image results</div><div class="gallery-tile">Video results</div></div></div>
 </section>
@@ -447,6 +460,18 @@ body{background:#020d20}
  search.addEventListener('input',()=>filter(search.value));
 })();
 </script>
+<script id="nextgen-image-settings-v1">(function(){
+const overlay=document.getElementById('ng-image-settings-overlay'),open=document.getElementById('ng-image-settings-open'),close=document.getElementById('ng-image-settings-close'),cancel=document.getElementById('ng-image-settings-cancel'),apply=document.getElementById('ng-image-settings-apply'),summary=document.getElementById('ng-image-settings-summary'),shapeText=document.getElementById('ng-image-shape-current');
+if(!overlay||!open)return;let settings={shape:'Auto',size:'1K',count:'1'},draft={...settings};
+function pressed(group,attr,value){document.querySelectorAll(group+' ['+attr+']').forEach(b=>b.setAttribute('aria-pressed',String(b.getAttribute(attr)===value)));}
+function render(){summary.textContent=settings.shape+' · '+settings.size+' · ×'+settings.count;shapeText.textContent=settings.shape+(settings.shape==='Auto'?' · 1:1':'');}
+function show(){draft={...settings};overlay.classList.remove('hidden');document.body.style.overflow='hidden';}function hide(){overlay.classList.add('hidden');document.body.style.overflow='';}
+open.addEventListener('click',show);close.addEventListener('click',hide);cancel.addEventListener('click',hide);overlay.addEventListener('click',e=>{if(e.target===overlay)hide();});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!overlay.classList.contains('hidden'))hide();});
+document.querySelectorAll('#ng-image-shape-options [data-shape]').forEach(b=>b.addEventListener('click',()=>{draft.shape=b.dataset.shape;pressed('#ng-image-shape-options','data-shape',draft.shape);shapeText.textContent=draft.shape+(draft.shape==='Auto'?' · 1:1':'');}));
+document.querySelectorAll('#ng-image-size-options [data-size]').forEach(b=>b.addEventListener('click',()=>{draft.size=b.dataset.size;pressed('#ng-image-size-options','data-size',draft.size);}));
+document.querySelectorAll('#ng-image-count-options [data-count]').forEach(b=>b.addEventListener('click',()=>{draft.count=b.dataset.count;pressed('#ng-image-count-options','data-count',draft.count);}));
+apply.addEventListener('click',()=>{settings={...draft};render();hide();});render();
+})();</script>
 <script id="nextgen-feature-auto-tool-routing-v1">
 (function(){
  const featureTools={
