@@ -258,7 +258,7 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
     <button class="pl p1" id="motion16Add" type="button" aria-label="Add image or video">＋</button>
     <select class="pl p2" id="motion16ModelSelect" aria-label="AI model"><option value="auto">NextGen Auto</option><option value="openai">OpenAI / GPT · connection required</option><option value="gemini">Gemini · connection required</option><option value="claude">Claude · connection required</option><option value="qwen">Qwen · connection required</option><option value="sarvam">Sarvam · connection required</option></select>
     <button class="pl p3 image-settings-trigger" id="motion16ImageSettings" type="button" aria-label="Image settings: ×1 Auto" aria-haspopup="dialog" aria-controls="ng-image-settings-overlay" hidden><span id="ng-image-settings-button-label">×1 Auto</span><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg></button>
-    <button class="motion16-mic" id="motion16Mic" type="button" aria-label="Voice input"><svg width="14" height="20" viewBox="0 0 14 20" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><rect x="3.5" y="1" width="7" height="11" rx="3.5" fill="#fff"/><path d="M1 9a6 6 0 0 0 12 0M7 15v4"/></svg></button>
+    
     <button class="snd" id="motion16Generate" type="button" aria-label="Generate"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5M5 11l7-7 7 7"/></svg></button>
   </div>
   <div class="motion16-notice" id="motion16Notice" role="status" aria-live="polite"></div>
@@ -394,7 +394,7 @@ $('motion16Add').addEventListener('click',()=>$('motion16File').click());
 $('motion16File').addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];if(!f)return;attachedFile=f;$('motion16Attachment').hidden=false;$('motion16Attachment').textContent='＋ '+f.name;inform('Reference attached: '+f.name);});
 $('motion16Clear').addEventListener('click',()=>{prompt.value='';$('motion16File').value='';attachedFile=null;$('motion16Attachment').hidden=true;$('motion16Attachment').textContent='';prompt.focus()});
 $('motion16Upgrade').addEventListener('click',()=>inform('Subscription plans are available from the NextGen account menu.'));
-$('motion16Mic').addEventListener('click',()=>{const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){inform('Voice input is not supported in this browser.');return}const rec=new SR();rec.lang='en-IN';rec.interimResults=false;rec.onresult=e=>{prompt.value=(prompt.value+' '+e.results[0][0].transcript).trim()};rec.onerror=()=>inform('Voice input could not start.');rec.start();inform('Listening… speak your prompt.');});
+
 $('motion16Generate').addEventListener('click',()=>{if(!prompt.value.trim()&&!attachedFile){inform('Write a prompt or add an image/video first.');prompt.focus();return}inform(active===8?'Image settings are prepared. Connect an approved image provider and verified credit rates to enable generation. No credits were used.':'Your prompt is ready. Connect an approved AI video provider to enable real generation.');});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)clearInterval(timer);else resetAutoplay()});
 selectFeature(0,false);resetAutoplay();
