@@ -176,6 +176,8 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
 </style>
 <style id="ng-image-settings-style">
 .image-settings-trigger{white-space:nowrap;cursor:pointer;font:inherit;display:flex;align-items:center;justify-content:center;gap:8px;width:auto!important;min-width:132px;padding:0 14px;flex:0 0 auto;color:#fff!important}.image-settings-trigger svg{display:block!important;visibility:visible!important;flex:none;width:18px;height:18px;opacity:1;stroke:#fff!important}
+/* Match the reference: zero outer/inner element margins inside the settings pill. */
+.image-settings-trigger,.image-settings-trigger span,.image-settings-trigger svg{margin:0!important;}
 /* Keep Image Settings visible even when the composer is collapsed; other p3 controls stay hidden. */
 .comp:not(.expanded) .image-settings-trigger{display:flex!important;visibility:visible!important;opacity:1!important}
 .ng-image-settings-overlay[hidden]{display:none!important}
