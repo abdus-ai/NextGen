@@ -245,7 +245,6 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
   <button class="it extra-feature" type="button" data-feature="5" aria-pressed="false"><img alt="" src="assets/text-to-music-video.webp"><div><b>Music to Video</b><span>Create videos that match your music</span></div></button>
   <button class="it extra-feature" type="button" data-feature="6" aria-pressed="false"><img alt="" src="assets/text-to-dance-video.webp"><div><b>Text to Dance</b><span>Generate dance videos from text prompts</span></div></button>
   <button class="it extra-feature" type="button" data-feature="7" aria-pressed="false"><img alt="" src="assets/upscale-4k-8k.webp"><div><b>Upscale 4K / 8K</b><span>Enhance video quality up to 4K and 8K</span></div></button>
-  <button class="it extra-feature" type="button" data-feature="8" aria-pressed="false"><img alt="" src="assets/image-to-video.webp"><div><b>Image Generate</b><span>Create images with shape and resolution settings</span></div></button>
 </div>
 </div>
 <div class="comp expanded" id="motion16Composer">
@@ -258,7 +257,7 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
   <div class="tb">
     <button class="pl p1" id="motion16Add" type="button" aria-label="Add image or video">＋</button>
     <select class="pl p2" id="motion16ModelSelect" aria-label="AI model"><option value="auto">NextGen Auto</option><option value="openai">OpenAI / GPT · connection required</option><option value="gemini">Gemini · connection required</option><option value="claude">Claude · connection required</option><option value="qwen">Qwen · connection required</option><option value="sarvam">Sarvam · connection required</option></select>
-    <button class="pl p3 image-settings-trigger" id="motion16ImageSettings" type="button" aria-label="Image settings: ×1 Auto" aria-haspopup="dialog" aria-controls="ng-image-settings-overlay" hidden><span id="ng-image-settings-button-label">×1 Auto</span><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg></button>
+    <button class="pl p3 image-settings-trigger" id="motion16ImageSettings" type="button" aria-label="Image settings: ×1 Auto" aria-haspopup="dialog" aria-controls="ng-image-settings-overlay"><span id="ng-image-settings-button-label">×1 Auto</span><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg></button>
     
     <button class="snd" id="motion16Generate" type="button" aria-label="Generate"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5M5 11l7-7 7 7"/></svg></button>
   </div>
@@ -366,11 +365,11 @@ function selectFeature(index,manual=false){
    demoVideo.load();
  }
  const imageSettings=$('motion16ImageSettings');
- // The legacy Video ×1 Auto control is intentionally removed.
+ // Keep the image settings button visible in the composer for every feature.
  if(imageSettings){
-  imageSettings.hidden=!item.imageMode;
-  imageSettings.style.setProperty('display',item.imageMode?'flex':'none','important');
-  imageSettings.setAttribute('aria-hidden',String(!item.imageMode));
+  imageSettings.hidden=false;
+  imageSettings.style.setProperty('display','flex','important');
+  imageSettings.removeAttribute('aria-hidden');
  }
  $('motion16Model').textContent=item.model;$('motion16Mode').textContent=item.mode;$('motion16Thumb').src=item.thumb;
  $('motion16Thumb').loading='eager';$('motion16Thumb').decoding='async';
