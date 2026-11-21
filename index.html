@@ -399,7 +399,7 @@ $('motion16Upgrade').addEventListener('click',()=>inform('Subscription plans are
 
 $('motion16Generate').addEventListener('click',()=>{if(!prompt.value.trim()&&!attachedFile){inform('Write a prompt or add an image/video first.');prompt.focus();return}inform(active===8?'Image settings are prepared. Connect an approved image provider and verified credit rates to enable generation. No credits were used.':'Your prompt is ready. Connect an approved AI video provider to enable real generation.');});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)clearInterval(timer);else resetAutoplay()});
-const requestedFeature=new URLSearchParams(window.location.search).get('feature');const requestedIndex=requestedFeature===null?0:Number(requestedFeature);const initialFeature=Number.isInteger(requestedIndex)&&requestedIndex>=0&&requestedIndex<8?requestedIndex:0;selectFeature(initialFeature,false);resetAutoplay();if(requestedFeature!==null){requestAnimationFrame(()=>{const selected=list.querySelector('[data-feature="'+initialFeature+'"]');selected?.scrollIntoView({block:'center',behavior:'smooth'});});}
+selectFeature(0,false);resetAutoplay();
 })();
 </script>
 
