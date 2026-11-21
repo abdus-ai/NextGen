@@ -746,6 +746,7 @@ render();
  }
  addPanel('view-discover');addPanel('view-imagine');addPanel('view-tools');
  document.querySelectorAll('[data-studio-view]').forEach(card=>card.addEventListener('click',()=>{
+  if(card.dataset.homeFeature!==undefined){window.location.href='./index.html?feature='+encodeURIComponent(card.dataset.homeFeature);return;}
   const label=card.innerText.trim().replace(/\s+/g,' ');
   const feature=label==='Photos'?'Image Generate':label==='Videos'?'Video Generate':label==='Audio / Music'?'Audio / Music Generate':label==='Text History'?'More Features':label;
   setFeature(feature);
