@@ -334,7 +334,7 @@ html,body{background:#061329!important;color:#f4f8ff!important}
   #studio-home .reference-studio-card img{border-radius:8px!important}
 }
 </style>
-</head>
+<style id="nextgen-shared-media-css">.ng-shared-media-frame{position:relative;display:block;overflow:hidden;flex:none}.ng-shared-media-frame>img,.ng-shared-media-frame>.ng-shared-media-video{display:block;width:100%;height:100%;object-fit:cover}.ng-shared-media-frame>.ng-shared-media-video{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .45s ease}.ng-shared-media-frame.is-video>.ng-shared-media-video{opacity:1}.ng-shared-media-frame.is-video>img{opacity:0}.reference-studio-card .ng-shared-media-frame{width:100%;aspect-ratio:16/9;border-radius:14px}.reference-studio-card .ng-shared-media-frame>img{width:100%;height:100%;aspect-ratio:16/9}.hero .ng-shared-media-frame.hub-hero{position:absolute;left:0;top:0;width:100%;height:113px}.hero .ng-shared-media-frame.hub-thumb{position:absolute;left:8px;top:26px;width:48px;height:48px;border-radius:9px;border:1.5px solid #8e7bff}.list .it .ng-shared-media-frame{width:66px;height:37.6px;border-radius:8px;margin-right:13px}@media(prefers-reduced-motion:reduce){.ng-shared-media-frame>.ng-shared-media-video{transition:none}}</style><script src="./creative-media.js?v=1" defer></script></head>
 <body>
 <div class="studio">
 <header class="studio-head studio-head-reference studio-reference-hidden">
@@ -755,100 +755,7 @@ render();
 })();
 </script>
 
-<style id="creative-studio-dynamic-media-v1">
-/* Media-only enhancement: preserve the existing cards, dimensions and layout. */
-.reference-studio-card .ng-dynamic-media{position:relative;display:block;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:inherit;background:#0b203a}
-.reference-studio-card .ng-dynamic-media>img,
-.reference-studio-card .ng-dynamic-media>video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;border:0!important;border-radius:inherit;transition:opacity .55s ease}
-.reference-studio-card .ng-dynamic-media>video{opacity:0;pointer-events:none}
-.reference-studio-card .ng-dynamic-media.is-video>img{opacity:0}
-.reference-studio-card .ng-dynamic-media.is-video>video{opacity:1}
-.reference-studio-card .ng-dynamic-media>img.ng-media-fade{opacity:0}
-@media(prefers-reduced-motion:reduce){
- .reference-studio-card .ng-dynamic-media>img,.reference-studio-card .ng-dynamic-media>video{transition:none}
-}
-</style>
-<script id="creative-studio-dynamic-video-thumbnail-v1">
-(function(){
- const cards=[...document.querySelectorAll('#studio-home .reference-project-card .reference-studio-card')];
- if(!cards.length)return;
- const media={
-  'Image Generate':[
-   {poster:'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1000&q=88',video:'https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4'},
-   {poster:'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=1000&q=88',video:'https://videos.pexels.com/video-files/856857/856857-hd_1920_1080_25fps.mp4'},
-   {poster:'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=1000&q=88',video:'https://videos.pexels.com/video-files/3129671/3129671-hd_1920_1080_25fps.mp4'}
-  ],
-  'Video Generate':[
-   {poster:'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1000&q=88',video:'https://videos.pexels.com/video-files/3129671/3129671-hd_1920_1080_25fps.mp4'},
-   {poster:'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1000&q=88',video:'https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4'},
-   {poster:'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1000&q=88',video:'https://videos.pexels.com/video-files/856857/856857-hd_1920_1080_25fps.mp4'}
-  ],
-  'Image to Video':[
-   {poster:'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=1000&q=88',video:'https://videos.pexels.com/video-files/856857/856857-hd_1920_1080_25fps.mp4'},
-   {poster:'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1000&q=88',video:'https://videos.pexels.com/video-files/3129671/3129671-hd_1920_1080_25fps.mp4'},
-   {poster:'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1000&q=88',video:'https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4'}
-  ],
-  'Text to Video':[
-   {poster:'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1000&q=88',video:'https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4'},
-   {poster:'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1000&q=88',video:'https://videos.pexels.com/video-files/856857/856857-hd_1920_1080_25fps.mp4'},
-   {poster:'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1000&q=88',video:'https://videos.pexels.com/video-files/3129671/3129671-hd_1920_1080_25fps.mp4'}
-  ],
-  'Audio / Music Generate':[
-   {poster:'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1000&q=88',video:'https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4'},
-   {poster:'https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=1000&q=88',video:'https://videos.pexels.com/video-files/856857/856857-hd_1920_1080_25fps.mp4'},
-   {poster:'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=1000&q=88',video:'https://videos.pexels.com/video-files/3129671/3129671-hd_1920_1080_25fps.mp4'}
-  ],
-  'More Features':[
-   {poster:'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1000&q=88',video:'https://videos.pexels.com/video-files/856857/856857-hd_1920_1080_25fps.mp4'},
-   {poster:'https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=1000&q=88',video:'https://videos.pexels.com/video-files/3129671/3129671-hd_1920_1080_25fps.mp4'},
-   {poster:'https://images.unsplash.com/photo-1558655146-d09347e92766?w=1000&q=88',video:'https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4'}
-  ]
- };
- const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- cards.forEach((card,index)=>{
-  const title=card.querySelector('.reference-card-title')?.textContent.trim();
-  const items=media[title];const image=card.querySelector('img');
-  if(!items||!image)return;
-  const wrap=document.createElement('span');wrap.className='ng-dynamic-media';
-  image.parentNode.insertBefore(wrap,image);wrap.appendChild(image);
-  const video=document.createElement('video');
-  video.muted=true;video.loop=true;video.playsInline=true;video.autoplay=true;video.preload='none';
-  video.setAttribute('aria-hidden','true');wrap.appendChild(video);
-  let active=0,showingVideo=false;
-  const showItem=async(next)=>{
-   active=(next+items.length)%items.length;
-   const item=items[active];
-   wrap.classList.remove('is-video');
-   video.pause();video.removeAttribute('src');video.load();
-   image.classList.add('ng-media-fade');
-   const preload=new Image();preload.onload=()=>{
-    image.src=item.poster;image.alt=title+' preview';image.classList.remove('ng-media-fade');
-   };preload.onerror=()=>image.classList.remove('ng-media-fade');preload.src=item.poster;
-   video.src=item.video;video.load();
-   showingVideo=false;
-  };
-  const showVideo=()=>{
-   if(reduced||!video.src)return;
-   const p=video.play();
-   if(p&&typeof p.then==='function')p.then(()=>{wrap.classList.add('is-video');showingVideo=true;}).catch(()=>{wrap.classList.remove('is-video');});
-  };
-  // Keep the original image as the first poster; cycle through feature-specific poster/video pairs.
-  showItem(0);
-  if(!reduced){
-   const offset=index*850;
-   window.setTimeout(()=>{
-    showVideo();
-    window.setInterval(()=>{
-     if(document.hidden)return;
-     if(showingVideo){wrap.classList.remove('is-video');video.pause();showingVideo=false;}
-     showItem(active+1);
-     window.setTimeout(showVideo,900);
-    },7200);
-   },offset);
-  }
- });
-})();
-</script>
+
 
 </body>
 </html>
