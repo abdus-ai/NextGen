@@ -87,6 +87,11 @@ header{height:41px;display:flex;align-items:center;padding:0 10px 0 16px}
 .ng-project-item small{display:block;color:#91a9c2;font-size:10px;margin-top:2px}
 @media(min-width:700px){.ng-fab-stack{right:max(22px,calc((100vw - 430px)/2 + 18px));bottom:calc(35px + env(safe-area-inset-bottom,0px))}}
 
+
+/* Keep the original Create Hub image geometry after the shared wrapper is added. */
+.hero .ng-shared-media-frame.hub-hero>img{position:absolute;inset:0;left:0!important;top:0!important;width:100%!important;height:100%!important}
+.hero .ng-shared-media-frame.hub-thumb>img{position:absolute;inset:0;left:0!important;top:0!important;width:100%!important;height:100%!important;margin:0!important;border:0!important;border-radius:7px!important}
+.list .it .ng-shared-media-frame>img{width:100%!important;height:100%!important;margin:0!important;border-radius:8px!important}
 </style>
 <style id="nextgen-shared-media-css">.ng-shared-media-frame{position:relative;display:block;overflow:hidden;flex:none}.ng-shared-media-frame>img,.ng-shared-media-frame>.ng-shared-media-video{display:block;width:100%;height:100%;object-fit:cover}.ng-shared-media-frame>.ng-shared-media-video{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .45s ease}.ng-shared-media-frame.is-video>.ng-shared-media-video{opacity:1}.ng-shared-media-frame.is-video>img{opacity:0}.reference-studio-card .ng-shared-media-frame{width:100%;aspect-ratio:16/9;border-radius:14px}.reference-studio-card .ng-shared-media-frame>img{width:100%;height:100%;aspect-ratio:16/9}.hero .ng-shared-media-frame.hub-hero{position:absolute;left:0;top:0;width:100%;height:113px}.hero .ng-shared-media-frame.hub-thumb{position:absolute;left:8px;top:26px;width:48px;height:48px;border-radius:9px;border:1.5px solid #8e7bff}.list .it .ng-shared-media-frame{width:66px;height:37.6px;border-radius:8px;margin-right:13px}@media(prefers-reduced-motion:reduce){.ng-shared-media-frame>.ng-shared-media-video{transition:none}}</style><script src="./creative-media.js?v=1" defer></script></head>
 <body>
