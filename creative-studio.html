@@ -222,6 +222,9 @@ html,body{background:#ffffff!important;color:#17324d!important}
 .studio-reference-hidden{display:none!important}
 .studio-home-reference{display:flex!important;flex-direction:column;gap:200px;padding:10px 0 12px!important}
 .reference-intro{margin:0 0 10px!important}
+.reference-project-heading-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.reference-gallery-button{flex:none;padding:7px 13px;border:1px solid rgba(55,215,255,.55);border-radius:10px;background:linear-gradient(105deg,#073b62,#172b66 58%,#40205f);color:#69e8ff;font:700 13px Inter,system-ui,sans-serif;cursor:pointer;box-shadow:0 0 12px rgba(0,194,255,.14)}
+.reference-gallery-button:focus-visible{outline:2px solid #69e8ff;outline-offset:3px}
 .reference-eyebrow{display:inline-block;width:max-content;max-width:100%;padding:4px 10px;border:0;border-radius:8px;background:#d9f1ff;color:#16a34a;font-size:14px;font-weight:800;line-height:1.15;box-shadow:none;letter-spacing:0;text-shadow:none}
 .reference-intro p{margin:7px 0 0!important;color:#60758a!important;font-size:clamp(12px,1.5vw,16px)!important;letter-spacing:.35px}
 .reference-studio-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:12px;row-gap:10px}
@@ -347,7 +350,10 @@ html,body{background:#061329!important;color:#f4f8ff!important}
   <div class="reference-project-card">
   <div class="reference-intro">
     <span class="reference-eyebrow">Main Workplace</span>
-    <h1 class="reference-project-heading">Create New Project</h1>
+    <div class="reference-project-heading-row">
+      <h1 class="reference-project-heading">Create New Project</h1>
+      <button type="button" class="reference-gallery-button" id="open-project-gallery">Gallery</button>
+    </div>
     <p>AI CREATION • GENERATION • EDITING</p>
   </div>
   <div class="reference-studio-grid">
@@ -402,31 +408,7 @@ html,body{background:#061329!important;color:#f4f8ff!important}
       <span class="reference-card-description">Explore AI Tools</span>
     </button>
   </div>
-  <div class="reference-gallery-section">
-    <h2 class="reference-gallery-title">Gallery</h2>
-    <div class="reference-studio-grid">
-      <button class="reference-studio-card" data-studio-view="gallery">
-        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1000&q=88" alt="Image creations gallery">
-        <span class="reference-card-title">Image Gallery</span>
-        <span class="reference-card-description">Your Generated Images</span>
-      </button>
-      <button class="reference-studio-card" data-studio-view="gallery">
-        <img src="https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=1000&q=88" alt="Video creations gallery">
-        <span class="reference-card-title">Video Gallery</span>
-        <span class="reference-card-description">Your Generated Videos</span>
-      </button>
-      <button class="reference-studio-card" data-studio-view="gallery">
-        <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1000&q=88" alt="Audio and music creations">
-        <span class="reference-card-title">Audio Gallery</span>
-        <span class="reference-card-description">Your Music and Voice</span>
-      </button>
-      <button class="reference-studio-card" data-studio-view="gallery">
-        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1000&q=88" alt="All creative projects">
-        <span class="reference-card-title">All Creations</span>
-        <span class="reference-card-description">Browse All Your Work</span>
-      </button>
-    </div>
-  </div>
+
 </section>
 
 <section class="studio-workspace hidden" id="studio-workspace">
@@ -559,6 +541,7 @@ html,body{background:#061329!important;color:#f4f8ff!important}
  const titles={discover:['Video Generate','Describe your video and prepare the generation settings.'],imagine:['Image Generate','Create and edit images with a dedicated workspace.'],gallery:['My Gallery','Your generated media library and project history.'],history:['Generation History','Review prompt setups prepared in this browser.'],tools:['More Features','Explore additional creative tools.'],plans:['Plans & Credits','Review the reference plan layout; NextGen pricing remains separate.'],status:['System Status','See which creative services are ready and which integrations remain pending.']};
  function show(key){if(home)home.classList.add('hidden');if(workspace)workspace.classList.remove('hidden');views.forEach(v=>document.getElementById('view-'+v).classList.toggle('hidden',v!==key));nav.forEach(b=>b.classList.toggle('active',b.dataset.view===key));document.getElementById('view-title').textContent=titles[key][0];document.getElementById('view-subtitle').textContent=titles[key][1];}
  nav.forEach(b=>b.addEventListener('click',()=>show(b.dataset.view)));
+ document.getElementById('open-project-gallery')?.addEventListener('click',()=>show('gallery'));
  document.querySelectorAll('[data-studio-view]').forEach(card=>card.addEventListener('click',()=>{show(card.dataset.studioView);if(card.dataset.modeChoice){document.querySelector('[data-mode=video]')?.click();}}));
  document.getElementById('studio-home-back')?.addEventListener('click',()=>{if(workspace)workspace.classList.add('hidden');if(home)home.classList.remove('hidden');views.forEach(v=>{const section=document.getElementById('view-'+v);if(section)section.classList.add('hidden');});nav.forEach(b=>b.classList.remove('active'));});
  document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('active',x===b));}));
