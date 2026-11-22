@@ -1405,3 +1405,38 @@ html body #studio-workspace .studio-reference-header .studio-reference-titleline
   text-shadow:none!important;
 }
 </style>
+
+
+<style id="nextgen-studio-brand-text-colors-corrected-v2">
+/* NextGen wordmark remains multicolour; Studio is green. Feature headline is solid white. */
+#studio-workspace .studio-reference-badge{
+  background:none!important;
+  background-image:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  color:#ffffff!important;
+}
+#studio-workspace .studio-reference-badge .ng-nextgen-word{
+  background:linear-gradient(100deg,#00eaff 0%,#087cff 42%,#3435f5 68%,#ed16e8 100%)!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+}
+#studio-workspace .studio-reference-badge .ng-studio-word{
+  color:#39e879!important;
+  -webkit-text-fill-color:#39e879!important;
+}
+html body #studio-workspace .studio-reference-header .studio-reference-titleline #view-title,
+html body #studio-workspace .studio-reference-header .studio-reference-titleline #view-title > .ng-title-gradient{
+  background:none!important;
+  background-image:none!important;
+  background-color:transparent!important;
+  color:#ffffff!important;
+  -webkit-text-fill-color:#ffffff!important;
+  text-shadow:none!important;
+}
+</style>
+<script id="nextgen-studio-badge-wordmark-correct-v2">
+(()=>{const badge=document.querySelector('#studio-workspace .studio-reference-badge');if(badge){badge.innerHTML='<span class="ng-nextgen-word">NextGen</span>&nbsp;<span class="ng-studio-word">Studio</span>';}})();
+</script>
