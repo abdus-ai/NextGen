@@ -385,6 +385,40 @@ html,body{background:#061329!important;color:#f4f8ff!important}
  outline:0!important;
 }
 </style>
+<style id="ng-projects-final-no-page-border-v3">
+/* Final override placed after every page theme so no later theme can redraw the page frame. */
+html body .studio,
+html body #studio-home,
+html body #studio-home .reference-project-card,
+html body #studio-home .ng-projects-shell{
+ border:0!important;
+ outline:0!important;
+ box-shadow:none!important;
+}
+html body #studio-home .reference-project-card{
+ border-radius:0!important;
+ background:transparent!important;
+}
+html body #studio-home .reference-project-card::before,
+html body #studio-home .reference-project-card::after{
+ content:none!important;
+ display:none!important;
+ border:0!important;
+ box-shadow:none!important;
+}
+html body #studio-home{
+ margin-left:0!important;
+ margin-right:0!important;
+ padding-left:0!important;
+ padding-right:0!important;
+}
+html body #studio-home .reference-project-card{
+ margin-left:0!important;
+ margin-right:0!important;
+ padding-left:4px!important;
+ padding-right:4px!important;
+}
+</style>
 </head>
 <body>
 <div class="studio">
