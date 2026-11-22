@@ -459,6 +459,13 @@ html body #studio-home .ng-project-row{grid-template-columns:minmax(0,33.333333%
 html body #studio-home .ng-project-thumb{display:block!important;width:100%!important;height:clamp(72px,calc((100vw - 44px)*.33333333*.5625),170px)!important;aspect-ratio:16/9!important;object-fit:contain!important;}
 @media(max-width:380px){html body #studio-home .ng-project-row{grid-template-columns:minmax(0,33.333333%) minmax(0,1fr) 26px!important;column-gap:8px!important;}html body #studio-home .ng-project-thumb{height:clamp(68px,calc((100vw - 44px)*.33333333*.5625),155px)!important}}
 </style>
+
+<style id="ng-project-menu-right-align-v1">
+/* Align the three-dot action control to the far right edge of each project row. */
+html body #studio-home .ng-project-row{width:100%!important;box-sizing:border-box!important;}
+html body #studio-home .ng-project-menu{justify-self:end!important;align-self:center!important;margin:0!important;padding:0!important;width:30px!important;text-align:right!important;display:flex!important;align-items:center!important;justify-content:flex-end!important;}
+@media(max-width:380px){html body #studio-home .ng-project-menu{width:26px!important}}
+</style>
 </style>
 </head>
 <body>
