@@ -355,8 +355,9 @@ html,body{background:#061329!important;color:#f4f8ff!important}
 #ng-header-stage .ng-header-close svg{width:30px;height:30px}
 #ng-header-stage h1{position:absolute;left:24px;top:134px;margin:0;font-size:47px;line-height:60px;font-weight:700;letter-spacing:-.4px;white-space:nowrap;background:linear-gradient(90deg,#00e0ff 0%,#1a8cff 26%,#3a3cf0 52%,#a02cff 76%,#ff2fa8 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 #ng-header-stage p{position:absolute;left:24px;top:225px;margin:0;font-size:27px;line-height:36px;font-weight:400;letter-spacing:.2px;color:#a9c4e4;text-transform:uppercase;white-space:nowrap}
-@media(max-width:1100px){#ng-header-shell{height:calc(402px * (100vw / 1080))!important}#ng-header-stage{transform:scale(calc(100vw / 1080))}}
-@media(min-width:1101px){#ng-header-shell{height:402px!important}#ng-header-stage{transform:scale(1)}}
+/* Header reduced to 50% of the previous rendered size. */
+@media(max-width:1100px){#ng-header-shell{height:calc(201px * (100vw / 1080))!important}#ng-header-stage{transform:scale(calc((100vw / 1080) * .5))}}
+@media(min-width:1101px){#ng-header-shell{height:201px!important}#ng-header-stage{transform:scale(.5)}}
 </style></head>
 <body>
 <div class="studio">
