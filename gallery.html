@@ -337,6 +337,26 @@ html,body{background:#061329!important;color:#f4f8ff!important}
   #studio-home .reference-studio-card img{border-radius:8px!important}
 }
 </style>
+<style id="ng-projects-reference-layout-v1">
+/* Mobile project list based on the supplied reference; retain NextGen's existing navy/cyan visual identity. */
+.ng-projects-shell{padding:18px 14px 28px}
+.ng-projects-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 18px}
+.ng-projects-heading h2{font-size:22px;font-weight:750;color:#f5f7ff;margin:0 0 4px}
+.ng-projects-heading p{font-size:12px;color:#aab7d0;margin:0}
+.ng-project-count{font-size:11px;color:#9eb1d0;white-space:nowrap;border:1px solid #34425e;border-radius:99px;padding:7px 10px}
+#ng-projects-status{font-size:11px!important;margin:0 0 14px!important;padding:7px 10px!important}
+.ng-project-list{display:grid;gap:16px}
+.ng-project-row{display:grid;grid-template-columns:minmax(118px,47%) minmax(0,1fr) 30px;align-items:center;column-gap:13px;row-gap:8px;min-width:0}
+.ng-project-thumb{display:block;width:100%;aspect-ratio:1.72/1;object-fit:contain;border-radius:15px;background:#303030}
+.ng-project-info{min-width:0;display:grid;gap:3px}
+.ng-project-title{font-size:16px;font-weight:700;color:#f5f6fb;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ng-project-meta{font-size:13px;color:#b5b8c1;line-height:1.42;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ng-project-menu{width:30px;height:44px;border:0;background:transparent;color:#f5f6fb;font-size:27px;line-height:1;border-radius:9px;padding:0}
+.ng-project-actions{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap;padding:0 0 12px;border-bottom:1px solid rgba(130,155,195,.2)}
+.ng-project-actions[hidden]{display:none}
+.ng-project-actions a,.ng-project-actions button{font-size:12px}
+@media(max-width:380px){.ng-project-row{grid-template-columns:minmax(104px,44%) minmax(0,1fr) 26px;column-gap:9px}.ng-project-title{font-size:14px}.ng-project-meta{font-size:11px}.ng-project-menu{width:26px}}
+</style>
 </head>
 <body>
 <div class="studio">
@@ -475,7 +495,11 @@ html,body{background:#061329!important;color:#f4f8ff!important}
 <div class="ng-image-credit-note">Credit usage will depend on the selected resolution (1K / 2K / 4K / 8K) and number of images. The exact credit total must be shown for review before generation, and credits must not be deducted until the user confirms. Rates will be configured from verified provider costs.</div>
 <div class="ng-image-settings-actions"><button type="button" class="secondary" id="ng-image-settings-cancel">Cancel</button><button type="button" class="primary" id="ng-image-settings-apply">Apply Settings</button></div></div></div>
 <section id="view-gallery" class="view hidden">
- <div class="panel"><h2>Projects</h2><p style="color:#9da9c4;font-size:13px;margin:-5px 0 14px">Generated images and videos will appear here after storage and account integration.</p><div class="gallery-grid"><div class="gallery-tile">Your creations<br>will appear here</div><div class="gallery-tile">Image results</div><div class="gallery-tile">Video results</div></div></div>
+ <div class="ng-projects-shell">
+  <div class="ng-projects-heading"><div><h2>Projects</h2><p>Your saved creations</p></div><span class="ng-project-count" id="ng-project-count">0 Projects</span></div>
+  <div id="ng-projects-status" class="notice" aria-live="polite">Projects saved on this device appear here.</div>
+  <div id="ng-projects-list" class="ng-project-list"></div>
+ </div>
 </section>
 <section id="view-tools" class="view hidden">
  <div class="panel"><h2>Video Editing Tools</h2><div class="tool-grid">
@@ -724,6 +748,44 @@ render();
 
  document.querySelectorAll('#compare-models input').forEach(x=>x.addEventListener('change',()=>{}));
  setFeature(activeFeature);
+})();
+</script>
+<script id="ng-projects-indexeddb-list-v1">
+(function(){
+ const DB='nextgen-ai-gallery-v1',STORE='media';
+ const host=document.getElementById('ng-projects-list');
+ const status=document.getElementById('ng-projects-status');
+ const count=document.getElementById('ng-project-count');
+ if(!host)return;
+ function openDB(){return new Promise((resolve,reject)=>{const req=indexedDB.open(DB,1);req.onupgradeneeded=()=>{const db=req.result;if(!db.objectStoreNames.contains(STORE))db.createObjectStore(STORE,{keyPath:'id'});};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);});}
+ async function getRows(){const db=await openDB();return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readonly'),req=tx.objectStore(STORE).getAll();req.onsuccess=()=>resolve(req.result||[]);req.onerror=()=>reject(req.error);tx.oncomplete=()=>db.close();tx.onerror=()=>{db.close();reject(tx.error);};});}
+ async function removeRow(id){const db=await openDB();return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).delete(id);tx.oncomplete=()=>{db.close();resolve();};tx.onerror=()=>{db.close();reject(tx.error);};});}
+ async function render(){
+  try{
+   const rows=await getRows();host.innerHTML='';
+   if(count)count.textContent=rows.length+' Project'+(rows.length===1?'':'s');
+   rows.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+   if(!rows.length){host.innerHTML='<div class="gallery-tile" style="aspect-ratio:auto;min-height:120px">No Projects yet. Save a completed video from AI Studio Preview to see it here.</div>';if(status)status.textContent='Your saved Projects will appear here.';return;}
+   if(status)status.textContent='Your saved Projects · Stored on this device';
+   rows.forEach((item,index)=>{
+    const row=document.createElement('article');row.className='ng-project-row';
+    const video=document.createElement('video'),url=URL.createObjectURL(item.blob);video.className='ng-project-thumb';video.src=url;video.muted=true;video.playsInline=true;video.preload='auto';video.setAttribute('aria-label','Preview '+(item.title||item.name||'project'));
+    video.addEventListener('loadeddata',()=>{try{if(video.duration>0)video.currentTime=Math.min(.12,video.duration/10);}catch(e){}},{once:true});
+    const info=document.createElement('div');info.className='ng-project-info';
+    const title=document.createElement('div');title.className='ng-project-title';title.textContent=item.title||item.name||'Untitled';
+    const duration=document.createElement('div');duration.className='ng-project-meta';const secs=Number(item.duration)||0;const mm=String(Math.floor(secs/60)).padStart(2,'0'),ss=String(Math.floor(secs%60)).padStart(2,'0');const size=((Number(item.size)||item.blob?.size||0)/1048576).toFixed(1);duration.textContent=(secs?mm+':'+ss+' · ':'')+size+' MB';
+    const date=document.createElement('div');date.className='ng-project-meta';date.textContent=index===0?'Recently opened':(item.createdAt?new Date(item.createdAt).toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'}):'Saved project');info.append(title,duration,date);
+    const menu=document.createElement('button');menu.type='button';menu.className='ng-project-menu';menu.textContent='⋮';menu.setAttribute('aria-label','Project actions for '+title.textContent);
+    const actions=document.createElement('div');actions.className='ng-project-actions';actions.hidden=true;
+    const download=document.createElement('a');download.className='secondary';download.textContent='Download';download.href=url;download.download=item.name||'nextgen-project.mp4';download.style.textDecoration='none';
+    const del=document.createElement('button');del.type='button';del.className='secondary';del.textContent='Delete Project';del.addEventListener('click',async()=>{if(!confirm('Delete this Project from this device?'))return;await removeRow(item.id);render();});
+    menu.addEventListener('click',()=>{actions.hidden=!actions.hidden;});actions.append(download,del);row.append(video,info,menu,actions);host.append(row);
+   });
+  }catch(e){if(status)status.textContent='Could not open local Projects storage: '+(e?.message||'unknown error');}
+ }
+ render();
+ document.querySelectorAll('[data-view="gallery"]').forEach(el=>el.addEventListener('click',render));
+ document.getElementById('open-project-gallery')?.addEventListener('click',()=>{try{sessionStorage.setItem('ng-open-projects','1');}catch(e){}});
 })();
 </script>
 </body>
