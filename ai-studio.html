@@ -867,14 +867,14 @@ html,body{margin:0!important}
     </div>
     <div class="studio-reference-titleline">
       <h2 id="view-title"><span class="ng-title-gradient" style="background:linear-gradient(110deg,#00f5ff 0%,#00c8ff 18%,#087bff 38%,#263cff 55%,#7428f5 74%,#e51bdc 91%,#ff43cf 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;display:inline-block;text-shadow:0 0 1px rgba(255,255,255,.95),0 0 5px rgba(255,255,255,.42);">AI Studio</span></h2>
-      <button type="button" id="studio-gallery-open" class="studio-gallery-action">Projects</button>
+      <a href="./gallery.html" id="studio-gallery-open" class="studio-gallery-action" aria-label="Open Projects">Projects</a>
     </div>
     <p id="view-subtitle" class="studio-workspace-subtitle">Explore image and video creation in one workspace.</p>
   </div>
   <nav class="studio-nav hidden" aria-label="Creative Studio navigation">
   <button class="active" data-view="discover">Discover</button>
   <button data-view="imagine">Imagine</button>
-  <button data-view="gallery">Projects</button>
+  <a class="secondary" href="./gallery.html">Projects</a>
   <button data-view="history">History</button>
   <button data-view="tools">Video Tools</button>
   <button data-view="plans">Plans</button>
@@ -1318,17 +1318,7 @@ render();
 </script>
 
 
-<script id="nextgen-ai-studio-gallery-header-action-v1">
-(function(){
- const button=document.getElementById('studio-gallery-open');
- if(button){
-  button.addEventListener('click',function(){
-   const gallery=document.querySelector('[data-view="gallery"]');
-   if(gallery)gallery.click();
-  });
- }
-})();
-</script>
+
 
 
 <style id="ng-ai-studio-all-page-panel-borders-final">
