@@ -93,17 +93,38 @@ header{height:41px;display:flex;align-items:center;padding:0 10px 0 16px}
 .hero .ng-shared-media-frame.hub-thumb>img{position:absolute;inset:0;left:0!important;top:0!important;width:100%!important;height:100%!important;margin:0!important;border:0!important;border-radius:7px!important}
 .list .it .ng-shared-media-frame>img{width:100%!important;height:100%!important;margin:0!important;border-radius:8px!important}
 </style>
-<style id="nextgen-shared-media-css">.ng-shared-media-frame{position:relative;display:block;overflow:hidden;flex:none}.ng-shared-media-frame>img,.ng-shared-media-frame>.ng-shared-media-video{display:block;width:100%;height:100%;object-fit:cover}.ng-shared-media-frame>.ng-shared-media-video{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .45s ease}.ng-shared-media-frame.is-video>.ng-shared-media-video{opacity:1}.ng-shared-media-frame.is-video>img{opacity:0}.reference-studio-card .ng-shared-media-frame{width:100%;aspect-ratio:16/9;border-radius:14px}.reference-studio-card .ng-shared-media-frame>img{width:100%;height:100%;aspect-ratio:16/9}.hero .ng-shared-media-frame.hub-hero{position:absolute;left:0;top:0;width:100%;height:113px}.hero .ng-shared-media-frame.hub-thumb{position:absolute;left:8px;top:26px;width:48px;height:48px;border-radius:9px;border:1.5px solid #8e7bff}.list .it .ng-shared-media-frame{width:66px;height:37.6px;border-radius:8px;margin-right:13px}@media(prefers-reduced-motion:reduce){.ng-shared-media-frame>.ng-shared-media-video{transition:none}}</style><script src="./creative-media.js?v=1" defer></script></head>
+<style id="nextgen-shared-media-css">.ng-shared-media-frame{position:relative;display:block;overflow:hidden;flex:none}.ng-shared-media-frame>img,.ng-shared-media-frame>.ng-shared-media-video{display:block;width:100%;height:100%;object-fit:cover}.ng-shared-media-frame>.ng-shared-media-video{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .45s ease}.ng-shared-media-frame.is-video>.ng-shared-media-video{opacity:1}.ng-shared-media-frame.is-video>img{opacity:0}.reference-studio-card .ng-shared-media-frame{width:100%;aspect-ratio:16/9;border-radius:14px}.reference-studio-card .ng-shared-media-frame>img{width:100%;height:100%;aspect-ratio:16/9}.hero .ng-shared-media-frame.hub-hero{position:absolute;left:0;top:0;width:100%;height:113px}.hero .ng-shared-media-frame.hub-thumb{position:absolute;left:8px;top:26px;width:48px;height:48px;border-radius:9px;border:1.5px solid #8e7bff}.list .it .ng-shared-media-frame{width:66px;height:37.6px;border-radius:8px;margin-right:13px}@media(prefers-reduced-motion:reduce){.ng-shared-media-frame>.ng-shared-media-video{transition:none}}</style><script src="./creative-media.js?v=1" defer></script>
+<style id="nextgen-final-shared-studio-header-v1">
+.ng-final-shared-header{
+  position:relative;margin:0 0 18px;padding:12px 14px 15px;
+  border:1px solid rgba(65,170,230,.26);border-radius:18px;
+  background:linear-gradient(145deg,#0b1d38 0%,#07162d 62%,#111a3a 100%);
+  box-shadow:0 5px 18px rgba(0,0,0,.14),inset 0 0 22px rgba(25,100,190,.07);
+}
+.ng-final-shared-header .ng-final-topline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px}
+.ng-final-shared-header .ng-final-wordmark{display:inline-flex;align-items:center;gap:0;min-height:38px;transform:translate(-5px,2px)}
+.ng-final-shared-header .ng-next-word{font-size:28px;line-height:1.15;font-weight:800;color:#fff;display:inline-block}
+.ng-final-shared-header .ng-gen-word{font-size:28px;line-height:1.15;font-weight:800;display:inline-block;background:linear-gradient(100deg,#00eaff,#278cff 48%,#a53cff 78%,#ed36c7);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ng-final-shared-header .ng-studio-word{display:inline-block;margin-left:-7px;position:relative;top:.5px;padding:0 5px;border:1px solid rgba(255,255,255,.88);border-radius:6px;background:linear-gradient(180deg,#fff 0%,#edf3ff 100%);box-shadow:0 2px 7px rgba(0,0,0,.22);font-size:14px;line-height:1.15;font-weight:800;color:#241080}
+.ng-final-shared-header .ng-studio-o{font-size:14px;color:#ed174c}
+.ng-final-shared-header .ng-final-close{display:grid;place-items:center;flex:0 0 32px;width:32px;height:32px;border:1px solid rgba(67,155,230,.28);border-radius:10px;background:#0b1d38;color:#f7fbff;text-decoration:none;font-size:24px;line-height:1}
+.ng-final-shared-header .ng-final-titleline{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.ng-final-shared-header .ng-final-title{margin:0;flex:1;min-width:0;font-size:clamp(25px,6vw,38px);font-weight:800;letter-spacing:-.8px;line-height:1.12;color:#f7f9ff}
+.ng-final-shared-header .ng-final-action{flex:none;min-height:38px;padding:7px 14px;border:1px solid rgba(55,215,255,.55);border-radius:12px;background:linear-gradient(105deg,#073b62,#172b66 58%,#40205f);color:#69e8ff;font:800 15px Inter,system-ui,sans-serif;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.ng-final-shared-header .ng-final-subtitle{margin:10px 0 0;color:#a9c9e8;font-size:11px;line-height:1.5;text-transform:uppercase;letter-spacing:.45px}
+@media(max-width:420px){.ng-final-shared-header{padding:10px 11px 13px;border-radius:16px}.ng-final-shared-header .ng-final-title{font-size:25px}.ng-final-shared-header .ng-final-action{font-size:13px;padding:6px 11px}}
+</style>
+</head>
 <body>
 <div class="app">
-<header>
-  <div class="burger"><i></i><i></i><i></i></div>
-  <img class="logo" alt="NextGen AI" src="logo.jpg">
-  <div class="hr">
-    <div class="ci sr"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="7"/><path d="M16 16l5 5"/></svg></div>
-    <div class="ci pf"><div><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="8" r="4.5"/><path d="M3 22c0-5 4-8 9-8s9 3 9 8z"/></svg></div></div>
+<header class="ng-final-shared-header">
+  <div class="ng-final-topline">
+   <div class="ng-final-wordmark" aria-label="NextGen Studio"><span class="ng-next-word">Next</span><span class="ng-gen-word">Gen</span><span class="ng-studio-word">Studi<span class="ng-studio-o">o</span></span></div>
+   <a class="ng-final-close" href="./index.html" aria-label="Back" title="Back">×</a>
   </div>
-</header>
+  <div class="ng-final-titleline"><h2 class="ng-final-title">NextGen Studio</h2><a class="ng-final-action" href="./gallery.html">Projects</a></div>
+  <p class="ng-final-subtitle">AI CREATION • GENERATION • EDITING</p>
+ </header>
 <div class="ttl">
   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#3fd7ff" stroke-width="1.8" stroke-linejoin="round"><path d="M10 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/><path d="M19 3v4M17 5h4M19 16v4M17 18h4" stroke-linecap="round"/></svg>
   <h1>Create Hub</h1>
