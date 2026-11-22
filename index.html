@@ -179,20 +179,23 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
 .ng-model-trigger{display:flex!important;align-items:center!important;justify-content:center!important;cursor:default!important;color:#eef8ff!important;background:linear-gradient(135deg,#0d2744,#102c4a)!important;border:1px solid rgba(79,181,235,.38)!important;border-radius:22px!important;padding:0 12px!important}
 
 .ng-model-trigger{cursor:pointer!important;touch-action:manipulation!important;gap:8px!important}
-.ng-model-picker{position:fixed;left:max(16px,calc((100vw - 430px)/2 + 18px));right:max(16px,calc((100vw - 430px)/2 + 18px));bottom:calc(155px + env(safe-area-inset-bottom,0px));z-index:10020;padding:12px;border:1px solid rgba(142,157,190,.24);border-radius:20px;background:#171717;box-shadow:0 12px 36px rgba(0,0,0,.48);color:#f7f7fb}
-.ng-model-picker[hidden],.ng-model-options[hidden]{display:none!important}
+.ng-model-picker{position:fixed;left:max(16px,calc((100vw - 430px)/2 + 18px));right:max(16px,calc((100vw - 430px)/2 + 18px));bottom:calc(155px + env(safe-area-inset-bottom,0px));z-index:10020;padding:12px;border:1px solid rgba(68,190,255,.32);border-radius:20px;background:#0b1b33;box-shadow:0 12px 36px rgba(0,0,0,.48),0 0 18px rgba(0,174,255,.08);color:#f7faff}
+.ng-model-picker[hidden],.ng-model-detail[hidden]{display:none!important}
 .ng-model-picker-head{display:flex;align-items:center;justify-content:space-between;padding:2px 4px 10px;font-size:15px}
+.ng-model-picker-head>div{display:flex;flex-direction:column;gap:3px}.ng-model-picker-head small{font-size:10px;color:#91abc4;font-weight:400}
 .ng-model-picker-head button{border:0;background:transparent;color:#fff;font-size:25px;padding:0 5px}
-.ng-model-modes{display:flex;gap:6px;margin:0 0 9px}
-.ng-model-modes button,.ng-model-options button{border:1px solid #454552;border-radius:12px;background:#25252b;color:#e9e9f2;padding:7px 11px;font-size:12px}
-.ng-model-modes button.active{border-color:#8067ff;background:#30264e;color:#fff}
-.ng-model-row{width:100%;min-height:62px;display:flex;align-items:center;gap:12px;text-align:left;padding:9px 10px;border:0;border-radius:12px;background:#25252b;color:#fff;margin-top:5px}
-.ng-model-kind-icon{width:28px;font-size:22px;text-align:center}
+.ng-model-modes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:0 0 8px}
+.ng-model-modes button{border:1px solid rgba(111,157,196,.3);border-radius:10px;background:#102744;color:#dcecff;padding:9px 7px;font-size:12px;font-weight:600}
+.ng-model-modes button.active{border-color:#27d7f4;background:linear-gradient(115deg,#087fc4,#245ee7 55%,#743ee8);color:#fff;box-shadow:0 0 0 1px rgba(57,219,255,.28) inset}
+.ng-model-row{width:100%;min-height:62px;display:flex;align-items:center;gap:12px;text-align:left;padding:9px 10px;border:1px solid rgba(111,157,196,.22);border-radius:12px;background:#102744;color:#fff;margin-top:6px;cursor:pointer}
+.ng-model-row[aria-expanded=true]{border-color:#27d7f4;background:#123653}
+.ng-model-kind-icon{width:28px;font-size:22px;text-align:center;color:#52dff5}
 .ng-model-row span:nth-child(2){display:flex;flex:1;flex-direction:column;gap:3px}
-.ng-model-row small{font-size:12px;color:#aeb1c0}
+.ng-model-row small{font-size:12px;color:#aebfd2}
 .ng-model-chevron{font-size:25px;color:#aaa}
-.ng-model-options{display:flex;flex-wrap:wrap;gap:6px;padding:8px 2px 4px}
-.ng-model-picker-note{font-size:10px;line-height:1.4;color:#9699a8;padding:9px 4px 1px}
+.ng-model-detail{padding:9px 3px 2px}
+.ng-model-status{font-size:11px;line-height:1.45;color:#a8bfd4;margin:4px 3px 2px}
+.ng-model-picker-note{font-size:10px;line-height:1.4;color:#8da7c0;padding:9px 4px 1px;margin:0}
 </style>
 <style id="ng-image-settings-style">
 .image-settings-trigger{white-space:nowrap;cursor:pointer;font:inherit;display:flex;align-items:center;justify-content:center;gap:3px;width:auto!important;min-width:132px;padding:0 14px;flex:0 0 auto;color:#fff!important}.image-settings-trigger svg{display:block!important;visibility:visible!important;flex:none;width:18px;height:18px;opacity:1;stroke:#fff!important}
@@ -278,22 +281,23 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
     
     <button class="snd" id="motion16Generate" type="button" aria-label="Generate"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5M5 11l7-7 7 7"/></svg></button>
   </div>
-  <div class="ng-model-picker" id="ngModelPicker" hidden role="dialog" aria-label="AI model selection">
-    <div class="ng-model-picker-head"><strong>Model Selection</strong><button type="button" id="ngModelPickerClose" aria-label="Close">×</button></div>
-    <div class="ng-model-modes" role="group" aria-label="Selection mode">
-      <button type="button" class="active" data-model-mode="Auto">Auto</button>
-      <button type="button" data-model-mode="Manual">Manual</button>
-      <button type="button" data-model-mode="Compare">Compare</button>
-    </div>
-    <button type="button" class="ng-model-row" data-model-kind="Image"><span class="ng-model-kind-icon">▧</span><span><b>Image</b><small id="ngImageModelValue">Auto Selection</small></span><span class="ng-model-chevron">›</span></button>
-    <div class="ng-model-options" id="ngImageModelOptions" hidden>
-      <button type="button" data-model-choice="Image|GPT">GPT</button><button type="button" data-model-choice="Image|Claude">Claude</button><button type="button" data-model-choice="Image|Gemini">Gemini</button><button type="button" data-model-choice="Image|Qwen">Qwen</button><button type="button" data-model-choice="Image|Sarvam">Sarvam</button>
-    </div>
-    <button type="button" class="ng-model-row" data-model-kind="Video"><span class="ng-model-kind-icon">▻</span><span><b>Video</b><small id="ngVideoModelValue">Auto Selection</small></span><span class="ng-model-chevron">›</span></button>
-    <div class="ng-model-options" id="ngVideoModelOptions" hidden>
-      <button type="button" data-model-choice="Video|Omni Flash">Omni Flash</button><button type="button" data-model-choice="Video|GPT">GPT</button><button type="button" data-model-choice="Video|Claude">Claude</button><button type="button" data-model-choice="Video|Gemini">Gemini</button><button type="button" data-model-choice="Video|Qwen">Qwen</button><button type="button" data-model-choice="Video|Sarvam">Sarvam</button>
-    </div>
-    <p class="ng-model-picker-note">Model choices are interface options; provider connection is required before generation.</p>
+  <div class="ng-model-picker" id="ngModelPicker" hidden role="dialog" aria-label="NextGen AI selection">
+    <div class="ng-model-picker-head"><div><strong>NextGen AI</strong><small>Choose creation engine</small></div><button type="button" id="ngModelPickerClose" aria-label="Close">×</button></div>
+    <button type="button" class="ng-model-row" data-model-kind="Image" aria-expanded="false"><span class="ng-model-kind-icon">▧</span><span><b>Image</b><small id="ngImageModelValue">Auto Selection</small></span><span class="ng-model-chevron">›</span></button>
+    <section class="ng-model-detail" id="ngImageModelOptions" hidden aria-label="Image model selection">
+      <div class="ng-model-modes" role="group" aria-label="Image selection mode">
+        <button type="button" class="active" data-model-mode="Image|Auto">Auto</button><button type="button" data-model-mode="Image|Manual">Manual</button><button type="button" data-model-mode="Image|Compare">Compare</button>
+      </div>
+      <p class="ng-model-status" id="ngImageModelStatus">NextGen AI will automatically select a suitable connected image model.</p>
+    </section>
+    <button type="button" class="ng-model-row" data-model-kind="Video" aria-expanded="false"><span class="ng-model-kind-icon">▻</span><span><b>Video</b><small id="ngVideoModelValue">Auto Selection</small></span><span class="ng-model-chevron">›</span></button>
+    <section class="ng-model-detail" id="ngVideoModelOptions" hidden aria-label="Video model selection">
+      <div class="ng-model-modes" role="group" aria-label="Video selection mode">
+        <button type="button" class="active" data-model-mode="Video|Auto">Auto</button><button type="button" data-model-mode="Video|Manual">Manual</button><button type="button" data-model-mode="Video|Compare">Compare</button>
+      </div>
+      <p class="ng-model-status" id="ngVideoModelStatus">NextGen AI will automatically select a suitable connected video model.</p>
+    </section>
+    <p class="ng-model-picker-note">Provider names stay hidden. Only verified and connected models can be selected or compared.</p>
   </div>
   <div class="motion16-notice" id="motion16Notice" role="status" aria-live="polite"></div>
 </div>
@@ -365,14 +369,32 @@ function inform(msg){notice.textContent=msg;notice.classList.add('show');clearTi
 function selectFeature(index,manual=false){
  const item=data[index];if(!item)return;active=index;
  const modelPicker=$('ngModelPicker'),modelTrigger=$('motion16ModelSelect');
-let modelMode='Auto',imageModel='Auto Selection',videoModel='Auto Selection';
+const modelModes={Image:'Auto',Video:'Auto'};
 function closeModelPicker(){modelPicker.hidden=true;modelTrigger.setAttribute('aria-expanded','false')}
+function updateModelMode(kind,mode){
+ modelModes[kind]=mode;
+ const label=$(kind==='Image'?'ngImageModelValue':'ngVideoModelValue');
+ const status=$(kind==='Image'?'ngImageModelStatus':'ngVideoModelStatus');
+ label.textContent=mode==='Auto'?'Auto Selection':mode==='Manual'?'Manual Selection':'Compare Mode';
+ status.textContent=mode==='Auto'
+  ?'NextGen AI will automatically select a suitable connected '+kind.toLowerCase()+' model.'
+  :mode==='Manual'
+   ?'No verified '+kind.toLowerCase()+' models are connected yet. Manual choices will appear here after provider verification.'
+   :'Compare requires at least two verified, compatible '+kind.toLowerCase()+' models. They are not connected yet.';
+ modelPicker.querySelectorAll('[data-model-mode]').forEach(btn=>{const [k,m]=btn.dataset.modelMode.split('|');btn.classList.toggle('active',k===kind&&m===mode)});
+}
 modelTrigger.addEventListener('click',()=>{modelPicker.hidden=!modelPicker.hidden;modelTrigger.setAttribute('aria-expanded',String(!modelPicker.hidden))});
 $('ngModelPickerClose').addEventListener('click',closeModelPicker);
 document.addEventListener('click',e=>{if(!modelPicker.hidden&&!modelPicker.contains(e.target)&&!modelTrigger.contains(e.target))closeModelPicker()});
-modelPicker.querySelectorAll('[data-model-mode]').forEach(btn=>btn.addEventListener('click',()=>{modelMode=btn.dataset.modelMode;modelPicker.querySelectorAll('[data-model-mode]').forEach(b=>b.classList.toggle('active',b===btn));if(modelMode==='Auto'){imageModel='Auto Selection';videoModel='Auto Selection';$('ngImageModelValue').textContent=imageModel;$('ngVideoModelValue').textContent=videoModel}}));
-modelPicker.querySelectorAll('[data-model-kind]').forEach(btn=>btn.addEventListener('click',()=>{const kind=btn.dataset.modelKind,options=$(kind==='Image'?'ngImageModelOptions':'ngVideoModelOptions');options.hidden=!options.hidden}));
-modelPicker.querySelectorAll('[data-model-choice]').forEach(btn=>btn.addEventListener('click',()=>{const [kind,choice]=btn.dataset.modelChoice.split('|');if(modelMode==='Auto'){modelMode='Manual';modelPicker.querySelectorAll('[data-model-mode]').forEach(b=>b.classList.toggle('active',b.dataset.modelMode===modelMode))}if(kind==='Image'){imageModel=choice;$('ngImageModelValue').textContent=choice}else{videoModel=choice;$('ngVideoModelValue').textContent=choice}$(kind==='Image'?'ngImageModelOptions':'ngVideoModelOptions').hidden=true}));
+modelPicker.querySelectorAll('[data-model-kind]').forEach(btn=>btn.addEventListener('click',()=>{
+ const kind=btn.dataset.modelKind,detail=$(kind==='Image'?'ngImageModelOptions':'ngVideoModelOptions');
+ const opening=detail.hidden;
+ modelPicker.querySelectorAll('.ng-model-detail').forEach(el=>el.hidden=true);
+ modelPicker.querySelectorAll('[data-model-kind]').forEach(el=>el.setAttribute('aria-expanded','false'));
+ detail.hidden=!opening;btn.setAttribute('aria-expanded',String(opening));
+}));
+modelPicker.querySelectorAll('[data-model-mode]').forEach(btn=>btn.addEventListener('click',()=>{const [kind,mode]=btn.dataset.modelMode.split('|');updateModelMode(kind,mode)}));
+updateModelMode('Image','Auto');updateModelMode('Video','Auto');
 const demoVideo=$('motion16HeroVideo');
  const heroImage=$('motion16HeroImage');
  demoVideo.pause();
