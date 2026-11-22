@@ -431,6 +431,13 @@ html body #studio-home .ng-projects-shell{width:100%!important;margin-left:0!imp
 /* Exact 16:9 thumbnail ratio for every Projects row. */
 html body #studio-home .ng-project-thumb{aspect-ratio:16/9!important;width:100%!important;height:auto!important;object-fit:contain!important;}
 </style>
+
+<style id="ng-project-thumbnail-16x9-v2">
+/* Force a real 16:9 display box; replaced img/video elements need an explicit height. */
+html body #studio-home .ng-project-row{grid-template-columns:minmax(0,47%) minmax(0,1fr) 30px!important;}
+html body #studio-home .ng-project-thumb{display:block!important;width:100%!important;height:clamp(100px,calc((100vw - 44px)*.47*.5625),240px)!important;aspect-ratio:16/9!important;object-fit:contain!important;}
+@media(max-width:380px){html body #studio-home .ng-project-row{grid-template-columns:minmax(0,44%) minmax(0,1fr) 26px!important;}html body #studio-home .ng-project-thumb{height:clamp(90px,calc((100vw - 44px)*.44*.5625),200px)!important}}
+</style>
 </style>
 </head>
 <body>
