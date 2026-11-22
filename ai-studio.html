@@ -813,9 +813,9 @@ html body .studio #studio-workspace .studio-reference-header{
 }
 #studio-workspace .studio-reference-header{
   position:fixed!important;
-  top:2px!important;
-  left:max(11px, calc((100vw - 1180px)/2))!important;
-  right:max(11px, calc((100vw - 1180px)/2))!important;
+  top:0!important;
+  left:0!important;
+  right:0!important;
   width:auto!important;
   max-width:none!important;
   margin:0!important;
@@ -825,10 +825,18 @@ html body .studio #studio-workspace .studio-reference-header{
 @media(max-width:700px){
   #studio-workspace{height:150px!important;min-height:150px!important}
   #studio-workspace .studio-reference-header{
-    left:11px!important;
-    right:11px!important;
+    left:0!important;
+    right:0!important;
   }
 }
+</style>
+
+
+<style id="nextgen-ai-studio-zero-page-margin-v1">
+/* Make the AI Studio page itself flush with all viewport edges.
+   This does not alter text spacing, header styling, or inner component padding. */
+html,body{margin:0!important}
+.studio{width:100%!important;max-width:none!important;margin:0!important;padding:0!important}
 </style>
 
 </head>
