@@ -339,20 +339,7 @@ html,body{background:#061329!important;color:#f4f8ff!important}
 </style>
 
 
-<style id="create-project-close-cross-only-v1">
-/* Project-page close control only. Do not alter the Home page or its layout. */
-#studio-home .reference-project-card{position:relative}
-#studio-home .reference-project-close{
-  position:absolute;top:4px;right:4px;z-index:5;
-  display:grid;place-items:center;width:28px;height:28px;padding:0;
-  border:1.5px solid rgba(72,139,201,.48);border-radius:9px;
-  background:#0d2342;color:#f4f8ff;
-  font:500 23px/1 Arial,sans-serif;text-decoration:none;cursor:pointer;
-  box-shadow:inset 0 0 0 1px rgba(110,177,231,.06);
-  -webkit-tap-highlight-color:transparent;
-}
-#studio-home .reference-project-close:focus-visible{outline:2px solid #69dfff;outline-offset:2px}
-</style>
+<style id="create-project-close-cross-only-v1">#studio-home .reference-project-close{display:none!important}</style>
 
 <style id="nextgen-main-workplace-outer-border-removal-v1">
 /* Remove only the large outer frame around Main Workplace / Create New Project.
@@ -839,10 +826,11 @@ render();
 })();
 </script>
 
-<style id="nextgen-studio-master-header-lock-v3">
-/* One locked header system shared by every NextGen Studio page. */
+
+<style id="nextgen-studio-master-header-lock-v4">
+/* Master header: identical geometry, typography, colors, spacing and scroll behavior on all Studio pages. */
 .ng-final-shared-header,.studio-reference-header{
- position:sticky!important;top:0!important;z-index:950!important;
+ position:sticky!important;top:0!important;z-index:9999!important;
  display:block!important;width:100%!important;box-sizing:border-box!important;
  margin:0 0 18px!important;padding:12px 14px 15px!important;
  border:0!important;border-radius:0 0 18px 18px!important;
@@ -870,11 +858,10 @@ render();
  display:inline-block!important;margin-left:-7px!important;position:relative!important;top:.5px!important;
  padding:0 5px!important;border:1px solid rgba(255,255,255,.88)!important;border-radius:6px!important;
  background:linear-gradient(180deg,#fff 0%,#edf3ff 100%)!important;box-shadow:0 2px 7px rgba(0,0,0,.22)!important;
- font-size:14px!important;line-height:1.15!important;font-weight:800!important;color:#241080!important;
+ font-size:14px!important;line-height:1.15!important;font-weight:800!important;color:#241080!important;-webkit-text-fill-color:#241080!important;
 }
-.ng-final-shared-header .ng-studio-o,.studio-reference-header .ng-studio-o{font-size:14px!important;color:#ed174c!important}
-.ng-final-shared-header .ng-final-close,.studio-reference-header .ng-final-close,
-.studio-reference-header #studio-home-back{
+.ng-final-shared-header .ng-studio-o,.studio-reference-header .ng-studio-o{font-size:14px!important;color:#ed174c!important;-webkit-text-fill-color:#ed174c!important}
+.ng-final-shared-header .ng-final-close,.studio-reference-header .ng-final-close,.studio-reference-header #studio-home-back{
  display:grid!important;place-items:center!important;flex:0 0 46px!important;width:46px!important;height:46px!important;min-width:46px!important;
  padding:0!important;border:0!important;border-radius:50%!important;background:transparent!important;
  color:#f7fbff!important;text-decoration:none!important;font-size:38px!important;font-weight:500!important;line-height:1!important;box-shadow:none!important;
@@ -882,21 +869,18 @@ render();
 .ng-final-shared-header .ng-final-titleline,.studio-reference-header .ng-final-titleline{
  display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;
 }
-.ng-final-shared-header .ng-final-title,.studio-reference-header .ng-final-title,
-.studio-reference-header #view-title{
+.ng-final-shared-header .ng-final-title,.studio-reference-header .ng-final-title,.studio-reference-header #view-title{
  flex:1!important;min-width:0!important;margin:0!important;font-size:clamp(30px,7vw,48px)!important;
  font-weight:800!important;letter-spacing:-1.1px!important;line-height:1.12!important;color:#f7f9ff!important;
  background:none!important;-webkit-text-fill-color:#f7f9ff!important;
 }
-.ng-final-shared-header .ng-final-action,.studio-reference-header .ng-final-action,
-.studio-reference-header #studio-gallery-open{
+.ng-final-shared-header .ng-final-action,.studio-reference-header .ng-final-action,.studio-reference-header #studio-gallery-open{
  flex:none!important;min-height:44px!important;padding:8px 18px!important;border:0!important;border-radius:999px!important;
  background:linear-gradient(100deg,#00c9f2 0%,#1678ff 48%,#a51cff 100%)!important;
  color:#fff!important;font:800 16px Inter,system-ui,sans-serif!important;text-decoration:none!important;
  display:inline-flex!important;align-items:center!important;justify-content:center!important;white-space:nowrap!important;box-shadow:none!important;
 }
-.ng-final-shared-header .ng-final-subtitle,.studio-reference-header .ng-final-subtitle,
-.studio-reference-header .studio-workspace-subtitle{
+.ng-final-shared-header .ng-final-subtitle,.studio-reference-header .ng-final-subtitle,.studio-reference-header .studio-workspace-subtitle{
  display:block!important;margin:13px 0 0!important;color:#a9c9e8!important;
  font-size:clamp(13px,3.6vw,17px)!important;line-height:1.5!important;text-transform:uppercase!important;letter-spacing:.45px!important;
 }
