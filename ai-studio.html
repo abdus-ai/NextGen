@@ -1296,7 +1296,7 @@ render();
  setFeature(activeFeature);
  const featureParam=new URLSearchParams(window.location.search).get('feature');
  if(featureParam!==null){
-  const homeFeatureNames=['Image Generate','AI Video Editor','Image to Video','Text to Video','Video Extender','Text to Music','Text to Music','Music to Video','Text to Videos','More Features'];
+  const homeFeatureNames=['AI Video Editor','Image to Video','Text to Video','Video Extender','Text to Music','Music to Video','Text 2 Dance','Upscale 4K / 8K'];
   const homeFeatureIndex=/^\d+$/.test(featureParam)?Number(featureParam):-1;
   const selectedFeature=homeFeatureIndex>=0&&homeFeatureIndex<homeFeatureNames.length?homeFeatureNames[homeFeatureIndex]:featureParam;
   if(featureTools[selectedFeature]){
@@ -1326,7 +1326,7 @@ render();
 (function(){
  const params=new URLSearchParams(location.search);
  const raw=params.get('feature');
- const names=['Image Generate','AI Video Editor','Image to Video','Text to Video','Video Extender','Text to Music','Text to Music','Music to Video','Text to Videos','More Features'];
+ const names=['AI Video Editor','Image to Video','Text to Video','Video Extender','Text to Music','Music to Video','Text 2 Dance','Upscale 4K / 8K'];
  const feature=raw!==null&&/^\d+$/.test(raw)?(names[Number(raw)]||'AI Studio'):(raw||'AI Studio');
  const descriptions={
   'AI Video Editor':'Edit videos with AI tools and effects.',
@@ -1422,8 +1422,10 @@ body .view .panel.ng-feature-routing {
 <script id="nextgen-feature-workspace-routing-fix-v1">
 (function(){
  const params=new URLSearchParams(location.search);
- const feature=params.get('feature');
- if(!feature)return;
+ const rawFeature=params.get('feature');
+ if(!rawFeature)return;
+ const numericFeatureNames=['AI Video Editor','Image to Video','Text to Video','Video Extender','Text to Music','Music to Video','Text 2 Dance','Upscale 4K / 8K'];
+ const feature=/^\\d+$/.test(rawFeature)?(numericFeatureNames[Number(rawFeature)]||rawFeature):rawFeature;
  const title=document.querySelector('#view-title .ng-title-gradient');
  const subtitle=document.getElementById('view-subtitle');
  const views=[...document.querySelectorAll('.view')];
