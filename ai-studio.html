@@ -1184,7 +1184,7 @@ render();
  const params=new URLSearchParams(location.search);
  const raw=params.get('feature');
  const names=['AI Video Editor','Image to Video','Text to Video','Video Extender','Text to Music','Music to Video','Text to Dance','Upscale 4K / 8K'];
- const feature=raw!==null&&/^\\d+$/.test(raw)?(names[Number(raw)]||'AI Studio'):(raw||'AI Studio');
+ const feature=raw!==null&&/^\d+$/.test(raw)?(names[Number(raw)]||'AI Studio'):(raw||'AI Studio');
  const descriptions={
   'AI Video Editor':'Edit videos with AI tools and effects.',
   'Image to Video':'Turn a still image into an animated video.',
