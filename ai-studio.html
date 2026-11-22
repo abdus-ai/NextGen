@@ -1518,13 +1518,16 @@ body .view .panel.ng-feature-routing {
  function apply(){
   const raw=new URLSearchParams(location.search).get('feature');
   if(raw===null)return;
-  const feature=/^\\d+$/.test(raw)?(names[Number(raw)]||'AI Studio'):raw;
+  const feature=/^\d+$/.test(raw)?(names[Number(raw)]||'AI Studio'):raw;
   const title=document.querySelector('#view-title .ng-title-gradient');
   if(title)title.textContent=feature;
   const selected=document.querySelector('[data-ng-feature-title]');
   if(selected)selected.textContent=feature;
   const context=document.querySelector('[data-ng-feature-context]');
   if(context)context.textContent='Feature selected: '+feature+'. Provider and model details are managed privately by NextGen AI.';
+  const subtitle=document.getElementById('view-subtitle');
+  const descriptions={'AI Video Editor':'Edit and refine an existing video with AI tools.','Image to Video':'Turn a still image into an animated video.','Text to Video':'Generate high-quality videos from a text prompt using AI.','Video Extender':'Extend an existing video with AI.','Text to Music':'Create original music from a text prompt.','Music to Video':'Create a video that follows your music.','Text 2 Dance':'Generate dance videos from text prompts.','Upscale 4K / 8K':'Enhance video quality to 4K or 8K where supported.'};
+  if(subtitle&&descriptions[feature])subtitle.textContent=descriptions[feature];
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply);
  else apply();
