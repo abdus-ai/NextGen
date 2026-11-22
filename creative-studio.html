@@ -1047,5 +1047,41 @@ render();
  .ng-final-shared-header .ng-final-subtitle,.studio-reference-header .ng-final-subtitle,.studio-reference-header .studio-workspace-subtitle{font-size:12px!important}
 }
 </style>
+
+<style id="nextgen-create-project-header-fixed-runtime-v2">
+/* True fixed header: keep it attached to the viewport while the document scrolls. */
+.ng-final-shared-header{
+  position:fixed!important;
+  top:0!important;
+  left:0!important;
+  right:0!important;
+  width:100%!important;
+  z-index:100000!important;
+  margin:0!important;
+  box-sizing:border-box!important;
+}
+.studio{
+  padding-top:var(--ng-create-header-height,190px)!important;
+}
+</style>
+<script id="nextgen-create-project-header-fixed-runtime-v2-measure">
+(function(){
+  const header=document.querySelector('.ng-final-shared-header');
+  const root=document.documentElement;
+  if(!header) return;
+  const update=()=>{
+    const h=Math.ceil(header.getBoundingClientRect().height);
+    root.style.setProperty('--ng-create-header-height',(h+10)+'px');
+  };
+  update();
+  if('ResizeObserver' in window){
+    const observer=new ResizeObserver(update);
+    observer.observe(header);
+  }
+  window.addEventListener('resize',update,{passive:true});
+  window.addEventListener('orientationchange',()=>setTimeout(update,120),{passive:true});
+  window.addEventListener('load',update,{once:true});
+})();
+</script>
 </body>
 </html>
