@@ -1672,3 +1672,29 @@ html body #studio-workspace .studio-reference-header .studio-reference-topline .
   window.addEventListener('pageshow',applyWordmarkSizes);
 })();
 </script>
+
+
+<style id="nextgen-studio-wordmark-refinement-v9">
+/* Nudge the complete wordmark slightly downward; refine the Studio label. */
+#studio-workspace .studio-reference-badge{
+  transform:translate(-5px,2px)!important;
+}
+#studio-workspace .studio-reference-badge .ng-studio-word,
+#studio-workspace .studio-reference-badge .ng-studio-word .ng-studio-o{
+  font-size:18px!important;
+  line-height:1.2!important;
+}
+#studio-workspace .studio-reference-badge .ng-studio-word{
+  padding:2px 7px!important;
+  border:1px solid rgba(255,255,255,.88)!important;
+  border-radius:6px!important;
+  background:linear-gradient(180deg,#ffffff 0%,#edf3ff 100%)!important;
+  color:#241080!important;
+  -webkit-text-fill-color:#241080!important;
+  box-shadow:0 2px 7px rgba(0,0,0,.22)!important;
+}
+#studio-workspace .studio-reference-badge .ng-studio-word .ng-studio-o{
+  color:#ed174c!important;
+  -webkit-text-fill-color:#ed174c!important;
+}
+</style>
