@@ -800,24 +800,7 @@ html body #studio-workspace{padding-top:0!important}
  html body .studio-reference-header.ng-header-locked .studio-workspace-subtitle{margin-top:14px!important;font-size:clamp(11px,3.1vw,14px)!important}
 }
 </style>
-<script id="ng-ai-studio-header-portal-lock-v4">
-(()=>{const setup=()=>{
- const head=document.querySelector('#studio-workspace .studio-reference-header');
- const host=document.getElementById('studio-workspace');
- if(!head||!host||head.dataset.lockedPortal==='1')return;
- const spacer=document.createElement('div');spacer.id='ng-studio-header-spacer';
- spacer.style.cssText='display:block;width:100%;height:0;pointer-events:none;';
- head.parentNode.insertBefore(spacer,head);
- document.body.appendChild(head);
- head.classList.add('ng-header-locked');head.dataset.lockedPortal='1';
- const measure=()=>{const h=Math.ceil(head.getBoundingClientRect().height);spacer.style.height=h+'px';};
- measure();
- if('ResizeObserver'in window)new ResizeObserver(measure).observe(head);
- window.addEventListener('resize',measure,{passive:true});
-};
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup,{once:true});else setup();
-})();
-</script>
+
 
 <style id="ng-ai-studio-header-rebuild-final-v5">
 /* Fresh header implementation: fixed header + a separate scrollable content area. */
@@ -929,6 +912,14 @@ body>.studio>.ng-ai-studio-scroll-content{flex:1 1 auto!important;min-height:0!i
 <script id="ng-ai-studio-header-scroll-measure-v7">
 (()=>{const init=()=>{const h=document.getElementById('ng-ai-studio-fixed-header');if(!h)return;const set=()=>document.documentElement.style.setProperty('--ng-ai-header-height',Math.ceil(h.getBoundingClientRect().height+parseFloat(getComputedStyle(h).top||0)+8)+'px');set();if('ResizeObserver'in window)new ResizeObserver(set).observe(h);window.addEventListener('resize',set,{passive:true});};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();})();
 </script>
+
+<style id="ng-ai-studio-scroll-guard-v8">
+html,body{overflow:hidden!important;overscroll-behavior:none!important}
+body>.studio{position:relative!important;isolation:isolate!important}
+body>.studio>.ng-ai-studio-scroll-content{position:relative!important;display:block!important;height:100%!important;max-height:100%!important;min-height:0!important;overflow-y:auto!important;overflow-x:hidden!important;overscroll-behavior-y:contain!important;touch-action:pan-y!important}
+body>.studio>.ng-ai-studio-new-header{position:fixed!important;inset-block-start:6px!important;inset-inline-start:50%!important;inset-inline-end:auto!important;transform:translateX(-50%)!important;z-index:2147483647!important}
+.ng-ai-studio-new-header #view-title .ng-title-gradient{display:inline-block!important;background:linear-gradient(100deg,#00e9f2,#258cff 48%,#cf3cff)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;-webkit-text-fill-color:transparent!important}
+</style>
 </head>
 <body>
 <div class="studio">
@@ -938,7 +929,7 @@ body>.studio>.ng-ai-studio-scroll-content{flex:1 1 auto!important;min-height:0!i
     <button type="button" id="studio-home-back" class="ng-ai-header-close" aria-label="Close AI Studio" title="Close">×</button>
   </div>
   <div class="ng-ai-header-titleline">
-    <h2 id="view-title">AI Studio</h2>
+    <h2 id="view-title"><span class="ng-title-gradient">AI Studio</span></h2>
     <button type="button" id="studio-gallery-open" class="ng-ai-header-projects">Projects</button>
   </div>
   <p id="view-subtitle" class="ng-ai-header-subtitle">Explore image and video creation in one workspace.</p>
