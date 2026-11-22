@@ -485,15 +485,39 @@ html body #studio-home .ng-project-actions button:active{background:linear-gradi
 html body #studio-home .ng-project-actions .ng-menu-icon{color:#48dcff!important;text-shadow:0 0 8px rgba(53,216,255,.28)!important;}
 </style>
 </style>
+
+<style id="nextgen-final-shared-studio-header-v1">
+.ng-final-shared-header{
+  position:relative;margin:0 0 18px;padding:12px 14px 15px;
+  border:1px solid rgba(65,170,230,.26);border-radius:18px;
+  background:linear-gradient(145deg,#0b1d38 0%,#07162d 62%,#111a3a 100%);
+  box-shadow:0 5px 18px rgba(0,0,0,.14),inset 0 0 22px rgba(25,100,190,.07);
+}
+.ng-final-shared-header .ng-final-topline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px}
+.ng-final-shared-header .ng-final-wordmark{display:inline-flex;align-items:center;gap:0;min-height:38px;transform:translate(-5px,2px)}
+.ng-final-shared-header .ng-next-word{font-size:28px;line-height:1.15;font-weight:800;color:#fff;display:inline-block}
+.ng-final-shared-header .ng-gen-word{font-size:28px;line-height:1.15;font-weight:800;display:inline-block;background:linear-gradient(100deg,#00eaff,#278cff 48%,#a53cff 78%,#ed36c7);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ng-final-shared-header .ng-studio-word{display:inline-block;margin-left:-7px;position:relative;top:.5px;padding:0 5px;border:1px solid rgba(255,255,255,.88);border-radius:6px;background:linear-gradient(180deg,#fff 0%,#edf3ff 100%);box-shadow:0 2px 7px rgba(0,0,0,.22);font-size:14px;line-height:1.15;font-weight:800;color:#241080}
+.ng-final-shared-header .ng-studio-o{font-size:14px;color:#ed174c}
+.ng-final-shared-header .ng-final-close{display:grid;place-items:center;flex:0 0 32px;width:32px;height:32px;border:1px solid rgba(67,155,230,.28);border-radius:10px;background:#0b1d38;color:#f7fbff;text-decoration:none;font-size:24px;line-height:1}
+.ng-final-shared-header .ng-final-titleline{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.ng-final-shared-header .ng-final-title{margin:0;flex:1;min-width:0;font-size:clamp(25px,6vw,38px);font-weight:800;letter-spacing:-.8px;line-height:1.12;color:#f7f9ff}
+.ng-final-shared-header .ng-final-action{flex:none;min-height:38px;padding:7px 14px;border:1px solid rgba(55,215,255,.55);border-radius:12px;background:linear-gradient(105deg,#073b62,#172b66 58%,#40205f);color:#69e8ff;font:800 15px Inter,system-ui,sans-serif;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.ng-final-shared-header .ng-final-subtitle{margin:10px 0 0;color:#a9c9e8;font-size:11px;line-height:1.5;text-transform:uppercase;letter-spacing:.45px}
+@media(max-width:420px){.ng-final-shared-header{padding:10px 11px 13px;border-radius:16px}.ng-final-shared-header .ng-final-title{font-size:25px}.ng-final-shared-header .ng-final-action{font-size:13px;padding:6px 11px}}
+</style>
+<style id="nextgen-gallery-hide-duplicate-intro-v1">#studio-home .reference-intro{display:none!important}</style>
 </head>
 <body>
 <div class="studio">
-<header class="studio-head studio-head-reference studio-reference-hidden">
-  <a class="studio-back" href="./create-hub.html" aria-label="Back">‹</a>
-  <h1>Create Project</h1>
-  <button type="button" class="studio-search-button" id="studio-search-button" aria-label="Search features" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.7"/><path d="m16 16 5 5"/></svg></button>
-  <input id="studio-search" class="studio-search" type="search" placeholder="Search features or projects" aria-label="Search features or projects" hidden>
-</header>
+<header class="ng-final-shared-header">
+  <div class="ng-final-topline">
+   <div class="ng-final-wordmark" aria-label="NextGen Studio"><span class="ng-next-word">Next</span><span class="ng-gen-word">Gen</span><span class="ng-studio-word">Studi<span class="ng-studio-o">o</span></span></div>
+   <a class="ng-final-close" href="./create-hub.html" aria-label="Back" title="Back">×</a>
+  </div>
+  <div class="ng-final-titleline"><h2 class="ng-final-title">Projects</h2><a class="ng-final-action" href="./creative-studio.html">＋ Create Project</a></div>
+  <p class="ng-final-subtitle">YOUR SAVED CREATIONS • IMAGES • VIDEOS • AUDIO</p>
+ </header>
 <section id="studio-home" class="studio-home studio-home-reference" aria-label="Projects">
   <div class="reference-project-card">
     <div class="reference-intro">
