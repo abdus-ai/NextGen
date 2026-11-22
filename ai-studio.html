@@ -1464,3 +1464,17 @@ html body #studio-workspace .studio-reference-header .studio-reference-titleline
 <script id="nextgen-wordmark-reference-color-script-v3">
 (()=>{const badge=document.querySelector('#studio-workspace .studio-reference-badge');if(badge){badge.innerHTML='<span class="ng-next-word">Next</span><span class="ng-gen-word">Gen</span>&nbsp;<span class="ng-studio-word">Studio</span>';}})();
 </script>
+
+
+<style id="nextgen-studio-wordmark-text-size-v4">
+/* Increase only the NextGen Studio wordmark text size; preserve its colors and layout. */
+#studio-workspace .studio-reference-badge{
+  font-size:22px!important;
+  line-height:1.15!important;
+}
+@media(max-width:420px){
+  #studio-workspace .studio-reference-badge{
+    font-size:20px!important;
+  }
+}
+</style>
