@@ -888,6 +888,13 @@ html body .ng-final-shared-header .ng-final-subtitle{
   text-shadow:0 0 8px rgba(217,251,255,.22)!important;
 }
 </style>
+
+<style id="nextgen-upscale-card-borderless-v1">
+/* Remove the outline only from the new Upscale card; keep all other card styling intact. */
+#studio-home .ng-upscale-card,
+#studio-home .ng-upscale-card:focus,
+#studio-home .ng-upscale-card:focus-visible{border:0!important;outline:0!important;box-shadow:none!important;}
+</style>
 </head>
 <body>
 <div class="studio">
@@ -919,7 +926,7 @@ html body .ng-final-shared-header .ng-final-subtitle{
     <button class="reference-studio-card" data-studio-view="tools"><img src="https://images.pexels.com/videos/4134975/pexels-photo-4134975.jpeg?auto=compress&dpr=1&h=750&w=1260" alt="Text to Music"><span class="reference-card-title">Text to Music</span><span class="reference-card-description">Create original music from text prompts</span></button>
     
     <button class="reference-studio-card" data-studio-view="discover"><img src="https://images.pexels.com/videos/12695730/pexels-photo-12695730.jpeg?auto=compress&dpr=1&h=750&w=1260" alt="Music to Video"><span class="reference-card-title">Music to Video</span><span class="reference-card-description">Create videos that match your music</span></button>
-    <button class="reference-studio-card" data-studio-view="tools"><img src="./upscale-4k-8k.svg" alt="Upscale 4K / 8K"><span class="reference-card-title">Upscale 4K / 8K</span><span class="reference-card-description">Enhance and upscale videos to 4K or 8K with AI</span></button>
+    <button class="reference-studio-card ng-upscale-card" data-studio-view="tools"><img src="./upscale-4k-8k.svg" alt="Upscale 4K / 8K"><span class="reference-card-title">Upscale 4K / 8K</span><span class="reference-card-description">Enhance and upscale videos to 4K or 8K with AI</span></button>
     <button class="reference-studio-card" data-studio-view="discover"><img src="https://images.pexels.com/videos/6332458/free-video-6332458.jpg?auto=compress&cs=tinysrgb&w=1260" alt="Text to Videos"><span class="reference-card-title">Text to Videos</span><span class="reference-card-description">Create videos from text prompts</span></button>
     <button class="reference-studio-card" data-studio-view="tools"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1000&q=88" alt="More Features"><span class="reference-card-title">More Features</span><span class="reference-card-description">Explore AI Tools</span></button>
   </div>
