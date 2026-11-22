@@ -787,6 +787,18 @@ body .view .ng-feature-routing{
   box-shadow:none!important;
 }
 </style>
+
+<style id="nextgen-ai-studio-full-page-borderless-v4">
+/* Remove the outer frames of every AI Studio feature section, including injected setup panels. */
+html body .studio section.view .panel,
+html body .studio section.view .ng-feature-routing,
+html body .studio section.view .studio-grid > .panel,
+html body .studio #studio-workspace .studio-reference-header{
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+}
+</style>
 </head>
 <body>
 <div class="studio">
@@ -1284,6 +1296,21 @@ body .view .panel.ng-feature-routing {
   box-shadow: none !important;
 }
 </style>
+
+<script id="nextgen-ai-studio-full-page-borderless-runtime-v4">
+(function(){
+ function clearOuterBorders(){
+  document.querySelectorAll('.studio section.view .panel,.studio section.view .ng-feature-routing,.studio #studio-workspace .studio-reference-header').forEach(function(el){
+   el.style.setProperty('border','0','important');
+   el.style.setProperty('outline','0','important');
+   el.style.setProperty('box-shadow','none','important');
+  });
+ }
+ clearOuterBorders();
+ var root=document.querySelector('.studio');
+ if(root&&window.MutationObserver)new MutationObserver(clearOuterBorders).observe(root,{childList:true,subtree:true});
+})();
+</script>
 </body>
 </html>
 
