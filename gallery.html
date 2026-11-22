@@ -466,6 +466,15 @@ html body #studio-home .ng-project-row{width:100%!important;box-sizing:border-bo
 html body #studio-home .ng-project-menu{justify-self:end!important;align-self:center!important;margin:0!important;padding:0!important;width:30px!important;text-align:right!important;display:flex!important;align-items:center!important;justify-content:flex-end!important;}
 @media(max-width:380px){html body #studio-home .ng-project-menu{width:26px!important}}
 </style>
+
+<style id="ng-project-context-menu-v1">
+#studio-home .ng-project-row{position:relative!important;}
+#studio-home .ng-project-actions{position:absolute!important;z-index:30!important;right:4px!important;top:42px!important;display:flex!important;flex-direction:column!important;gap:0!important;width:190px!important;padding:8px 0!important;border:1px solid rgba(255,255,255,.07)!important;border-radius:14px!important;background:#242424!important;box-shadow:0 8px 28px rgba(0,0,0,.42)!important;}
+#studio-home .ng-project-actions[hidden]{display:none!important;}
+#studio-home .ng-project-actions button{display:flex!important;align-items:center!important;gap:15px!important;width:100%!important;min-height:56px!important;padding:0 18px!important;border:0!important;border-radius:0!important;background:transparent!important;color:#f5f5f5!important;text-align:left!important;font-size:15px!important;font-weight:600!important;}
+#studio-home .ng-project-actions button:active{background:#383838!important;}
+#studio-home .ng-project-actions .ng-menu-icon{width:22px!important;flex:none!important;font-size:22px!important;text-align:center!important;}
+</style>
 </style>
 </head>
 <body>
@@ -874,9 +883,13 @@ render();
     const date=document.createElement('div');date.className='ng-project-meta';date.textContent=item.demo?item.date:(item.createdAt?new Date(item.createdAt).toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'}):'Saved project');info.append(title,duration,date);
     const menu=document.createElement('button');menu.type='button';menu.className='ng-project-menu';menu.textContent='⋮';menu.setAttribute('aria-label','Project actions for '+title.textContent);
     const actions=document.createElement('div');actions.className='ng-project-actions';actions.hidden=true;
-    if(item.demo){const note=document.createElement('span');note.className='ng-project-meta';note.textContent='Design sample only · No video file attached';actions.append(note);}
-    else{const download=document.createElement('a');download.className='secondary';download.textContent='Download';download.href=url;download.download=item.name||'nextgen-project.mp4';download.style.textDecoration='none';const del=document.createElement('button');del.type='button';del.className='secondary';del.textContent='Delete Project';del.addEventListener('click',async()=>{if(!confirm('Delete this Project from this device?'))return;await removeRow(item.id);render();});actions.append(download,del);}
-    menu.addEventListener('click',()=>{actions.hidden=!actions.hidden;});row.append(media,info,menu,actions);host.append(row);
+    const makeAction=(icon,label,fn)=>{const b=document.createElement('button');b.type='button';const glyph=document.createElement('span');glyph.className='ng-menu-icon';glyph.textContent=icon;const txt=document.createElement('span');txt.textContent=label;b.append(glyph,txt);b.addEventListener('click',fn);actions.append(b);};
+    const sampleNotice=()=>alert('This is a design preview sample. Only saved projects on this device can be changed.');
+    makeAction('✎','Rename',async()=>{actions.hidden=true;if(item.demo)return sampleNotice();const next=prompt('Rename project',title.textContent);if(!next||!next.trim())return;const db=await openDB();await new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readwrite');const store=tx.objectStore(STORE);const req=store.get(item.id);req.onsuccess=()=>{const value=req.result;if(value){value.title=next.trim();store.put(value);}};tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});db.close();render();});
+    makeAction('▢','Duplicate',async()=>{actions.hidden=true;if(item.demo)return sampleNotice();const copy={...item,id:(crypto.randomUUID?crypto.randomUUID():'copy-'+Date.now()+'-'+Math.random().toString(16).slice(2)),title:(item.title||item.name||'Untitled')+' (Copy)',name:(item.name||'project').replace(/(\\.[^.]+)?$/,'-copy$1'),createdAt:Date.now()};const db=await openDB();await new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).add(copy);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});db.close();render();});
+    makeAction('▤','Delete',async()=>{actions.hidden=true;if(item.demo)return sampleNotice();if(!confirm('Delete this Project from this device?'))return;await removeRow(item.id);render();});
+    menu.addEventListener('click',e=>{e.stopPropagation();document.querySelectorAll('#studio-home .ng-project-actions').forEach(el=>{if(el!==actions)el.hidden=true;});actions.hidden=!actions.hidden;});
+    row.append(media,info,menu,actions);host.append(row);
    });
   }catch(e){if(status)status.textContent='Could not open local Projects storage: '+(e?.message||'unknown error');}
  }
