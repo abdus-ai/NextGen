@@ -339,6 +339,20 @@ html,body{background:#061329!important;color:#f4f8ff!important}
 </style>
 
 
+<style id="create-project-close-cross-only-v1">
+/* Project-page close control only. Do not alter the Home page or its layout. */
+#studio-home .reference-project-card{position:relative}
+#studio-home .reference-project-close{
+  position:absolute;top:4px;right:4px;z-index:5;
+  display:grid;place-items:center;width:28px;height:28px;padding:0;
+  border:1.5px solid rgba(72,139,201,.48);border-radius:9px;
+  background:#0d2342;color:#f4f8ff;
+  font:500 23px/1 Arial,sans-serif;text-decoration:none;cursor:pointer;
+  box-shadow:inset 0 0 0 1px rgba(110,177,231,.06);
+  -webkit-tap-highlight-color:transparent;
+}
+#studio-home .reference-project-close:focus-visible{outline:2px solid #69dfff;outline-offset:2px}
+</style>
 </head>
 <body>
 <div class="studio">
@@ -350,6 +364,7 @@ html,body{background:#061329!important;color:#f4f8ff!important}
 </header>
 <section id="studio-home" class="studio-home studio-home-reference" aria-label="Creative Studio workspace">
   <div class="reference-project-card">
+    <a class="reference-project-close" href="./create-hub.html" aria-label="Close Create New Project" title="Close">×</a>
   <div class="reference-intro">
     <span class="reference-eyebrow">Main Workplace</span>
     <div class="reference-project-heading-row">
