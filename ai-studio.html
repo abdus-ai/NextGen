@@ -1512,6 +1512,25 @@ body .view .panel.ng-feature-routing {
  }
 })();
 </script>
+<script id="nextgen-feature-name-only-header-v1">
+(function(){
+ const names=['AI Video Editor','Image to Video','Text to Video','Video Extender','Text to Music','Music to Video','Text 2 Dance','Upscale 4K / 8K'];
+ function apply(){
+  const raw=new URLSearchParams(location.search).get('feature');
+  if(raw===null)return;
+  const feature=/^\\d+$/.test(raw)?(names[Number(raw)]||'AI Studio'):raw;
+  const title=document.querySelector('#view-title .ng-title-gradient');
+  if(title)title.textContent=feature;
+  const selected=document.querySelector('[data-ng-feature-title]');
+  if(selected)selected.textContent=feature;
+  const context=document.querySelector('[data-ng-feature-context]');
+  if(context)context.textContent='Feature selected: '+feature+'. Provider and model details are managed privately by NextGen AI.';
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply);
+ else apply();
+ window.addEventListener('pageshow',apply);
+})();
+</script>
 </body>
 </html>
 
