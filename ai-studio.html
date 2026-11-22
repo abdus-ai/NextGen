@@ -1425,7 +1425,7 @@ body .view .panel.ng-feature-routing {
  const rawFeature=params.get('feature');
  if(!rawFeature)return;
  const numericFeatureNames=['AI Video Editor','Image to Video','Text to Video','Video Extender','Text to Music','Music to Video','Text 2 Dance','Upscale 4K / 8K'];
- const feature=/^\\d+$/.test(rawFeature)?(numericFeatureNames[Number(rawFeature)]||rawFeature):rawFeature;
+ const feature=/^\d+$/.test(rawFeature)?(numericFeatureNames[Number(rawFeature)]||rawFeature):rawFeature;
  const title=document.querySelector('#view-title .ng-title-gradient');
  const subtitle=document.getElementById('view-subtitle');
  const views=[...document.querySelectorAll('.view')];
