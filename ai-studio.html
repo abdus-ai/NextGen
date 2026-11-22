@@ -1743,3 +1743,20 @@ html body #studio-workspace .studio-reference-header .studio-reference-topline .
   window.addEventListener('pageshow',apply);
 })();
 </script>
+
+
+<style id="nextgen-text-to-video-inner-title-force-white-v2">
+/* The feature title is rendered inside .ng-title-gradient with inline gradient styles.
+   Override the inner span itself so Text to Video displays in solid white. */
+html body #studio-workspace.ng-text-to-video-view .studio-reference-header .studio-reference-titleline h2#view-title > span.ng-title-gradient{
+  background:none!important;
+  background-image:none!important;
+  background-color:transparent!important;
+  -webkit-background-clip:initial!important;
+  background-clip:initial!important;
+  color:#ffffff!important;
+  -webkit-text-fill-color:#ffffff!important;
+  text-shadow:none!important;
+  filter:none!important;
+}
+</style>
