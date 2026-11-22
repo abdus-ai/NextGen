@@ -799,6 +799,38 @@ html body .studio #studio-workspace .studio-reference-header{
   box-shadow:none!important;
 }
 </style>
+
+<style id="nextgen-ai-studio-fixed-feature-header-v1">
+/* Keep the AI Studio feature header pinned while the selected creation page scrolls below it. */
+#studio-workspace{
+  height:150px!important;
+  min-height:150px!important;
+  padding:0!important;
+  margin:0!important;
+  overflow:visible!important;
+  background:transparent!important;
+  border-radius:0!important;
+}
+#studio-workspace .studio-reference-header{
+  position:fixed!important;
+  top:max(8px, env(safe-area-inset-top, 0px))!important;
+  left:max(11px, calc((100vw - 1180px)/2))!important;
+  right:max(11px, calc((100vw - 1180px)/2))!important;
+  width:auto!important;
+  max-width:none!important;
+  margin:0!important;
+  z-index:1000!important;
+  box-sizing:border-box!important;
+}
+@media(max-width:700px){
+  #studio-workspace{height:150px!important;min-height:150px!important}
+  #studio-workspace .studio-reference-header{
+    left:11px!important;
+    right:11px!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="studio">
