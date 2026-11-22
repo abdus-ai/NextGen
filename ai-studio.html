@@ -612,6 +612,89 @@ html body #studio-workspace .studio-reference-header .studio-reference-titleline
   text-shadow:0 0 1px rgba(255,255,255,.95),0 0 5px rgba(255,255,255,.42)!important;
 }
 </style>
+
+<style id="nextgen-ai-studio-full-brand-design-v1">
+/* Full NextGen brand treatment for every AI Studio workspace page only. */
+#studio-workspace{
+  --ng-cyan:#00eaff;
+  --ng-blue:#087cff;
+  --ng-violet:#7428f5;
+  --ng-magenta:#e51bdc;
+  --ng-line:rgba(58,164,235,.34);
+  background:
+    radial-gradient(ellipse at 8% 0%,rgba(0,210,255,.10),transparent 34%),
+    radial-gradient(ellipse at 95% 12%,rgba(190,35,235,.10),transparent 32%),
+    linear-gradient(160deg,#071326 0%,#080d20 52%,#100d27 100%);
+  border-radius:20px;
+  padding:14px;
+}
+#studio-workspace .panel,
+#studio-workspace .tool,
+#studio-workspace .model,
+#studio-workspace .history-item,
+#studio-workspace .gallery-tile{
+  background:linear-gradient(145deg,rgba(13,35,62,.96),rgba(12,19,43,.98))!important;
+  border:1px solid var(--ng-line)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.025),0 5px 18px rgba(0,0,0,.12)!important;
+}
+#studio-workspace .panel h2,
+#studio-workspace .tool b,
+#studio-workspace .model b{color:#f5fbff!important}
+#studio-workspace .field label,
+#studio-workspace .model em{color:#75dfff!important}
+#studio-workspace .field textarea,
+#studio-workspace .field input,
+#studio-workspace .field select{
+  background:rgba(5,15,34,.94)!important;
+  border:1px solid rgba(48,155,225,.42)!important;
+  color:#f5fbff!important;
+  box-shadow:inset 0 1px 5px rgba(0,0,0,.18)!important;
+}
+#studio-workspace .field textarea:focus,
+#studio-workspace .field input:focus,
+#studio-workspace .field select:focus{
+  outline:1px solid #00dfff!important;
+  border-color:#00dfff!important;
+  box-shadow:0 0 0 3px rgba(0,223,255,.12)!important;
+}
+#studio-workspace .primary,
+#studio-workspace button.primary{
+  background:linear-gradient(110deg,#00d9f5 0%,#087bff 34%,#633bff 68%,#d52bff 100%)!important;
+  color:#fff!important;border:0!important;
+  box-shadow:0 3px 14px rgba(0,160,255,.2)!important;
+}
+#studio-workspace .secondary,
+#studio-workspace .mode-tabs button,
+#studio-workspace .chip,
+#studio-workspace .studio-nav button{
+  background:linear-gradient(145deg,#102b4d,#171b43)!important;
+  color:#dff8ff!important;
+  border:1px solid rgba(55,177,238,.38)!important;
+}
+#studio-workspace .mode-tabs button.active,
+#studio-workspace .studio-nav button.active{
+  background:linear-gradient(110deg,#00d9f5 0%,#087bff 40%,#633bff 75%,#d52bff 100%)!important;
+  color:#fff!important;border-color:transparent!important;
+  box-shadow:0 2px 12px rgba(0,170,255,.2)!important;
+}
+#studio-workspace .upload{
+  background:linear-gradient(145deg,rgba(8,39,68,.82),rgba(20,20,55,.82))!important;
+  border-color:rgba(0,205,255,.55)!important;color:#d9f7ff!important;
+}
+#studio-workspace .upload strong,
+#studio-workspace .status-line strong{color:#fff!important}
+#studio-workspace .notice{
+  background:linear-gradient(110deg,rgba(0,122,170,.16),rgba(107,42,170,.16))!important;
+  border:1px solid rgba(90,165,235,.38)!important;color:#d9eaff!important;
+}
+#studio-workspace .status-line{border-bottom-color:rgba(69,154,215,.22)!important}
+#studio-workspace .gallery-tile{color:#a9d9f2!important}
+#studio-workspace .studio-workspace-subtitle{color:#b8d9f2!important}
+#studio-workspace .bottom-note{color:#91a8c8!important}
+@media(max-width:700px){
+  #studio-workspace{padding:10px}
+}
+</style>
 </style>
 
 </head>
