@@ -1657,12 +1657,12 @@ html body #studio-workspace .studio-reference-header .studio-reference-topline .
       studio=badge.querySelector('.ng-studio-word');
     }
     [next,gen].forEach(el=>{
-      el.style.setProperty('font-size','25px','important');
+      el.style.setProperty('font-size','28px','important');
       el.style.setProperty('line-height','1.15','important');
       el.style.setProperty('display','inline-block','important');
     });
     [studio,studio.querySelector('.ng-studio-o')].filter(Boolean).forEach(el=>{
-      el.style.setProperty('font-size','20px','important');
+      el.style.setProperty('font-size','18px','important');
       el.style.setProperty('line-height','1.15','important');
       el.style.setProperty('display','inline-block','important');
     });
@@ -1696,5 +1696,17 @@ html body #studio-workspace .studio-reference-header .studio-reference-topline .
 #studio-workspace .studio-reference-badge .ng-studio-word .ng-studio-o{
   color:#ed174c!important;
   -webkit-text-fill-color:#ed174c!important;
+}
+</style>
+
+
+<style id="nextgen-wordmark-gap-and-size-v10">
+#studio-workspace .studio-reference-badge .ng-studio-word{
+  margin-left:-4px!important;
+  padding:0.1px 3px!important;
+  font-size:18px!important;
+}
+#studio-workspace .studio-reference-badge .ng-studio-word .ng-studio-o{
+  font-size:18px!important;
 }
 </style>
