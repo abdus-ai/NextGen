@@ -750,6 +750,11 @@ html body #studio-workspace .studio-reference-header .studio-reference-titleline
 /* Lock only the AI Studio header at the top; all content below it scrolls normally. */
 html body #studio-workspace .studio-reference-header{position:sticky!important;top:0!important;z-index:100!important;isolation:isolate!important;background:linear-gradient(145deg,#0b1d38 0%,#07162d 62%,#111a3a 100%)!important;}
 </style>
+<style id="ng-ai-studio-header-sticky-v2">
+/* Let the sticky header use the full .studio page as its containing block. */
+html body #studio-workspace{display:contents!important;}
+html body #studio-workspace .studio-reference-header{position:sticky!important;top:0!important;z-index:1000!important;margin-top:0!important;isolation:isolate!important;background:linear-gradient(145deg,#0b1d38 0%,#07162d 62%,#111a3a 100%)!important;}
+</style>
 </head>
 <body>
 <div class="studio">
