@@ -1076,5 +1076,43 @@ render();
 </script>
 \n
 
+\n
+<style id="nextgen-gallery-header-spec-v1">
+/* Apply the supplied Studio header measurements without changing its colors or overall design. */
+.studio{padding-left:4px!important;padding-right:4px!important}
+.ng-final-shared-header{
+  padding-left:4px!important;
+  padding-right:4px!important;
+}
+.ng-final-shared-header .ng-final-topline,
+.ng-final-shared-header .ng-final-titleline{
+  padding-left:4px!important;
+  padding-right:4px!important;
+}
+.ng-final-shared-header .ng-next-word,
+.ng-final-shared-header .ng-gen-word{font-size:28px!important}
+.ng-final-shared-header .ng-studio-word,
+.ng-final-shared-header .ng-studio-o{font-size:14px!important}
+.ng-final-shared-header .ng-final-title{font-size:20px!important}
+.ng-final-shared-header .ng-final-subtitle{font-size:12px!important}
+.ng-final-shared-header .ng-final-close{
+  flex:0 0 32px!important;
+  width:32px!important;
+  min-width:32px!important;
+  height:32px!important;
+  font-size:24px!important;
+  aspect-ratio:1/1!important;
+  border-radius:0!important;
+}
+@media(max-width:420px){
+  .studio{padding-left:4px!important;padding-right:4px!important}
+  .ng-final-shared-header{padding-left:4px!important;padding-right:4px!important}
+  .ng-final-shared-header .ng-final-topline,
+  .ng-final-shared-header .ng-final-titleline{padding-left:4px!important;padding-right:4px!important}
+  .ng-final-shared-header .ng-final-close{
+    flex-basis:32px!important;width:32px!important;min-width:32px!important;height:32px!important;font-size:24px!important
+  }
+}
+</style>
 \n</body>
 </html>
