@@ -178,6 +178,21 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
 
 .ng-model-trigger{display:flex!important;align-items:center!important;justify-content:center!important;cursor:default!important;color:#eef8ff!important;background:linear-gradient(135deg,#0d2744,#102c4a)!important;border:1px solid rgba(79,181,235,.38)!important;border-radius:22px!important;padding:0 12px!important}
 
+.ng-model-trigger{cursor:pointer!important;touch-action:manipulation!important;gap:8px!important}
+.ng-model-picker{position:fixed;left:max(16px,calc((100vw - 430px)/2 + 18px));right:max(16px,calc((100vw - 430px)/2 + 18px));bottom:calc(155px + env(safe-area-inset-bottom,0px));z-index:10020;padding:12px;border:1px solid rgba(142,157,190,.24);border-radius:20px;background:#171717;box-shadow:0 12px 36px rgba(0,0,0,.48);color:#f7f7fb}
+.ng-model-picker[hidden],.ng-model-options[hidden]{display:none!important}
+.ng-model-picker-head{display:flex;align-items:center;justify-content:space-between;padding:2px 4px 10px;font-size:15px}
+.ng-model-picker-head button{border:0;background:transparent;color:#fff;font-size:25px;padding:0 5px}
+.ng-model-modes{display:flex;gap:6px;margin:0 0 9px}
+.ng-model-modes button,.ng-model-options button{border:1px solid #454552;border-radius:12px;background:#25252b;color:#e9e9f2;padding:7px 11px;font-size:12px}
+.ng-model-modes button.active{border-color:#8067ff;background:#30264e;color:#fff}
+.ng-model-row{width:100%;min-height:62px;display:flex;align-items:center;gap:12px;text-align:left;padding:9px 10px;border:0;border-radius:12px;background:#25252b;color:#fff;margin-top:5px}
+.ng-model-kind-icon{width:28px;font-size:22px;text-align:center}
+.ng-model-row span:nth-child(2){display:flex;flex:1;flex-direction:column;gap:3px}
+.ng-model-row small{font-size:12px;color:#aeb1c0}
+.ng-model-chevron{font-size:25px;color:#aaa}
+.ng-model-options{display:flex;flex-wrap:wrap;gap:6px;padding:8px 2px 4px}
+.ng-model-picker-note{font-size:10px;line-height:1.4;color:#9699a8;padding:9px 4px 1px}
 </style>
 <style id="ng-image-settings-style">
 .image-settings-trigger{white-space:nowrap;cursor:pointer;font:inherit;display:flex;align-items:center;justify-content:center;gap:3px;width:auto!important;min-width:132px;padding:0 14px;flex:0 0 auto;color:#fff!important}.image-settings-trigger svg{display:block!important;visibility:visible!important;flex:none;width:18px;height:18px;opacity:1;stroke:#fff!important}
@@ -258,10 +273,27 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
   <input type="file" id="motion16File" accept="image/*,video/*" hidden>
   <div class="tb">
     <button class="pl p1" id="motion16Add" type="button" aria-label="Add image or video">＋</button>
-    <div class="pl p2 ng-model-trigger" id="motion16ModelSelect" aria-label="NextGen AI"><span id="ng-model-selected-label">NextGen AI</span></div>
+    <button class="pl p2 ng-model-trigger" id="motion16ModelSelect" type="button" aria-label="Open AI model selection" aria-haspopup="dialog" aria-expanded="false"><span id="ng-model-selected-label">NextGen AI</span><span aria-hidden="true">⌃</span></button>
     <button class="pl p3 image-settings-trigger" id="motion16ImageSettings" type="button" aria-label="Image settings: ×1 Auto" aria-haspopup="dialog" aria-controls="ng-image-settings-overlay"><span id="ng-image-settings-button-label">×1 Auto</span><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg></button>
     
     <button class="snd" id="motion16Generate" type="button" aria-label="Generate"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5M5 11l7-7 7 7"/></svg></button>
+  </div>
+  <div class="ng-model-picker" id="ngModelPicker" hidden role="dialog" aria-label="AI model selection">
+    <div class="ng-model-picker-head"><strong>Model Selection</strong><button type="button" id="ngModelPickerClose" aria-label="Close">×</button></div>
+    <div class="ng-model-modes" role="group" aria-label="Selection mode">
+      <button type="button" class="active" data-model-mode="Auto">Auto</button>
+      <button type="button" data-model-mode="Manual">Manual</button>
+      <button type="button" data-model-mode="Compare">Compare</button>
+    </div>
+    <button type="button" class="ng-model-row" data-model-kind="Image"><span class="ng-model-kind-icon">▧</span><span><b>Image</b><small id="ngImageModelValue">Auto Selection</small></span><span class="ng-model-chevron">›</span></button>
+    <div class="ng-model-options" id="ngImageModelOptions" hidden>
+      <button type="button" data-model-choice="Image|GPT">GPT</button><button type="button" data-model-choice="Image|Claude">Claude</button><button type="button" data-model-choice="Image|Gemini">Gemini</button><button type="button" data-model-choice="Image|Qwen">Qwen</button><button type="button" data-model-choice="Image|Sarvam">Sarvam</button>
+    </div>
+    <button type="button" class="ng-model-row" data-model-kind="Video"><span class="ng-model-kind-icon">▻</span><span><b>Video</b><small id="ngVideoModelValue">Auto Selection</small></span><span class="ng-model-chevron">›</span></button>
+    <div class="ng-model-options" id="ngVideoModelOptions" hidden>
+      <button type="button" data-model-choice="Video|Omni Flash">Omni Flash</button><button type="button" data-model-choice="Video|GPT">GPT</button><button type="button" data-model-choice="Video|Claude">Claude</button><button type="button" data-model-choice="Video|Gemini">Gemini</button><button type="button" data-model-choice="Video|Qwen">Qwen</button><button type="button" data-model-choice="Video|Sarvam">Sarvam</button>
+    </div>
+    <p class="ng-model-picker-note">Model choices are interface options; provider connection is required before generation.</p>
   </div>
   <div class="motion16-notice" id="motion16Notice" role="status" aria-live="polite"></div>
 </div>
@@ -332,7 +364,16 @@ let active=0,timer=null,noticeTimer=null,attachedFile=null;
 function inform(msg){notice.textContent=msg;notice.classList.add('show');clearTimeout(noticeTimer);noticeTimer=setTimeout(()=>notice.classList.remove('show'),3200)}
 function selectFeature(index,manual=false){
  const item=data[index];if(!item)return;active=index;
- const demoVideo=$('motion16HeroVideo');
+ const modelPicker=$('ngModelPicker'),modelTrigger=$('motion16ModelSelect');
+let modelMode='Auto',imageModel='Auto Selection',videoModel='Auto Selection';
+function closeModelPicker(){modelPicker.hidden=true;modelTrigger.setAttribute('aria-expanded','false')}
+modelTrigger.addEventListener('click',()=>{modelPicker.hidden=!modelPicker.hidden;modelTrigger.setAttribute('aria-expanded',String(!modelPicker.hidden))});
+$('ngModelPickerClose').addEventListener('click',closeModelPicker);
+document.addEventListener('click',e=>{if(!modelPicker.hidden&&!modelPicker.contains(e.target)&&!modelTrigger.contains(e.target))closeModelPicker()});
+modelPicker.querySelectorAll('[data-model-mode]').forEach(btn=>btn.addEventListener('click',()=>{modelMode=btn.dataset.modelMode;modelPicker.querySelectorAll('[data-model-mode]').forEach(b=>b.classList.toggle('active',b===btn));if(modelMode==='Auto'){imageModel='Auto Selection';videoModel='Auto Selection';$('ngImageModelValue').textContent=imageModel;$('ngVideoModelValue').textContent=videoModel}}));
+modelPicker.querySelectorAll('[data-model-kind]').forEach(btn=>btn.addEventListener('click',()=>{const kind=btn.dataset.modelKind,options=$(kind==='Image'?'ngImageModelOptions':'ngVideoModelOptions');options.hidden=!options.hidden}));
+modelPicker.querySelectorAll('[data-model-choice]').forEach(btn=>btn.addEventListener('click',()=>{const [kind,choice]=btn.dataset.modelChoice.split('|');if(modelMode==='Auto'){modelMode='Manual';modelPicker.querySelectorAll('[data-model-mode]').forEach(b=>b.classList.toggle('active',b.dataset.modelMode===modelMode))}if(kind==='Image'){imageModel=choice;$('ngImageModelValue').textContent=choice}else{videoModel=choice;$('ngVideoModelValue').textContent=choice}$(kind==='Image'?'ngImageModelOptions':'ngVideoModelOptions').hidden=true}));
+const demoVideo=$('motion16HeroVideo');
  const heroImage=$('motion16HeroImage');
  demoVideo.pause();
  demoVideo.onerror=null;
