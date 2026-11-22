@@ -445,6 +445,13 @@ html body #studio-home .ng-project-row{grid-template-columns:minmax(0,42%) minma
 html body #studio-home .ng-project-thumb{display:block!important;width:100%!important;height:clamp(90px,calc((100vw - 44px)*.42*.5625),210px)!important;aspect-ratio:16/9!important;object-fit:contain!important;}
 @media(max-width:380px){html body #studio-home .ng-project-row{grid-template-columns:minmax(0,40%) minmax(0,1fr) 26px!important;column-gap:8px!important;}html body #studio-home .ng-project-thumb{height:clamp(82px,calc((100vw - 44px)*.40*.5625),190px)!important}}
 </style>
+
+<style id="ng-project-thumbnail-16x9-compact-v4">
+/* Slightly smaller thumbnail footprint, exact 16:9 retained. */
+html body #studio-home .ng-project-row{grid-template-columns:minmax(0,38%) minmax(0,1fr) 30px!important;column-gap:9px!important;}
+html body #studio-home .ng-project-thumb{display:block!important;width:100%!important;height:clamp(82px,calc((100vw - 44px)*.38*.5625),190px)!important;aspect-ratio:16/9!important;object-fit:contain!important;}
+@media(max-width:380px){html body #studio-home .ng-project-row{grid-template-columns:minmax(0,37%) minmax(0,1fr) 26px!important;column-gap:8px!important;}html body #studio-home .ng-project-thumb{height:clamp(76px,calc((100vw - 44px)*.37*.5625),175px)!important}}
+</style>
 </style>
 </head>
 <body>
