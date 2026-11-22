@@ -1411,6 +1411,102 @@ body .view .panel.ng-feature-routing {
   }
 }
 </style>
+
+<style id="nextgen-feature-workspace-routing-fix-v1">
+@media(max-width:700px){
+  #view-tools .studio-grid,#view-tools .two{grid-template-columns:minmax(0,1fr)!important}
+}
+</style>
+<script id="nextgen-feature-workspace-routing-fix-v1">
+(function(){
+ const params=new URLSearchParams(location.search);
+ const feature=params.get('feature');
+ if(!feature)return;
+ const title=document.querySelector('#view-title .ng-title-gradient');
+ const subtitle=document.getElementById('view-subtitle');
+ const views=[...document.querySelectorAll('.view')];
+ const discover=document.getElementById('view-discover');
+ const tools=document.getElementById('view-tools');
+ const imagine=document.getElementById('view-imagine');
+ const workspace=document.getElementById('studio-workspace');
+ const desc={
+  'AI Video Editor':'Edit and refine an existing video with AI tools.',
+  'Image to Video':'Turn a still image into an animated video.',
+  'Text to Video':'Generate high-quality videos from a text prompt using AI.',
+  'Text to Videos':'Create videos from text prompts using AI.',
+  'Video Extender':'Extend an existing video with AI.',
+  'Text to Music':'Create original music from a text prompt.',
+  'Music to Video':'Create a video that follows your music.',
+  'More Features':'Explore additional creative tools.'
+ };
+ if(title)title.textContent=feature;
+ if(subtitle&&desc[feature])subtitle.textContent=desc[feature];
+ if(workspace)workspace.classList.remove('hidden');
+ const showView=id=>views.forEach(v=>v.classList.toggle('hidden',v.id!==id));
+ if(feature==='Image Generate'){showView('view-imagine');return;}
+ if(feature==='AI Video Editor'){
+  showView('view-tools');
+  const panel=tools?.querySelector('.panel');
+  if(panel){
+   const h=panel.querySelector('h2');if(h)h.textContent='AI Video Editor';
+   const uploadLabel=panel.querySelector('label.upload');
+   if(uploadLabel){uploadLabel.innerHTML='＋ <span><strong>Select video to edit</strong><br>Upload an MP4, MOV or supported video</span>';}
+   const editLabel=panel.querySelector('label[for="edit-video"]');
+   if(editLabel)editLabel.textContent='SOURCE VIDEO';
+   const notice=panel.querySelector('.notice');
+   if(notice)notice.textContent='Editing controls are a prototype. Video processing and export require the AI Video Editor provider workflow to be connected.';
+  }
+  return;
+ }
+ if(feature==='Text to Music'){
+  showView('view-tools');
+  if(tools){
+   tools.innerHTML='<div class="panel"><h2>Music Creation Setup</h2><div class="field"><label>DESCRIBE YOUR MUSIC</label><textarea id="ng-music-prompt" maxlength="3000" placeholder="Describe the style, mood, instruments, tempo and vocals..."></textarea></div><div class="two"><div class="field"><label>GENRE</label><select id="ng-music-genre"><option>Auto</option><option>Pop</option><option>Electronic</option><option>Classical</option><option>Hip-Hop</option><option>Rock</option><option>Ambient</option><option>Folk</option></select></div><div class="field"><label>MOOD</label><select id="ng-music-mood"><option>Auto</option><option>Happy</option><option>Calm</option><option>Emotional</option><option>Epic</option><option>Dark</option><option>Energetic</option></select></div></div><div class="field"><label>VOCALS</label><select id="ng-music-vocals"><option>Auto</option><option>Instrumental</option><option>With vocals</option><option>Female voice</option><option>Male voice</option></select></div><div class="field"><label>REFERENCE AUDIO (OPTIONAL)</label><label class="upload" for="ng-music-reference"><span>＋</span><span><strong>Choose audio</strong><br>MP3, WAV or supported audio</span></label><input id="ng-music-reference" type="file" accept="audio/*"><div id="ng-music-reference-name" class="file-preview"></div></div><div class="field"><label>DURATION</label><select id="ng-music-duration"><option>Auto</option><option>30 seconds</option><option>60 seconds</option><option>90 seconds</option><option>120 seconds</option></select></div><div class="field"><label>GENERATION STATUS</label><div class="status-line"><span>Ready to configure</span><strong>Not submitted</strong></div></div><button type="button" class="primary" disabled aria-disabled="true">Music Generation — Provider Not Connected</button><div class="notice">Prototype only. Music generation is not active until an authorized provider and verified credit rates are connected.</div></div>';
+   const file=tools.querySelector('#ng-music-reference'),name=tools.querySelector('#ng-music-reference-name');
+   file?.addEventListener('change',()=>{if(name)name.textContent=file.files?.[0]?.name||'';});
+  }
+  return;
+ }
+ if(feature==='More Features'){
+  showView('view-tools');
+  if(tools){
+   const panel=tools.querySelector('.panel');
+   if(panel){
+    const h=panel.querySelector('h2');if(h)h.textContent='More Features';
+    const upload=panel.querySelector('label[for="edit-video"]');
+    if(upload)upload.innerHTML='＋ <span><strong>Choose a source file</strong><br>Select media for a supported additional tool</span>';
+    const notice=panel.querySelector('.notice');
+    if(notice)notice.textContent='Additional tools are shown as a prototype catalogue. Processing and exports are not active until their providers are connected.';
+   }
+  }
+  return;
+ }
+ showView('view-discover');
+ const file=document.getElementById('reference-file');
+ const upload=document.querySelector('label[for="reference-file"]');
+ const label=discover?.querySelector('.field label[for="reference-file"]');
+ const promptLabel=discover?.querySelector('label[for="main-prompt"]')||discover?.querySelector('#main-prompt')?.previousElementSibling;
+ const prompt=document.getElementById('main-prompt');
+ const modes=[...document.querySelectorAll('[data-mode]')];
+ if(feature==='Video Extender'){
+  if(file)file.accept='video/*';
+  if(upload)upload.innerHTML='<span>＋</span><span><strong>Choose existing video</strong><br>Upload the clip you want to extend</span>';
+  if(label)label.textContent='VIDEO TO EXTEND';
+  if(promptLabel)promptLabel.textContent='HOW SHOULD THE VIDEO CONTINUE?';
+  if(prompt)prompt.placeholder='Describe how the scene should continue, including motion, setting and visual continuity...';
+  const starter=discover?.querySelector('#prompt-starters');if(starter)starter.closest('.field')?.classList.add('hidden');
+ }
+ if(feature==='Music to Video'){
+  if(file)file.accept='audio/*';
+  if(upload)upload.innerHTML='<span>＋</span><span><strong>Choose music or audio</strong><br>Upload MP3, WAV or supported audio</span>';
+  if(label)label.textContent='MUSIC / AUDIO INPUT';
+  if(promptLabel)promptLabel.textContent='DESCRIBE YOUR MUSIC VIDEO';
+  if(prompt)prompt.placeholder='Describe the visuals, scenes, style and motion that should match your music...';
+  const starter=discover?.querySelector('#prompt-starters');if(starter)starter.closest('.field')?.classList.add('hidden');
+  modes.forEach(b=>{b.classList.toggle('active',b.dataset.mode==='video');});
+ }
+})();
+</script>
 </body>
 </html>
 
