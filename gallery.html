@@ -742,23 +742,31 @@ render();
  async function render(){
   try{
    const rows=await getRows();host.innerHTML='';
-   if(count)count.textContent=rows.length+' Project'+(rows.length===1?'':'s');
    rows.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
-   if(!rows.length){host.innerHTML='<div class="gallery-tile" style="aspect-ratio:auto;min-height:120px">No Projects yet. Save a completed video from AI Studio Preview to see it here.</div>';if(status)status.textContent='Your saved Projects will appear here.';return;}
-   if(status)status.textContent='Your saved Projects · Stored on this device';
-   rows.forEach((item,index)=>{
+   const samples=[
+    {demo:true,title:'Untitled',meta:'00:10 · 6 MB',date:'Recently opened',image:'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=720&q=80'},
+    {demo:true,title:'Untitled',meta:'00:10 · 3 MB',date:'24 Oct 2026',image:'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=720&q=80'},
+    {demo:true,title:'Untitled',meta:'00:14 · 18 MB',date:'23 Oct 2026',image:'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=720&q=80'},
+    {demo:true,title:'Untitled',meta:'00:14 · 9 MB',date:'23 Oct 2026',image:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=720&q=80'},
+    {demo:true,title:'Untitled',meta:'00:10 · 6 MB',date:'9 Oct 2026',image:'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=720&q=80'}
+   ];
+   if(count)count.textContent=(samples.length+rows.length)+' Projects';
+   if(status)status.textContent='Design preview samples are shown first. They are thumbnails only, not playable video files.';
+   const items=[...samples,...rows];
+   items.forEach((item,index)=>{
     const row=document.createElement('article');row.className='ng-project-row';
-    const video=document.createElement('video'),url=URL.createObjectURL(item.blob);video.className='ng-project-thumb';video.src=url;video.muted=true;video.playsInline=true;video.preload='auto';video.setAttribute('aria-label','Preview '+(item.title||item.name||'project'));
-    video.addEventListener('loadeddata',()=>{try{if(video.duration>0)video.currentTime=Math.min(.12,video.duration/10);}catch(e){}},{once:true});
+    let media,url='';
+    if(item.demo){media=document.createElement('img');media.src=item.image;media.alt='Sample project thumbnail';media.className='ng-project-thumb';}
+    else{url=URL.createObjectURL(item.blob);media=document.createElement('video');media.src=url;media.muted=true;media.playsInline=true;media.preload='auto';media.className='ng-project-thumb';media.setAttribute('aria-label','Preview '+(item.title||item.name||'project'));media.addEventListener('loadeddata',()=>{try{if(media.duration>0)media.currentTime=Math.min(.12,media.duration/10);}catch(e){}},{once:true});}
     const info=document.createElement('div');info.className='ng-project-info';
     const title=document.createElement('div');title.className='ng-project-title';title.textContent=item.title||item.name||'Untitled';
-    const duration=document.createElement('div');duration.className='ng-project-meta';const secs=Number(item.duration)||0;const mm=String(Math.floor(secs/60)).padStart(2,'0'),ss=String(Math.floor(secs%60)).padStart(2,'0');const size=((Number(item.size)||item.blob?.size||0)/1048576).toFixed(1);duration.textContent=(secs?mm+':'+ss+' · ':'')+size+' MB';
-    const date=document.createElement('div');date.className='ng-project-meta';date.textContent=index===0?'Recently opened':(item.createdAt?new Date(item.createdAt).toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'}):'Saved project');info.append(title,duration,date);
+    const duration=document.createElement('div');duration.className='ng-project-meta';if(item.demo)duration.textContent=item.meta;else{const secs=Number(item.duration)||0;const mm=String(Math.floor(secs/60)).padStart(2,'0'),ss=String(Math.floor(secs%60)).padStart(2,'0');const size=((Number(item.size)||item.blob?.size||0)/1048576).toFixed(1);duration.textContent=(secs?mm+':'+ss+' · ':'')+size+' MB';}
+    const date=document.createElement('div');date.className='ng-project-meta';date.textContent=item.demo?item.date:(item.createdAt?new Date(item.createdAt).toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'}):'Saved project');info.append(title,duration,date);
     const menu=document.createElement('button');menu.type='button';menu.className='ng-project-menu';menu.textContent='⋮';menu.setAttribute('aria-label','Project actions for '+title.textContent);
     const actions=document.createElement('div');actions.className='ng-project-actions';actions.hidden=true;
-    const download=document.createElement('a');download.className='secondary';download.textContent='Download';download.href=url;download.download=item.name||'nextgen-project.mp4';download.style.textDecoration='none';
-    const del=document.createElement('button');del.type='button';del.className='secondary';del.textContent='Delete Project';del.addEventListener('click',async()=>{if(!confirm('Delete this Project from this device?'))return;await removeRow(item.id);render();});
-    menu.addEventListener('click',()=>{actions.hidden=!actions.hidden;});actions.append(download,del);row.append(video,info,menu,actions);host.append(row);
+    if(item.demo){const note=document.createElement('span');note.className='ng-project-meta';note.textContent='Design sample only · No video file attached';actions.append(note);}
+    else{const download=document.createElement('a');download.className='secondary';download.textContent='Download';download.href=url;download.download=item.name||'nextgen-project.mp4';download.style.textDecoration='none';const del=document.createElement('button');del.type='button';del.className='secondary';del.textContent='Delete Project';del.addEventListener('click',async()=>{if(!confirm('Delete this Project from this device?'))return;await removeRow(item.id);render();});actions.append(download,del);}
+    menu.addEventListener('click',()=>{actions.hidden=!actions.hidden;});row.append(media,info,menu,actions);host.append(row);
    });
   }catch(e){if(status)status.textContent='Could not open local Projects storage: '+(e?.message||'unknown error');}
  }
