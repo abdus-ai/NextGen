@@ -554,6 +554,33 @@ html body #studio-home .ng-projects-heading{
 
 
 
+
+<style id="nextgen-gallery-your-projects-moved-into-header-v1">
+/* The Your Projects heading, description and live count now belong to the fixed header. */
+.ng-final-shared-header .ng-projects-heading-in-header{
+  display:flex!important;align-items:center!important;justify-content:space-between!important;
+  gap:10px!important;margin:8px 4px 0!important;padding-top:8px!important;
+  border-top:1px solid rgba(150,190,225,.16)!important;
+}
+.ng-final-shared-header .ng-projects-heading-in-header h2{
+  margin:0 0 2px!important;font-size:20px!important;line-height:1.15!important;
+  font-weight:750!important;color:#f4f8ff!important;
+}
+.ng-final-shared-header .ng-projects-heading-in-header p{
+  margin:0!important;font-size:12px!important;line-height:1.3!important;color:#aabed8!important;
+}
+.ng-final-shared-header .ng-projects-heading-in-header .ng-project-count{
+  flex:none!important;font-size:11px!important;color:#b8d7ef!important;
+  border:1px solid rgba(120,170,220,.28)!important;border-radius:99px!important;
+  padding:6px 10px!important;white-space:nowrap!important;
+}
+#studio-home .ng-projects-shell{padding-top:0!important}
+@media(max-width:420px){
+  .ng-final-shared-header .ng-projects-heading-in-header{margin-top:6px!important;padding-top:6px!important}
+  .ng-final-shared-header .ng-projects-heading-in-header h2{font-size:19px!important}
+  .ng-final-shared-header .ng-projects-heading-in-header p{font-size:11px!important}
+}
+</style>
 </head>
 <body>
 <div class="studio">
@@ -564,6 +591,7 @@ html body #studio-home .ng-projects-heading{
  </div>
  <div class="ng-final-titleline"><h2 class="ng-final-title">Projects</h2><a class="ng-final-action" href="./creative-studio.html">＋ Create Project</a></div>
  <p class="ng-final-subtitle">YOUR SAVED CREATIONS • IMAGES • VIDEOS • AUDIO</p>
+ <div class="ng-projects-heading ng-projects-heading-in-header"><div><h2>Your Projects</h2><p>All your saved creations in one place.</p></div><span class="ng-project-count" id="ng-project-count">0 Projects</span></div>
 </header>
 <section id="studio-home" class="studio-home studio-home-reference" aria-label="Projects">
   <div class="reference-project-card">
@@ -576,7 +604,6 @@ html body #studio-home .ng-projects-heading{
       <p>YOUR SAVED CREATIONS • IMAGES • VIDEOS • AUDIO</p>
     </div>
     <div class="ng-projects-shell">
-      <div class="ng-projects-heading"><div><h2>Your Projects</h2><p>All your saved creations in one place.</p></div><span class="ng-project-count" id="ng-project-count">0 Projects</span></div>
       <div id="ng-projects-status" class="notice" aria-live="polite">Projects saved on this device appear here.</div>
       <div id="ng-projects-list" class="ng-project-list"></div>
     </div>
