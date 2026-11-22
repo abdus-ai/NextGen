@@ -900,15 +900,37 @@ body>.studio>#studio-workspace{flex:1 1 auto!important;min-height:0!important;he
 <script id="ng-ai-studio-new-header-measure-v6">
 (()=>{const init=()=>{const head=document.getElementById('ng-ai-studio-fixed-header');const workspace=document.getElementById('studio-workspace');if(!head||!workspace)return;const measure=()=>{const h=Math.ceil(head.getBoundingClientRect().height+parseFloat(getComputedStyle(head).top||0)+8);document.documentElement.style.setProperty('--ng-ai-header-height',h+'px');};measure();if('ResizeObserver'in window)new ResizeObserver(measure).observe(head);window.addEventListener('resize',measure,{passive:true});};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();})();
 </script>
+
+<style id="ng-ai-studio-header-scroll-final-v7">
+html,body{width:100%!important;height:100%!important;min-height:100%!important;margin:0!important;overflow:hidden!important}
+body>.studio{width:100%!important;height:100vh!important;height:100dvh!important;min-height:0!important;max-height:100dvh!important;margin:0 auto!important;padding:0 14px!important;box-sizing:border-box!important;display:flex!important;flex-direction:column!important;overflow:hidden!important}
+body>.studio>.ng-ai-studio-new-header{position:fixed!important;top:8px!important;left:50%!important;right:auto!important;transform:translateX(-50%)!important;width:calc(100% - 48px)!important;max-width:1464px!important;z-index:2147483000!important;box-sizing:border-box!important;margin:0!important;padding:32px 34px 30px!important;border:2px solid rgba(75,157,220,.36)!important;border-radius:30px!important;background:linear-gradient(145deg,#071a34 0%,#06162e 60%,#111633 100%)!important;box-shadow:0 12px 34px rgba(0,0,0,.18),inset 0 0 24px rgba(24,103,190,.07)!important}
+.ng-ai-header-topline{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:18px!important;margin-bottom:26px!important}
+.ng-ai-header-badge{display:inline-flex!important;align-items:center!important;min-height:58px!important;padding:9px 25px!important;border-radius:999px!important;background:linear-gradient(105deg,#00c9ef,#1268ff 53%,#b51cff)!important;color:#fff!important;font-size:clamp(22px,3vw,34px)!important;font-weight:850!important;box-shadow:0 0 22px rgba(0,164,255,.22)!important}
+.ng-ai-header-close{display:grid!important;place-items:center!important;width:66px!important;height:66px!important;min-width:66px!important;padding:0!important;border:2px solid rgba(74,143,209,.35)!important;border-radius:24px!important;background:rgba(8,27,54,.82)!important;color:#f5f8ff!important;font-size:52px!important;line-height:1!important}
+.ng-ai-header-titleline{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:24px!important}
+.ng-ai-header-titleline #view-title{flex:1!important;min-width:0!important;margin:0!important;font-size:clamp(34px,5vw,68px)!important;line-height:1.08!important;font-weight:850!important;letter-spacing:-1.6px!important;background:linear-gradient(100deg,#00e9f2,#258cff 48%,#cf3cff)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;-webkit-text-fill-color:transparent!important}
+.ng-ai-header-projects{flex:none!important;min-height:66px!important;padding:10px 28px!important;border:0!important;border-radius:999px!important;background:linear-gradient(105deg,#00c9ef,#1268ff 53%,#b51cff)!important;color:#fff!important;font-size:clamp(22px,3vw,34px)!important;font-weight:850!important}
+.ng-ai-header-subtitle{margin:24px 0 0!important;color:#b8cce4!important;font-size:clamp(15px,2.4vw,24px)!important;line-height:1.35!important;letter-spacing:.25px!important;text-transform:uppercase!important}
+body>.studio>.ng-ai-studio-scroll-content{flex:1 1 auto!important;min-height:0!important;width:100%!important;overflow-x:hidden!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior-y:contain!important;touch-action:pan-y!important;box-sizing:border-box!important;padding-top:var(--ng-ai-header-height,0px)!important}
+@media(max-width:700px){
+ body>.studio{padding:0 12px!important}
+ body>.studio>.ng-ai-studio-new-header{top:6px!important;width:calc(100% - 24px)!important;padding:14px 14px 15px!important;border-radius:22px!important}
+ .ng-ai-header-topline{margin-bottom:17px!important}
+ .ng-ai-header-badge{min-height:42px!important;padding:6px 17px!important;font-size:22px!important}
+ .ng-ai-header-close{width:48px!important;height:48px!important;min-width:48px!important;border-radius:18px!important;font-size:39px!important}
+ .ng-ai-header-titleline{gap:10px!important}
+ .ng-ai-header-titleline #view-title{font-size:clamp(26px,7vw,38px)!important;letter-spacing:-.8px!important}
+ .ng-ai-header-projects{min-height:44px!important;padding:7px 14px!important;font-size:clamp(15px,4vw,20px)!important}
+ .ng-ai-header-subtitle{margin-top:14px!important;font-size:clamp(11px,3.1vw,14px)!important}
+}
+</style>
+<script id="ng-ai-studio-header-scroll-measure-v7">
+(()=>{const init=()=>{const h=document.getElementById('ng-ai-studio-fixed-header');if(!h)return;const set=()=>document.documentElement.style.setProperty('--ng-ai-header-height',Math.ceil(h.getBoundingClientRect().height+parseFloat(getComputedStyle(h).top||0)+8)+'px');set();if('ResizeObserver'in window)new ResizeObserver(set).observe(h);window.addEventListener('resize',set,{passive:true});};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();})();
+</script>
 </head>
 <body>
 <div class="studio">
-<header class="studio-head studio-head-reference studio-reference-hidden">
-  <a class="studio-back" href="./create-hub.html" aria-label="Back">‹</a>
-  <h1>Create Project</h1>
-  <button type="button" class="studio-search-button" id="studio-search-button" aria-label="Search features" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.7"/><path d="m16 16 5 5"/></svg></button>
-  <input id="studio-search" class="studio-search" type="search" placeholder="Search features or projects" aria-label="Search features or projects" hidden>
-</header>
 <header class="ng-ai-studio-new-header" id="ng-ai-studio-fixed-header">
   <div class="ng-ai-header-topline">
     <span class="ng-ai-header-badge">AI Studio</span>
@@ -920,6 +942,7 @@ body>.studio>#studio-workspace{flex:1 1 auto!important;min-height:0!important;he
   </div>
   <p id="view-subtitle" class="ng-ai-header-subtitle">Explore image and video creation in one workspace.</p>
 </header>
+<div class="ng-ai-studio-scroll-content" id="ng-ai-studio-scroll-content">
 <section class="studio-workspace" id="studio-workspace">
   <nav class="studio-nav hidden" aria-label="Creative Studio navigation">
   <button class="active" data-view="discover">Discover</button>
@@ -1018,6 +1041,7 @@ body>.studio>#studio-workspace{flex:1 1 auto!important;min-height:0!important;he
  <div class="panel"><h2>System & Provider Status</h2><div class="status-line"><span>Creative Studio UI</span><strong>Prototype available</strong></div><div class="status-line"><span>AI Router</span><strong>Integration pending</strong></div><div class="status-line"><span>Image providers</span><strong>Not connected</strong></div><div class="status-line"><span>Video providers</span><strong>Not connected</strong></div><div class="status-line"><span>Gallery storage</span><strong>Not connected</strong></div><div class="status-line"><span>Credit billing</span><strong>Not activated</strong></div></div>
 </section>
 <p class="bottom-note">©2026 NextGen. All Rights Reserved. · Powered by ABDUS SATTAR<br>Design prototype only. No generation, upload processing, payment or publishing is active. Credit estimates remain unavailable until verified provider rates and the Credit Wallet are connected.</p>
+</div>
 </div>
 <script>
 (function(){
