@@ -1518,7 +1518,13 @@ body .view .panel.ng-feature-routing {
  function apply(){
   const raw=new URLSearchParams(location.search).get('feature');
   if(raw===null)return;
-  const feature=/^\d+$/.test(raw)?(names[Number(raw)]||'AI Studio'):raw;
+  const isNumeric=/^\d+$/.test(raw);
+  const feature=isNumeric?(names[Number(raw)]||'AI Studio'):raw;
+  if(isNumeric&&feature!=='AI Studio'){
+   const url=new URL(location.href);
+   url.searchParams.set('feature',feature);
+   history.replaceState(null,'',url.pathname+url.search+url.hash);
+  }
   const title=document.querySelector('#view-title .ng-title-gradient');
   if(title)title.textContent=feature;
   const selected=document.querySelector('[data-ng-feature-title]');
