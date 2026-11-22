@@ -1074,5 +1074,59 @@ render();
   window.addEventListener('orientationchange',update,{passive:true});
 })();
 </script>
+\n
+<style id="nextgen-gallery-header-exact-spec-v1">
+/* Apply the supplied header measurements without changing its brand artwork. */
+html,body{margin:0!important;padding:0!important}
+.studio{margin:0!important;padding:0!important;max-width:none!important}
+.ng-final-shared-header{
+  position:fixed!important;top:0!important;left:0!important;right:0!important;
+  z-index:1000!important;width:100vw!important;max-width:100vw!important;
+  margin:0!important;padding:0!important;box-sizing:border-box!important;
+  border:0!important;border-radius:0!important;
+  background:linear-gradient(145deg,#0b1d38 0%,#07162d 62%,#111a3a 100%)!important;
+}
+.ng-final-shared-header .ng-final-topline,
+.ng-final-shared-header .ng-final-titleline,
+.ng-final-shared-header .ng-final-subtitle{
+  margin-left:0!important;margin-right:0!important;
+}
+.ng-final-shared-header .ng-final-topline,
+.ng-final-shared-header .ng-final-titleline{padding-left:4px!important;padding-right:4px!important}
+.ng-final-shared-header .ng-final-wordmark{
+  transform:none!important;gap:0!important;white-space:nowrap!important
+}
+.ng-final-shared-header .ng-next-word,
+.ng-final-shared-header .ng-gen-word{font-size:28px!important}
+.ng-final-shared-header .ng-studio-word{
+  margin-left:5px!important;font-size:14px!important
+}
+.ng-final-shared-header .ng-studio-o{font-size:14px!important}
+.ng-final-shared-header .ng-final-title{
+  font-size:18px!important;line-height:1.2!important;letter-spacing:0!important
+}
+.ng-final-shared-header .ng-final-subtitle{
+  padding:0 4px!important;margin-top:4px!important;
+  font-size:12px!important;line-height:1.35!important
+}
+.ng-final-shared-header .ng-final-action{
+  font-size:14px!important;min-height:32px!important;padding:5px 12px!important
+}
+.ng-final-shared-header .ng-final-close{
+  flex:0 0 32px!important;width:32px!important;height:32px!important;
+  min-width:32px!important;padding:0!important;border:0!important;
+  border-radius:0!important;font-size:24px!important;line-height:1!important;
+}
+@media(max-width:420px){
+  .ng-final-shared-header{padding:0!important}
+  .ng-final-shared-header .ng-final-topline,
+  .ng-final-shared-header .ng-final-titleline{padding-left:4px!important;padding-right:4px!important}
+  .ng-final-shared-header .ng-final-title{font-size:18px!important}
+  .ng-final-shared-header .ng-final-subtitle{font-size:12px!important;padding-left:4px!important;padding-right:4px!important}
+  .ng-final-shared-header .ng-final-close{
+    flex-basis:32px!important;width:32px!important;height:32px!important;min-width:32px!important;font-size:24px!important
+  }
+}
+</style>
 \n</body>
 </html>
