@@ -717,25 +717,6 @@ html body #studio-workspace .studio-reference-header .studio-reference-titleline
 </style>
 
 
-<style id="nextgen-compare-tools-clean-rebuild-v1">
-#studio-workspace #compare-panel.compare-panel{display:block!important;margin:16px 0!important;padding:0!important;border:0!important;min-width:0!important}
-#studio-workspace #compare-panel[hidden]{display:none!important}
-#studio-workspace .compare-heading{display:flex;align-items:center;gap:10px;padding:0 0 10px;margin:0 0 12px;border-bottom:2px solid transparent;border-image:linear-gradient(90deg,#00eaff,#287cff,#d52bff) 1;color:#f4f8ff;font-size:14px;font-weight:800;line-height:1.35}
-#studio-workspace .compare-heading-icon{font-size:20px;color:#00dfff}
-#studio-workspace .compare-heading strong{background:linear-gradient(100deg,#00eaff,#247cff 55%,#d52bff);background-clip:text;-webkit-background-clip:text;color:transparent}
-#studio-workspace .compare-heading i{font-style:normal;color:#dbe8ff;font-weight:700}
-#studio-workspace .compare-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important;width:100%!important;min-width:0!important;box-sizing:border-box!important}
-#studio-workspace .compare-option{display:grid!important;grid-template-columns:18px 40px minmax(0,1fr)!important;align-items:center!important;gap:7px!important;min-width:0!important;min-height:100px!important;width:100%!important;padding:9px!important;box-sizing:border-box!important;border:1px solid rgba(0,208,255,.55)!important;border-radius:15px!important;background:linear-gradient(145deg,#0b1d38,#10132d)!important;color:#f5f8ff!important;cursor:pointer!important;overflow:hidden!important}
-#studio-workspace .compare-option:has(input:checked){border-color:#d52bff!important;box-shadow:0 0 0 1px rgba(0,220,255,.35),0 0 16px rgba(0,170,255,.14)!important;background:linear-gradient(145deg,#10294a,#20143b)!important}
-#studio-workspace .compare-option input[type=checkbox]{appearance:none!important;-webkit-appearance:none!important;display:grid!important;place-items:center!important;position:static!important;float:none!important;width:17px!important;min-width:17px!important;max-width:17px!important;height:17px!important;min-height:17px!important;max-height:17px!important;margin:0!important;padding:0!important;box-sizing:border-box!important;border:1.5px solid #82dfff!important;border-radius:4px!important;background:#06152a!important;box-shadow:none!important}
-#studio-workspace .compare-option input[type=checkbox]:checked{background:linear-gradient(135deg,#00dfff,#8a35ff)!important;border-color:#d6faff!important}
-#studio-workspace .compare-option input[type=checkbox]:checked:after{content:"✓";font-size:12px;font-weight:900;color:white;line-height:1}
-#studio-workspace .compare-option-icon{display:grid;place-items:center;width:38px;height:38px;border:1px solid rgba(0,220,255,.45);border-radius:11px;background:linear-gradient(145deg,rgba(0,210,255,.2),rgba(137,42,255,.24));color:#55eaff;font-size:22px;font-weight:900}
-#studio-workspace .compare-option-copy{display:grid;gap:5px;min-width:0}
-#studio-workspace .compare-option-copy b{display:block!important;margin:0!important;color:#f6f8ff!important;font-size:11px!important;line-height:1.3!important;overflow-wrap:anywhere!important}
-#studio-workspace .compare-option-copy small{display:block!important;margin:0!important;color:#b9cbe5!important;font-size:9px!important;line-height:1.35!important;overflow-wrap:anywhere!important}
-#studio-workspace .compare-guidance{margin-top:12px;padding:12px;border:1px solid rgba(166,66,255,.45);border-radius:14px;background:linear-gradient(110deg,rgba(0,130,190,.14),rgba(135,40,190,.18));color:#dceaff;font-size:12px;line-height:1.5}
-</style>
 </head>
 <body>
 <div class="studio">
@@ -784,17 +765,7 @@ html body #studio-workspace .studio-reference-header .studio-reference-titleline
     
    </div>
    <details class="field" style="border:1px solid #303951;border-radius:13px;padding:11px"><summary style="color:#dce4f5;font-size:13px;font-weight:700;cursor:pointer">Advanced generation settings</summary><div class="field"><label>NEGATIVE PROMPT</label><textarea id="negative-prompt" placeholder="Things to avoid (optional)"></textarea></div><div class="two"><div class="field"><label>OUTPUT COUNT</label><select id="output-count"><option>1</option><option>2</option><option>3</option><option>4</option></select></div><div class="field"><label>REFERENCE STRENGTH</label><select><option>Balanced</option><option>Low</option><option>High</option><option>Maximum</option></select></div></div><div class="two"><div class="field"><label>CHARACTER IDENTITY</label><select><option>Preserve when supported</option><option>Standard</option><option>Not applicable</option></select></div><div class="field"><label>AUDIO</label><select><option>Auto if supported</option><option>Generate sound</option><option>Mute</option></select></div></div></details>
-   <section id="compare-panel" class="compare-panel" hidden aria-label="Compare creation tools">
-     <div class="compare-heading"><span class="compare-heading-icon" aria-hidden="true">▰</span><span><strong>Compare Tools</strong><i> · Select Creation Tools</i></span></div>
-     <div class="compare-grid" id="compare-models">
-       <label class="compare-option"><input type="checkbox" value="Cinematic Video"><span class="compare-option-icon" aria-hidden="true">▣</span><span class="compare-option-copy"><b>Cinematic Video</b><small>Movie-style, realistic videos</small></span></label>
-       <label class="compare-option"><input type="checkbox" value="Character Animation"><span class="compare-option-icon" aria-hidden="true">✦</span><span class="compare-option-copy"><b>Character Animation</b><small>Animated character videos</small></span></label>
-       <label class="compare-option"><input type="checkbox" value="Image to Video"><span class="compare-option-icon" aria-hidden="true">▧</span><span class="compare-option-copy"><b>Image to Video</b><small>Convert images to videos</small></span></label>
-       <label class="compare-option"><input type="checkbox" value="Text to Video"><span class="compare-option-icon" aria-hidden="true">T</span><span class="compare-option-copy"><b>Text to Video</b><small>Create videos from text prompts</small></span></label>
-     </div>
-     <div id="compare-summary" class="compare-guidance">Select at least two tools to prepare a comparison. No generation will run.</div>
-    </section>
-    <div class="field"><label>VIDEO CREDIT ESTIMATE</label><div id="video-credit-estimate" class="notice" aria-live="polite">Unavailable — verified provider rates and the Credit Wallet are not connected. No estimated credits will be invented.</div></div>
+   <div class="field"><label>VIDEO CREDIT ESTIMATE</label><div id="video-credit-estimate" class="notice" aria-live="polite">Unavailable — verified provider rates and the Credit Wallet are not connected. No estimated credits will be invented.</div></div>
    <div class="field"><label>GENERATION QUEUE</label><div id="generation-summary" class="status-line"><span>Ready to configure</span><strong>Not submitted</strong></div></div>
    <button class="primary" id="generate-btn">✦ Prepare Generation</button>
    <div class="notice" id="studio-notice">Prototype only: this screen does not send files to an AI provider or spend credits. Provider APIs, account permissions, pricing and generation jobs must be connected and tested before activation.</div>
@@ -916,14 +887,6 @@ html body #studio-workspace .studio-reference-header .studio-reference-titleline
 <script id="creative-studio-compare-history-script-v3">
 (function(){
 
- const comparePanel=document.getElementById('compare-panel');
- const compareBoxes=[...document.querySelectorAll('#compare-models input[type=checkbox]')];
- const compareSummary=document.getElementById('compare-summary');
-
- // Compare panel visibility is controlled by the visible AI Engine selector in the feature-routing panel.
- function updateCompare(){const selected=compareBoxes.filter(x=>x.checked).map(x=>x.value);if(compareSummary)compareSummary.textContent=selected.length<2?'Select at least two models to prepare a comparison. No generation will run.':selected.length+' models selected: '+selected.join(' · ')+'. Comparison setup is ready; provider execution is not connected.';}
- compareBoxes.forEach(x=>x.addEventListener('change',updateCompare));
- updateCompare();
  const KEY='nextgen_creative_studio_prepared_history_v1';
  function readHistory(){try{return JSON.parse(localStorage.getItem(KEY)||'[]').filter(x=>x&&typeof x.prompt==='string').slice(0,30);}catch(e){return [];}}
  function saveHistory(items){try{localStorage.setItem(KEY,JSON.stringify(items.slice(0,30)));}catch(e){}}
@@ -945,12 +908,11 @@ html body #studio-workspace .studio-reference-header .studio-reference-titleline
  if(generate)generate.addEventListener('click',()=>{
   const field=document.getElementById('main-prompt');const prompt=field?field.value.trim():'';
   if(!prompt)return;
-  const selected=compareBoxes.filter(x=>x.checked).map(x=>x.value);
   const engine=document.querySelector('.ng-engine-mode');
-  const mode=engine?(engine.value==='compare'?'Compare Mode':engine.value==='manual'?'Manual Tool Selection':'Auto Model Selection'):'Auto Model Selection';
-  const manualTool=document.querySelector('.ng-feature-routing:not([hidden]) .ng-manual-tool');
-  const model=mode.includes('Compare')?selected.join(', '):(manualTool?manualTool.value:'Auto Select');
-  const items=readHistory();items.unshift({prompt,mode,model,when:new Date().toLocaleString()});saveHistory(items);renderHistory();
+   const mode=engine&&engine.value==='manual'?'Manual Tool Selection':'Auto Model Selection';
+   const manualTool=document.querySelector('.ng-feature-routing:not([hidden]) .ng-manual-tool');
+   const model=manualTool&&mode==='Manual Tool Selection'?manualTool.value:'Auto Select';
+   const items=readHistory();items.unshift({prompt,mode,model,when:new Date().toLocaleString()});saveHistory(items);renderHistory();
  });
  const clear=document.getElementById('clear-history');if(clear)clear.addEventListener('click',()=>{try{localStorage.removeItem(KEY);}catch(e){}renderHistory();});
  const historyNav=document.querySelector('[data-view=history]');if(historyNav)historyNav.addEventListener('click',renderHistory);
@@ -1072,10 +1034,10 @@ render();
  function addPanel(viewId){
   const view=document.getElementById(viewId);if(!view||view.querySelector('.ng-feature-routing'))return;
   const panel=document.createElement('div');panel.className='panel ng-feature-routing';panel.style.marginBottom='14px';
-  panel.innerHTML='<h2>Creation Setup</h2><div class="field"><label>SELECTED FEATURE</label><strong data-ng-feature-title style="font-size:15px;color:#fff">Video Generate</strong></div><div class="field"><label>AI ENGINE</label><select class="ng-engine-mode"><option value="auto" selected>NextGen AI Auto (Recommended)</option><option value="manual">Manual Tool Selection</option><option value="compare">Compare Tools</option></select></div><div class="field ng-manual-wrap" hidden><label>CHOOSE TOOL</label><select class="ng-manual-tool"></select></div><small data-ng-feature-context style="color:#9ba8c3">Feature selected: Video Generate. Provider and model details are managed privately by NextGen AI.</small>';
+  panel.innerHTML='<h2>Creation Setup</h2><div class="field"><label>SELECTED FEATURE</label><strong data-ng-feature-title style="font-size:15px;color:#fff">Video Generate</strong></div><div class="field"><label>AI ENGINE</label><select class="ng-engine-mode"><option value="auto" selected>NextGen AI Auto (Recommended)</option><option value="manual">Manual Tool Selection</option></select></div><div class="field ng-manual-wrap" hidden><label>CHOOSE TOOL</label><select class="ng-manual-tool"></select></div><small data-ng-feature-context style="color:#9ba8c3">Feature selected: Video Generate. Provider and model details are managed privately by NextGen AI.</small>';
   view.insertBefore(panel,view.firstChild);
   const engine=panel.querySelector('.ng-engine-mode'),wrap=panel.querySelector('.ng-manual-wrap'),toolSelect=panel.querySelector('.ng-manual-tool');
-  engine.addEventListener('change',()=>{wrap.hidden=engine.value!=='manual';const compare=document.getElementById('compare-panel');if(compare)compare.hidden=engine.value!=='compare';});
+  engine.addEventListener('change',()=>{wrap.hidden=engine.value!=='manual';});
   panel._setFeature=function(feature){panel.querySelector('[data-ng-feature-title]').textContent=feature;panel.querySelector('[data-ng-feature-context]').textContent='Feature selected: '+feature+'. Provider and model details are managed privately by NextGen AI.';toolSelect.innerHTML='';(featureTools[feature]||featureTools['More Features']).forEach(tool=>{const o=document.createElement('option');o.value=tool;o.textContent=tool;toolSelect.append(o);});};
   panel._setFeature(activeFeature);
  }
@@ -1087,7 +1049,7 @@ render();
   document.querySelectorAll('.ng-feature-routing').forEach(panel=>panel._setFeature&&panel._setFeature(activeFeature));
  }));
 
- document.querySelectorAll('#compare-models input').forEach(x=>x.addEventListener('change',()=>{}));
+ 
  setFeature(activeFeature);
  const featureParam=new URLSearchParams(window.location.search).get('feature');
  if(featureParam!==null){
