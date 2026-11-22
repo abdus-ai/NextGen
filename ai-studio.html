@@ -774,6 +774,19 @@ html body #studio-workspace .studio-reference-header .studio-reference-titleline
   box-shadow:none!important;
 }
 </style>
+
+<style id="nextgen-ai-studio-page-border-removal-corrected-v3">
+/* The feature views are siblings of #studio-workspace, not its children.
+   Remove the visible outer frames from each page's main content panels. */
+body .view > .panel,
+body .view > .studio-grid > .panel,
+body .view > .ng-feature-routing,
+body .view .ng-feature-routing{
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+}
+</style>
 </head>
 <body>
 <div class="studio">
