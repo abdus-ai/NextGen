@@ -1832,6 +1832,8 @@ html body #studio-workspace #studio-gallery-open.studio-gallery-action{
 html body #studio-workspace #studio-home-back.studio-close-button{
   font-size:24px!important;
 }
+
+html body #studio-workspace.ng-text-to-video-view #view-subtitle.studio-workspace-subtitle{font-size:11px!important;}
 </style>
 <script id="nextgen-ai-studio-live-final-typography-v2-apply">
 (function(){
@@ -1861,7 +1863,7 @@ html body #studio-workspace #studio-home-back.studio-close-button{
       }
     }
     const subtitle=root.querySelector('#view-subtitle');
-    if(subtitle)subtitle.style.setProperty('font-size','12px','important');
+    if(subtitle)subtitle.style.setProperty('font-size',root.classList.contains('ng-text-to-video-view')?'11px':'12px','important');
     const projects=root.querySelector('#studio-gallery-open');
     if(projects)projects.style.setProperty('font-size','14px','important');
     const close=root.querySelector('#studio-home-back');
