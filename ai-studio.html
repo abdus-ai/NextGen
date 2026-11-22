@@ -1267,6 +1267,23 @@ render();
 })();
 </script>
 
+
+<style id="ng-ai-studio-all-page-panel-borders-final">
+/* All feature pages are siblings of #studio-workspace.
+   Remove the visible outlines on every full-size content panel, including
+   the dynamically inserted Creation Setup panel. Do not touch form controls. */
+body .studio ~ .view .panel,
+body .studio .view .panel,
+body .view .panel,
+body .view .ng-feature-routing,
+body .view .studio-grid > .panel,
+body .view .panel.ng-feature-routing {
+  border: none !important;
+  border-width: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+</style>
 </body>
 </html>
 
