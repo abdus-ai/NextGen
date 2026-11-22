@@ -864,6 +864,42 @@ body>.studio>#studio-workspace{flex:1 1 auto!important;min-height:0!important;he
  window.addEventListener('resize',measure,{passive:true});
 };if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();})();
 </script>
+
+<style id="ng-ai-studio-new-header-layout-v6">
+html,body{height:100%!important;min-height:100%!important;overflow:hidden!important}
+body{padding:0!important}
+body>.studio{height:100dvh!important;min-height:0!important;max-height:100dvh!important;overflow:hidden!important;display:flex!important;flex-direction:column!important;padding:0 14px!important;box-sizing:border-box!important}
+body>.studio>.ng-ai-studio-new-header{
+ position:fixed!important;top:8px!important;left:50%!important;transform:translateX(-50%)!important;
+ width:calc(100% - 48px)!important;max-width:1464px!important;z-index:2147483000!important;
+ box-sizing:border-box!important;margin:0!important;padding:32px 34px 30px!important;
+ border:2px solid rgba(75,157,220,.36)!important;border-radius:30px!important;
+ background:linear-gradient(145deg,#071a34 0%,#06162e 60%,#111633 100%)!important;
+ box-shadow:0 12px 34px rgba(0,0,0,.18),inset 0 0 24px rgba(24,103,190,.07)!important;
+}
+.ng-ai-header-topline{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:18px!important;margin-bottom:26px!important}
+.ng-ai-header-badge{display:inline-flex!important;align-items:center!important;min-height:58px!important;padding:9px 25px!important;border-radius:999px!important;background:linear-gradient(105deg,#00c9ef,#1268ff 53%,#b51cff)!important;color:#fff!important;font-size:clamp(22px,3vw,34px)!important;font-weight:850!important;box-shadow:0 0 22px rgba(0,164,255,.22)!important}
+.ng-ai-header-close{display:grid!important;place-items:center!important;width:66px!important;height:66px!important;min-width:66px!important;padding:0!important;border:2px solid rgba(74,143,209,.35)!important;border-radius:24px!important;background:rgba(8,27,54,.82)!important;color:#f5f8ff!important;font-size:52px!important;line-height:1!important}
+.ng-ai-header-titleline{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:24px!important}
+.ng-ai-header-titleline #view-title{flex:1!important;min-width:0!important;margin:0!important;font-size:clamp(34px,5vw,68px)!important;line-height:1.08!important;font-weight:850!important;letter-spacing:-1.6px!important;background:linear-gradient(100deg,#00e9f2,#258cff 48%,#cf3cff)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;-webkit-text-fill-color:transparent!important}
+.ng-ai-header-projects{flex:none!important;min-height:66px!important;padding:10px 28px!important;border:0!important;border-radius:999px!important;background:linear-gradient(105deg,#00c9ef,#1268ff 53%,#b51cff)!important;color:#fff!important;font-size:clamp(22px,3vw,34px)!important;font-weight:850!important}
+.ng-ai-header-subtitle{margin:24px 0 0!important;color:#b8cce4!important;font-size:clamp(15px,2.4vw,24px)!important;line-height:1.35!important;letter-spacing:.25px!important;text-transform:uppercase!important}
+body>.studio>#studio-workspace{flex:1 1 auto!important;min-height:0!important;height:auto!important;max-height:none!important;overflow-x:hidden!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior-y:contain!important;touch-action:pan-y!important;margin-top:var(--ng-ai-header-height,0px)!important;padding-top:0!important;box-sizing:border-box!important}
+@media(max-width:700px){
+ body>.studio{padding:0 12px!important}
+ body>.studio>.ng-ai-studio-new-header{top:6px!important;width:calc(100% - 24px)!important;padding:14px 14px 15px!important;border-radius:22px!important}
+ .ng-ai-header-topline{margin-bottom:17px!important}
+ .ng-ai-header-badge{min-height:42px!important;padding:6px 17px!important;font-size:22px!important}
+ .ng-ai-header-close{width:48px!important;height:48px!important;min-width:48px!important;border-radius:18px!important;font-size:39px!important}
+ .ng-ai-header-titleline{gap:10px!important}
+ .ng-ai-header-titleline #view-title{font-size:clamp(26px,7vw,38px)!important;letter-spacing:-.8px!important}
+ .ng-ai-header-projects{min-height:44px!important;padding:7px 14px!important;font-size:clamp(15px,4vw,20px)!important}
+ .ng-ai-header-subtitle{margin-top:14px!important;font-size:clamp(11px,3.1vw,14px)!important}
+}
+</style>
+<script id="ng-ai-studio-new-header-measure-v6">
+(()=>{const init=()=>{const head=document.getElementById('ng-ai-studio-fixed-header');const workspace=document.getElementById('studio-workspace');if(!head||!workspace)return;const measure=()=>{const h=Math.ceil(head.getBoundingClientRect().height+parseFloat(getComputedStyle(head).top||0)+8);document.documentElement.style.setProperty('--ng-ai-header-height',h+'px');};measure();if('ResizeObserver'in window)new ResizeObserver(measure).observe(head);window.addEventListener('resize',measure,{passive:true});};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();})();
+</script>
 </head>
 <body>
 <div class="studio">
@@ -873,18 +909,18 @@ body>.studio>#studio-workspace{flex:1 1 auto!important;min-height:0!important;he
   <button type="button" class="studio-search-button" id="studio-search-button" aria-label="Search features" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.7"/><path d="m16 16 5 5"/></svg></button>
   <input id="studio-search" class="studio-search" type="search" placeholder="Search features or projects" aria-label="Search features or projects" hidden>
 </header>
-<section class="studio-workspace" id="studio-workspace">
-  <div class="studio-reference-header">
-    <div class="studio-reference-topline">
-      <span class="studio-reference-badge">AI Studio</span>
-      <button type="button" id="studio-home-back" class="studio-close-button" aria-label="Close AI Studio" title="Close">×</button>
-    </div>
-    <div class="studio-reference-titleline">
-      <h2 id="view-title"><span class="ng-title-gradient" style="background:linear-gradient(110deg,#00f5ff 0%,#00c8ff 18%,#087bff 38%,#263cff 55%,#7428f5 74%,#e51bdc 91%,#ff43cf 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;display:inline-block;text-shadow:0 0 1px rgba(255,255,255,.95),0 0 5px rgba(255,255,255,.42);">AI Studio</span></h2>
-      <button type="button" id="studio-gallery-open" class="studio-gallery-action">Projects</button>
-    </div>
-    <p id="view-subtitle" class="studio-workspace-subtitle">Explore image and video creation in one workspace.</p>
+<header class="ng-ai-studio-new-header" id="ng-ai-studio-fixed-header">
+  <div class="ng-ai-header-topline">
+    <span class="ng-ai-header-badge">AI Studio</span>
+    <button type="button" id="studio-home-back" class="ng-ai-header-close" aria-label="Close AI Studio" title="Close">×</button>
   </div>
+  <div class="ng-ai-header-titleline">
+    <h2 id="view-title">AI Studio</h2>
+    <button type="button" id="studio-gallery-open" class="ng-ai-header-projects">Projects</button>
+  </div>
+  <p id="view-subtitle" class="ng-ai-header-subtitle">Explore image and video creation in one workspace.</p>
+</header>
+<section class="studio-workspace" id="studio-workspace">
   <nav class="studio-nav hidden" aria-label="Creative Studio navigation">
   <button class="active" data-view="discover">Discover</button>
   <button data-view="imagine">Imagine</button>
