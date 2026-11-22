@@ -1640,3 +1640,35 @@ html body #studio-workspace .studio-reference-header .studio-reference-topline .
   transform:translateX(-5px)!important;
 }
 </style>
+
+
+<script id="nextgen-wordmark-force-visible-sizes-v8">
+(function(){
+  function applyWordmarkSizes(){
+    const badge=document.querySelector('#studio-workspace .studio-reference-badge');
+    if(!badge)return;
+    let next=badge.querySelector('.ng-next-word');
+    let gen=badge.querySelector('.ng-gen-word');
+    let studio=badge.querySelector('.ng-studio-word');
+    if(!next||!gen||!studio){
+      badge.innerHTML='<span class="ng-next-word">Next</span><span class="ng-gen-word">Gen</span>&nbsp;<span class="ng-studio-word">Studi<span class="ng-studio-o">o</span></span>';
+      next=badge.querySelector('.ng-next-word');
+      gen=badge.querySelector('.ng-gen-word');
+      studio=badge.querySelector('.ng-studio-word');
+    }
+    [next,gen].forEach(el=>{
+      el.style.setProperty('font-size','25px','important');
+      el.style.setProperty('line-height','1.15','important');
+      el.style.setProperty('display','inline-block','important');
+    });
+    [studio,studio.querySelector('.ng-studio-o')].filter(Boolean).forEach(el=>{
+      el.style.setProperty('font-size','20px','important');
+      el.style.setProperty('line-height','1.15','important');
+      el.style.setProperty('display','inline-block','important');
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',applyWordmarkSizes);
+  else applyWordmarkSizes();
+  window.addEventListener('pageshow',applyWordmarkSizes);
+})();
+</script>
