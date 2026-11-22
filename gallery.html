@@ -1078,5 +1078,49 @@ render();
 
 \n
 
+\n
+<style id="nextgen-gallery-header-measured-spec-v1">
+/* Apply the supplied header measurements only; preserve colors, layout and behavior. */
+.ng-final-shared-header{
+  padding-left:4px!important;
+  padding-right:4px!important;
+}
+.ng-final-shared-header .ng-final-wordmark,
+.ng-final-shared-header .ng-final-titleline,
+.ng-final-shared-header .ng-final-subtitle{
+  margin-left:4px!important;
+  margin-right:4px!important;
+}
+.ng-final-shared-header .ng-next-word,
+.ng-final-shared-header .ng-gen-word{font-size:28px!important}
+.ng-final-shared-header .ng-studio-word,
+.ng-final-shared-header .ng-studio-o{font-size:14px!important}
+.ng-final-shared-header .ng-final-title{
+  font-size:20px!important;
+  line-height:1.2!important;
+}
+.ng-final-shared-header .ng-final-subtitle{
+  font-size:12px!important;
+  line-height:1.35!important;
+}
+.ng-final-shared-header .ng-final-close{
+  flex:0 0 32px!important;
+  width:32px!important;
+  min-width:32px!important;
+  height:32px!important;
+  font-size:24px!important;
+  line-height:1!important;
+  border-radius:0!important;
+  aspect-ratio:1/1!important;
+}
+@media(max-width:420px){
+  .ng-final-shared-header{
+    padding-left:4px!important;
+    padding-right:4px!important;
+  }
+  .ng-final-shared-header .ng-final-title{font-size:20px!important}
+  .ng-final-shared-header .ng-final-subtitle{font-size:12px!important}
+}
+</style>
 \n</body>
 </html>
