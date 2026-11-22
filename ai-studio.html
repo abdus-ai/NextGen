@@ -69,6 +69,14 @@ body{padding-bottom:env(safe-area-inset-bottom,0px)}
 .studio-nav button:focus-visible,.secondary:focus-visible{outline:2px solid var(--studio-cyan);outline-offset:2px}
 @media(max-width:420px){.tool-grid{grid-template-columns:1fr 1fr}.two{gap:7px}.panel{padding:13px}}
 </style>
+<style id="ng-video-adaptive-preview-v1">
+.ng-video-preview-stage{width:100%;min-height:120px;max-height:70vh;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid #34425e;border-radius:14px;background:#050914;padding:10px;box-sizing:border-box}
+.ng-video-preview-stage video{display:block;width:auto;height:auto;max-width:100%;max-height:calc(70vh - 20px);object-fit:contain;background:#000;border-radius:8px}
+#ng-video-result .secondary{min-height:46px;padding:10px 12px;border:1px solid #414b67;border-radius:12px;background:#171f33;color:#e1e7f5;font:650 13px Inter,system-ui,sans-serif}
+#video-custom-dimensions{margin-top:8px}
+#video-custom-dimensions .field{margin:0}
+@media(max-width:700px){.ng-video-preview-stage{max-height:62vh}.ng-video-preview-stage video{max-height:calc(62vh - 20px)}}
+</style>
 
 <style id="creative-studio-compare-history-v3">
 .history-item{padding:13px;border:1px solid #303951;border-radius:14px;background:#101626}
@@ -758,7 +766,7 @@ html body #studio-workspace .studio-reference-header .studio-reference-titleline
    <div class="field"><label>QUICK PROMPT STARTERS</label><div class="tool-grid" id="prompt-starters"><button type="button" class="secondary" data-prompt="cinematic portrait, natural skin texture, soft cinematic lighting, subtle camera movement">Cinematic portrait</button><button type="button" class="secondary" data-prompt="dynamic dance performance, full body visible, smooth coordinated motion, energetic camera">AI Dance</button><button type="button" class="secondary" data-prompt="product showcase, elegant studio lighting, slow orbit camera, premium commercial look">Product showcase</button><button type="button" class="secondary" data-prompt="beautiful landscape, atmospheric light, gentle camera push-in, realistic details">Landscape</button></div></div>
    <div class="two">
     <div class="field"><label>QUALITY</label><select><option>Auto</option><option>Fast</option><option>Balanced</option><option>High Quality</option><option>Ultra HD / 4K (if supported)</option></select></div>
-    <div class="field"><label>ASPECT RATIO</label><select><option>9:16 · Vertical</option><option>16:9 · Landscape</option><option>1:1 · Square</option><option>4:5 · Portrait</option></select></div>
+    <div class="field"><label>ASPECT RATIO / OUTPUT SHAPE</label><select id="video-aspect-select"><option value="9:16">9:16 · Vertical</option><option value="16:9" selected>16:9 · Landscape</option><option value="1:1">1:1 · Square</option><option value="4:5">4:5 · Portrait</option><option value="4:3">4:3</option><option value="3:4">3:4</option><option value="21:9">21:9 · Ultra-wide</option><option value="custom">Custom Width × Height</option></select><div id="video-custom-dimensions" class="two hidden"><div class="field"><label for="video-custom-width">WIDTH (PX)</label><input id="video-custom-width" type="number" min="1" max="16384" inputmode="numeric" placeholder="e.g. 1920"></div><div class="field"><label for="video-custom-height">HEIGHT (PX)</label><input id="video-custom-height" type="number" min="1" max="16384" inputmode="numeric" placeholder="e.g. 1080"></div></div><small id="video-output-dimensions-note" style="color:#9ba8c3">Selected output shape: 16:9. Final dimensions depend on provider support.</small></div>
    </div>
    <div class="two">
     <div class="field"><label>DURATION</label><select><option>Auto</option><option>5 seconds</option><option>8 seconds</option><option>10 seconds</option><option>15 seconds</option></select></div>
@@ -767,6 +775,7 @@ html body #studio-workspace .studio-reference-header .studio-reference-titleline
    <details class="field" style="border:1px solid #303951;border-radius:13px;padding:11px"><summary style="color:#dce4f5;font-size:13px;font-weight:700;cursor:pointer">Advanced generation settings</summary><div class="field"><label>NEGATIVE PROMPT</label><textarea id="negative-prompt" placeholder="Things to avoid (optional)"></textarea></div><div class="two"><div class="field"><label>OUTPUT COUNT</label><select id="output-count"><option>1</option><option>2</option><option>3</option><option>4</option></select></div><div class="field"><label>REFERENCE STRENGTH</label><select><option>Balanced</option><option>Low</option><option>High</option><option>Maximum</option></select></div></div><div class="two"><div class="field"><label>CHARACTER IDENTITY</label><select><option>Preserve when supported</option><option>Standard</option><option>Not applicable</option></select></div><div class="field"><label>AUDIO</label><select><option>Auto if supported</option><option>Generate sound</option><option>Mute</option></select></div></div></details>
    <div class="field"><label>VIDEO CREDIT ESTIMATE</label><div id="video-credit-estimate" class="notice" aria-live="polite">Unavailable — verified provider rates and the Credit Wallet are not connected. No estimated credits will be invented.</div></div>
    <div class="field"><label>GENERATION QUEUE</label><div id="generation-summary" class="status-line"><span>Ready to configure</span><strong>Not submitted</strong></div></div>
+   <section id="ng-video-result" class="panel hidden" aria-labelledby="ng-video-result-title" style="margin-top:14px"><h2 id="ng-video-result-title">Generated Video Preview</h2><p style="color:#9da9c4;font-size:13px;margin:-5px 0 12px">Preview automatically fits the actual video dimensions. Original aspect ratio is preserved.</p><label class="upload" for="ng-video-result-file"><span>＋</span><span><strong>Select completed video</strong><br>Use a generated MP4/MOV file to preview and download</span></label><input id="ng-video-result-file" type="file" accept="video/*" hidden><div id="ng-video-result-meta" class="status-line" aria-live="polite"><span>No completed video selected</span><strong>Waiting</strong></div><div id="ng-video-preview-stage" class="ng-video-preview-stage hidden"><video id="ng-video-preview-player" controls playsinline preload="metadata"></video></div><div class="two" style="margin-top:12px"><a id="ng-video-download" class="secondary hidden" download style="display:flex;align-items:center;justify-content:center;text-decoration:none">↓ Download Video</a><a class="secondary" href="./ai-studio.html?feature=AI%20Video%20Editor" style="display:flex;align-items:center;justify-content:center;text-decoration:none">Open AI Video Editor (Optional)</a></div></section>
    <button class="primary" id="generate-btn">✦ Prepare Generation</button>
    <div class="notice" id="studio-notice">Prototype only: this screen does not send files to an AI provider or spend credits. Provider APIs, account permissions, pricing and generation jobs must be connected and tested before activation.</div>
   </div>
@@ -846,6 +855,56 @@ html body #studio-workspace .studio-reference-header .studio-reference-titleline
  function attach(inputId,previewId){const input=document.getElementById(inputId),preview=document.getElementById(previewId);if(!input||!preview)return;input.addEventListener('change',()=>{preview.innerHTML='';const f=input.files&&input.files[0];if(!f)return;const u=URL.createObjectURL(f);const el=document.createElement(f.type.startsWith('video/')?'video':f.type.startsWith('image/')?'img':'div');if(el.tagName==='VIDEO'){el.src=u;el.controls=true;}else if(el.tagName==='IMG'){el.src=u;}else{el.textContent='Audio file selected';}preview.append(el);const label=document.createElement('span');label.textContent=f.name+' · '+Math.round(f.size/1024)+' KB';preview.append(label);});}
  attach('reference-file','file-preview');attach('edit-video','edit-preview');
  // Generation is handled by the validation and preparation flow below.
+})();
+</script>
+
+<script id="ng-video-adaptive-preview-script-v1">
+(function(){
+ const aspect=document.getElementById('video-aspect-select');
+ const custom=document.getElementById('video-custom-dimensions');
+ const width=document.getElementById('video-custom-width');
+ const height=document.getElementById('video-custom-height');
+ const note=document.getElementById('video-output-dimensions-note');
+ function updateShape(){
+  if(!aspect)return;
+  const isCustom=aspect.value==='custom';
+  if(custom)custom.classList.toggle('hidden',!isCustom);
+  if(note){
+   if(isCustom){const w=Number(width?.value),h=Number(height?.value);note.textContent=w>0&&h>0?'Custom output shape: '+w+' × '+h+' px ('+(w/h).toFixed(3)+':1). Provider support must be confirmed.':'Enter the exact width and height you want before generation.';}
+   else note.textContent='Selected output shape: '+aspect.value+'. Final dimensions depend on provider support.';
+  }
+ }
+ [aspect,width,height].forEach(el=>el?.addEventListener('input',updateShape));
+ aspect?.addEventListener('change',updateShape);updateShape();
+ const input=document.getElementById('ng-video-result-file');
+ const stage=document.getElementById('ng-video-preview-stage');
+ const player=document.getElementById('ng-video-preview-player');
+ const meta=document.getElementById('ng-video-result-meta');
+ const download=document.getElementById('ng-video-download');
+ let activeUrl='';
+ input?.addEventListener('change',()=>{
+  const file=input.files?.[0];if(!file)return;
+  if(activeUrl)URL.revokeObjectURL(activeUrl);
+  activeUrl=URL.createObjectURL(file);player.src=activeUrl;stage.classList.remove('hidden');
+  download.href=activeUrl;download.download=file.name||'nextgen-generated-video.mp4';download.classList.remove('hidden');
+  meta.innerHTML='<span>'+file.name.replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))+'</span><strong>Reading dimensions…</strong>';
+ });
+ player?.addEventListener('loadedmetadata',()=>{
+  const w=player.videoWidth,h=player.videoHeight;
+  if(meta)meta.innerHTML='<span>Actual video: '+w+' × '+h+' px · Ratio '+(w/h).toFixed(3)+':1</span><strong>Fit preview ready</strong>';
+  player.style.aspectRatio=w+' / '+h;
+ });
+ player?.addEventListener('error',()=>{if(meta)meta.innerHTML='<span>Could not read this video file</span><strong>Preview unavailable</strong>';});
+ const generate=document.getElementById('generate-btn');
+ generate?.addEventListener('click',()=>{
+  const result=document.getElementById('ng-video-result');
+  if(result)result.classList.remove('hidden');
+  const fileInput=document.getElementById('ng-video-result-file');
+  const customShape=aspect?.value==='custom';
+  if(customShape&&(!(Number(width?.value)>0)||!(Number(height?.value)>0))){
+   note.textContent='Please enter valid custom width and height before preparing generation.';
+  }
+ });
 })();
 </script>
 
