@@ -372,31 +372,14 @@ html,body{background:#061329!important;color:#f4f8ff!important}
       <span class="reference-eyebrow">Main Workplace</span>
       <div class="reference-project-heading-row">
         <h1 class="reference-project-heading">Projects</h1>
-        <a class="reference-gallery-button" href="./creative-studio.html" aria-label="Back to Create Project">Create Project</a>
+        <a class="reference-gallery-button" href="./creative-studio.html" aria-label="Create a new project">＋ Create Project</a>
       </div>
-      <p>YOUR CREATIONS • IMAGES • VIDEOS • AUDIO</p>
+      <p>YOUR SAVED CREATIONS • IMAGES • VIDEOS • AUDIO</p>
     </div>
-    <div class="reference-studio-grid">
-      <button class="reference-studio-card" data-studio-view="gallery">
-        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1000&q=88" alt="Image projects">
-        <span class="reference-card-title">Image Projects</span>
-        <span class="reference-card-description">Your Generated Images</span>
-      </button>
-      <button class="reference-studio-card" data-studio-view="gallery">
-        <img src="https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=1000&q=88" alt="Video projects">
-        <span class="reference-card-title">Video Projects</span>
-        <span class="reference-card-description">Your Generated Videos</span>
-      </button>
-      <button class="reference-studio-card" data-studio-view="gallery">
-        <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1000&q=88" alt="Audio and music creations">
-        <span class="reference-card-title">Audio Projects</span>
-        <span class="reference-card-description">Your Music and Voice</span>
-      </button>
-      <button class="reference-studio-card" data-studio-view="gallery">
-        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1000&q=88" alt="All creative projects">
-        <span class="reference-card-title">All Creations</span>
-        <span class="reference-card-description">Browse All Your Work</span>
-      </button>
+    <div class="ng-projects-shell">
+      <div class="ng-projects-heading"><div><h2>Your Projects</h2><p>All your saved creations in one place.</p></div><span class="ng-project-count" id="ng-project-count">0 Projects</span></div>
+      <div id="ng-projects-status" class="notice" aria-live="polite">Projects saved on this device appear here.</div>
+      <div id="ng-projects-list" class="ng-project-list"></div>
     </div>
   </div>
 </section>
@@ -495,11 +478,7 @@ html,body{background:#061329!important;color:#f4f8ff!important}
 <div class="ng-image-credit-note">Credit usage will depend on the selected resolution (1K / 2K / 4K / 8K) and number of images. The exact credit total must be shown for review before generation, and credits must not be deducted until the user confirms. Rates will be configured from verified provider costs.</div>
 <div class="ng-image-settings-actions"><button type="button" class="secondary" id="ng-image-settings-cancel">Cancel</button><button type="button" class="primary" id="ng-image-settings-apply">Apply Settings</button></div></div></div>
 <section id="view-gallery" class="view hidden">
- <div class="ng-projects-shell">
-  <div class="ng-projects-heading"><div><h2>Projects</h2><p>Your saved creations</p></div><span class="ng-project-count" id="ng-project-count">0 Projects</span></div>
-  <div id="ng-projects-status" class="notice" aria-live="polite">Projects saved on this device appear here.</div>
-  <div id="ng-projects-list" class="ng-project-list"></div>
- </div>
+ <div class="panel"><h2>Projects</h2><p>Your saved creations are shown on the Projects home page.</p><a href="./gallery.html">Open Projects →</a></div>
 </section>
 <section id="view-tools" class="view hidden">
  <div class="panel"><h2>Video Editing Tools</h2><div class="tool-grid">
