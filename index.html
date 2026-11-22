@@ -378,7 +378,7 @@ function selectFeature(index,manual=false){
  list.querySelectorAll('[data-feature]').forEach(btn=>{const on=Number(btn.dataset.feature)===index;btn.classList.toggle('is-active',on);btn.setAttribute('aria-pressed',String(on));const image=btn.querySelector('img');if(image)image.src=data[Number(btn.dataset.feature)].thumb});
  if(manual)resetAutoplay();
 }
-function resetAutoplay(){clearInterval(timer)}
+function resetAutoplay(){clearInterval(timer);timer=setInterval(()=>{selectFeature((active+1)%data.length,false)},6000)}
 list.addEventListener('click',e=>{const btn=e.target.closest('[data-feature]');if(btn)selectFeature(Number(btn.dataset.feature),true)});
 function setComposerExpanded(expanded){composer.classList.toggle('expanded',expanded);}
 $('motion16Try').addEventListener('click',()=>{const selectedFeature=data[active];if(selectedFeature)window.location.href='./ai-studio.html?feature='+encodeURIComponent(selectedFeature.title);});
