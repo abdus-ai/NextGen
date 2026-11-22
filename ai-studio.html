@@ -1710,3 +1710,35 @@ html body #studio-workspace .studio-reference-header .studio-reference-topline .
   font-size:17px!important;
 }
 </style>
+
+
+<style id="nextgen-text-to-video-heading-and-controls-v1">
+/* Requested typography refinements; leave the existing layout and other features unchanged. */
+#studio-workspace #studio-gallery-open.studio-gallery-action{
+  font-size:13px!important;
+}
+#studio-workspace #view-subtitle.studio-workspace-subtitle{
+  font-size:11px!important;
+}
+#studio-workspace.ng-text-to-video-view #view-title{
+  background:none!important;
+  -webkit-background-clip:initial!important;
+  background-clip:initial!important;
+  color:#ffffff!important;
+  -webkit-text-fill-color:#ffffff!important;
+  text-shadow:none!important;
+}
+</style>
+<script id="nextgen-text-to-video-heading-white-v1">
+(function(){
+  function apply(){
+    const workspace=document.getElementById('studio-workspace');
+    if(!workspace)return;
+    const feature=new URLSearchParams(location.search).get('feature');
+    workspace.classList.toggle('ng-text-to-video-view',feature==='Text to Video');
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply);
+  else apply();
+  window.addEventListener('pageshow',apply);
+})();
+</script>
