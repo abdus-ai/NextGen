@@ -452,6 +452,13 @@ html body #studio-home .ng-project-row{grid-template-columns:minmax(0,38%) minma
 html body #studio-home .ng-project-thumb{display:block!important;width:100%!important;height:clamp(82px,calc((100vw - 44px)*.38*.5625),190px)!important;aspect-ratio:16/9!important;object-fit:contain!important;}
 @media(max-width:380px){html body #studio-home .ng-project-row{grid-template-columns:minmax(0,37%) minmax(0,1fr) 26px!important;column-gap:8px!important;}html body #studio-home .ng-project-thumb{height:clamp(76px,calc((100vw - 44px)*.37*.5625),175px)!important}}
 </style>
+
+<style id="ng-project-thumbnail-16x9-compact-v5">
+/* Set thumbnail column to exactly one third; preserve exact 16:9 ratio. */
+html body #studio-home .ng-project-row{grid-template-columns:minmax(0,33.333333%) minmax(0,1fr) 30px!important;column-gap:9px!important;}
+html body #studio-home .ng-project-thumb{display:block!important;width:100%!important;height:clamp(72px,calc((100vw - 44px)*.33333333*.5625),170px)!important;aspect-ratio:16/9!important;object-fit:contain!important;}
+@media(max-width:380px){html body #studio-home .ng-project-row{grid-template-columns:minmax(0,33.333333%) minmax(0,1fr) 26px!important;column-gap:8px!important;}html body #studio-home .ng-project-thumb{height:clamp(68px,calc((100vw - 44px)*.33333333*.5625),155px)!important}}
+</style>
 </style>
 </head>
 <body>
