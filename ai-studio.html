@@ -71,10 +71,6 @@ body{padding-bottom:env(safe-area-inset-bottom,0px)}
 </style>
 
 <style id="creative-studio-compare-history-v3">
-#compare-models .tool{display:flex;align-items:flex-start;gap:8px;cursor:pointer}
-#compare-models .tool input{accent-color:#927cff;flex:none;margin:2px 0 0}
-#compare-models .tool b{display:inline;color:#f3f5ff}
-#compare-models .tool span{margin-left:23px}
 .history-item{padding:13px;border:1px solid #303951;border-radius:14px;background:#101626}
 .history-item p{margin:7px 0;color:#dce4f5;font-size:13px;line-height:1.5;overflow-wrap:anywhere}
 .history-meta{color:#94a2bd;font-size:11px;display:flex;flex-wrap:wrap;gap:8px}
@@ -720,96 +716,25 @@ html body #studio-workspace .studio-reference-header .studio-reference-titleline
 }
 </style>
 
-<style id="nextgen-compare-tools-mobile-layout-fix-v3">
-/* Robust mobile Compare Tools layout: one readable full-width row per tool. */
-html body #studio-workspace #compare-panel #compare-models{
-  display:grid!important;
-  grid-template-columns:minmax(0,1fr)!important;
-  gap:8px!important;
-  width:100%!important;
-  min-width:0!important;
-  box-sizing:border-box!important;
-}
-html body #studio-workspace #compare-panel #compare-models > label.tool{
-  display:grid!important;
-  grid-template-columns:22px minmax(0,1fr)!important;
-  grid-template-rows:auto auto!important;
-  align-items:start!important;
-  align-content:center!important;
-  column-gap:10px!important;
-  row-gap:3px!important;
-  width:100%!important;
-  min-width:0!important;
-  min-height:68px!important;
-  box-sizing:border-box!important;
-  padding:12px 13px!important;
-  overflow:hidden!important;
-  cursor:pointer!important;
-  text-align:left!important;
-}
-html body #studio-workspace #compare-panel #compare-models > label.tool > input[type="checkbox"]{
-  appearance:none!important;
-  -webkit-appearance:none!important;
-  display:block!important;
-  position:static!important;
-  grid-column:1!important;
-  grid-row:1 / span 2!important;
-  align-self:start!important;
-  width:20px!important;
-  min-width:20px!important;
-  max-width:20px!important;
-  height:20px!important;
-  min-height:20px!important;
-  max-height:20px!important;
-  margin:1px 0 0!important;
-  padding:0!important;
-  box-sizing:border-box!important;
-  border:2px solid #70cfff!important;
-  border-radius:5px!important;
-  background:#08172c!important;
-  box-shadow:none!important;
-  flex:none!important;
-  cursor:pointer!important;
-}
-html body #studio-workspace #compare-panel #compare-models > label.tool > input[type="checkbox"]:checked{
-  background:linear-gradient(135deg,#00cfff,#5b42ff)!important;
-  border-color:#70eaff!important;
-}
-html body #studio-workspace #compare-panel #compare-models > label.tool > input[type="checkbox"]:checked::after{
-  content:"✓";
-  display:block;
-  color:#fff;
-  font-size:14px;
-  font-weight:900;
-  line-height:16px;
-  text-align:center;
-}
-html body #studio-workspace #compare-panel #compare-models > label.tool > b{
-  display:block!important;
-  grid-column:2!important;
-  grid-row:1!important;
-  width:auto!important;
-  min-width:0!important;
-  margin:0!important;
-  font-size:13px!important;
-  line-height:1.3!important;
-  white-space:normal!important;
-  overflow-wrap:anywhere!important;
-  text-align:left!important;
-}
-html body #studio-workspace #compare-panel #compare-models > label.tool > span{
-  display:block!important;
-  grid-column:2!important;
-  grid-row:2!important;
-  width:auto!important;
-  min-width:0!important;
-  margin:0!important;
-  font-size:11px!important;
-  line-height:1.35!important;
-  white-space:normal!important;
-  overflow-wrap:anywhere!important;
-  text-align:left!important;
-}
+
+<style id="nextgen-compare-tools-clean-rebuild-v1">
+#studio-workspace #compare-panel.compare-panel{display:block!important;margin:16px 0!important;padding:0!important;border:0!important;min-width:0!important}
+#studio-workspace #compare-panel[hidden]{display:none!important}
+#studio-workspace .compare-heading{display:flex;align-items:center;gap:10px;padding:0 0 10px;margin:0 0 12px;border-bottom:2px solid transparent;border-image:linear-gradient(90deg,#00eaff,#287cff,#d52bff) 1;color:#f4f8ff;font-size:14px;font-weight:800;line-height:1.35}
+#studio-workspace .compare-heading-icon{font-size:20px;color:#00dfff}
+#studio-workspace .compare-heading strong{background:linear-gradient(100deg,#00eaff,#247cff 55%,#d52bff);background-clip:text;-webkit-background-clip:text;color:transparent}
+#studio-workspace .compare-heading i{font-style:normal;color:#dbe8ff;font-weight:700}
+#studio-workspace .compare-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important;width:100%!important;min-width:0!important;box-sizing:border-box!important}
+#studio-workspace .compare-option{display:grid!important;grid-template-columns:18px 40px minmax(0,1fr)!important;align-items:center!important;gap:7px!important;min-width:0!important;min-height:100px!important;width:100%!important;padding:9px!important;box-sizing:border-box!important;border:1px solid rgba(0,208,255,.55)!important;border-radius:15px!important;background:linear-gradient(145deg,#0b1d38,#10132d)!important;color:#f5f8ff!important;cursor:pointer!important;overflow:hidden!important}
+#studio-workspace .compare-option:has(input:checked){border-color:#d52bff!important;box-shadow:0 0 0 1px rgba(0,220,255,.35),0 0 16px rgba(0,170,255,.14)!important;background:linear-gradient(145deg,#10294a,#20143b)!important}
+#studio-workspace .compare-option input[type=checkbox]{appearance:none!important;-webkit-appearance:none!important;display:grid!important;place-items:center!important;position:static!important;float:none!important;width:17px!important;min-width:17px!important;max-width:17px!important;height:17px!important;min-height:17px!important;max-height:17px!important;margin:0!important;padding:0!important;box-sizing:border-box!important;border:1.5px solid #82dfff!important;border-radius:4px!important;background:#06152a!important;box-shadow:none!important}
+#studio-workspace .compare-option input[type=checkbox]:checked{background:linear-gradient(135deg,#00dfff,#8a35ff)!important;border-color:#d6faff!important}
+#studio-workspace .compare-option input[type=checkbox]:checked:after{content:"✓";font-size:12px;font-weight:900;color:white;line-height:1}
+#studio-workspace .compare-option-icon{display:grid;place-items:center;width:38px;height:38px;border:1px solid rgba(0,220,255,.45);border-radius:11px;background:linear-gradient(145deg,rgba(0,210,255,.2),rgba(137,42,255,.24));color:#55eaff;font-size:22px;font-weight:900}
+#studio-workspace .compare-option-copy{display:grid;gap:5px;min-width:0}
+#studio-workspace .compare-option-copy b{display:block!important;margin:0!important;color:#f6f8ff!important;font-size:11px!important;line-height:1.3!important;overflow-wrap:anywhere!important}
+#studio-workspace .compare-option-copy small{display:block!important;margin:0!important;color:#b9cbe5!important;font-size:9px!important;line-height:1.35!important;overflow-wrap:anywhere!important}
+#studio-workspace .compare-guidance{margin-top:12px;padding:12px;border:1px solid rgba(166,66,255,.45);border-radius:14px;background:linear-gradient(110deg,rgba(0,130,190,.14),rgba(135,40,190,.18));color:#dceaff;font-size:12px;line-height:1.5}
 </style>
 </head>
 <body>
@@ -859,17 +784,17 @@ html body #studio-workspace #compare-panel #compare-models > label.tool > span{
     
    </div>
    <details class="field" style="border:1px solid #303951;border-radius:13px;padding:11px"><summary style="color:#dce4f5;font-size:13px;font-weight:700;cursor:pointer">Advanced generation settings</summary><div class="field"><label>NEGATIVE PROMPT</label><textarea id="negative-prompt" placeholder="Things to avoid (optional)"></textarea></div><div class="two"><div class="field"><label>OUTPUT COUNT</label><select id="output-count"><option>1</option><option>2</option><option>3</option><option>4</option></select></div><div class="field"><label>REFERENCE STRENGTH</label><select><option>Balanced</option><option>Low</option><option>High</option><option>Maximum</option></select></div></div><div class="two"><div class="field"><label>CHARACTER IDENTITY</label><select><option>Preserve when supported</option><option>Standard</option><option>Not applicable</option></select></div><div class="field"><label>AUDIO</label><select><option>Auto if supported</option><option>Generate sound</option><option>Mute</option></select></div></div></details>
-   <div class="field" id="compare-panel" hidden>
-    <label>COMPARE TOOLS · SELECT CREATION TOOLS</label>
-    <div class="tool-grid" id="compare-models">
-      <label class="tool"><input type="checkbox" value="Cinematic Video"> <b>Cinematic Video</b><span>Compare visual style and motion</span></label>
-      <label class="tool"><input type="checkbox" value="Character Animation"> <b>Character Animation</b><span>Compare character movement</span></label>
-      <label class="tool"><input type="checkbox" value="Image to Video"> <b>Image to Video</b><span>Compare image animation results</span></label>
-      <label class="tool"><input type="checkbox" value="Text to Video"> <b>Text to Video</b><span>Compare prompt-based results</span></label>
-    </div>
-    <div id="compare-summary" class="notice">Select at least two models to prepare a comparison. This will not run generation.</div>
-   </div>
-   <div class="field"><label>VIDEO CREDIT ESTIMATE</label><div id="video-credit-estimate" class="notice" aria-live="polite">Unavailable — verified provider rates and the Credit Wallet are not connected. No estimated credits will be invented.</div></div>
+   <section id="compare-panel" class="compare-panel" hidden aria-label="Compare creation tools">
+     <div class="compare-heading"><span class="compare-heading-icon" aria-hidden="true">▰</span><span><strong>Compare Tools</strong><i> · Select Creation Tools</i></span></div>
+     <div class="compare-grid" id="compare-models">
+       <label class="compare-option"><input type="checkbox" value="Cinematic Video"><span class="compare-option-icon" aria-hidden="true">▣</span><span class="compare-option-copy"><b>Cinematic Video</b><small>Movie-style, realistic videos</small></span></label>
+       <label class="compare-option"><input type="checkbox" value="Character Animation"><span class="compare-option-icon" aria-hidden="true">✦</span><span class="compare-option-copy"><b>Character Animation</b><small>Animated character videos</small></span></label>
+       <label class="compare-option"><input type="checkbox" value="Image to Video"><span class="compare-option-icon" aria-hidden="true">▧</span><span class="compare-option-copy"><b>Image to Video</b><small>Convert images to videos</small></span></label>
+       <label class="compare-option"><input type="checkbox" value="Text to Video"><span class="compare-option-icon" aria-hidden="true">T</span><span class="compare-option-copy"><b>Text to Video</b><small>Create videos from text prompts</small></span></label>
+     </div>
+     <div id="compare-summary" class="compare-guidance">Select at least two tools to prepare a comparison. No generation will run.</div>
+    </section>
+    <div class="field"><label>VIDEO CREDIT ESTIMATE</label><div id="video-credit-estimate" class="notice" aria-live="polite">Unavailable — verified provider rates and the Credit Wallet are not connected. No estimated credits will be invented.</div></div>
    <div class="field"><label>GENERATION QUEUE</label><div id="generation-summary" class="status-line"><span>Ready to configure</span><strong>Not submitted</strong></div></div>
    <button class="primary" id="generate-btn">✦ Prepare Generation</button>
    <div class="notice" id="studio-notice">Prototype only: this screen does not send files to an AI provider or spend credits. Provider APIs, account permissions, pricing and generation jobs must be connected and tested before activation.</div>
