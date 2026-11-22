@@ -746,6 +746,20 @@ html body #studio-workspace .studio-reference-header .studio-reference-titleline
 </style>
 
 
+
+<style id="nextgen-ai-studio-remove-page-borders-v1">
+/* Remove only the outer page-frame borders across every AI Studio workspace view.
+   Keep borders on controls, thumbnails, project rows, and internal content cards. */
+#studio-workspace .studio-reference-header{
+  border:0!important;
+  box-shadow:none!important;
+}
+#studio-workspace .view > .panel,
+#studio-workspace .view > .studio-grid > .panel{
+  border:0!important;
+  box-shadow:none!important;
+}
+</style>
 </head>
 <body>
 <div class="studio">
