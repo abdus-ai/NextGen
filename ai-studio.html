@@ -630,7 +630,7 @@ html body #studio-workspace .studio-reference-header .studio-reference-titleline
       <button type="button" id="studio-home-back" class="studio-close-button" aria-label="Close AI Studio" title="Close">×</button>
     </div>
     <div class="studio-reference-titleline">
-      <h2 id="view-title"><span class="ng-title-gradient" style="background:linear-gradient(110deg,#00f5ff 0%,#00c8ff 18%,#087bff 38%,#263cff 55%,#7428f5 74%,#e51bdc 91%,#ff43cf 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;display:inline-block;">AI Studio</span></h2>
+      <h2 id="view-title"><span class="ng-title-gradient" style="background:linear-gradient(110deg,#00f5ff 0%,#00c8ff 18%,#087bff 38%,#263cff 55%,#7428f5 74%,#e51bdc 91%,#ff43cf 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;display:inline-block;text-shadow:0 0 1px rgba(255,255,255,.95),0 0 5px rgba(255,255,255,.42);">AI Studio</span></h2>
       <button type="button" id="studio-gallery-open" class="studio-gallery-action">Gallery</button>
     </div>
     <p id="view-subtitle" class="studio-workspace-subtitle">Explore image and video creation in one workspace.</p>
@@ -979,7 +979,7 @@ render();
    document.getElementById('studio-workspace')?.classList.remove('hidden');
    document.querySelectorAll('.view').forEach(view=>view.classList.toggle('hidden',view.id!=='view-'+targetView));
    document.querySelectorAll('[data-view]').forEach(button=>button.classList.toggle('active',button.dataset.view===targetView));
-   const pageTitle=document.getElementById('view-title');if(pageTitle){let titleSpan=pageTitle.querySelector('.ng-title-gradient');if(!titleSpan){titleSpan=document.createElement('span');titleSpan.className='ng-title-gradient';pageTitle.replaceChildren(titleSpan);}titleSpan.setAttribute('style','background:linear-gradient(110deg,#00f5ff 0%,#00c8ff 18%,#087bff 38%,#263cff 55%,#7428f5 74%,#e51bdc 91%,#ff43cf 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;display:inline-block;');titleSpan.textContent='AI Studio';}
+   const pageTitle=document.getElementById('view-title');if(pageTitle){let titleSpan=pageTitle.querySelector('.ng-title-gradient');if(!titleSpan){titleSpan=document.createElement('span');titleSpan.className='ng-title-gradient';pageTitle.replaceChildren(titleSpan);}titleSpan.setAttribute('style','background:linear-gradient(110deg,#00f5ff 0%,#00c8ff 18%,#087bff 38%,#263cff 55%,#7428f5 74%,#e51bdc 91%,#ff43cf 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;display:inline-block;text-shadow:0 0 1px rgba(255,255,255,.95),0 0 5px rgba(255,255,255,.42);');titleSpan.textContent='AI Studio';}
   }
  }
 })();
@@ -1016,7 +1016,7 @@ render();
  const back=document.getElementById('studio-home-back');
  const subtitle=document.getElementById('view-subtitle');
  function applyTitle(){
-  if(title){let titleSpan=title.querySelector('.ng-title-gradient');if(!titleSpan){titleSpan=document.createElement('span');titleSpan.className='ng-title-gradient';title.replaceChildren(titleSpan);}titleSpan.setAttribute('style','background:linear-gradient(110deg,#00f5ff 0%,#00c8ff 18%,#087bff 38%,#263cff 55%,#7428f5 74%,#e51bdc 91%,#ff43cf 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;display:inline-block;');titleSpan.textContent=feature;}
+  if(title){let titleSpan=title.querySelector('.ng-title-gradient');if(!titleSpan){titleSpan=document.createElement('span');titleSpan.className='ng-title-gradient';title.replaceChildren(titleSpan);}titleSpan.setAttribute('style','background:linear-gradient(110deg,#00f5ff 0%,#00c8ff 18%,#087bff 38%,#263cff 55%,#7428f5 74%,#e51bdc 91%,#ff43cf 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;display:inline-block;text-shadow:0 0 1px rgba(255,255,255,.95),0 0 5px rgba(255,255,255,.42);');titleSpan.textContent=feature;}
   if(back){back.textContent='×';back.setAttribute('aria-label','Close AI Studio');back.setAttribute('title','Close');back.classList.add('studio-close-button');}
   if(subtitle&&descriptions[feature])subtitle.textContent=descriptions[feature];
  }
