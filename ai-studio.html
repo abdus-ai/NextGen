@@ -1802,3 +1802,78 @@ html body #studio-workspace.ng-text-to-video-view .studio-reference-header .stud
   filter:none!important;
 }
 </style>
+
+<!-- nextgen-ai-studio-live-final-typography-v2: final override placed after every legacy header override -->
+<style id="nextgen-ai-studio-live-final-typography-v2">
+html body #studio-workspace .studio-reference-badge,
+html body #studio-workspace .studio-reference-badge .ng-next-word,
+html body #studio-workspace .studio-reference-badge .ng-gen-word{
+  font-size:28px!important;
+  line-height:1.1!important;
+}
+html body #studio-workspace .studio-reference-badge .ng-studio-word,
+html body #studio-workspace .studio-reference-badge .ng-studio-o{
+  font-size:16px!important;
+  line-height:1.1!important;
+}
+html body #studio-workspace .studio-reference-header .studio-reference-titleline #view-title,
+html body #studio-workspace .studio-reference-header .studio-reference-titleline #view-title > .ng-title-gradient{
+  font-size:18px!important;
+  line-height:1.2!important;
+  letter-spacing:0!important;
+}
+html body #studio-workspace #view-subtitle.studio-workspace-subtitle{
+  font-size:12px!important;
+  line-height:1.4!important;
+}
+html body #studio-workspace #studio-gallery-open.studio-gallery-action{
+  font-size:14px!important;
+}
+html body #studio-workspace #studio-home-back.studio-close-button{
+  font-size:24px!important;
+}
+</style>
+<script id="nextgen-ai-studio-live-final-typography-v2-apply">
+(function(){
+  function applyFinalHeaderTypography(){
+    const root=document.getElementById('studio-workspace');
+    if(!root)return;
+    const badge=root.querySelector('.studio-reference-badge');
+    if(badge){
+      badge.style.setProperty('font-size','28px','important');
+      badge.querySelectorAll('.ng-next-word,.ng-gen-word').forEach(el=>{
+        el.style.setProperty('font-size','28px','important');
+        el.style.setProperty('line-height','1.1','important');
+      });
+      badge.querySelectorAll('.ng-studio-word,.ng-studio-o').forEach(el=>{
+        el.style.setProperty('font-size','16px','important');
+        el.style.setProperty('line-height','1.1','important');
+      });
+    }
+    const title=root.querySelector('#view-title');
+    if(title){
+      title.style.setProperty('font-size','18px','important');
+      title.style.setProperty('line-height','1.2','important');
+      const inner=title.querySelector('.ng-title-gradient');
+      if(inner){
+        inner.style.setProperty('font-size','18px','important');
+        inner.style.setProperty('line-height','1.2','important');
+      }
+    }
+    const subtitle=root.querySelector('#view-subtitle');
+    if(subtitle)subtitle.style.setProperty('font-size','12px','important');
+    const projects=root.querySelector('#studio-gallery-open');
+    if(projects)projects.style.setProperty('font-size','14px','important');
+    const close=root.querySelector('#studio-home-back');
+    if(close)close.style.setProperty('font-size','24px','important');
+  }
+  applyFinalHeaderTypography();
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',applyFinalHeaderTypography,{once:true});
+  }else{
+    applyFinalHeaderTypography();
+  }
+  window.addEventListener('pageshow',applyFinalHeaderTypography);
+})();
+</script>
+
