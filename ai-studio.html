@@ -771,7 +771,7 @@ render();
  const subtitle=document.getElementById('view-subtitle');
  function applyTitle(){
   if(title)title.textContent=feature;
-  if(back){back.textContent='←';back.setAttribute('aria-label','Back');back.setAttribute('title','Back');}
+  if(back){back.textContent='×';back.setAttribute('aria-label','Close AI Studio');back.setAttribute('title','Close');back.classList.add('studio-close-button');}
   if(subtitle&&descriptions[feature])subtitle.textContent=descriptions[feature];
  }
  applyTitle();
