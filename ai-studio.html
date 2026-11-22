@@ -337,6 +337,16 @@ html,body{background:#061329!important;color:#f4f8ff!important}
   #studio-home .reference-studio-card img{border-radius:8px!important}
 }
 </style>
+
+<style id="nextgen-feature-creation-heading-v1">
+/* Feature-specific creation page heading; keep the Home/preview page untouched. */
+#studio-workspace .studio-workspace-top{display:flex;align-items:center;justify-content:flex-start;gap:12px;margin:10px 0 8px}
+#studio-home-back.secondary{width:38px;height:38px;min-width:38px;padding:0;border:0!important;border-radius:50%;background:transparent!important;color:#f4f8ff!important;font-size:30px;font-weight:400;line-height:1;display:grid;place-items:center;box-shadow:none!important}
+#studio-home-back.secondary:focus-visible{outline:2px solid #35d8ff;outline-offset:2px}
+#view-title{font-size:clamp(25px,6.5vw,36px)!important;font-weight:800!important;letter-spacing:-.7px!important;line-height:1.12!important;background:linear-gradient(100deg,#00e9f2 0%,#288cff 48%,#cf3cff 100%);-webkit-background-clip:text;background-clip:text;color:transparent!important;-webkit-text-fill-color:transparent}
+#view-subtitle{color:#b7c9e2!important;font-size:14px;line-height:1.5}
+</style>
+
 </head>
 <body>
 <div class="studio">
@@ -708,5 +718,36 @@ render();
  });
 })();
 </script>
+
+<script id="nextgen-dynamic-feature-heading-v1">
+(function(){
+ const params=new URLSearchParams(location.search);
+ const raw=params.get('feature');
+ const names=['AI Video Editor','Image to Video','Text to Video','Video Extender','Text to Music','Music to Video','Text to Dance','Upscale 4K / 8K'];
+ const feature=raw!==null&&/^\\d+$/.test(raw)?(names[Number(raw)]||'AI Studio'):(raw||'AI Studio');
+ const descriptions={
+  'AI Video Editor':'Edit videos with AI tools and effects.',
+  'Image to Video':'Turn a still image into an animated video.',
+  'Text to Video':'Generate high-quality videos from a text prompt using AI.',
+  'Video Extender':'Make your video longer with AI.',
+  'Text to Music':'Create original music from a text prompt.',
+  'Music to Video':'Create videos that match your music.',
+  'Text to Dance':'Generate dance videos from text.',
+  'Upscale 4K / 8K':'Enhance video quality to 4K or 8K where supported.',
+  'Image Generate':'Create images from a text prompt.'
+ };
+ const title=document.getElementById('view-title');
+ const back=document.getElementById('studio-home-back');
+ const subtitle=document.getElementById('view-subtitle');
+ function applyTitle(){
+  if(title)title.textContent=feature;
+  if(back){back.textContent='←';back.setAttribute('aria-label','Back');back.setAttribute('title','Back');}
+  if(subtitle&&descriptions[feature])subtitle.textContent=descriptions[feature];
+ }
+ applyTitle();
+ document.querySelectorAll('[data-view]').forEach(button=>button.addEventListener('click',applyTitle));
+})();
+</script>
+
 </body>
 </html>
