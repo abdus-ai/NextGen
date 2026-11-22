@@ -932,5 +932,27 @@ render();
  document.getElementById('open-project-gallery')?.addEventListener('click',()=>{try{sessionStorage.setItem('ng-open-projects','1');}catch(e){}});
 })();
 </script>
+<style id="nextgen-studio-borderless-and-header-type-v2">
+/* NextGen Studio only: remove decorative outlines; preserve form controls and focus indicators. */
+.ng-final-shared-header,.studio-reference-header,.studio-head,.studio-hero,.studio-card,.reference-studio-card,.reference-card,.ng-project-item,.ng-project-row,.ng-project-card,.ng-project-media,.ng-project-info,.ng-project-actions,.studio-panel,.studio-grid>*,.studio-section,.studio-section-card,.studio-preview,.studio-workspace-card,.studio-tool-card,.studio-feature-card,.studio-feature-tile,.studio-feature-panel,.studio-feature-box,.studio-output-card,.studio-input-card,.studio-settings-card,.studio-model-card,.studio-history-card,.studio-gallery-card,.studio-modal,.ng-project-modal,.hero,.card,.panel,.intro,.settings-card,.section-card {
+  border-color:transparent!important;
+  outline-color:transparent;
+  box-shadow:none!important;
+}
+/* Keep the final approved header typography identical on every Studio page. */
+.ng-final-shared-header .ng-next-word,.ng-final-shared-header .ng-gen-word{font-size:28px!important}
+.ng-final-shared-header .ng-studio-word,.ng-final-shared-header .ng-studio-o{font-size:14px!important}
+.ng-final-shared-header .ng-final-title{font-size:clamp(25px,6vw,38px)!important}
+.ng-final-shared-header .ng-final-action{font-size:15px!important}
+.ng-final-shared-header .ng-final-subtitle{font-size:11px!important}
+.studio-reference-header .studio-reference-brand,.studio-reference-header .studio-brand,.studio-reference-header .ng-final-wordmark{font-size:28px!important}
+.studio-reference-header .studio-reference-titleline h2,.studio-reference-header #view-title{font-size:clamp(25px,6vw,38px)!important}
+.studio-reference-header .studio-gallery-action,.studio-reference-header .studio-reference-action{font-size:15px!important}
+.studio-reference-header .studio-reference-subtitle,.studio-reference-header #view-subtitle{font-size:11px!important}
+@media(max-width:420px){
+ .ng-final-shared-header .ng-final-title,.studio-reference-header .studio-reference-titleline h2,.studio-reference-header #view-title{font-size:25px!important}
+ .ng-final-shared-header .ng-final-action,.studio-reference-header .studio-gallery-action,.studio-reference-header .studio-reference-action{font-size:13px!important}
+}
+</style>
 </body>
 </html>
