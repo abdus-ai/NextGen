@@ -1,4 +1,4 @@
-const CACHE_NAME = "nextgen-shell-v122-search-icon-no-circle";
+const CACHE_NAME = "nextgen-shell-v123-projects-label-refresh";
 // Hero image is served from assets/hero-video-studio.jpg
 const APP_SHELL = [
   "./",
@@ -22,6 +22,8 @@ const APP_SHELL = [
   "./content.html",
   "./schedule.html",
   "./creative-studio.html",
+  "./ai-studio.html",
+  "./gallery.html",
   
   "./login.html",
   "./signin.html",
