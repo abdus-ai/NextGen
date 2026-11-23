@@ -222,14 +222,12 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
 
 
 
-/* Reference layout: left-shifted landscape model selector */
+/* Reference layout: left-shifted compact mobile model selector */
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])){
   left:calc(50% - 90px)!important;right:auto!important;transform:translateX(-50%)!important;
-  width:80vw!important;max-width:1130px!important;
-  height:470px!important;min-height:470px!important;max-height:470px!important;
-  padding:30px!important;box-sizing:border-box!important;
-  border:2px solid rgba(41,207,245,.48)!important;border-radius:80px!important;
-  background:linear-gradient(155deg,#0b1c35 0%,#08162b 100%)!important;
+  width:80vw!important;max-width:1130px!important;height:470px!important;min-height:470px!important;max-height:470px!important;
+  padding:30px!important;box-sizing:border-box!important;border:2px solid rgba(41,207,245,.48)!important;
+  border-radius:80px!important;background:linear-gradient(155deg,#0b1c35 0%,#08162b 100%)!important;
   box-shadow:0 14px 40px rgba(0,0,0,.58),0 0 22px rgba(0,183,255,.16)!important;color:#f3fbff!important;
 }
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-view{
@@ -238,8 +236,7 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
 }
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row,
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row:nth-child(2){
-  flex:0 0 190px!important;width:92%!important;max-width:92%!important;
-  height:190px!important;min-height:190px!important;max-height:190px!important;
+  flex:0 0 190px!important;width:92%!important;max-width:92%!important;height:190px!important;min-height:190px!important;max-height:190px!important;
   padding:24px 34px!important;box-sizing:border-box!important;border-radius:58px!important;gap:28px!important;
   background:linear-gradient(105deg,rgba(12,91,139,.58),rgba(19,42,76,.82))!important;
   box-shadow:inset 7px 0 0 #20d9f3!important;color:#f3fbff!important;
@@ -258,19 +255,21 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
     height:250px!important;min-height:250px!important;max-height:250px!important;
     padding:12px!important;border-radius:30px!important;
   }
-  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-view{gap:10px!important}
+  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-view{
+    justify-content:space-around!important;gap:0!important;
+  }
   .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row,
   .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row:nth-child(2){
-    width:100%!important;max-width:100%!important;flex-basis:108px!important;
-    height:108px!important;min-height:108px!important;max-height:108px!important;
-    padding:12px 14px!important;border-radius:26px!important;gap:10px!important;
+    width:100%!important;max-width:100%!important;flex:0 0 65px!important;
+    height:65px!important;min-height:65px!important;max-height:65px!important;
+    padding:6px 12px!important;border-radius:22px!important;gap:10px!important;
   }
-  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-icon{width:34px!important;flex-basis:34px!important;font-size:26px!important}
-  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy{gap:5px!important}
-  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy strong{font-size:25px!important}
-  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy small{font-size:18px!important;gap:7px!important}
-  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-provider-mini{font-size:18px!important}
-  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-chevron{font-size:32px!important}
+  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-icon{width:27px!important;flex:0 0 27px!important;font-size:21px!important}
+  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy{gap:3px!important}
+  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy strong{font-size:20px!important;line-height:1.05!important}
+  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy small{font-size:14px!important;gap:6px!important;line-height:1.05!important}
+  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-provider-mini{font-size:14px!important}
+  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-chevron{font-size:27px!important}
 }</style>
 <style id="ng-image-settings-style">
 .image-settings-trigger{white-space:nowrap;cursor:pointer;font:inherit;display:flex;align-items:center;justify-content:center;gap:3px;width:auto!important;min-width:132px;padding:0 14px;flex:0 0 auto;color:#fff!important}.image-settings-trigger svg{display:block!important;visibility:visible!important;flex:none;width:18px;height:18px;opacity:1;stroke:#fff!important}
