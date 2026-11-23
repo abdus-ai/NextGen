@@ -221,6 +221,43 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
 @media(max-width:380px){.ng-model-category-row{min-height:78px;padding:11px 10px;gap:12px}.ng-model-category-copy strong{font-size:21px}.ng-model-category-copy small{font-size:17px}.ng-model-list-view{height:min(68dvh,610px)}.ng-model-option{min-height:62px;padding:8px 9px;gap:9px}.ng-model-option-name{font-size:14px}.ng-model-cost{font-size:12px}.ng-model-signin{font-size:15px}}
 
 
+
+/* User-approved dimensions: category popup only. Catalogue dimensions remain unchanged. */
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])){
+  left:50%!important;
+  right:auto!important;
+  transform:translateX(-50%)!important;
+  width:80vw!important;
+  max-width:1130px!important;
+  height:min(80vh,480px)!important;
+  max-height:var(--ng-picker-space,80vh)!important;
+  padding:40px!important;
+  border-radius:80px!important;
+  box-sizing:border-box!important;
+}
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-view{
+  height:100%!important;
+  justify-content:space-between!important;
+  gap:0!important;
+}
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row{
+  flex:1 1 0!important;
+  min-height:0!important;
+  padding:18px 24px!important;
+  border-radius:54px!important;
+}
+@media(max-width:600px){
+  .ng-model-picker:has(#ngModelCategoryView:not([hidden])){
+    width:80vw!important;
+    padding:clamp(16px,5vw,40px)!important;
+    border-radius:clamp(28px,5.2vw,80px)!important;
+  }
+  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row{
+    padding:12px 14px!important;
+    border-radius:clamp(18px,3.5vw,54px)!important;
+  }
+}
+
 /* NextGen brand theme and compact reference-matched model selector. */
 .ng-model-picker{background:linear-gradient(155deg,#0b1c35 0%,#08162b 100%)!important;border:1px solid rgba(41,207,245,.42)!important;box-shadow:0 14px 40px rgba(0,0,0,.58),0 0 22px rgba(0,183,255,.12)!important}
 .ng-model-category-view{gap:3px!important}
