@@ -222,9 +222,9 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
 
 
 
-/* User-approved dimensions: compact category selector */
+/* User-approved dimensions: NextGen navy/cyan model selector */
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])){
-  left:calc(50% + 14px)!important;
+  left:calc(50% + 22px)!important;
   right:auto!important;
   transform:translateX(-50%)!important;
   width:545px!important;
@@ -233,68 +233,54 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
   min-height:125px!important;
   max-height:125px!important;
   padding:0!important;
+  border:1px solid rgba(41,207,245,.48)!important;
   border-radius:26px!important;
+  background:linear-gradient(155deg,#0b1c35 0%,#08162b 100%)!important;
+  box-shadow:0 14px 40px rgba(0,0,0,.58),0 0 22px rgba(0,183,255,.16)!important;
+  color:#f3fbff!important;
   box-sizing:border-box!important;
 }
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-view{
-  height:100%!important;
-  display:flex!important;
-  flex-direction:column!important;
-  justify-content:space-between!important;
-  gap:5px!important;
+  height:100%!important;display:flex!important;flex-direction:column!important;
+  justify-content:space-between!important;gap:5px!important;
 }
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row,
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row:nth-child(2){
-  flex:0 0 55px!important;
-  width:540px!important;
-  max-width:100%!important;
-  height:55px!important;
-  min-height:55px!important;
-  max-height:55px!important;
-  padding:5px 12px!important;
-  box-sizing:border-box!important;
-  border-radius:20px!important;
+  flex:0 0 55px!important;width:540px!important;max-width:100%!important;
+  height:55px!important;min-height:55px!important;max-height:55px!important;
+  padding:5px 12px!important;box-sizing:border-box!important;border-radius:20px!important;
   background:linear-gradient(105deg,rgba(12,91,139,.46),rgba(19,42,76,.68))!important;
-  box-shadow:inset 3px 0 0 #20d9f3!important;
+  box-shadow:inset 3px 0 0 #20d9f3!important;color:#f3fbff!important;
 }
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-icon{
-  width:27px!important;flex:0 0 27px!important;font-size:18px!important;
+  width:25px!important;flex:0 0 25px!important;font-size:16px!important;color:#dffaff!important;
 }
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy{gap:1px!important}
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy strong{
-  font-size:16px!important;line-height:1.02!important;
+  font-size:12px!important;line-height:1.05!important;color:#f3fbff!important;
 }
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy small{
-  gap:6px!important;font-size:13px!important;line-height:1.02!important;
+  gap:5px!important;font-size:10px!important;line-height:1.05!important;color:#a8c3da!important;
 }
-.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-provider-mini{font-size:15px!important}
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-provider-mini{font-size:12px!important}
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-chevron{
-  font-size:23px!important;
+  font-size:20px!important;color:#bfeeff!important;
 }
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row:active{
   background:#17395c!important;
 }
 @media(max-width:600px){
   .ng-model-picker:has(#ngModelCategoryView:not([hidden])){
-    left:calc(50% + 10px)!important;
-    width:calc(100vw - 24px)!important;
-    max-width:calc(100vw - 24px)!important;
-    height:125px!important;
-    min-height:125px!important;
-    max-height:125px!important;
-    padding:0!important;
-    border-radius:24px!important;
+    left:calc(50% + 22px)!important;right:auto!important;
+    width:calc(100vw - 24px)!important;max-width:calc(100vw - 24px)!important;
+    height:125px!important;min-height:125px!important;max-height:125px!important;
+    padding:0!important;border-radius:24px!important;
   }
   .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row,
   .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row:nth-child(2){
-    width:100%!important;
-    max-width:100%!important;
-    flex-basis:55px!important;
-    height:55px!important;
-    min-height:55px!important;
-    max-height:55px!important;
-    padding:5px 10px!important;
-    border-radius:18px!important;
+    width:100%!important;max-width:100%!important;flex-basis:55px!important;
+    height:55px!important;min-height:55px!important;max-height:55px!important;
+    padding:5px 10px!important;border-radius:18px!important;
   }
 }</style>
 <style id="ng-image-settings-style">
