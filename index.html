@@ -312,7 +312,7 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])){
   position:fixed!important;
   left:12px!important;right:auto!important;transform:none!important;
-  width:300px!important;min-width:300px!important;max-width:300px!important;
+  width:320px!important;min-width:320px!important;max-width:320px!important;
   height:120px!important;min-height:120px!important;max-height:120px!important;
   box-sizing:border-box!important;padding:0!important;
   overflow:visible!important;
@@ -494,7 +494,7 @@ function initModelPicker(){
   picker.style.setProperty('--ng-picker-space',available+'px');
   picker.style.setProperty('bottom',(window.innerHeight-rect.top+gap)+'px','important');
  }
- function showCategory(){category.hidden=false;$('ngImageModelOptions').hidden=true;$('ngVideoModelOptions').hidden=true;positionPicker();}
+ function showCategory(){picker.querySelectorAll('[data-open-model-list]').forEach(card=>{const selected=card.dataset.openModelList==='Image';card.classList.toggle('is-active',selected);card.setAttribute('aria-pressed',String(selected));});category.hidden=false;$('ngImageModelOptions').hidden=true;$('ngVideoModelOptions').hidden=true;positionPicker();}
  function openPicker(){showCategory();picker.hidden=false;positionPicker();trigger.setAttribute('aria-expanded','true');}
  function closePicker(){picker.hidden=true;trigger.setAttribute('aria-expanded','false');}
  function paint(){$('ngImageModelValue').textContent=selectedModels.Image.name;$('ngVideoModelValue').textContent=selectedModels.Video.name;$('ng-model-selected-label').textContent=selectedModels.Image.name;$('ng-selected-model-icon').textContent=selectedModels.Image.name.toLowerCase().includes('nano banana')?'🍌':selectedModels.Image.name.toLowerCase().includes('qwen')?'✣':selectedModels.Image.name.toLowerCase().includes('flux')?'△':selectedModels.Image.name.toLowerCase().includes('grok')?'◉':selectedModels.Image.name.toLowerCase().includes('meta')?'∞':selectedModels.Image.name.toLowerCase().includes('krea')?'✿':'◎';}
