@@ -356,15 +356,7 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
   color:#f3fbff!important;
 }
 
-/* Model picker trigger arrow: up when closed, down when open */
-.ng-model-trigger-chevron{
-  display:inline-block!important;
-  transform:rotate(0deg)!important;
-  transition:transform .18s ease!important;
-}
-.ng-model-trigger[aria-expanded="true"] .ng-model-trigger-chevron{
-  transform:rotate(180deg)!important;
-}
+/* Arrow direction is controlled by the glyph in setPickerArrow(). */
 </style>
 
 </head>
