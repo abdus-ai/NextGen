@@ -222,104 +222,73 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
 
 
 
-/* User-approved dimensions: category popup only. Catalogue dimensions remain unchanged. */
+/* User-approved dimensions: matching Image and Video category cards */
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])){
   left:50%!important;
   right:auto!important;
   transform:translateX(-50%)!important;
-  width:80vw!important;
-  max-width:1130px!important;
-  height:135px!important;
-  min-height:135px!important;
-  max-height:135px!important;
-  padding:40px!important;
-  border-radius:80px!important;
+  width:590px!important;
+  max-width:calc(100vw - 24px)!important;
+  height:180px!important;
+  min-height:180px!important;
+  max-height:180px!important;
+  padding:20px!important;
+  border-radius:36px!important;
   box-sizing:border-box!important;
 }
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-view{
   height:100%!important;
+  display:flex!important;
+  flex-direction:column!important;
   justify-content:space-between!important;
-  gap:0!important;
+  gap:8px!important;
 }
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row{
-  flex:0 0 65px!important;
-  height:65px!important;
-  min-height:65px!important;
-  max-height:65px!important;
-  padding:12px 18px!important;
+  flex:0 0 60px!important;
+  width:550px!important;
+  max-width:100%!important;
+  height:60px!important;
+  min-height:60px!important;
+  max-height:60px!important;
+  padding:8px 18px!important;
   box-sizing:border-box!important;
-  border-radius:24px!important;
+  border-radius:22px!important;
+  background:linear-gradient(105deg,rgba(12,91,139,.46),rgba(19,42,76,.68))!important;
+  box-shadow:inset 4px 0 0 #20d9f3!important;
 }
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row:nth-child(2){
-  flex:0 0 65px!important;
-  height:65px!important;
-  min-height:65px!important;
-  max-height:65px!important;
+  flex:0 0 60px!important;
+  width:550px!important;
+  max-width:100%!important;
+  height:60px!important;
+  min-height:60px!important;
+  max-height:60px!important;
+}
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row:active{
+  background:#17395c!important;
 }
 @media(max-width:600px){
   .ng-model-picker:has(#ngModelCategoryView:not([hidden])){
-    width:80vw!important;
-    padding:clamp(16px,5vw,40px)!important;
-    border-radius:clamp(28px,5.2vw,80px)!important;
+    width:calc(100vw - 24px)!important;
+    max-width:calc(100vw - 24px)!important;
+    height:180px!important;
+    min-height:180px!important;
+    max-height:180px!important;
+    padding:12px!important;
+    border-radius:28px!important;
   }
-  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row{
-    flex-basis:65px!important;
-    height:65px!important;
-    min-height:65px!important;
-    max-height:65px!important;
+  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row,
+  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row:nth-child(2){
+    width:100%!important;
+    max-width:100%!important;
+    flex-basis:60px!important;
+    height:60px!important;
+    min-height:60px!important;
+    max-height:60px!important;
     padding:8px 12px!important;
     border-radius:20px!important;
   }
-  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row:nth-child(2){
-    flex-basis:65px!important;
-    height:65px!important;
-    min-height:65px!important;
-    max-height:65px!important;
-  }
 }
-
-
-
-/* Mobile: shift category popup left to clear the floating AI Assistant and Project actions. */
-@media(max-width:600px){
- .ng-model-picker:has(#ngModelCategoryView:not([hidden])){
-   left:42vw!important;
-   right:auto!important;
-   transform:translateX(-50%)!important;
- }
-}
-
-/* NextGen brand theme and compact reference-matched model selector. */
-.ng-model-picker{background:linear-gradient(155deg,#0b1c35 0%,#08162b 100%)!important;border:1px solid rgba(41,207,245,.42)!important;box-shadow:0 14px 40px rgba(0,0,0,.58),0 0 22px rgba(0,183,255,.12)!important}
-.ng-model-category-view{gap:3px!important}
-.ng-model-category-row{min-height:68px!important;padding:8px 12px!important;gap:12px!important;border-radius:16px!important}
-.ng-model-category-row:first-child{background:linear-gradient(105deg,rgba(12,91,139,.46),rgba(19,42,76,.68))!important;box-shadow:inset 3px 0 0 #20d9f3!important}
-.ng-model-category-row:active{background:#17395c!important}
-.ng-model-category-icon{width:35px!important;flex-basis:35px!important;font-size:27px!important;color:#dffaff!important}
-.ng-model-category-copy{gap:3px!important}
-.ng-model-category-copy strong{font-size:19px!important;color:#f3fbff!important}
-.ng-model-category-copy small{font-size:15px!important;color:#a8c3da!important;gap:7px!important}
-.ng-provider-mini{font-size:19px!important}
-.ng-model-category-chevron{font-size:30px!important;color:#8cc9e8!important}
-.ng-model-list-view{height:min(66dvh,610px)!important;min-height:260px!important}
-.ng-model-list-heading{height:38px!important;flex-basis:38px!important;font-size:15px!important;color:#c6eaff!important}
-.ng-model-signin{height:48px!important;flex-basis:48px!important;border-color:rgba(57,190,235,.28)!important;border-radius:13px!important;background:#102b49!important;font-size:14px!important;margin-bottom:3px!important}
-.ng-model-scroll{padding-bottom:2px!important}
-.ng-model-option{min-height:53px!important;padding:6px 10px!important;gap:9px!important;border-radius:10px!important}
-.ng-model-option.is-selected{background:linear-gradient(100deg,rgba(16,105,158,.35),rgba(83,59,164,.24))!important;box-shadow:inset 2px 0 0 #27d7f4!important}
-.ng-model-brand{width:23px!important;flex-basis:23px!important;font-size:21px!important}
-.ng-model-option-name{font-size:14px!important}
-.ng-model-cost{font-size:12px!important}
-.ng-model-more{height:42px!important;flex-basis:42px!important;border-color:rgba(57,190,235,.3)!important;border-radius:13px!important;background:#102744!important;color:#bcecff!important;font-size:13px!important}
-.ng-model-option-name small{font-size:9px!important}
-.ng-model-trigger{justify-content:space-between!important;gap:8px!important;padding:0 13px!important;cursor:pointer!important;touch-action:manipulation!important;background:linear-gradient(110deg,#102b49 0%,#142c4c 60%,#20254b 100%)!important;border:1px solid rgba(48,203,239,.4)!important;border-radius:999px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)!important}
-.comp .tb .ng-model-trigger{justify-content:space-between!important;min-width:0!important;flex:1 1 0!important}
-.ng-selected-model{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:9px!important;min-width:0!important;overflow:hidden!important;color:#f3faff!important;font-size:14px!important;font-weight:650!important;white-space:nowrap!important}
-.ng-selected-model-icon{display:inline-flex!important;align-items:center!important;justify-content:center!important;flex:0 0 24px!important;width:24px!important;height:24px!important;color:#eafaff!important;font-size:22px!important;line-height:1!important}
-#ng-model-selected-label{overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
-.ng-model-trigger-chevron{display:flex!important;align-items:center!important;justify-content:center!important;flex:0 0 24px!important;width:24px!important;height:24px!important;color:#c6eaff!important;font-size:22px!important;line-height:1!important}
-@media(max-width:380px){.ng-model-category-row{min-height:62px!important;padding:7px 10px!important}.ng-model-category-copy strong{font-size:18px!important}.ng-model-category-copy small{font-size:14px!important}.ng-model-list-view{height:min(64dvh,570px)!important}.ng-model-option{min-height:49px!important;padding:5px 8px!important}.ng-model-option-name{font-size:13px!important}.ng-model-cost{font-size:11px!important}.ng-model-signin{height:44px!important;flex-basis:44px!important}}
-
 </style>
 <style id="ng-image-settings-style">
 .image-settings-trigger{white-space:nowrap;cursor:pointer;font:inherit;display:flex;align-items:center;justify-content:center;gap:3px;width:auto!important;min-width:132px;padding:0 14px;flex:0 0 auto;color:#fff!important}.image-settings-trigger svg{display:block!important;visibility:visible!important;flex:none;width:18px;height:18px;opacity:1;stroke:#fff!important}
