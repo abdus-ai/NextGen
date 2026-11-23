@@ -344,6 +344,17 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-chevron{
   font-size:24px!important;
 }
+
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row:not(.is-active){
+  background:rgba(255,255,255,.035)!important;
+  box-shadow:none!important;
+  color:#d7deea!important;
+}
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row.is-active{
+  background:linear-gradient(105deg,rgba(12,112,165,.72),rgba(25,55,100,.9))!important;
+  box-shadow:inset 4px 0 0 #20d9f3,0 0 13px rgba(0,183,255,.18)!important;
+  color:#f3fbff!important;
+}
 </style>
 
 </head>
