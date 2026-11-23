@@ -355,6 +355,16 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
   box-shadow:inset 4px 0 0 #20d9f3,0 0 13px rgba(0,183,255,.18)!important;
   color:#f3fbff!important;
 }
+
+/* Model picker trigger arrow: up when closed, down when open */
+.ng-model-trigger-chevron{
+  display:inline-block!important;
+  transform:rotate(0deg)!important;
+  transition:transform .18s ease!important;
+}
+.ng-model-trigger[aria-expanded="true"] .ng-model-trigger-chevron{
+  transform:rotate(180deg)!important;
+}
 </style>
 
 </head>
