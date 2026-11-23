@@ -180,6 +180,10 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
 
 .ng-model-trigger{cursor:pointer!important;touch-action:manipulation!important;gap:8px!important}
 .ng-model-picker{position:fixed;left:max(16px,calc((100vw - 430px)/2 + 18px));right:max(16px,calc((100vw - 430px)/2 + 18px));bottom:calc(155px + env(safe-area-inset-bottom,0px));z-index:10020;padding:12px;border:1px solid rgba(68,190,255,.32);border-radius:20px;background:#0b1b33;box-shadow:0 12px 36px rgba(0,0,0,.48),0 0 18px rgba(0,174,255,.08);color:#f7faff}
+
+/* Anchor the popup directly above its own composer trigger, not to the viewport. */
+.ng-model-picker{bottom:auto!important;top:auto!important;max-height:var(--ng-picker-space,70dvh)!important}
+.ng-model-list-view{height:min(66dvh,var(--ng-picker-space,610px))!important;max-height:var(--ng-picker-space,610px)!important;min-height:220px!important}
 .ng-model-picker[hidden],.ng-model-detail[hidden]{display:none!important}
 .ng-model-picker-head{display:flex;align-items:center;justify-content:space-between;padding:2px 4px 10px;font-size:15px}
 .ng-model-picker-head>div{display:flex;flex-direction:column;gap:3px}.ng-model-picker-head small{font-size:10px;color:#91abc4;font-weight:400}
@@ -412,16 +416,26 @@ const data=[
 const $=id=>document.getElementById(id),hero=$('motion16HeroImage'),overlay=$('motion16Overlay'),list=$('motion16FeatureList'),caption=$('motion16Caption'),promptDemo=$('motion16PromptDemo'),composer=$('motion16Composer'),prompt=$('motion16Prompt'),notice=$('motion16Notice');
 let active=0,timer=null,noticeTimer=null,attachedFile=null;
 let selectedModels={Image:{name:'GPT 2.6',cost:'Plus or 0.5★'},Video:{name:'Omni Flash',cost:'Plus or 0.6★'}};
+
 function initModelPicker(){
  const picker=$('ngModelPicker'),trigger=$('motion16ModelSelect'),category=$('ngModelCategoryView');
  if(!picker||!trigger||picker.dataset.ready==='true')return;
  picker.dataset.ready='true';
- function showCategory(){category.hidden=false;$('ngImageModelOptions').hidden=true;$('ngVideoModelOptions').hidden=true;}
- function openPicker(){showCategory();picker.hidden=false;trigger.setAttribute('aria-expanded','true');}
+ function positionPicker(){
+  const rect=trigger.getBoundingClientRect();
+  const gap=8;
+  const available=Math.max(230,rect.top-gap-12);
+  picker.style.bottom='auto';
+  picker.style.top='auto';
+  picker.style.setProperty('--ng-picker-space',available+'px');
+  picker.style.bottom=(window.innerHeight-rect.top+gap)+'px';
+ }
+ function showCategory(){category.hidden=false;$('ngImageModelOptions').hidden=true;$('ngVideoModelOptions').hidden=true;positionPicker();}
+ function openPicker(){showCategory();picker.hidden=false;positionPicker();trigger.setAttribute('aria-expanded','true');}
  function closePicker(){picker.hidden=true;trigger.setAttribute('aria-expanded','false');}
  function paint(){$('ngImageModelValue').textContent=selectedModels.Image.name;$('ngVideoModelValue').textContent=selectedModels.Video.name;$('ng-model-selected-label').textContent=selectedModels.Image.name;$('ng-selected-model-icon').textContent=selectedModels.Image.name.toLowerCase().includes('nano banana')?'🍌':selectedModels.Image.name.toLowerCase().includes('qwen')?'✣':selectedModels.Image.name.toLowerCase().includes('flux')?'△':selectedModels.Image.name.toLowerCase().includes('grok')?'◉':selectedModels.Image.name.toLowerCase().includes('meta')?'∞':selectedModels.Image.name.toLowerCase().includes('krea')?'✿':'◎';}
  trigger.addEventListener('click',()=>{if(picker.hidden)openPicker();else closePicker();});
- picker.querySelectorAll('[data-open-model-list]').forEach(button=>button.addEventListener('click',()=>{const kind=button.dataset.openModelList;category.hidden=true;$('ngImageModelOptions').hidden=kind!=='Image';$('ngVideoModelOptions').hidden=kind!=='Video';paint();}));
+ picker.querySelectorAll('[data-open-model-list]').forEach(button=>button.addEventListener('click',()=>{const kind=button.dataset.openModelList;category.hidden=true;$('ngImageModelOptions').hidden=kind!=='Image';$('ngVideoModelOptions').hidden=kind!=='Video';paint();positionPicker();}));
  picker.querySelectorAll('[data-model-back]').forEach(button=>button.addEventListener('click',showCategory));
  picker.querySelectorAll('[data-model-kind][data-model-name]').forEach(button=>button.addEventListener('click',()=>{
   const kind=button.dataset.modelKind;selectedModels[kind]={name:button.dataset.modelName,cost:button.dataset.modelCost||''};
@@ -432,9 +446,10 @@ function initModelPicker(){
  picker.querySelectorAll('[data-model-more]').forEach(button=>button.addEventListener('click',()=>{const scroller=button.previousElementSibling;scroller.scrollBy({top:Math.max(220,scroller.clientHeight*.72),behavior:'smooth'});}));
  document.addEventListener('click',event=>{if(!picker.hidden&&!picker.contains(event.target)&&!trigger.contains(event.target))closePicker();});
  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!picker.hidden)closePicker();});
+ window.addEventListener('resize',()=>{if(!picker.hidden)positionPicker();},{passive:true});
+ window.addEventListener('scroll',()=>{if(!picker.hidden)positionPicker();},{passive:true,capture:true});
  paint();
 }
-
 function inform(msg){notice.textContent=msg;notice.classList.add('show');clearTimeout(noticeTimer);noticeTimer=setTimeout(()=>notice.classList.remove('show'),3200)}
 function selectFeature(index,manual=false){
  const item=data[index];if(!item)return;active=index;
