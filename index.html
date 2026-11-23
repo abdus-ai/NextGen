@@ -406,7 +406,7 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
   <input type="file" id="motion16File" accept="image/*,video/*" hidden>
   <div class="tb">
     <button class="pl p1" id="motion16Add" type="button" aria-label="Add image or video">＋</button>
-    <button class="pl p2 ng-model-trigger" id="motion16ModelSelect" type="button" aria-label="Open AI model selection" aria-haspopup="dialog" aria-expanded="false"><span class="ng-selected-model"><span class="ng-selected-model-icon" id="ng-selected-model-icon" aria-hidden="true">◎</span><span id="ng-model-selected-label">GPT 2.6</span></span><span class="ng-model-trigger-chevron" aria-hidden="true">⌃</span></button>
+    <button class="pl p2 ng-model-trigger" id="motion16ModelSelect" type="button" aria-label="Open AI model selection" aria-haspopup="dialog" aria-expanded="false"><span class="ng-selected-model"><span class="ng-selected-model-icon" id="ng-selected-model-icon" aria-hidden="true">◎</span><span id="ng-model-selected-label">GPT 2.6</span></span><span class="ng-model-trigger-chevron" aria-hidden="true"></span></button>
     <button class="pl p3 image-settings-trigger" id="motion16ImageSettings" type="button" aria-label="Image settings: ×1 Auto" aria-haspopup="dialog" aria-controls="ng-image-settings-overlay"><span id="ng-image-settings-button-label">×1 Auto</span><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg></button>
     
     <button class="snd" id="motion16Generate" type="button" aria-label="Generate"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5M5 11l7-7 7 7"/></svg></button>
@@ -509,7 +509,7 @@ function initModelPicker(){
   picker.style.setProperty('bottom',(window.innerHeight-rect.top+gap)+'px','important');
  }
  function showCategory(){picker.querySelectorAll('[data-open-model-list]').forEach(card=>{const selected=card.dataset.openModelList==='Image';card.classList.toggle('is-active',selected);card.setAttribute('aria-pressed',String(selected));});category.hidden=false;$('ngImageModelOptions').hidden=true;$('ngVideoModelOptions').hidden=true;positionPicker();}
- function setPickerArrow(isOpen){const arrow=trigger.querySelector('.ng-model-trigger-chevron');if(arrow)arrow.textContent=isOpen?'⌄':'⌃';trigger.setAttribute('aria-expanded',String(isOpen));}
+ function setPickerArrow(isOpen){trigger.setAttribute('aria-expanded',String(isOpen));}
  function openPicker(){showCategory();picker.hidden=false;positionPicker();setPickerArrow(true);}
  function closePicker(){picker.hidden=true;setPickerArrow(false);}
  function paint(){$('ngImageModelValue').textContent=selectedModels.Image.name;$('ngVideoModelValue').textContent=selectedModels.Video.name;$('ng-model-selected-label').textContent=selectedModels.Image.name;$('ng-selected-model-icon').textContent=selectedModels.Image.name.toLowerCase().includes('nano banana')?'🍌':selectedModels.Image.name.toLowerCase().includes('qwen')?'✣':selectedModels.Image.name.toLowerCase().includes('flux')?'△':selectedModels.Image.name.toLowerCase().includes('grok')?'◉':selectedModels.Image.name.toLowerCase().includes('meta')?'∞':selectedModels.Image.name.toLowerCase().includes('krea')?'✿':'◎';}
