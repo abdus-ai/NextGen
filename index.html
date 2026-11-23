@@ -306,6 +306,45 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
 .ng-image-settings-actions button:last-child{background:linear-gradient(110deg,#00c9e8 0%,#1677f5 52%,#7545e8 100%);border:0;color:#fff}
 @media(min-width:600px){.ng-image-settings-overlay{align-items:center}.ng-image-settings-sheet{max-height:85vh}}
 </style>
+
+<style id="ng-model-picker-final-dimensions">
+/* Final user-approved model category popup dimensions */
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])){
+  position:fixed!important;
+  left:50%!important;right:auto!important;transform:translateX(-50%)!important;
+  width:350px!important;min-width:350px!important;max-width:350px!important;
+  height:120px!important;min-height:120px!important;max-height:120px!important;
+  box-sizing:border-box!important;padding:1px 9px!important;
+  overflow:hidden!important;
+}
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) #ngModelCategoryView{
+  display:flex!important;flex-direction:column!important;justify-content:center!important;
+  align-items:center!important;gap:5px!important;
+  width:100%!important;height:100%!important;min-height:0!important;
+  overflow:hidden!important;
+}
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row,
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row:nth-child(2){
+  display:flex!important;flex:0 0 55px!important;
+  width:330px!important;min-width:330px!important;max-width:330px!important;
+  height:55px!important;min-height:55px!important;max-height:55px!important;
+  box-sizing:border-box!important;margin:0!important;padding:5px 10px!important;
+  gap:8px!important;border-radius:18px!important;
+}
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy strong{
+  font-size:13px!important;line-height:1.05!important;
+}
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy small{
+  font-size:10px!important;line-height:1.05!important;gap:5px!important;
+}
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-icon{
+  width:24px!important;flex:0 0 24px!important;font-size:19px!important;
+}
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-chevron{
+  font-size:24px!important;
+}
+</style>
+
 </head>
 <body>
 <div class="app">
