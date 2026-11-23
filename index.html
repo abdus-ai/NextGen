@@ -375,6 +375,47 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
 }
 
 /* Arrow direction is controlled by the glyph in setPickerArrow(). */
+
+/* NextGen model picker theme + compact spacing */
+.ng-model-picker{
+ background:linear-gradient(160deg,#071a33 0%,#0a2342 55%,#101b3d 100%)!important;
+ border:1px solid rgba(37,205,245,.42)!important;
+ box-shadow:0 12px 36px rgba(0,0,0,.52),0 0 20px rgba(0,190,255,.12)!important;
+ color:#f2f9ff!important;
+}
+.ng-model-category-view{gap:4px!important}
+.ng-model-category-row{
+ min-height:72px!important;
+ padding:10px 13px!important;
+ gap:13px!important;
+ border:1px solid rgba(77,160,207,.18)!important;
+ border-radius:16px!important;
+}
+.ng-model-category-row:first-child{
+ background:linear-gradient(110deg,rgba(12,112,165,.38),rgba(21,47,83,.72))!important;
+ box-shadow:inset 3px 0 0 #21d8f3!important;
+}
+.ng-model-category-copy{gap:3px!important}
+.ng-model-category-copy strong{line-height:1.1!important}
+.ng-model-category-copy small{line-height:1.1!important}
+.ng-model-list-view{min-height:200px!important}
+.ng-model-list-heading{
+ height:38px!important;flex-basis:38px!important;
+ padding:0 4px 4px!important;
+ color:#b9eaff!important;
+}
+.ng-model-option{
+ min-height:54px!important;
+ padding:6px 10px!important;
+ gap:9px!important;
+ border-radius:11px!important;
+}
+.ng-model-option.is-selected{
+ background:linear-gradient(105deg,rgba(12,112,165,.34),rgba(43,42,93,.72))!important;
+ box-shadow:inset 3px 0 0 #23d8f2!important;
+}
+.ng-model-option-name{line-height:1.15!important}
+.ng-model-cost{line-height:1.15!important}
 </style>
 
 </head>
@@ -436,12 +477,12 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
  </div>
  <section class="ng-model-list-view" id="ngImageModelOptions" hidden aria-label="Image models">
   <div class="ng-model-list-heading"><button type="button" class="ng-model-back" data-model-back>‹</button><strong>Image</strong></div>
-  <button type="button" class="ng-model-signin" data-model-signin><span class="ng-lock">♙</span><strong>More models · Sign in</strong></button>
+  
   <div class="ng-model-scroll"><button class="ng-model-option is-selected" type="button" data-model-kind="Image" data-model-name="Nano Banana 2.1" data-model-cost="Free daily"><span class="ng-model-brand ng-banana"></span><span class="ng-model-option-name">Nano Banana 2.1</span><span class="ng-model-cost free">Free daily</span><span class="ng-model-check">✓</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Nano Banana 2.1" data-model-cost="Free daily"><span class="ng-model-brand ng-banana"></span><span class="ng-model-option-name">Nano Banana 2.1</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Nano Banana 2" data-model-cost="Free daily"><span class="ng-model-brand ng-banana"></span><span class="ng-model-option-name">Nano Banana 2</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Nano Banana Pro" data-model-cost="Free daily"><span class="ng-model-brand ng-banana"></span><span class="ng-model-option-name">Nano Banana Pro</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Nano Banana 2 Lite" data-model-cost="Free daily"><span class="ng-model-brand ng-banana"></span><span class="ng-model-option-name">Nano Banana 2 Lite</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Nano Banana" data-model-cost="Free daily"><span class="ng-model-brand ng-banana"></span><span class="ng-model-option-name">Nano Banana</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Meta image" data-model-cost="Free daily"><span class="ng-model-brand ng-meta">∞</span><span class="ng-model-option-name">Meta image</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Grok Speed" data-model-cost="Free daily"><span class="ng-model-brand ng-grok">◉</span><span class="ng-model-option-name">Grok Speed</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Grok Image 2.0" data-model-cost="Free daily"><span class="ng-model-brand ng-grok">◉</span><span class="ng-model-option-name">Grok Image 2.0</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Qwen Image HD" data-model-cost="Free daily"><span class="ng-model-brand ng-qwen">✣</span><span class="ng-model-option-name">Qwen Image HD</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Qwen Image Edit 2511" data-model-cost="Free daily"><span class="ng-model-brand ng-qwen">✣</span><span class="ng-model-option-name">Qwen Image Edit 2511</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Krea 2 Turbo" data-model-cost="Free daily"><span class="ng-model-brand ng-krea">✿</span><span class="ng-model-option-name">Krea 2 Turbo</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Krea 2 Realism HD" data-model-cost="Free daily"><span class="ng-model-brand ng-krea">✿</span><span class="ng-model-option-name">Krea 2 Realism HD</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Flux 2 Klein" data-model-cost="Free daily"><span class="ng-model-brand ng-flux">△</span><span class="ng-model-option-name">Flux 2 Klein</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Flux 3 Klein" data-model-cost="Free daily"><span class="ng-model-brand ng-flux">△</span><span class="ng-model-option-name">Flux 3 Klein</span><span class="ng-model-cost free">Free daily</span></button></div><button type="button" class="ng-model-more" data-model-more>More below⌄</button>
  </section>
  <section class="ng-model-list-view" id="ngVideoModelOptions" hidden aria-label="Video models">
   <div class="ng-model-list-heading"><button type="button" class="ng-model-back" data-model-back>‹</button><strong>Video</strong></div>
-  <button type="button" class="ng-model-signin" data-model-signin><span class="ng-lock">♙</span><strong>More models · Sign in</strong></button>
+  
   <div class="ng-model-scroll"><button class="ng-model-option" type="button" data-model-kind="Video" data-model-name="Grok" data-model-cost="Plus"><span class="ng-model-brand ng-grok">◉</span><span class="ng-model-option-name">Grok</span><span class="ng-model-cost">Plus</span></button><button class="ng-model-option" type="button" data-model-kind="Video" data-model-name="Grok Lite" data-model-cost="Free daily"><span class="ng-model-brand ng-grok">◉</span><span class="ng-model-option-name">Grok Lite</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option is-selected" type="button" data-model-kind="Video" data-model-name="Omni Flash" data-model-cost="Plus or 0.6★"><span class="ng-model-brand ng-google">G</span><span class="ng-model-option-name">Omni Flash</span><span class="ng-model-cost">Plus or 0.6★</span><span class="ng-model-check">✓</span></button><button class="ng-model-option" type="button" data-model-kind="Video" data-model-name="MiniMax HD" data-model-cost="Pro or 5★"><span class="ng-model-brand ng-minimax">∿</span><span class="ng-model-option-name">MiniMax HD</span><span class="ng-model-cost">Pro or 5★</span></button><button class="ng-model-option" type="button" data-model-kind="Video" data-model-name="Meta Video" data-model-cost="Free daily"><span class="ng-model-brand ng-meta">∞</span><span class="ng-model-option-name">Meta Video</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Video" data-model-name="Veo 3" data-model-cost="Plus or 0.6★"><span class="ng-model-brand ng-google">G</span><span class="ng-model-option-name">Veo 3 <small>Leaving Nov 25</small></span><span class="ng-model-cost">Plus or 0.6★</span></button><button class="ng-model-option" type="button" data-model-kind="Video" data-model-name="Veo 3.1" data-model-cost="Plus or 0.6★"><span class="ng-model-brand ng-google">G</span><span class="ng-model-option-name">Veo 3.1 <small>Leaving Nov 25</small></span><span class="ng-model-cost">Plus or 0.6★</span></button><button class="ng-model-option" type="button" data-model-kind="Video" data-model-name="Veo 3 Fast" data-model-cost="Plus or 0.6★"><span class="ng-model-brand ng-google">G</span><span class="ng-model-option-name">Veo 3 Fast <small>Leaving Nov 25</small></span><span class="ng-model-cost">Plus or 0.6★</span></button></div><button type="button" class="ng-model-more" data-model-more>More below⌄</button>
  </section>
 </div>
