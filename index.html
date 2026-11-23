@@ -308,10 +308,10 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
 </style>
 
 <style id="ng-model-picker-final-dimensions">
-/* Final user-approved model category popup dimensions */
+/* Final user-approved model category popup dimensions and position */
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])){
   position:fixed!important;
-  left:50%!important;right:auto!important;transform:translateX(-50%)!important;
+  left:12px!important;right:auto!important;transform:none!important;
   width:300px!important;min-width:300px!important;max-width:300px!important;
   height:120px!important;min-height:120px!important;max-height:120px!important;
   box-sizing:border-box!important;padding:0!important;
@@ -328,7 +328,7 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
   display:flex!important;flex:0 0 55px!important;
   width:300px!important;min-width:300px!important;max-width:300px!important;
   height:55px!important;min-height:55px!important;max-height:55px!important;
-  box-sizing:border-box!important;margin:0!important;padding:5px 10px!important;
+  box-sizing:border-box!important;margin:0!important;padding:4px 6px!important;
   gap:8px!important;border-radius:18px!important;
 }
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy strong{
