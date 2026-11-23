@@ -273,7 +273,16 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
   .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy small{font-size:10px!important;gap:5px!important}
   .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-provider-mini{font-size:11px!important}
   .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-chevron{font-size:24px!important}
-}</style>
+}
+/* NextGen AI composer selector: logo + brand label + stateful chevron */
+.ng-model-trigger{justify-content:space-between!important;gap:12px!important;padding:0 14px!important}
+.ng-selected-model{display:flex!important;align-items:center!important;gap:12px!important;min-width:0!important;flex:1!important}
+.ng-nextgen-logo{display:block!important;width:42px!important;height:42px!important;flex:0 0 42px!important}
+#ng-model-selected-label{display:block!important;color:#fff!important;font-size:19px!important;font-weight:750!important;line-height:1.1!important;white-space:nowrap!important}
+.ng-model-trigger-chevron{display:block!important;width:25px!important;height:25px!important;flex:0 0 25px!important;stroke:#fff!important;fill:none!important;stroke-width:2.8!important;stroke-linecap:round!important;stroke-linejoin:round!important;transition:transform .18s ease!important}
+.ng-model-trigger[aria-expanded="true"] .ng-model-trigger-chevron{transform:rotate(180deg)!important}
+
+</style>
 <style id="ng-image-settings-style">
 .image-settings-trigger{white-space:nowrap;cursor:pointer;font:inherit;display:flex;align-items:center;justify-content:center;gap:3px;width:auto!important;min-width:132px;padding:0 14px;flex:0 0 auto;color:#fff!important}.image-settings-trigger svg{display:block!important;visibility:visible!important;flex:none;width:18px;height:18px;opacity:1;stroke:#fff!important}
 /* Match the reference: zero outer/inner element margins inside the settings pill. */
@@ -406,7 +415,7 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
   <input type="file" id="motion16File" accept="image/*,video/*" hidden>
   <div class="tb">
     <button class="pl p1" id="motion16Add" type="button" aria-label="Add image or video">＋</button>
-    <button class="pl p2 ng-model-trigger" id="motion16ModelSelect" type="button" aria-label="Open AI model selection" aria-haspopup="dialog" aria-expanded="false"><span class="ng-selected-model"><span class="ng-selected-model-icon" id="ng-selected-model-icon" aria-hidden="true">◎</span><span id="ng-model-selected-label"></span></span><span class="ng-model-trigger-chevron" aria-hidden="true"></span></button>
+    <button class="pl p2 ng-model-trigger" id="motion16ModelSelect" type="button" aria-label="Open AI model selection" aria-haspopup="dialog" aria-expanded="false"><span class="ng-selected-model"><svg class="ng-nextgen-logo" viewBox="0 0 100 100" role="img" aria-label="NextGen AI logo"><defs><linearGradient id="ngLogoGradient" x1="8%" y1="5%" x2="90%" y2="95%"><stop offset="0" stop-color="#00e7ff"/><stop offset=".48" stop-color="#1454ff"/><stop offset="1" stop-color="#f000e8"/></linearGradient></defs><circle cx="50" cy="50" r="49" fill="url(#ngLogoGradient)"/><path d="M50 12 C53 37 63 47 88 50 C63 53 53 63 50 88 C47 63 37 53 12 50 C37 47 47 37 50 12Z" fill="#fff"/><path d="M72 22 C73.5 31 77 34.5 86 36 C77 37.5 73.5 41 72 50 C70.5 41 67 37.5 58 36 C67 34.5 70.5 31 72 22Z" fill="#fff"/></svg><span id="ng-model-selected-label">NextGen AI</span></span><svg class="ng-model-trigger-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg></button>
     <button class="pl p3 image-settings-trigger" id="motion16ImageSettings" type="button" aria-label="Image settings: ×1 Auto" aria-haspopup="dialog" aria-controls="ng-image-settings-overlay"><span id="ng-image-settings-button-label">×1 Auto</span><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg></button>
     
     <button class="snd" id="motion16Generate" type="button" aria-label="Generate"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5M5 11l7-7 7 7"/></svg></button>
