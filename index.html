@@ -196,6 +196,22 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
 .ng-model-detail{padding:9px 3px 2px}
 .ng-model-status{font-size:11px;line-height:1.45;color:#a8bfd4;margin:4px 3px 2px}
 .ng-model-picker-note{font-size:10px;line-height:1.4;color:#8da7c0;padding:9px 4px 1px;margin:0}
+
+/* Reference-matched charcoal model selector. */
+.ng-model-picker{position:fixed!important;left:max(16px,calc((100vw - 430px)/2 + 16px))!important;right:max(16px,calc((100vw - 430px)/2 + 16px))!important;bottom:calc(155px + env(safe-area-inset-bottom,0px))!important;z-index:10020!important;padding:12px!important;border:1px solid #303030!important;border-radius:27px!important;background:#171717!important;box-shadow:0 10px 34px rgba(0,0,0,.58)!important;color:#f5f5f7!important;overflow:hidden!important}
+.ng-model-picker[hidden],.ng-model-list-view[hidden]{display:none!important}.ng-model-category-view{display:flex;flex-direction:column;gap:8px}
+.ng-model-category-row{width:100%;min-height:90px;display:flex;align-items:center;gap:17px;padding:14px 15px;border:0;border-radius:21px;background:transparent;color:#f5f5f7;text-align:left;cursor:pointer}.ng-model-category-row:active{background:#292929}.ng-model-category-row:first-child{background:#2b2b2b;box-shadow:inset 4px 0 0 #8061f4}
+.ng-model-category-icon{width:43px;flex:0 0 43px;text-align:center;font-size:31px;color:#f2f2f4}.ng-model-category-copy{display:flex;flex:1;min-width:0;flex-direction:column;gap:6px}.ng-model-category-copy strong{font-size:23px;line-height:1.2;font-weight:650}.ng-model-category-copy small{display:flex;align-items:center;gap:10px;color:#a7a7b0;font-size:20px;line-height:1.2}.ng-provider-mini{font-size:24px;line-height:1;font-weight:700}.ng-model-category-chevron{font-size:38px;line-height:1;color:#bcbcc4;font-weight:300}
+.ng-model-list-view{height:min(69dvh,650px);display:flex;flex-direction:column;min-height:300px}.ng-model-list-heading{height:46px;flex:0 0 46px;display:flex;align-items:center;gap:12px;padding:0 5px 8px;color:#bcbcc5;font-size:17px}.ng-model-back{width:28px;height:30px;border:0;background:transparent;color:#bcbcc5;font-size:34px;line-height:1;display:grid;place-items:center;cursor:pointer}
+.ng-model-signin{height:62px;flex:0 0 62px;width:100%;display:flex;align-items:center;gap:17px;padding:0 17px;margin:0 0 4px;border:1px solid #303030;border-radius:17px;background:#242424;color:#f1f1f3;text-align:left;font-size:17px;cursor:pointer}.ng-lock{font-size:23px;color:#b9b9c2}
+.ng-model-scroll{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:0 0 5px;scrollbar-width:none}.ng-model-scroll::-webkit-scrollbar{display:none}
+.ng-model-option{width:100%;min-height:68px;display:flex;align-items:center;gap:12px;padding:9px 13px;border:0;border-radius:13px;background:transparent;color:#f0f0f2;text-align:left;cursor:pointer}.ng-model-option:active{background:#262626}.ng-model-option.is-selected{background:#292438}
+.ng-model-brand{width:27px;flex:0 0 27px;text-align:center;font-size:25px;font-weight:700;line-height:1}.ng-openai{color:#d8d8de}.ng-google{color:#4285f4}.ng-banana{font-size:22px}.ng-meta{color:#0878ff;font-size:29px}.ng-grok{color:#e9e9eb}.ng-qwen{color:#8a69ff}.ng-krea{color:#f1f1f3}.ng-flux{color:#ddd;font-size:28px}.ng-minimax{color:#f04b83;font-size:31px}
+.ng-model-option-name{flex:1;min-width:0;font-size:16px;line-height:1.25;color:#f1f1f3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ng-model-option-name small{display:inline-block;margin-left:5px;padding:3px 7px;border-radius:13px;background:#343438;color:#bfc0c8;font-size:10px;white-space:nowrap;vertical-align:1px}
+.ng-model-cost{flex:0 0 auto;color:#b6b5bf;font-size:14px;white-space:nowrap}.ng-model-cost.free{color:#36d66f;font-weight:600}.ng-model-check{display:none;color:#aa96ff;font-size:23px;font-weight:700}.ng-model-option.is-selected .ng-model-check{display:block}
+.ng-model-more{height:54px;flex:0 0 54px;margin-top:4px;border:1px solid #303030;border-radius:17px;background:#171717;color:#b9b9c2;font-size:15px;cursor:pointer}
+@media(max-width:380px){.ng-model-category-row{min-height:78px;padding:11px 10px;gap:12px}.ng-model-category-copy strong{font-size:21px}.ng-model-category-copy small{font-size:17px}.ng-model-list-view{height:min(68dvh,610px)}.ng-model-option{min-height:62px;padding:8px 9px;gap:9px}.ng-model-option-name{font-size:14px}.ng-model-cost{font-size:12px}.ng-model-signin{font-size:15px}}
+
 </style>
 <style id="ng-image-settings-style">
 .image-settings-trigger{white-space:nowrap;cursor:pointer;font:inherit;display:flex;align-items:center;justify-content:center;gap:3px;width:auto!important;min-width:132px;padding:0 14px;flex:0 0 auto;color:#fff!important}.image-settings-trigger svg{display:block!important;visibility:visible!important;flex:none;width:18px;height:18px;opacity:1;stroke:#fff!important}
@@ -281,24 +297,22 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
     
     <button class="snd" id="motion16Generate" type="button" aria-label="Generate"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5M5 11l7-7 7 7"/></svg></button>
   </div>
-  <div class="ng-model-picker" id="ngModelPicker" hidden role="dialog" aria-label="NextGen AI selection">
-    <div class="ng-model-picker-head"><div><strong>NextGen AI</strong><small>Choose creation engine</small></div><button type="button" id="ngModelPickerClose" aria-label="Close">×</button></div>
-    <button type="button" class="ng-model-row" data-model-kind="Image" aria-expanded="false"><span class="ng-model-kind-icon">▧</span><span><b>Image</b><small id="ngImageModelValue">Auto Selection</small></span><span class="ng-model-chevron">›</span></button>
-    <section class="ng-model-detail" id="ngImageModelOptions" hidden aria-label="Image model selection">
-      <div class="ng-model-modes" role="group" aria-label="Image selection mode">
-        <button type="button" class="active" data-model-mode="Image|Auto">Auto</button><button type="button" data-model-mode="Image|Manual">Manual</button><button type="button" data-model-mode="Image|Compare">Compare</button>
-      </div>
-      <p class="ng-model-status" id="ngImageModelStatus">NextGen AI will automatically select a suitable connected image model.</p>
-    </section>
-    <button type="button" class="ng-model-row" data-model-kind="Video" aria-expanded="false"><span class="ng-model-kind-icon">▻</span><span><b>Video</b><small id="ngVideoModelValue">Auto Selection</small></span><span class="ng-model-chevron">›</span></button>
-    <section class="ng-model-detail" id="ngVideoModelOptions" hidden aria-label="Video model selection">
-      <div class="ng-model-modes" role="group" aria-label="Video selection mode">
-        <button type="button" class="active" data-model-mode="Video|Auto">Auto</button><button type="button" data-model-mode="Video|Manual">Manual</button><button type="button" data-model-mode="Video|Compare">Compare</button>
-      </div>
-      <p class="ng-model-status" id="ngVideoModelStatus">NextGen AI will automatically select a suitable connected video model.</p>
-    </section>
-    <p class="ng-model-picker-note">Provider names stay hidden. Only verified and connected models can be selected or compared.</p>
-  </div>
+  <div class="ng-model-picker" id="ngModelPicker" hidden role="dialog" aria-modal="true" aria-label="NextGen AI model selector">
+ <div class="ng-model-category-view" id="ngModelCategoryView">
+  <button type="button" class="ng-model-category-row" data-open-model-list="Image"><span class="ng-model-category-icon">▧</span><span class="ng-model-category-copy"><strong>Image</strong><small><b class="ng-provider-mini ng-openai">◎</b><span id="ngImageModelValue">GPT 2.6</span></small></span><span class="ng-model-category-chevron">›</span></button>
+  <button type="button" class="ng-model-category-row" data-open-model-list="Video"><span class="ng-model-category-icon">▣</span><span class="ng-model-category-copy"><strong>Video</strong><small><b class="ng-provider-mini ng-google">G</b><span id="ngVideoModelValue">Omni Flash</span></small></span><span class="ng-model-category-chevron">›</span></button>
+ </div>
+ <section class="ng-model-list-view" id="ngImageModelOptions" hidden aria-label="Image models">
+  <div class="ng-model-list-heading"><button type="button" class="ng-model-back" data-model-back>‹</button><strong>Image</strong></div>
+  <button type="button" class="ng-model-signin" data-model-signin><span class="ng-lock">♙</span><strong>More models · Sign in</strong></button>
+  <div class="ng-model-scroll"><button class="ng-model-option is-selected" type="button" data-model-kind="Image" data-model-name="GPT 2.6" data-model-cost="Plus or 0.5★"><span class="ng-model-brand ng-openai">◎</span><span class="ng-model-option-name">GPT 2.6</span><span class="ng-model-cost">Plus or 0.5★</span><span class="ng-model-check">✓</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Nano Banana 2.1" data-model-cost="Free daily"><span class="ng-model-brand ng-banana">🍌</span><span class="ng-model-option-name">Nano Banana 2.1</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Nano Banana 2" data-model-cost="Free daily"><span class="ng-model-brand ng-banana">🍌</span><span class="ng-model-option-name">Nano Banana 2</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Nano Banana Pro" data-model-cost="Free daily"><span class="ng-model-brand ng-banana">🍌</span><span class="ng-model-option-name">Nano Banana Pro</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Nano Banana 2 Lite" data-model-cost="Free daily"><span class="ng-model-brand ng-banana">🍌</span><span class="ng-model-option-name">Nano Banana 2 Lite</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Nano Banana" data-model-cost="Free daily"><span class="ng-model-brand ng-banana">🍌</span><span class="ng-model-option-name">Nano Banana</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Meta image" data-model-cost="Free daily"><span class="ng-model-brand ng-meta">∞</span><span class="ng-model-option-name">Meta image</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Grok Speed" data-model-cost="Free daily"><span class="ng-model-brand ng-grok">◉</span><span class="ng-model-option-name">Grok Speed</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Grok Image 2.0" data-model-cost="Free daily"><span class="ng-model-brand ng-grok">◉</span><span class="ng-model-option-name">Grok Image 2.0</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Qwen Image HD" data-model-cost="Free daily"><span class="ng-model-brand ng-qwen">✣</span><span class="ng-model-option-name">Qwen Image HD</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Qwen Image Edit 2511" data-model-cost="Free daily"><span class="ng-model-brand ng-qwen">✣</span><span class="ng-model-option-name">Qwen Image Edit 2511</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Krea 2 Turbo" data-model-cost="Free daily"><span class="ng-model-brand ng-krea">✿</span><span class="ng-model-option-name">Krea 2 Turbo</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Krea 2 Realism HD" data-model-cost="Free daily"><span class="ng-model-brand ng-krea">✿</span><span class="ng-model-option-name">Krea 2 Realism HD</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Flux 2 Klein" data-model-cost="Free daily"><span class="ng-model-brand ng-flux">△</span><span class="ng-model-option-name">Flux 2 Klein</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Image" data-model-name="Flux 3 Klein" data-model-cost="Free daily"><span class="ng-model-brand ng-flux">△</span><span class="ng-model-option-name">Flux 3 Klein</span><span class="ng-model-cost free">Free daily</span></button></div><button type="button" class="ng-model-more" data-model-more>More below⌄</button>
+ </section>
+ <section class="ng-model-list-view" id="ngVideoModelOptions" hidden aria-label="Video models">
+  <div class="ng-model-list-heading"><button type="button" class="ng-model-back" data-model-back>‹</button><strong>Video</strong></div>
+  <button type="button" class="ng-model-signin" data-model-signin><span class="ng-lock">♙</span><strong>More models · Sign in</strong></button>
+  <div class="ng-model-scroll"><button class="ng-model-option" type="button" data-model-kind="Video" data-model-name="Grok" data-model-cost="Plus"><span class="ng-model-brand ng-grok">◉</span><span class="ng-model-option-name">Grok</span><span class="ng-model-cost">Plus</span></button><button class="ng-model-option" type="button" data-model-kind="Video" data-model-name="Grok Lite" data-model-cost="Free daily"><span class="ng-model-brand ng-grok">◉</span><span class="ng-model-option-name">Grok Lite</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option is-selected" type="button" data-model-kind="Video" data-model-name="Omni Flash" data-model-cost="Plus or 0.6★"><span class="ng-model-brand ng-google">G</span><span class="ng-model-option-name">Omni Flash</span><span class="ng-model-cost">Plus or 0.6★</span><span class="ng-model-check">✓</span></button><button class="ng-model-option" type="button" data-model-kind="Video" data-model-name="MiniMax HD" data-model-cost="Pro or 5★"><span class="ng-model-brand ng-minimax">∿</span><span class="ng-model-option-name">MiniMax HD</span><span class="ng-model-cost">Pro or 5★</span></button><button class="ng-model-option" type="button" data-model-kind="Video" data-model-name="Meta Video" data-model-cost="Free daily"><span class="ng-model-brand ng-meta">∞</span><span class="ng-model-option-name">Meta Video</span><span class="ng-model-cost free">Free daily</span></button><button class="ng-model-option" type="button" data-model-kind="Video" data-model-name="Veo 3" data-model-cost="Plus or 0.6★"><span class="ng-model-brand ng-google">G</span><span class="ng-model-option-name">Veo 3 <small>Leaving Nov 25</small></span><span class="ng-model-cost">Plus or 0.6★</span></button><button class="ng-model-option" type="button" data-model-kind="Video" data-model-name="Veo 3.1" data-model-cost="Plus or 0.6★"><span class="ng-model-brand ng-google">G</span><span class="ng-model-option-name">Veo 3.1 <small>Leaving Nov 25</small></span><span class="ng-model-cost">Plus or 0.6★</span></button><button class="ng-model-option" type="button" data-model-kind="Video" data-model-name="Veo 3 Fast" data-model-cost="Plus or 0.6★"><span class="ng-model-brand ng-google">G</span><span class="ng-model-option-name">Veo 3 Fast <small>Leaving Nov 25</small></span><span class="ng-model-cost">Plus or 0.6★</span></button></div><button type="button" class="ng-model-more" data-model-more>More below⌄</button>
+ </section>
+</div>
   <div class="motion16-notice" id="motion16Notice" role="status" aria-live="polite"></div>
 </div>
 <div class="ng-image-settings-overlay" id="ng-image-settings-overlay" hidden>
@@ -365,37 +379,34 @@ const data=[
 ];
 const $=id=>document.getElementById(id),hero=$('motion16HeroImage'),overlay=$('motion16Overlay'),list=$('motion16FeatureList'),caption=$('motion16Caption'),promptDemo=$('motion16PromptDemo'),composer=$('motion16Composer'),prompt=$('motion16Prompt'),notice=$('motion16Notice');
 let active=0,timer=null,noticeTimer=null,attachedFile=null;
+let selectedModels={Image:{name:'GPT 2.6',cost:'Plus or 0.5★'},Video:{name:'Omni Flash',cost:'Plus or 0.6★'}};
+function initModelPicker(){
+ const picker=$('ngModelPicker'),trigger=$('motion16ModelSelect'),category=$('ngModelCategoryView');
+ if(!picker||!trigger||picker.dataset.ready==='true')return;
+ picker.dataset.ready='true';
+ function showCategory(){category.hidden=false;$('ngImageModelOptions').hidden=true;$('ngVideoModelOptions').hidden=true;}
+ function openPicker(){showCategory();picker.hidden=false;trigger.setAttribute('aria-expanded','true');}
+ function closePicker(){picker.hidden=true;trigger.setAttribute('aria-expanded','false');}
+ function paint(){$('ngImageModelValue').textContent=selectedModels.Image.name;$('ngVideoModelValue').textContent=selectedModels.Video.name;$('ng-model-selected-label').textContent=selectedModels.Image.name;}
+ trigger.addEventListener('click',()=>{if(picker.hidden)openPicker();else closePicker();});
+ picker.querySelectorAll('[data-open-model-list]').forEach(button=>button.addEventListener('click',()=>{const kind=button.dataset.openModelList;category.hidden=true;$('ngImageModelOptions').hidden=kind!=='Image';$('ngVideoModelOptions').hidden=kind!=='Video';paint();}));
+ picker.querySelectorAll('[data-model-back]').forEach(button=>button.addEventListener('click',showCategory));
+ picker.querySelectorAll('[data-model-kind][data-model-name]').forEach(button=>button.addEventListener('click',()=>{
+  const kind=button.dataset.modelKind;selectedModels[kind]={name:button.dataset.modelName,cost:button.dataset.modelCost||''};
+  picker.querySelectorAll('[data-model-kind="'+kind+'"][data-model-name]').forEach(row=>{row.classList.toggle('is-selected',row===button);const check=row.querySelector('.ng-model-check');if(check)check.remove();if(row===button){const mark=document.createElement('span');mark.className='ng-model-check';mark.textContent='✓';row.appendChild(mark);}});
+  paint();closePicker();
+ }));
+ picker.querySelectorAll('[data-model-signin]').forEach(button=>button.addEventListener('click',()=>inform('Sign in to view additional models.')));
+ picker.querySelectorAll('[data-model-more]').forEach(button=>button.addEventListener('click',()=>{const scroller=button.previousElementSibling;scroller.scrollBy({top:Math.max(220,scroller.clientHeight*.72),behavior:'smooth'});}));
+ document.addEventListener('click',event=>{if(!picker.hidden&&!picker.contains(event.target)&&!trigger.contains(event.target))closePicker();});
+ document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!picker.hidden)closePicker();});
+ paint();
+}
+
 function inform(msg){notice.textContent=msg;notice.classList.add('show');clearTimeout(noticeTimer);noticeTimer=setTimeout(()=>notice.classList.remove('show'),3200)}
 function selectFeature(index,manual=false){
  const item=data[index];if(!item)return;active=index;
- const modelPicker=$('ngModelPicker'),modelTrigger=$('motion16ModelSelect');
-const modelModes={Image:'Auto',Video:'Auto'};
-function closeModelPicker(){modelPicker.hidden=true;modelTrigger.setAttribute('aria-expanded','false')}
-function updateModelMode(kind,mode){
- modelModes[kind]=mode;
- const label=$(kind==='Image'?'ngImageModelValue':'ngVideoModelValue');
- const status=$(kind==='Image'?'ngImageModelStatus':'ngVideoModelStatus');
- label.textContent=mode==='Auto'?'Auto Selection':mode==='Manual'?'Manual Selection':'Compare Mode';
- status.textContent=mode==='Auto'
-  ?'NextGen AI will automatically select a suitable connected '+kind.toLowerCase()+' model.'
-  :mode==='Manual'
-   ?'No verified '+kind.toLowerCase()+' models are connected yet. Manual choices will appear here after provider verification.'
-   :'Compare requires at least two verified, compatible '+kind.toLowerCase()+' models. They are not connected yet.';
- modelPicker.querySelectorAll('[data-model-mode]').forEach(btn=>{const [k,m]=btn.dataset.modelMode.split('|');btn.classList.toggle('active',k===kind&&m===mode)});
-}
-modelTrigger.addEventListener('click',()=>{modelPicker.hidden=!modelPicker.hidden;modelTrigger.setAttribute('aria-expanded',String(!modelPicker.hidden))});
-$('ngModelPickerClose').addEventListener('click',closeModelPicker);
-document.addEventListener('click',e=>{if(!modelPicker.hidden&&!modelPicker.contains(e.target)&&!modelTrigger.contains(e.target))closeModelPicker()});
-modelPicker.querySelectorAll('[data-model-kind]').forEach(btn=>btn.addEventListener('click',()=>{
- const kind=btn.dataset.modelKind,detail=$(kind==='Image'?'ngImageModelOptions':'ngVideoModelOptions');
- const opening=detail.hidden;
- modelPicker.querySelectorAll('.ng-model-detail').forEach(el=>el.hidden=true);
- modelPicker.querySelectorAll('[data-model-kind]').forEach(el=>el.setAttribute('aria-expanded','false'));
- detail.hidden=!opening;btn.setAttribute('aria-expanded',String(opening));
-}));
-modelPicker.querySelectorAll('[data-model-mode]').forEach(btn=>btn.addEventListener('click',()=>{const [kind,mode]=btn.dataset.modelMode.split('|');updateModelMode(kind,mode)}));
-updateModelMode('Image','Auto');updateModelMode('Video','Auto');
-const demoVideo=$('motion16HeroVideo');
+ const demoVideo=$('motion16HeroVideo');
  const heroImage=$('motion16HeroImage');
  demoVideo.pause();
  demoVideo.onerror=null;
@@ -462,7 +473,7 @@ $('motion16Upgrade').addEventListener('click',()=>inform('Subscription plans are
 
 $('motion16Generate').addEventListener('click',()=>{if(!prompt.value.trim()&&!attachedFile){inform('Write a prompt or add an image/video first.');prompt.focus();return}inform(active===8?'Image settings are prepared. Connect an approved image provider and verified credit rates to enable generation. No credits were used.':'Your prompt is ready. Connect an approved AI video provider to enable real generation.');});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)clearInterval(timer);else resetAutoplay()});
-selectFeature(0,false);resetAutoplay();
+initModelPicker();selectFeature(0,false);resetAutoplay();
 })();
 </script>
 
