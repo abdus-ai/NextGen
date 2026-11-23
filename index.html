@@ -517,8 +517,9 @@ function initModelPicker(){
   picker.style.setProperty('bottom',(window.innerHeight-rect.top+gap)+'px','important');
  }
  function showCategory(){picker.querySelectorAll('[data-open-model-list]').forEach(card=>{const selected=card.dataset.openModelList==='Image';card.classList.toggle('is-active',selected);card.setAttribute('aria-pressed',String(selected));});category.hidden=false;$('ngImageModelOptions').hidden=true;$('ngVideoModelOptions').hidden=true;positionPicker();}
- function openPicker(){showCategory();picker.hidden=false;positionPicker();trigger.setAttribute('aria-expanded','true');}
- function closePicker(){picker.hidden=true;trigger.setAttribute('aria-expanded','false');}
+ function setPickerArrow(isOpen){const arrow=trigger.querySelector('.ng-model-trigger-chevron');if(arrow)arrow.textContent=isOpen?'⌄':'⌃';trigger.setAttribute('aria-expanded',String(isOpen));}
+ function openPicker(){showCategory();picker.hidden=false;positionPicker();setPickerArrow(true);}
+ function closePicker(){picker.hidden=true;setPickerArrow(false);}
  function paint(){$('ngImageModelValue').textContent=selectedModels.Image.name;$('ngVideoModelValue').textContent=selectedModels.Video.name;$('ng-model-selected-label').textContent=selectedModels.Image.name;$('ng-selected-model-icon').textContent=selectedModels.Image.name.toLowerCase().includes('nano banana')?'🍌':selectedModels.Image.name.toLowerCase().includes('qwen')?'✣':selectedModels.Image.name.toLowerCase().includes('flux')?'△':selectedModels.Image.name.toLowerCase().includes('grok')?'◉':selectedModels.Image.name.toLowerCase().includes('meta')?'∞':selectedModels.Image.name.toLowerCase().includes('krea')?'✿':'◎';}
  trigger.addEventListener('click',()=>{if(picker.hidden)openPicker();else closePicker();});
  picker.querySelectorAll('[data-open-model-list]').forEach(button=>button.addEventListener('click',()=>{const kind=button.dataset.openModelList;picker.querySelectorAll('[data-open-model-list]').forEach(card=>{const selected=card===button;card.classList.toggle('is-active',selected);card.setAttribute('aria-pressed',String(selected));});category.hidden=true;$('ngImageModelOptions').hidden=kind!=='Image';$('ngVideoModelOptions').hidden=kind!=='Video';paint();positionPicker();}));
