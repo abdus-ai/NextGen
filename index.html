@@ -222,54 +222,57 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
 
 
 
-/* Reference layout: tight card stack, wider popup */
+/* User dimensions: 125px popup, 60px cards, single active category */
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])){
-  left:calc(50% - 90px)!important;right:auto!important;transform:translateX(-50%)!important;
-  width:80vw!important;max-width:1130px!important;height:470px!important;min-height:470px!important;max-height:470px!important;
-  padding:30px!important;box-sizing:border-box!important;border:2px solid rgba(41,207,245,.48)!important;
-  border-radius:80px!important;background:linear-gradient(155deg,#0b1c35 0%,#08162b 100%)!important;
-  box-shadow:0 14px 40px rgba(0,0,0,.58),0 0 22px rgba(0,183,255,.16)!important;color:#f3fbff!important;
+  height:125px!important;min-height:125px!important;max-height:125px!important;
+  background:linear-gradient(155deg,#0b1c35 0%,#08162b 100%)!important;
+  border:1.5px solid rgba(41,207,245,.48)!important;
+  box-shadow:0 14px 40px rgba(0,0,0,.58),0 0 22px rgba(0,183,255,.16)!important;
 }
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-view{
-  width:100%!important;height:100%!important;display:flex!important;flex-direction:column!important;
-  justify-content:flex-start!important;gap:14px!important;overflow:hidden!important;
+  height:100%!important;display:flex!important;flex-direction:column!important;
+  justify-content:center!important;gap:2px!important;overflow:hidden!important;
 }
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row,
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row:nth-child(2){
-  flex:0 0 190px!important;width:92%!important;max-width:92%!important;height:190px!important;min-height:190px!important;max-height:190px!important;
-  padding:24px 34px!important;box-sizing:border-box!important;border-radius:58px!important;gap:28px!important;
-  background:linear-gradient(105deg,rgba(12,91,139,.58),rgba(19,42,76,.82))!important;
-  box-shadow:inset 7px 0 0 #20d9f3!important;color:#f3fbff!important;
+  flex:0 0 60px!important;height:60px!important;min-height:60px!important;max-height:60px!important;
+  width:100%!important;max-width:100%!important;margin:0!important;
+  padding:5px 12px!important;box-sizing:border-box!important;border-radius:22px!important;gap:10px!important;
+  background:linear-gradient(105deg,rgba(12,91,139,.42),rgba(19,42,76,.68))!important;
+  box-shadow:inset 3px 0 0 rgba(32,217,243,.5)!important;color:#f3fbff!important;
 }
-.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-icon{width:70px!important;flex:0 0 70px!important;font-size:52px!important;color:#dffaff!important}
-.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy{gap:12px!important}
-.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy strong{font-size:48px!important;line-height:1.05!important;color:#f3fbff!important;font-weight:700!important}
-.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy small{gap:16px!important;font-size:34px!important;line-height:1.1!important;color:#b5cce2!important}
-.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-provider-mini{font-size:34px!important}
-.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-chevron{font-size:58px!important;color:#bfeeff!important}
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row.is-active{
+  background:linear-gradient(105deg,rgba(12,112,165,.72),rgba(25,55,100,.9))!important;
+  box-shadow:inset 4px 0 0 #20d9f3,0 0 13px rgba(0,183,255,.18)!important;
+}
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-icon{width:27px!important;flex:0 0 27px!important;font-size:21px!important;color:#dffaff!important}
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy{gap:2px!important}
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy strong{font-size:13px!important;line-height:1.05!important;color:#f3fbff!important}
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy small{gap:6px!important;font-size:10px!important;line-height:1.05!important;color:#a8c3da!important}
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-provider-mini{font-size:12px!important}
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-chevron{font-size:27px!important;color:#bfeeff!important}
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row:active{background:#17395c!important}
 @media(max-width:600px){
   .ng-model-picker:has(#ngModelCategoryView:not([hidden])){
-    left:calc(50% - 34px)!important;right:auto!important;transform:translateX(-50%)!important;
-    width:calc(100vw - 75px)!important;max-width:calc(100vw - 75px)!important;
-    height:150px!important;min-height:150px!important;max-height:150px!important;
-    padding:8px!important;border-radius:28px!important;
+    left:0!important;right:90px!important;transform:none!important;
+    width:auto!important;max-width:none!important;
+    height:125px!important;min-height:125px!important;max-height:125px!important;
+    padding:0!important;border-radius:24px!important;
   }
   .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-view{
-    justify-content:flex-start!important;gap:0!important;height:100%!important;
+    justify-content:center!important;gap:2px!important;height:100%!important;
   }
   .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row,
   .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row:nth-child(2){
-    width:100%!important;max-width:100%!important;flex:0 0 65px!important;
-    height:65px!important;min-height:65px!important;max-height:65px!important;
-    margin:0!important;padding:6px 12px!important;border-radius:22px!important;gap:10px!important;
+    width:100%!important;max-width:100%!important;flex:0 0 60px!important;
+    height:60px!important;min-height:60px!important;max-height:60px!important;
+    margin:0!important;padding:5px 10px!important;border-radius:20px!important;gap:8px!important;
   }
-  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-icon{width:27px!important;flex:0 0 27px!important;font-size:21px!important}
-  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy{gap:3px!important}
-  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy strong{font-size:20px!important;line-height:1.05!important}
-  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy small{font-size:14px!important;gap:6px!important;line-height:1.05!important}
-  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-provider-mini{font-size:14px!important}
-  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-chevron{font-size:27px!important}
+  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-icon{width:24px!important;flex:0 0 24px!important;font-size:19px!important}
+  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy strong{font-size:13px!important}
+  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy small{font-size:10px!important;gap:5px!important}
+  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-provider-mini{font-size:11px!important}
+  .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-chevron{font-size:24px!important}
 }</style>
 <style id="ng-image-settings-style">
 .image-settings-trigger{white-space:nowrap;cursor:pointer;font:inherit;display:flex;align-items:center;justify-content:center;gap:3px;width:auto!important;min-width:132px;padding:0 14px;flex:0 0 auto;color:#fff!important}.image-settings-trigger svg{display:block!important;visibility:visible!important;flex:none;width:18px;height:18px;opacity:1;stroke:#fff!important}
@@ -357,8 +360,8 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
   </div>
   <div class="ng-model-picker" id="ngModelPicker" hidden role="dialog" aria-modal="true" aria-label="NextGen AI model selector">
  <div class="ng-model-category-view" id="ngModelCategoryView">
-  <button type="button" class="ng-model-category-row" data-open-model-list="Image"><span class="ng-model-category-icon">▧</span><span class="ng-model-category-copy"><strong>Image</strong><small><b class="ng-provider-mini ng-openai">◎</b><span id="ngImageModelValue">GPT 2.6</span></small></span><span class="ng-model-category-chevron">›</span></button>
-  <button type="button" class="ng-model-category-row" data-open-model-list="Video"><span class="ng-model-category-icon">▣</span><span class="ng-model-category-copy"><strong>Video</strong><small><b class="ng-provider-mini ng-google">G</b><span id="ngVideoModelValue">Omni Flash</span></small></span><span class="ng-model-category-chevron">›</span></button>
+  <button type="button" class="ng-model-category-row is-active" aria-pressed="true" data-open-model-list="Image"><span class="ng-model-category-icon">▧</span><span class="ng-model-category-copy"><strong>Image</strong><small><b class="ng-provider-mini ng-openai">◎</b><span id="ngImageModelValue">GPT 2.6</span></small></span><span class="ng-model-category-chevron">›</span></button>
+  <button type="button" class="ng-model-category-row" aria-pressed="false" data-open-model-list="Video"><span class="ng-model-category-icon">▣</span><span class="ng-model-category-copy"><strong>Video</strong><small><b class="ng-provider-mini ng-google">G</b><span id="ngVideoModelValue">Omni Flash</span></small></span><span class="ng-model-category-chevron">›</span></button>
  </div>
  <section class="ng-model-list-view" id="ngImageModelOptions" hidden aria-label="Image models">
   <div class="ng-model-list-heading"><button type="button" class="ng-model-back" data-model-back>‹</button><strong>Image</strong></div>
@@ -457,7 +460,7 @@ function initModelPicker(){
  function closePicker(){picker.hidden=true;trigger.setAttribute('aria-expanded','false');}
  function paint(){$('ngImageModelValue').textContent=selectedModels.Image.name;$('ngVideoModelValue').textContent=selectedModels.Video.name;$('ng-model-selected-label').textContent=selectedModels.Image.name;$('ng-selected-model-icon').textContent=selectedModels.Image.name.toLowerCase().includes('nano banana')?'🍌':selectedModels.Image.name.toLowerCase().includes('qwen')?'✣':selectedModels.Image.name.toLowerCase().includes('flux')?'△':selectedModels.Image.name.toLowerCase().includes('grok')?'◉':selectedModels.Image.name.toLowerCase().includes('meta')?'∞':selectedModels.Image.name.toLowerCase().includes('krea')?'✿':'◎';}
  trigger.addEventListener('click',()=>{if(picker.hidden)openPicker();else closePicker();});
- picker.querySelectorAll('[data-open-model-list]').forEach(button=>button.addEventListener('click',()=>{const kind=button.dataset.openModelList;category.hidden=true;$('ngImageModelOptions').hidden=kind!=='Image';$('ngVideoModelOptions').hidden=kind!=='Video';paint();positionPicker();}));
+ picker.querySelectorAll('[data-open-model-list]').forEach(button=>button.addEventListener('click',()=>{const kind=button.dataset.openModelList;picker.querySelectorAll('[data-open-model-list]').forEach(card=>{const selected=card===button;card.classList.toggle('is-active',selected);card.setAttribute('aria-pressed',String(selected));});category.hidden=true;$('ngImageModelOptions').hidden=kind!=='Image';$('ngVideoModelOptions').hidden=kind!=='Video';paint();positionPicker();}));
  picker.querySelectorAll('[data-model-back]').forEach(button=>button.addEventListener('click',showCategory));
  picker.querySelectorAll('[data-model-kind][data-model-name]').forEach(button=>button.addEventListener('click',()=>{
   const kind=button.dataset.modelKind;selectedModels[kind]={name:button.dataset.modelName,cost:button.dataset.modelCost||''};
