@@ -277,8 +277,8 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
 /* NextGen AI composer selector: logo + brand label + stateful chevron */
 .ng-model-trigger{justify-content:space-between!important;gap:12px!important;padding:0 14px!important}
 .ng-selected-model{display:flex!important;align-items:center!important;gap:12px!important;min-width:0!important;flex:1!important}
-.ng-nextgen-logo{display:block!important;width:42px!important;height:42px!important;flex:0 0 42px!important}
-#ng-model-selected-label{display:block!important;color:#fff!important;font-size:19px!important;font-weight:750!important;line-height:1.1!important;white-space:nowrap!important}
+.ng-nextgen-logo{display:block!important;width:32px!important;height:32px!important;min-width:32px!important;min-height:32px!important;max-width:32px!important;max-height:32px!important;flex:0 0 32px!important;object-fit:contain!important}
+#ng-model-selected-label{display:block!important;flex:0 1 auto!important;min-width:0!important;color:#fff!important;font-size:19px!important;font-weight:750!important;line-height:1.1!important;white-space:nowrap!important}
 .ng-model-trigger-chevron{display:block!important;width:25px!important;height:25px!important;flex:0 0 25px!important;stroke:#fff!important;fill:none!important;stroke-width:2.8!important;stroke-linecap:round!important;stroke-linejoin:round!important;transition:transform .18s ease!important}
 .ng-model-trigger[aria-expanded="true"] .ng-model-trigger-chevron{transform:rotate(180deg)!important}
 
@@ -521,7 +521,7 @@ function initModelPicker(){
  function setPickerArrow(isOpen){trigger.setAttribute('aria-expanded',String(isOpen));}
  function openPicker(){showCategory();picker.hidden=false;positionPicker();setPickerArrow(true);}
  function closePicker(){picker.hidden=true;setPickerArrow(false);}
- function paint(){$('ngImageModelValue').textContent=selectedModels.Image.name;$('ngVideoModelValue').textContent=selectedModels.Video.name;$('ng-model-selected-label').textContent='';$('ng-selected-model-icon').textContent=selectedModels.Image.name.toLowerCase().includes('nano banana')?'':selectedModels.Image.name.toLowerCase().includes('qwen')?'✣':selectedModels.Image.name.toLowerCase().includes('flux')?'△':selectedModels.Image.name.toLowerCase().includes('grok')?'◉':selectedModels.Image.name.toLowerCase().includes('meta')?'∞':selectedModels.Image.name.toLowerCase().includes('krea')?'✿':'◎';}
+ function paint(){$('ngImageModelValue').textContent=selectedModels.Image.name;$('ngVideoModelValue').textContent=selectedModels.Video.name;$('ng-model-selected-label').textContent='NextGen AI';}
  trigger.addEventListener('click',()=>{if(picker.hidden)openPicker();else closePicker();});
  picker.querySelectorAll('[data-open-model-list]').forEach(button=>button.addEventListener('click',()=>{const kind=button.dataset.openModelList;picker.querySelectorAll('[data-open-model-list]').forEach(card=>{const selected=card===button;card.classList.toggle('is-active',selected);card.setAttribute('aria-pressed',String(selected));});category.hidden=true;$('ngImageModelOptions').hidden=kind!=='Image';$('ngVideoModelOptions').hidden=kind!=='Video';paint();positionPicker();}));
  picker.querySelectorAll('[data-model-back]').forEach(button=>button.addEventListener('click',showCategory));
