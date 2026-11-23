@@ -212,6 +212,38 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
 .ng-model-more{height:54px;flex:0 0 54px;margin-top:4px;border:1px solid #303030;border-radius:17px;background:#171717;color:#b9b9c2;font-size:15px;cursor:pointer}
 @media(max-width:380px){.ng-model-category-row{min-height:78px;padding:11px 10px;gap:12px}.ng-model-category-copy strong{font-size:21px}.ng-model-category-copy small{font-size:17px}.ng-model-list-view{height:min(68dvh,610px)}.ng-model-option{min-height:62px;padding:8px 9px;gap:9px}.ng-model-option-name{font-size:14px}.ng-model-cost{font-size:12px}.ng-model-signin{font-size:15px}}
 
+
+/* NextGen brand theme and compact reference-matched model selector. */
+.ng-model-picker{background:linear-gradient(155deg,#0b1c35 0%,#08162b 100%)!important;border:1px solid rgba(41,207,245,.42)!important;box-shadow:0 14px 40px rgba(0,0,0,.58),0 0 22px rgba(0,183,255,.12)!important}
+.ng-model-category-view{gap:3px!important}
+.ng-model-category-row{min-height:68px!important;padding:8px 12px!important;gap:12px!important;border-radius:16px!important}
+.ng-model-category-row:first-child{background:linear-gradient(105deg,rgba(12,91,139,.46),rgba(19,42,76,.68))!important;box-shadow:inset 3px 0 0 #20d9f3!important}
+.ng-model-category-row:active{background:#17395c!important}
+.ng-model-category-icon{width:35px!important;flex-basis:35px!important;font-size:27px!important;color:#dffaff!important}
+.ng-model-category-copy{gap:3px!important}
+.ng-model-category-copy strong{font-size:19px!important;color:#f3fbff!important}
+.ng-model-category-copy small{font-size:15px!important;color:#a8c3da!important;gap:7px!important}
+.ng-provider-mini{font-size:19px!important}
+.ng-model-category-chevron{font-size:30px!important;color:#8cc9e8!important}
+.ng-model-list-view{height:min(66dvh,610px)!important;min-height:260px!important}
+.ng-model-list-heading{height:38px!important;flex-basis:38px!important;font-size:15px!important;color:#c6eaff!important}
+.ng-model-signin{height:48px!important;flex-basis:48px!important;border-color:rgba(57,190,235,.28)!important;border-radius:13px!important;background:#102b49!important;font-size:14px!important;margin-bottom:3px!important}
+.ng-model-scroll{padding-bottom:2px!important}
+.ng-model-option{min-height:53px!important;padding:6px 10px!important;gap:9px!important;border-radius:10px!important}
+.ng-model-option.is-selected{background:linear-gradient(100deg,rgba(16,105,158,.35),rgba(83,59,164,.24))!important;box-shadow:inset 2px 0 0 #27d7f4!important}
+.ng-model-brand{width:23px!important;flex-basis:23px!important;font-size:21px!important}
+.ng-model-option-name{font-size:14px!important}
+.ng-model-cost{font-size:12px!important}
+.ng-model-more{height:42px!important;flex-basis:42px!important;border-color:rgba(57,190,235,.3)!important;border-radius:13px!important;background:#102744!important;color:#bcecff!important;font-size:13px!important}
+.ng-model-option-name small{font-size:9px!important}
+.ng-model-trigger{justify-content:space-between!important;gap:8px!important;padding:0 13px!important;cursor:pointer!important;touch-action:manipulation!important;background:linear-gradient(110deg,#102b49 0%,#142c4c 60%,#20254b 100%)!important;border:1px solid rgba(48,203,239,.4)!important;border-radius:999px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)!important}
+.comp .tb .ng-model-trigger{justify-content:space-between!important;min-width:0!important;flex:1 1 0!important}
+.ng-selected-model{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:9px!important;min-width:0!important;overflow:hidden!important;color:#f3faff!important;font-size:14px!important;font-weight:650!important;white-space:nowrap!important}
+.ng-selected-model-icon{display:inline-flex!important;align-items:center!important;justify-content:center!important;flex:0 0 24px!important;width:24px!important;height:24px!important;color:#eafaff!important;font-size:22px!important;line-height:1!important}
+#ng-model-selected-label{overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+.ng-model-trigger-chevron{display:flex!important;align-items:center!important;justify-content:center!important;flex:0 0 24px!important;width:24px!important;height:24px!important;color:#c6eaff!important;font-size:22px!important;line-height:1!important}
+@media(max-width:380px){.ng-model-category-row{min-height:62px!important;padding:7px 10px!important}.ng-model-category-copy strong{font-size:18px!important}.ng-model-category-copy small{font-size:14px!important}.ng-model-list-view{height:min(64dvh,570px)!important}.ng-model-option{min-height:49px!important;padding:5px 8px!important}.ng-model-option-name{font-size:13px!important}.ng-model-cost{font-size:11px!important}.ng-model-signin{height:44px!important;flex-basis:44px!important}}
+
 </style>
 <style id="ng-image-settings-style">
 .image-settings-trigger{white-space:nowrap;cursor:pointer;font:inherit;display:flex;align-items:center;justify-content:center;gap:3px;width:auto!important;min-width:132px;padding:0 14px;flex:0 0 auto;color:#fff!important}.image-settings-trigger svg{display:block!important;visibility:visible!important;flex:none;width:18px;height:18px;opacity:1;stroke:#fff!important}
@@ -292,7 +324,7 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
   <input type="file" id="motion16File" accept="image/*,video/*" hidden>
   <div class="tb">
     <button class="pl p1" id="motion16Add" type="button" aria-label="Add image or video">＋</button>
-    <button class="pl p2 ng-model-trigger" id="motion16ModelSelect" type="button" aria-label="Open AI model selection" aria-haspopup="dialog" aria-expanded="false"><span id="ng-model-selected-label">NextGen AI</span><span aria-hidden="true">⌃</span></button>
+    <button class="pl p2 ng-model-trigger" id="motion16ModelSelect" type="button" aria-label="Open AI model selection" aria-haspopup="dialog" aria-expanded="false"><span class="ng-selected-model"><span class="ng-selected-model-icon" id="ng-selected-model-icon" aria-hidden="true">◎</span><span id="ng-model-selected-label">GPT 2.6</span></span><span class="ng-model-trigger-chevron" aria-hidden="true">⌃</span></button>
     <button class="pl p3 image-settings-trigger" id="motion16ImageSettings" type="button" aria-label="Image settings: ×1 Auto" aria-haspopup="dialog" aria-controls="ng-image-settings-overlay"><span id="ng-image-settings-button-label">×1 Auto</span><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg></button>
     
     <button class="snd" id="motion16Generate" type="button" aria-label="Generate"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5M5 11l7-7 7 7"/></svg></button>
@@ -387,7 +419,7 @@ function initModelPicker(){
  function showCategory(){category.hidden=false;$('ngImageModelOptions').hidden=true;$('ngVideoModelOptions').hidden=true;}
  function openPicker(){showCategory();picker.hidden=false;trigger.setAttribute('aria-expanded','true');}
  function closePicker(){picker.hidden=true;trigger.setAttribute('aria-expanded','false');}
- function paint(){$('ngImageModelValue').textContent=selectedModels.Image.name;$('ngVideoModelValue').textContent=selectedModels.Video.name;$('ng-model-selected-label').textContent=selectedModels.Image.name;}
+ function paint(){$('ngImageModelValue').textContent=selectedModels.Image.name;$('ngVideoModelValue').textContent=selectedModels.Video.name;$('ng-model-selected-label').textContent=selectedModels.Image.name;$('ng-selected-model-icon').textContent=selectedModels.Image.name.toLowerCase().includes('nano banana')?'🍌':selectedModels.Image.name.toLowerCase().includes('qwen')?'✣':selectedModels.Image.name.toLowerCase().includes('flux')?'△':selectedModels.Image.name.toLowerCase().includes('grok')?'◉':selectedModels.Image.name.toLowerCase().includes('meta')?'∞':selectedModels.Image.name.toLowerCase().includes('krea')?'✿':'◎';}
  trigger.addEventListener('click',()=>{if(picker.hidden)openPicker();else closePicker();});
  picker.querySelectorAll('[data-open-model-list]').forEach(button=>button.addEventListener('click',()=>{const kind=button.dataset.openModelList;category.hidden=true;$('ngImageModelOptions').hidden=kind!=='Image';$('ngVideoModelOptions').hidden=kind!=='Video';paint();}));
  picker.querySelectorAll('[data-model-back]').forEach(button=>button.addEventListener('click',showCategory));
