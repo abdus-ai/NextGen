@@ -222,18 +222,18 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
 
 
 
-/* User-approved dimensions: matching Image and Video category cards */
+/* User-approved dimensions: compact matching Image and Video category cards */
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])){
   left:50%!important;
   right:auto!important;
   transform:translateX(-50%)!important;
-  width:590px!important;
+  width:580px!important;
   max-width:calc(100vw - 24px)!important;
-  height:180px!important;
-  min-height:180px!important;
-  max-height:180px!important;
-  padding:20px!important;
-  border-radius:36px!important;
+  height:125px!important;
+  min-height:125px!important;
+  max-height:125px!important;
+  padding:0!important;
+  border-radius:30px!important;
   box-sizing:border-box!important;
 }
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-view{
@@ -241,28 +241,35 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
   display:flex!important;
   flex-direction:column!important;
   justify-content:space-between!important;
-  gap:8px!important;
+  gap:5px!important;
 }
-.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row{
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row,
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row:nth-child(2){
   flex:0 0 60px!important;
-  width:550px!important;
+  width:560px!important;
   max-width:100%!important;
   height:60px!important;
   min-height:60px!important;
   max-height:60px!important;
-  padding:8px 18px!important;
+  padding:6px 14px!important;
   box-sizing:border-box!important;
   border-radius:22px!important;
   background:linear-gradient(105deg,rgba(12,91,139,.46),rgba(19,42,76,.68))!important;
   box-shadow:inset 4px 0 0 #20d9f3!important;
 }
-.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row:nth-child(2){
-  flex:0 0 60px!important;
-  width:550px!important;
-  max-width:100%!important;
-  height:60px!important;
-  min-height:60px!important;
-  max-height:60px!important;
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-icon{
+  width:32px!important;flex:0 0 32px!important;font-size:21px!important;
+}
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy{gap:2px!important}
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy strong{
+  font-size:18px!important;line-height:1.05!important;
+}
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-copy small{
+  gap:7px!important;font-size:15px!important;line-height:1.05!important;
+}
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-provider-mini{font-size:17px!important}
+.ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-chevron{
+  font-size:27px!important;
 }
 .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row:active{
   background:#17395c!important;
@@ -271,11 +278,11 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
   .ng-model-picker:has(#ngModelCategoryView:not([hidden])){
     width:calc(100vw - 24px)!important;
     max-width:calc(100vw - 24px)!important;
-    height:180px!important;
-    min-height:180px!important;
-    max-height:180px!important;
-    padding:12px!important;
-    border-radius:28px!important;
+    height:125px!important;
+    min-height:125px!important;
+    max-height:125px!important;
+    padding:0!important;
+    border-radius:26px!important;
   }
   .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row,
   .ng-model-picker:has(#ngModelCategoryView:not([hidden])) .ng-model-category-row:nth-child(2){
@@ -285,11 +292,10 @@ body:has(.comp:not(.expanded)) .ng-fab-stack{bottom:calc(79px + env(safe-area-in
     height:60px!important;
     min-height:60px!important;
     max-height:60px!important;
-    padding:8px 12px!important;
+    padding:6px 12px!important;
     border-radius:20px!important;
   }
-}
-</style>
+}</style>
 <style id="ng-image-settings-style">
 .image-settings-trigger{white-space:nowrap;cursor:pointer;font:inherit;display:flex;align-items:center;justify-content:center;gap:3px;width:auto!important;min-width:132px;padding:0 14px;flex:0 0 auto;color:#fff!important}.image-settings-trigger svg{display:block!important;visibility:visible!important;flex:none;width:18px;height:18px;opacity:1;stroke:#fff!important}
 /* Match the reference: zero outer/inner element margins inside the settings pill. */
